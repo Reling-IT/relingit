@@ -1,7 +1,7 @@
 # Wiederverwendbarer Codex-Prompt
 
 ```text
-Du arbeitest im Repository https://github.com/bmarnau/relingit an der statischen Landingpage für die fortlaufende Geschichte „Die Fahrt zum Kunden“.
+Du arbeitest im Repository https://github.com/Reling-IT/relingit an der statischen Landingpage für die fortlaufende Geschichte „Die Fahrt zum Kunden“.
 
 Ziel:
 - Veröffentliche die jeweils neueste Fassung als zugängliche, schnelle Landingpage mit HTML, CSS und Vanilla JavaScript.
