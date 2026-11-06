@@ -1,0 +1,18 @@
+id: R03
+titel: 'Buchtext v1.38: Korrekturen k1 bis k3'
+art: code-pr
+gate: nein
+abhaengig_von: [R01]
+ziel: Das Buch (source/fahrt-zum-kunden.html) enthaelt die drei beschlossenen Klarstellungen als Version 1.38. Dieser Auftrag darf den Buchtext aendern (Ausnahme von der gemeinsamen Regel).
+schritte:
+- 'Fundstellen suchen (Grep) und im PR auflisten, bevor etwas geaendert wird.'
+- 'k1 Begriff Aggregation: Das Buch sagt, der Hub rechne nichts zusammen. Real ist Areport der alleinige technische Aggregator. Trennen in technisch zusammenfuehren (erlaubt) und bewerten oder verdichten zu Scores (nicht erlaubt). Fundstellen: Abschnitt Woher kommen die Infos und Petras Regel in Warum Navis und Lumen. Suchbegriffe: Aggregat, zusammenrechnen, rechnet nichts zusammen, Hub.'
+- 'k2 Dashboard laeuft nur im Browser: Das Sysing Dashboard hat Supabase-Anmeldung und serverseitige Rollenpruefung (Belege im Repo bmarnau/sysingdashboard: CHANGELOG Version 1.34.1 vom 13.07.2026 erste serverseitige Auth-Guards, Version 1.39.0 vom 17.07.2026 Sitzungsidentitaet ueber Supabase). Einige Module nutzen weiter Browser-Speicher, der Umbau (BSF-04) ist geplant. Formulierung auf teils noch im Browser, Anbindung im Aufbau aendern. Suchbegriffe: ohne Server, nur im Browser, laeuft im Browser. Vorher klaeren, was die Szene zeitlich meint, und die Aenderung im PR begruenden.'
+- 'k3 Lumen: Lumen ist fuer alle Reports der Report-Familie zustaendig, liest aber ausschliesslich ueber den Hub. Beides getrennt sagen. Eine Klarstellung in Teil 2 (Anhang) genuegt. Der Hub liest nur Areport.'
+- 'Vollstaendigkeit herstellen: Version 1.38 auf dem Deckblatt, Datum des Tages, neuer Eintrag in der Versionshistorie (gleiche Version und gleiches Datum wie das Deckblatt), Cover-Hinweis, Personenliste, Mini-Inhaltsverzeichnis, die drei Deckblatt-Boxen. Keine neue Geschichte, keine weiteren Textaenderungen.'
+- 'Werkzeuge: verify_layout.py und render_story_pdf.py liegen im Claude-Projekt von Bernd. Im Repo und unter C:\dev suchen. Fehlen sie, im Bericht melden, die Textaenderungen trotzdem liefern und das PDF als offen kennzeichnen.'
+- 'Mit PDF: source/Die-Fahrt-zum-Kunden.pdf neu erzeugen, dann ./scripts/publish-release.ps1 lokal ausfuehren (aktualisiert story/current, Rueckfallwerte, baut das FTP-Paket; ci-check laeuft mit). Das FTP-Paket nicht committen und nicht hochladen.'
+- 'Podcast: Erzaehltext aendert sich nicht wesentlich, deshalb kein neuer Podcast. Im Bericht ausdruecklich vermerken (Entscheidung q11).'
+nachweis: Pull Request mit Fundstellenliste und Vorher-Nachher der Saetze, Ausgabe von verify_layout.py (falls vorhanden), Link-Check, ci-check.ps1. Bericht reports/R03-BERICHT.md.
+grenzen: Kein Merge, kein FTP-Upload, kein Supabase-Admin, keine Veroeffentlichung. Nur die drei Klarstellungen. Keine neuen Figuren, keine neuen Szenen.
+status: bereit

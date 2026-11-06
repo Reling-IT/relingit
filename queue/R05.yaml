@@ -1,0 +1,18 @@
+id: R05
+titel: 'Hauptdokument der Szenenideen nachziehen (k5, q1, q8)'
+art: doku
+gate: nein
+abhaengig_von: []
+offen: 'Die Dateien szenenideen-offene-konzepte.md und szenenideen-fortsetzung-2026-11.md liegen im Claude-Projekt, nicht in einem Repo. Bernd legt beide lokal ab (Pfad im INDEX eintragen) und setzt den Status auf bereit.'
+ziel: Das Hauptdokument spiegelt den Stand 06.11.2026. Die Begleitdatei wird danach geloescht.
+schritte:
+- 'Idee 8 (Seite live) von nicht umgesetzt auf umgesetzt setzen.'
+- 'Rollenanalyse: Navis und Lumen mitzaehlen (zehn im Haus: acht Menschen plus Navis und Lumen, Horst extern und nicht mitgezaehlt).'
+- 'Ideenzaehlung nach Idee 11 reparieren: Idee 12 (Trainer) ergaenzen.'
+- 'Ideen 13 bis 18 aus der Begleitdatei einfuegen. Idee 19 (Anhang-Box Die sieben Standards hinter Navis und Lumen) als offen aufnehmen.'
+- 'Abschnitt Leitlinie und Zweiteilung (Geschichten im Mittelpunkt, Technikerklaerungen im Anhang, zwei Pruefragen, Spannungsbogen) einfuegen.'
+- 'Entscheidungen nachtragen: Horsts KI heisst Ancora, Szenenort Kaffeeecke, Enno gehoert zum Haus, Standards gelten nur fuer die KI-Entwicklung, Podcast mit Google Gemini nur bei Erzaehltextaenderung, Anhang als eigene Seite.'
+- 'Diff zeigen. Danach Begleitdatei loeschen, nur wenn Bernd das im Bericht bestaetigt.'
+nachweis: Diff der geaenderten Datei im Bericht reports/R05-BERICHT.md.
+grenzen: Nur diese zwei Dokumente. Kein Buchtext. Kein Merge.
+status: wartet_auf_entscheidung

@@ -1,0 +1,15 @@
+id: R04
+titel: 'Zuordnung der sieben Standards zu Navis, Lumen und den Apps (nur lesen)'
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Belegen, welcher Standard wo bei Navis, Lumen und dahinter tatsaechlich angewendet wird, als Grundlage fuer die Anhang-Box Die sieben Standards hinter Navis und Lumen (Idee 19). Die Standards gelten nur fuer die KI-Entwicklung, nicht fuer den ganzen Betrieb des Systemhauses.
+schritte:
+- 'Repos nur lesend nach C:\dev\referenz klonen (git clone, kein Branch, keine Aenderung): bmarnau-standards/ai-development-governance, AQGS-Application-Quality-Gate-Standard, technical-documentation-framework, security-standard, dsgvo-compliance, ai-act-compliance, Bibliothek; bmarnau/sysingdashboard, hub, areport, ireport, nreport, qreport, sreport; LeadOS-Org/HI-Bibliothek; bmarnau/tdfbibliothek.'
+- 'Je Standard (ADG, AQGS, TDF, SEC, DSG, AI, LIB): In welchem Repo wird er angewendet oder referenziert? Beleg mit Datei und Zeile (CLAUDE.md, README, docs, CI, Profile, Konformitaetsberichte). Nur Belegtes eintragen, sonst nicht ermittelbar.'
+- 'Bibliothek-Standard (LIB): Wie weit wird er in tdfbibliothek angewendet (Konformitaetsbericht im Repo Bibliothek, conformance/) und wie weit in der HI-Bibliothek (Steckbrief, Profil, Konformitaetsabgleich)? Stand und Luecken nennen.'
+- 'Ergebnis als Tabelle im Bericht: Standard, Anwendungsort, Beleg, Stand. Dazu ein Vorschlag fuer je einen Satz pro Standard fuer die Anhang-Box (nicht in das Buch einbauen).'
+- 'Zusatzfrage k6: Wie nennt das Buch ADR im TDF/ADR-Wissensblock (Wortlaut zitieren)? Das Repo ai-development-governance nennt sich ADG, ADR ist veralteter Alias bis 30.06.2027. Vorschlag fuer einen klaerenden Satz, nicht einbauen.'
+nachweis: Bericht reports/R04-BERICHT.md mit Tabelle und Belegen.
+grenzen: Nur lesen. Keine Aenderung in irgendeinem Repo, kein Branch, kein Push ausser dem Bericht auf ops/reports. Der Geraetemarker .claude/device.local.json in tdfbibliothek wird nie angelegt oder geaendert. Keine Zugangsdaten.
+status: bereit

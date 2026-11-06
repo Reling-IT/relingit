@@ -1,0 +1,15 @@
+id: R09
+titel: 'Live-Pruefung nach dem Upload (nur lesend)'
+art: lesen
+gate: nein
+abhaengig_von: [R01]
+voraussetzung: 'Bernd hat die neue Version hochgeladen (Admin-Bereich, bei Bedarf FTP) und setzt den Status auf bereit. Vorher nicht beginnen.'
+ziel: Belegen, dass die Live-Seite berndmarnau.de/relingit dem Stand von main und story/current entspricht.
+schritte:
+- 'Stand von main und story/current lesen: Version, Datum, Seitenzahl aus dem Deckblatt der Quelle und der PDF (pdfinfo), fallbackRelease in assets/js/app.js.'
+- 'Per HTTP GET (ohne Anmeldung) abrufen: Startseite, lesen.html, handout.html, impressum.html, datenschutz.html, admin.html (nur die Anmeldeseite), die PDF und die Lesefassung. HTTP-Status je Datei und Groesse notieren.'
+- 'Vergleichen: Seitenzahl und Version auf Startseite und Lesefassung gegen die Quelle; Repo-Link muss Reling-IT/relingit lauten (kein bmarnau/relingit); in supabase-config.js darf kein Platzhalter HIER_ stehen; .htaccess-Wirkung (Weiterleitungen, Sperren) nur beschreiben, soweit ohne Anmeldung pruefbar.'
+- 'Abweichungen als Liste mit Datei, Soll, Ist melden. Nichts selbst korrigieren.'
+nachweis: Bericht reports/R09-BERICHT.md mit Abrufzeit, HTTP-Status je Datei und Soll-Ist-Tabelle.
+grenzen: Nur lesende Abrufe. Keine Anmeldung, kein Admin-Konto, kein Supabase-Zugriff, kein FTP, keine Aenderung im Repo ausser dem Bericht auf ops/reports. Keine Zugangsdaten.
+status: wartet_auf_voraussetzung

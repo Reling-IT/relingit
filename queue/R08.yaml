@@ -1,0 +1,14 @@
+id: R08
+titel: 'Kapitel-Vorlage und Einbau-Checkliste fuer neue Geschichten'
+art: doku
+gate: nein
+abhaengig_von: [R01]
+ziel: Neue Geschichten und Anhang-Boxen lassen sich nach einer Vorlage in die Buchquelle einbauen, ohne dass Struktur, Klassen oder Pflichtstellen vergessen werden.
+schritte:
+- 'source/fahrt-zum-kunden.html lesen (nur lesen) und die wiederkehrende Struktur eines Geschichten-Kapitels und einer Anhang-Box beschreiben: Elemente, Klassen, IDs, Kopfzeile, Uebergaenge, Mini-Inhaltsverzeichnis, Personenliste, Versionshistorie. Drei beispielhafte Fundstellen mit Zeilennummern nennen.'
+- 'docs/vorlagen/KAPITEL-VORLAGE.html: eine kommentierte Vorlage mit Platzhaltern fuer ein Kapitel und eine Anhang-Box. Keine echten Inhalte aus dem Buch, kein Buchtext. Die Vorlage darf nicht von ci-check oder dem Paketbau erfasst werden und gehoert nicht in das FTP-Paket.'
+- 'docs/vorlagen/EINBAU-CHECKLISTE.md: je neues Kapitel die Pflichtstellen als Abhakliste (Version, Datum, Cover-Hinweis, Personenliste, Mini-Inhaltsverzeichnis, drei Deckblatt-Boxen, Versionshistorie, Anker, Rueckverweise, Anhang-Box, verify_layout, Link-Check, Stimmigkeit mit den Regeln fuer Navis und Lumen). Die Regeln fuer Navis und Lumen so wiedergeben, wie sie im Buch stehen: Navis liest nur das Sysingboard und schreibt nie, Lumen liest nur ueber den Hub, keine Scores, Offen bleibt offen.'
+- 'Verweis auf diese zwei Dateien in docs/NEUE-GESCHICHTE.md, falls R02 diese Datei schon angelegt hat, sonst in der PR-Beschreibung als Folgeaufgabe.'
+nachweis: Pull Request mit den zwei Dateien, Bericht reports/R08-BERICHT.md mit der Strukturbeschreibung und den Fundstellen.
+grenzen: Kein Merge. Buchtext, PDF, Skripte und Workflows nicht aendern. Keine Zugangsdaten.
+status: bereit
