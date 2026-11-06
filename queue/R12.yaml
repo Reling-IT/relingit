@@ -1,0 +1,17 @@
+id: R12
+titel: 'Startseite: Abschnitt Was bisher geschah und was jetzt neu ist (Planung, noch nicht freigegeben)'
+art: code-pr
+gate: ja
+abhaengig_von: [R11, R03]
+voraussetzung: 'Bernd hat Layout und Text freigegeben (Plan im Projektdokument plan-startseite-zusammenfassung.md) und setzt den Status auf bereit. PR #6 und R11 sind abgeschlossen. Vorher nicht beginnen.'
+ziel: Die Startseite zeigt zwei Karten (Bisher, Neu), deren Texte aus einer Datei stammen. Die Karte Neu erscheint nur, wenn ihre Version der Release-Version entspricht.
+schritte:
+- 'index.html, assets/css, assets/js/app.js lesen. Passende Stelle unter dem Einstieg finden, Fundstellen im Bericht nennen.'
+- 'assets/data/teaser.json mit Feldern version, bisher (titel, text, stichpunkte) und neu (titel, text, badge) anlegen. Statischer Rueckfalltext in index.html mit denselben Inhalten.'
+- 'app.js: Karten per textContent befuellen. Karte Neu nur zeigen, wenn teaser.version gleich der Release-Version ist, sonst nur die linke Karte mit dem Hinweis Fortsetzung folgt.'
+- 'CSS: zwei Karten nebeneinander, auf dem Handy untereinander, hell und dunkel, Kontrast AA, keine externen Quellen, Icons aus assets/img/avatare.'
+- 'ci-check.ps1: Version im Teaser muss zur Version der Buchquelle passen. docs/NEUE-GESCHICHTE.md: Schritt Teaser aktualisieren.'
+- 'Lokal pruefen: ci-check.ps1, node --check, Seite im Browser bei 360 px und Desktop, hell und dunkel. Mit Beleg.'
+nachweis: Pull Request, Bericht reports/R12-BERICHT.md mit Fundstellen und Pruefausgaben.
+grenzen: Kein Merge, keine Veroeffentlichung, kein FTP, kein Buchtext, kein PDF, keine Workflows, keine Zugangsdaten. Texte nur nach Freigabe durch Bernd. Der Inhalt der Karte Neu kommt von Bernd und Claude, nicht von Claude Code.
+status: geplant
