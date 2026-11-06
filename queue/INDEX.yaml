@@ -1,4 +1,4 @@
-stand: 2026-11-06 10:20
+stand: 2026-11-06 11:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -10,26 +10,86 @@ statuswerte:
 - blockiert
 - geplant
 - wartet_auf_entscheidung
+- wartet_auf_voraussetzung
 regel: Claude Code fuehrt nur Auftraege mit status bereit aus, in der Reihenfolge dieser Liste, einen zur Zeit.
 gemeinsame_regeln:
 - Sprache Deutsch, sachlich, Anforderungen mit muss/sollte. Daten als JSON oder YAML, Diagramme als Mermaid.
 - 'Zu Beginn lesen: README.md, scripts/publish-release.ps1, scripts/ci-check.ps1.'
-- Arbeit nur auf einem Feature-Branch (auftrag-<id>-<kurzname>), nie auf main. Pull Request oeffnen (gh, sonst Link ausgeben). Nicht mergen, kein Tag, keine Veroeffentlichung.
+- Arbeit nur auf einem Feature-Branch (auftrag-<id>-<kurzname>), nie auf main. Pull Request oeffnen (gh, sonst Link ausgeben). Nicht mergen, kein
+  Tag, keine Veroeffentlichung.
 - Buchtext (source/fahrt-zum-kunden.html, story/current/fahrt-zum-kunden.html) und PDFs nur aendern, wenn der Auftrag es ausdruecklich verlangt.
-- Nichts an Workflows (.github/workflows), Deployment, FTP, Supabase-Konfiguration oder Admin-Konten aendern. Keine Zugangsdaten in Dateien oder Commits.
+- Nichts an Workflows (.github/workflows), Deployment, FTP, Supabase-Konfiguration oder Admin-Konten aendern. Keine Zugangsdaten in Dateien oder
+  Commits.
 - Aussagen wie 'geprueft' oder 'bestanden' nur mit Beleg (Befehl und Ergebnis, PR, Commit, CI-Lauf).
-- 'Abschluss jedes Berichts: Hygiene in einer Zeile (gemergte Remote-Branches, offene PRs, Drafts) und YAML-Block mit Reifegrad, Projektstatus, Offene_Fragen, Roadmap (Sprints_bis_BSF, Sprints_bis_MVP).'
+- 'Abschluss jedes Berichts: Hygiene in einer Zeile (gemergte Remote-Branches, offene PRs, Drafts) und YAML-Block mit Reifegrad, Projektstatus,
+  Offene_Fragen, Roadmap (Sprints_bis_BSF, Sprints_bis_MVP).'
 auftraege:
 - id: R01
   titel: 'Webseiten-Pflege: Seitenzahl, Repo-Links, Handout und Logo, Podcast-Ort'
   art: code-pr
   gate: nein
+  status: erledigt
+  abhaengig_von: []
+  pr: 'Reling-IT/relingit#4 und #5 (offen, CI gruen), Bericht auf ops/reports'
+- id: R04
+  titel: Zuordnung der sieben Standards zu Navis, Lumen und den Apps (nur lesen)
+  art: lesen
+  gate: nein
   status: bereit
   abhaengig_von: []
+- id: R08
+  titel: Kapitel-Vorlage und Einbau-Checkliste fuer neue Geschichten
+  art: doku
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R01
 - id: R02
-  titel: 'Veroeffentlichungsablauf vereinfachen (Seitenzahl ableiten, Vollstaendigkeits-Check, Checkliste)'
+  titel: Veroeffentlichungsablauf vereinfachen (Admin-Bereich als Standard, Checkliste, Vollstaendigkeits-Check)
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R01
+  voraussetzung: 'PR #4 und #5 gemergt'
+- id: R03
+  titel: 'Buchtext v1.38: Korrekturen k1 bis k3'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R01
+- id: R07
+  titel: Anhang als eigene Webseite vorbereiten (q12), ohne Doppelpflege
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R02
+  - R03
+- id: R05
+  titel: Hauptdokument der Szenenideen nachziehen (k5, q1, q8)
+  art: doku
+  gate: nein
+  status: wartet_auf_entscheidung
+  abhaengig_von: []
+  offen: Bernd legt die zwei Szenenideen-Dokumente lokal ab und setzt den Status auf bereit.
+- id: R06
+  titel: Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereiten
   art: code-pr
   gate: nein
   status: wartet_auf_entscheidung
-  abhaengig_von: [R01]
-  offen: 'Entscheidung q15 (Standardweg zum Hochladen: FTP-Paket oder Admin-Bereich) und Bestaetigung der Repo-Adresse Reling-IT/relingit durch den Owner.'
+  abhaengig_von:
+  - R03
+  - R04
+  offen: Entscheidung des Owners zu Idee 19 und Korrektur k6.
+- id: R09
+  titel: Live-Pruefung nach dem Upload (nur lesend)
+  art: lesen
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R01
+  offen: Bernd setzt den Status auf bereit, sobald die neue Version hochgeladen ist (erst mit der ersten neuen Geschichte).
+hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript,
+  Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

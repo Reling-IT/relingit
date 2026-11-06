@@ -13,4 +13,4 @@ schritte:
 - 'Lokal pruefen: ./scripts/ci-check.ps1 und node --check fuer assets/js/*.js. Melden, was nicht pruefbar war (Live-Stand).'
 nachweis: Pull Request mit Beschreibung (Wahl zur Seitenzahl, Liste der geaenderten Links, Auffaelligkeiten), Ausgabe von ci-check.ps1 und node --check (gekuerzt). Bericht reports/R01-BERICHT.md.
 grenzen: Kein Merge. Buchtext, PDF, Workflows, Deployment und Supabase nicht aendern. Keine Zugangsdaten.
-status: bereit
+status: erledigt

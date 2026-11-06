@@ -1,17 +1,18 @@
 id: R02
-titel: 'Veroeffentlichungsablauf vereinfachen (Seitenzahl ableiten, Vollstaendigkeits-Check, Checkliste)'
+titel: 'Veroeffentlichungsablauf vereinfachen (Admin-Bereich als Standard, Checkliste, Vollstaendigkeits-Check)'
 art: code-pr
 gate: nein
 abhaengig_von: [R01]
-ziel: Eine neue Geschichte geht mit einem Befehl live. Version, Datum und Seitenzahl werden genau einmal gepflegt (Deckblatt der Quelle und PDF) und sonst abgeleitet.
+voraussetzung: 'PR #4 und PR #5 sind in main gemergt. Vorher pruefen (git log origin/main). Sonst als blockiert melden und nicht beginnen.'
+ziel: Eine neue Geschichte geht mit wenigen, klar benannten Handgriffen live. Version, Datum und Seitenzahl werden genau einmal gepflegt (Deckblatt der Quelle und PDF) und sonst abgeleitet. Entscheidungen des Owners vom 06.11.2026 - q15 Admin-Bereich mit Supabase ist der Standardweg fuer neue Buchfassungen, FTP nur fuer Startseite, JavaScript, Impressum und Datenschutz. Reling-IT/relingit ist die endgueltige Repo-Adresse.
 schritte:
-- 'README, scripts/publish-release.ps1, scripts/build-upload.ps1, scripts/ci-check.ps1, .github/workflows/ci.yml, assets/js/app.js, index.html, lesen.html lesen. Den Ist-Ablauf in fuenf Saetzen zusammenfassen.'
-- 'Seitenzahl in index.html: publish-release.ps1 soll die Angabe mitpflegen, oder index.html soll sie aus den Release-Daten rendern. Die kleinere Aenderung waehlen und begruenden.'
-- 'ci-check.ps1: neue Pruefung der Quelle auf Vollstaendigkeit (Deckblatt Version und Datum, Versionshistorie, Personenliste, Mini-Inhaltsverzeichnis, drei Deckblatt-Boxen). Fehlende oder widerspruechliche Stelle mit Namen melden. Bestehende Pruefungen nicht abschwaechen.'
-- 'Anhang als eigene Seite (Entscheidung q12): nur vorbereiten, nicht scharf schalten, solange die Seite nicht existiert (Pflichtdatei, Anker-Pruefung, build-upload als Vorschlag in der PR-Beschreibung).'
-- 'docs/NEUE-GESCHICHTE.md: Checkliste in sechs Schritten (schreiben, einbauen, bauen und pruefen, veroeffentlichen per Branch und PR, hochladen, Podcast nur bei geaendertem Erzaehltext). Jeder Schritt mit Befehl und erwartetem Ergebnis. Standardweg zum Hochladen: laut Entscheidung q15 (vom Owner einzutragen).'
-- 'README: ein Satz zur kanonischen Adresse Reling-IT/relingit (unter bmarnau nie ein Repo relingit neu anlegen, sonst bricht die Weiterleitung).'
-- 'Lokal pruefen: ./scripts/ci-check.ps1 und node --check. Mit Befehl belegen.'
-nachweis: Pull Request mit Beschreibung (Abhaengigkeiten zwischen source, story/current, app.js, lesen.html, index.html, Supabase-Admin; was weiter von Hand erfolgt), Ausgabe von ci-check.ps1. Bericht reports/R02-BERICHT.md.
-grenzen: Kein Merge. Buchtext und PDF nicht aendern. FTP, Admin-Konto, Supabase und Workflows nicht anfassen. Keine Zugangsdaten. Start erst, wenn der Owner den Status auf bereit setzt.
-status: wartet_auf_entscheidung
+- 'README, scripts/publish-release.ps1, scripts/build-upload.ps1, scripts/ci-check.ps1, docs/DOMAINFACTORY-DEPLOYMENT.md, assets/js/app.js, assets/js/admin.js, index.html, lesen.html lesen. Den Ist-Ablauf in fuenf Saetzen zusammenfassen. Die Seitenzahl in index.html ist bereits durch PR #5 geloest, nur pruefen.'
+- 'publish-release.ps1: Am Ende die drei Werte fuer den Admin-Bereich ausgeben (Version, Datum, Seitenzahl) sowie die Pfade der Dateien, die dort auszuwaehlen sind (HTML-Lesefassung, PDF, falls geaendert Handout als Paar). Dazu den Hinweis, ob ein FTP-Upload noetig ist (nur wenn sich index.html, assets/js, impressum.html oder datenschutz.html gegenueber dem letzten Release geaendert haben, Vergleich per git diff gegen den letzten Release-Tag oder Commit). Keine Zugangsdaten, kein Upload.'
+- 'ci-check.ps1: neue Pruefung der Quelle auf Vollstaendigkeit (Deckblatt Version und Datum, Versionshistorie, Personenliste, Mini-Inhaltsverzeichnis, drei Deckblatt-Boxen). Fehlende oder widerspruechliche Stelle mit Namen melden. Bestehende Pruefungen nicht abschwaechen. Bei Unklarheit, wie diese Stellen im Buch erkennbar sind, die Struktur von source/fahrt-zum-kunden.html lesen und die Erkennungsregeln im Bericht begruenden.'
+- 'docs/NEUE-GESCHICHTE.md: Checkliste in sechs Schritten (schreiben, einbauen, bauen und pruefen, veroeffentlichen per Branch und PR, hochladen ueber den Admin-Bereich, Podcast nur bei geaendertem Erzaehltext mit Google Gemini). Jeder Schritt mit Befehl und erwartetem Ergebnis. Dazu eine Zeile, wann zusaetzlich ein FTP-Upload noetig ist.'
+- 'docs/DOMAINFACTORY-DEPLOYMENT.md und README: Abschnitt Neue Version veroeffentlichen auf den Standardweg Admin-Bereich ausrichten, ohne bestehende Sicherheitshinweise zu entfernen. Ein Satz zur kanonischen Adresse Reling-IT/relingit (unter bmarnau nie ein Repo relingit neu anlegen, sonst bricht die Weiterleitung).'
+- 'Anhang als eigene Seite (q12): nicht in diesem Auftrag umsetzen, das uebernimmt R07.'
+- 'Lokal pruefen: ./scripts/ci-check.ps1 und node --check fuer assets/js/*.js. Mit Befehl belegen.'
+nachweis: Pull Request mit Beschreibung (Abhaengigkeiten zwischen source, story/current, app.js, lesen.html, index.html, Supabase-Admin; was weiter von Hand erfolgt), Ausgabe von ci-check.ps1 und eines Probelaufs von publish-release.ps1 auf einer Kopie. Bericht reports/R02-BERICHT.md.
+grenzen: Kein Merge. Buchtext und PDF nicht aendern. FTP, Admin-Konto, Supabase und Workflows nicht anfassen. Keine Zugangsdaten.
+status: bereit
