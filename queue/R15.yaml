@@ -1,0 +1,15 @@
+id: R15
+titel: 'Release-Pruefungen: PDF-Version gegen Deckblatt, output/ aus ci-check ausnehmen, Release-Tag nur vorschlagen'
+art: code-pr
+gate: nein
+abhaengig_von: [R02, R14]
+voraussetzung: 'PR #8 (R02) und der PR aus R14 sind durch Bernd gemergt. Vorher pruefen (git log origin/main). Sonst als blockiert melden.'
+ziel: Das Release-Skript darf keine PDF mit falscher Version durchlassen. Im Test von R03 hat der Ablauf die alte PDF v1.37 ohne Warnung akzeptiert.
+schritte:
+- 'publish-release.ps1: Versionsangabe aus dem Text der PDF (pdftotext, Deckblatt) lesen und mit der Version im Deckblatt der Quelle vergleichen. Bei Abweichung abbrechen mit klarer Meldung. Seitenzahl bleibt wie bisher aus pdfinfo.'
+- 'ci-check.ps1: Verzeichnis output/ ausnehmen (die gemeldeten 21 HTML-Dateien zaehlen das lokal entpackte FTP-Paket mit). Aenderung begruenden und mit Vorher-Nachher-Ausgabe belegen.'
+- 'docs/NEUE-GESCHICHTE.md: Hinweis, dass die PDF-Version geprueft wird. Release-Tags nur als Vorschlag in den Bericht (Nutzen: eindeutige Vergleichsbasis fuer den FTP-Hinweis). Kein Tag setzen.'
+- 'Lokal pruefen: ci-check.ps1, ein Probelauf von publish-release.ps1 auf einer Kopie mit absichtlich falscher PDF-Version (muss abbrechen) und mit richtiger (muss durchlaufen). Mit Beleg.'
+nachweis: Pull Request, Bericht reports/R15-BERICHT.md mit beiden Probelaeufen.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, keine Aenderung an Buchtext oder veroeffentlichter PDF, kein FTP, keine Zugangsdaten.
+status: wartet_auf_voraussetzung

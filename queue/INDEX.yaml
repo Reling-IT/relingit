@@ -1,4 +1,4 @@
-stand: 2026-11-06 12:20
+stand: 2026-11-06 19:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -35,36 +35,39 @@ auftraege:
   titel: Zuordnung der sieben Standards zu Navis, Lumen und den Apps (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R10
   titel: Sachgrundlage fuer Idee 13 A (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R08
   titel: Kapitel-Vorlage und Einbau-Checkliste fuer neue Geschichten
   art: doku
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R01
+  pr: Reling-IT/relingit#7
 - id: R02
   titel: Veroeffentlichungsablauf vereinfachen (Admin-Bereich als Standard, Checkliste, Vollstaendigkeits-Check)
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R01
   voraussetzung: 'PR #4 und #5 gemergt'
+  pr: Reling-IT/relingit#8
 - id: R03
   titel: 'Buchtext v1.38: Korrekturen k1 bis k3'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R01
+  pr: Reling-IT/relingit#9 (Draft, PDF offen)
 - id: R07
   titel: Anhang als eigene Webseite vorbereiten (q12), ohne Doppelpflege
   art: code-pr
@@ -120,5 +123,20 @@ auftraege:
   status: wartet_auf_entscheidung
   abhaengig_von: []
   offen: Bernd setzt den Status auf bereit. Loeschen erst nach Bestaetigung der Liste.
+- id: R14
+  titel: PDF-Werkzeuge ins Repo uebernehmen und pruefen
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R15
+  titel: 'Release-Pruefungen: PDF-Version, output/ ausnehmen'
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R02
+  - R14
+  offen: 'PR #8 und der PR aus R14 gemergt.'
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript,
   Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

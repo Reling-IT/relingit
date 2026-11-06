@@ -1,0 +1,17 @@
+id: R14
+titel: 'PDF-Werkzeuge ins Repo uebernehmen, in Bernds Umgebung pruefen und dokumentieren'
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: Jede Sitzung (auch Claude Code lokal) kann die PDF der Geschichte erzeugen und das Layout pruefen. Das war bisher nur in der Cloud-Sitzung von Claude moeglich (R03 meldete: PDF fehlt, weil render_story_pdf.py und verify_layout.py nirgends im Repo lagen).
+ausgangslage: 'Branch quelle-pdf-werkzeuge-20261106 (Commit 4a88f92) enthaelt scripts/pdf/render_story_pdf.py, scripts/pdf/verify_layout.py und requirements.txt. Abgeleitet aus den Werkzeugen im Claude-Projekt: Pfade per Parameter, Renderstand mit echter Zeitzone (MEZ/MESZ), Hintergrundfarbe --bg wird aus dem Quelltext gelesen. Die Skripte wurden nur in der Cloud-Sitzung getestet (70 Seiten, zwei Randhinweise auf Seite 15 und 24, vermutlich wegen fehlender Webfonts). Nicht in Bernds Umgebung bestaetigt.'
+schritte:
+- 'Neuen Branch auftrag-R14-pdf-werkzeuge von quelle-pdf-werkzeuge-20261106 anlegen. Skripte lesen und verstehen.'
+- 'Voraussetzungen in Bernds Umgebung pruefen und nur melden, nicht ungefragt installieren: Python, pip, playwright mit Chromium, pypdf, numpy, pillow, pdftoppm (Poppler). Was fehlt, mit dem Installationsbefehl in den Bericht schreiben.'
+- 'Wenn die Voraussetzungen vorhanden sind: python scripts/pdf/render_story_pdf.py und python scripts/pdf/verify_layout.py auf der Quelle von main laufen lassen. Ergebnis mit Seitenzahl und Hinweisen belegen. Die Seitenzahl muss zur aktuellen story/current/geschichte.pdf passen (69). Abweichung und moegliche Ursache (Webfonts, Chromium-Version) melden.'
+- 'Fehler in den Skripten beheben (Windows-Pfade, Zeichenkodierung, PATH), aber Schwellenwerte und Pruefregeln nicht abschwaechen. Jede Anpassung im Bericht begruenden.'
+- 'docs/PDF-ERZEUGEN.md anlegen: Einmal-Einrichtung unter Windows (Python, pip install -r scripts/pdf/requirements.txt, playwright install chromium, Poppler), Befehle fuer Rendern und Pruefen, erwartete Ausgabe, bekannte Stolpersteine. Aus README und docs/NEUE-GESCHICHTE.md darauf verweisen.'
+- 'Die erzeugte PDF nicht committen (output/ ist ausgenommen). story/current und source/Die-Fahrt-zum-Kunden.pdf nicht aendern. ci-check.ps1 darf die PDF-Werkzeuge nicht zur Pflicht machen.'
+nachweis: Pull Request mit Beschreibung, Bericht reports/R14-BERICHT.md mit Voraussetzungs-Check, Ausgabe beider Skripte, Abweichungen und Begruendungen.
+grenzen: Kein Merge, keine Veroeffentlichung, kein Buchtext, keine Aenderung an story/current oder der veroeffentlichten PDF, kein FTP, keine Zugangsdaten. Installationen nur nach Rueckfrage bei Bernd.
+status: bereit
