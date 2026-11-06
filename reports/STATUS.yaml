@@ -1,4 +1,4 @@
-stand: 2026-11-06T11:44+01:00
+stand: 2026-11-06T11:48+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 167c883 (Planer Claude, Cloud-Sitzung, Trailer und Session-Link; Owner-Freigabe 06.11.2026)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -35,8 +35,13 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/8
     bericht: reports/R02-BERICHT.md
   - id: R03
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-06T11:44+01:00
+    ende: 2026-11-06T11:48+01:00
+    branch: auftrag-R03-buchtext-v138
+    pr: https://github.com/Reling-IT/relingit/pull/9
+    hinweis: 'Draft, PDF offen'
+    bericht: reports/R03-BERICHT.md
   - id: R11
     status: wartet_auf_voraussetzung
     hinweis: 'wartet auf Merge von PR #6, nicht begonnen'

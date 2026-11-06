@@ -3,7 +3,7 @@ id: R02
 titel: 'Veroeffentlichungsweg: Admin-Bereich als Standard, Vollstaendigkeits-Check, Anleitung'
 status: erledigt
 start: 2026-11-06T11:32+01:00
-ende: 2026-11-06T11:45+01:00
+ende: 2026-11-06T11:44+01:00
 branch: auftrag-R02-veroeffentlichung
 pr: https://github.com/Reling-IT/relingit/pull/8
 commit: 40961f1
