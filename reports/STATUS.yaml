@@ -1,0 +1,18 @@
+stand: 2026-11-06T10:13+01:00
+repo: Reling-IT/relingit
+quelle_queue: 'origin/ops/queue fehlt noch; Inhalt abgeglichen mit ops-queue-relingit-2026-11-06a.zip'
+auftraege:
+  - id: R01
+    status: erledigt
+    start: 2026-11-06T09:57+01:00
+    ende: 2026-11-06T10:13+01:00
+    branch: auftrag-a-website-pflege-20261106-0957
+    pr: https://github.com/Reling-IT/relingit/pull/4
+    bericht: reports/R01-BERICHT.md
+  - id: R02
+    status: wartet_auf_entscheidung
+    hinweis: 'Nicht begonnen. Teil Seitenzahl auf Owner-Anweisung vorab in PR #5 umgesetzt.'
+    pr_vorab: https://github.com/Reling-IT/relingit/pull/5
+leerlauf: 2026-11-06T10:13+01:00
+leerlauf_grund: 'Kein weiterer Auftrag mit Status bereit.'
+fehler: []
