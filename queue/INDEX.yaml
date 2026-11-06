@@ -1,4 +1,4 @@
-stand: 2026-11-06 11:05
+stand: 2026-11-06 11:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -33,6 +33,12 @@ auftraege:
   pr: 'Reling-IT/relingit#4 und #5 (offen, CI gruen), Bericht auf ops/reports'
 - id: R04
   titel: Zuordnung der sieben Standards zu Navis, Lumen und den Apps (nur lesen)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R10
+  titel: Sachgrundlage fuer Idee 13 A (nur lesen)
   art: lesen
   gate: nein
   status: bereit
