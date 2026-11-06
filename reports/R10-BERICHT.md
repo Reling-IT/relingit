@@ -3,7 +3,7 @@ id: R10
 titel: 'Sachgrundlage fuer Idee 13 A "Die veralteten Daten" (nur lesen)'
 status: erledigt
 start: 2026-11-06T11:27+01:00
-ende: 2026-11-06T11:45+01:00
+ende: 2026-11-06T11:29+01:00
 branch: 'keiner (Leseauftrag)'
 pr: 'keiner (Leseauftrag)'
 commit: 'nur Bericht auf ops/reports'
