@@ -1,4 +1,4 @@
-stand: 2026-11-06 12:15
+stand: 2026-11-06 12:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -113,5 +113,12 @@ auftraege:
   - R11
   - R03
   offen: Bernd gibt Layout und Text frei und setzt den Status auf bereit.
+- id: R13
+  titel: Aufraeumen im OneDrive-Ordner (zweistufig, Loeschen nur nach Freigabe)
+  art: lokal-loeschen
+  gate: ja
+  status: wartet_auf_entscheidung
+  abhaengig_von: []
+  offen: Bernd setzt den Status auf bereit. Loeschen erst nach Bestaetigung der Liste.
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript,
   Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
