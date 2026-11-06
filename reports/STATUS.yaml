@@ -1,4 +1,4 @@
-stand: 2026-11-06T11:09+01:00
+stand: 2026-11-06T11:27+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue f4a26e6 (Planer Claude, Cloud-Sitzung; Owner-Freigabe 06.11.2026)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -11,10 +11,13 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/4
     bericht: reports/R01-BERICHT.md
   - id: R04
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-06T11:09+01:00
+    ende: 2026-11-06T11:27+01:00
+    bericht: reports/R04-BERICHT.md
   - id: R10
-    status: bereit
+    status: in_arbeit
+    start: 2026-11-06T11:27+01:00
   - id: R08
     status: bereit
   - id: R02
