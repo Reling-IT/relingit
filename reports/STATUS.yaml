@@ -1,6 +1,6 @@
-stand: 2026-11-06T10:13+01:00
+stand: 2026-11-06T10:16+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue fehlt noch; Inhalt abgeglichen mit ops-queue-relingit-2026-11-06a.zip'
+quelle_queue: 'origin/ops/queue d69b3a5 (Autor bmarnau, 06.11.2026 10:15, Inhalt identisch mit ops-queue-relingit-2026-11-06a.zip)'
 auftraege:
   - id: R01
     status: erledigt
@@ -15,4 +15,5 @@ auftraege:
     pr_vorab: https://github.com/Reling-IT/relingit/pull/5
 leerlauf: 2026-11-06T10:13+01:00
 leerlauf_grund: 'Kein weiterer Auftrag mit Status bereit.'
+hinweis_planer: 'In queue/INDEX.yaml steht R01 noch auf bereit; Bericht liegt vor (reports/R01-BERICHT.md). Status bitte durch den Planer auf erledigt setzen.'
 fehler: []
