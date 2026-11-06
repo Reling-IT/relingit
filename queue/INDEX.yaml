@@ -1,4 +1,4 @@
-stand: 2026-11-06 11:55
+stand: 2026-11-06 12:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -84,11 +84,10 @@ auftraege:
   titel: Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereiten
   art: code-pr
   gate: nein
-  status: wartet_auf_entscheidung
+  status: wartet_auf_voraussetzung
   abhaengig_von:
   - R03
   - R04
-  offen: Entscheidung des Owners zu Idee 19 und Korrektur k6.
 - id: R09
   titel: Live-Pruefung nach dem Upload (nur lesend)
   art: lesen

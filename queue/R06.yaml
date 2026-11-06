@@ -3,13 +3,13 @@ titel: 'Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereit
 art: code-pr
 gate: nein
 abhaengig_von: [R03, R04]
-offen: 'Entscheidung des Owners zu Idee 19 (Anhang-Box) und Korrektur k6 (ADR gegen ADG) auf der Abstimmungsseite, dann Status auf bereit setzen.'
-ziel: Neue Anhang-Box mit je einem belegten Satz pro Standard, ADR-Klarstellung im TDF/ADR-Wissensblock. Als Version 1.39 oder Teil von 1.38, nach Entscheidung des Owners.
+entscheidung: 'Owner am 06.11.2026: Idee 19 ja, in Version 1.38. k6: Im Text ADG nennen, ADR einmal in einer Fussnote erklaeren (frueherer Name, Alias bis 30.06.2027).'
+ziel: Neue Anhang-Box mit je einem belegten Satz pro Standard, ADR-Klarstellung im TDF/ADR-Wissensblock. Teil von Version 1.38 (Entscheidung des Owners).
 schritte:
 - 'Saetze aus dem Bericht R04 uebernehmen, nur Belegtes. Einleitungssatz: Diese Standards regeln, wie die KI-Seite des Systemhauses gebaut wird, nicht den Betrieb bei den Kunden.'
 - 'Rueckverweis aus der Box Functional is not Done. Beide Bibliotheken nennen (tdfbibliothek abgeglichen, HI-Bibliothek nur so weit belegt).'
-- 'k6: ADR nicht pauschal durch ADG ersetzen, nur einen klaerenden Satz im Wissensblock ergaenzen.'
+- 'k6: Im Text ADG nennen, ADR einmal in einer Fussnote erklaeren (frueherer Name, Alias bis 30.06.2027). Stellen mit ADR vorher auflisten und nur dort aendern, wo der Standard gemeint ist, nicht bei anderen Bedeutungen der Abkuerzung.'
 - 'Vollstaendigkeit wie bei R03 (Version, Historie, Personenliste, Inhaltsverzeichnis, Boxen), verify_layout und Link-Check.'
 nachweis: Pull Request mit Vorher-Nachher, Pruefausgaben, Bericht reports/R06-BERICHT.md.
 grenzen: Kein Merge, keine Veroeffentlichung, keine neuen Szenen. Nichts behaupten, was R04 nicht belegt.
-status: wartet_auf_entscheidung
+status: wartet_auf_voraussetzung
