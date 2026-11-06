@@ -1,4 +1,4 @@
-stand: 2026-11-06 11:10
+stand: 2026-11-06 11:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -97,5 +97,13 @@ auftraege:
   abhaengig_von:
   - R01
   offen: Bernd setzt den Status auf bereit, sobald die neue Version hochgeladen ist (erst mit der ersten neuen Geschichte).
+- id: R11
+  titel: Avatare von Navis und Lumen auf der Webseite zeigen
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R03
+  offen: 'Bernd mergt PR #6 (Avatare), danach setzt Claude oder Bernd den Status auf bereit.'
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript,
   Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

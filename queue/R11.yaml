@@ -1,0 +1,15 @@
+id: R11
+titel: 'Avatare von Navis und Lumen auf der Webseite zeigen'
+art: code-pr
+gate: nein
+abhaengig_von: [R03]
+voraussetzung: 'PR #6 (Avatare, Bilder unter assets/img/avatare und Personenliste im Buch) ist durch Bernd gemergt. Vorher pruefen (git log origin/main). Sonst als blockiert melden und nicht beginnen.'
+ziel: Die Bildmarken von Navis und Lumen erscheinen dort auf der Startseite und der Lesefassung, wo die beiden Figuren eingefuehrt werden. Kleine Aenderung ohne neue Abhaengigkeiten.
+schritte:
+- 'index.html, lesen.html, assets/css und assets/js lesen. Stellen finden, an denen Navis und Lumen genannt oder erklaert werden. Fundstellen mit Zeile im Bericht auflisten.'
+- 'Die Bilder aus assets/img/avatare/ (navis.svg, lumen.svg) an hoechstens zwei Stellen einbinden, mit Alternativtext und fester Groesse (kein Layoutsprung). Ancora nicht einbinden, die Figur kommt noch nicht im Buch vor und zaehlt nicht zu den zehn.'
+- 'Keine externen Quellen, keine neuen Skripte. build-upload.ps1 muss das Verzeichnis assets/img/avatare im Paket mitnehmen; ci-check.ps1 darf die Dateien nicht als unbekannt melden. Beides pruefen und nur falls noetig minimal anpassen.'
+- 'Lokal pruefen: ./scripts/ci-check.ps1 und node --check assets/js/*.js, Seite lokal ausliefern und per Browser ansehen (Hell und Dunkel). Mit Beleg.'
+nachweis: Pull Request mit Fundstellen und Screenshots-Beschreibung, Bericht reports/R11-BERICHT.md.
+grenzen: Kein Merge, kein Buchtext, kein PDF, kein FTP, keine Workflows, keine Zugangsdaten. Dieser Auftrag ist ein Webseiten-Auftrag und veroeffentlicht nichts. Ein FTP-Upload ist erst mit dem Release v1.38 noetig, weil index.html und Bilder betroffen sind.
+status: wartet_auf_voraussetzung
