@@ -95,6 +95,17 @@ $reader = Get-Content -Raw -LiteralPath $readerPath
 $reader = [regex]::Replace($reader, '(<strong\s+id="story-release">)Version\s+[^<]+(</strong>)', "`${1}Version $version · $displayDate`${2}", 1)
 Set-Content -LiteralPath $readerPath -Value $reader -Encoding utf8 -NoNewline
 
+# Die statische Seitenzahl der LP gilt ohne JavaScript und bis Supabase antwortet.
+# Sie muss deshalb denselben Wert wie fallbackRelease erhalten.
+$landingPath = "index.html"
+$landing = Get-Content -Raw -LiteralPath $landingPath
+$pageCountPattern = '(<span\s+data-page-count>)\d+(</span>)'
+if ([regex]::Matches($landing, $pageCountPattern).Count -ne 1) {
+    throw "Seitenzahl in $landingPath ist nicht eindeutig lesbar (<span data-page-count>)."
+}
+$landing = [regex]::Replace($landing, $pageCountPattern, "`${1}$PageCount`${2}", 1)
+Set-Content -LiteralPath $landingPath -Value $landing -Encoding utf8 -NoNewline
+
 & "$PSScriptRoot/ci-check.ps1"
 
 # Alte FTP-Pakete bleiben wiederherstellbar, werden aber aus dem Upload-Ordner

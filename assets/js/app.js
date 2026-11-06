@@ -29,11 +29,9 @@ function showRelease(current) {
     node.textContent = current.date;
   });
 
-  const metadata = document.querySelector(".meta");
-  if (metadata) {
-    metadata.firstChild.textContent =
-      `${current.pageCount} Seiten · Bernd Marnau · aktualisiert am `;
-  }
+  document.querySelectorAll("[data-page-count]").forEach((node) => {
+    node.textContent = String(current.pageCount);
+  });
 }
 
 function setStoryLinks(baseUrl) {
