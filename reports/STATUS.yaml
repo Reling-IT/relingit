@@ -1,6 +1,7 @@
-stand: 2026-11-06T10:16+01:00
+stand: 2026-11-06T11:09+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue d69b3a5 (Autor bmarnau, 06.11.2026 10:15, Inhalt identisch mit ops-queue-relingit-2026-11-06a.zip)'
+quelle_queue: 'origin/ops/queue f4a26e6 (Planer Claude, Cloud-Sitzung; Owner-Freigabe 06.11.2026)'
+hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
 auftraege:
   - id: R01
     status: erledigt
@@ -9,11 +10,15 @@ auftraege:
     branch: auftrag-a-website-pflege-20261106-0957
     pr: https://github.com/Reling-IT/relingit/pull/4
     bericht: reports/R01-BERICHT.md
+  - id: R04
+    status: in_arbeit
+    start: 2026-11-06T11:09+01:00
+  - id: R10
+    status: bereit
+  - id: R08
+    status: bereit
   - id: R02
-    status: wartet_auf_entscheidung
-    hinweis: 'Nicht begonnen. Teil Seitenzahl auf Owner-Anweisung vorab in PR #5 umgesetzt.'
-    pr_vorab: https://github.com/Reling-IT/relingit/pull/5
-leerlauf: 2026-11-06T10:13+01:00
-leerlauf_grund: 'Kein weiterer Auftrag mit Status bereit.'
-hinweis_planer: 'In queue/INDEX.yaml steht R01 noch auf bereit; Bericht liegt vor (reports/R01-BERICHT.md). Status bitte durch den Planer auf erledigt setzen.'
+    status: bereit
+  - id: R03
+    status: bereit
 fehler: []
