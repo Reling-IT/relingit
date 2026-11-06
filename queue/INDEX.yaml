@@ -1,4 +1,4 @@
-stand: 2026-11-06 11:25
+stand: 2026-11-06 11:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -77,9 +77,9 @@ auftraege:
   titel: Hauptdokument der Szenenideen nachziehen (k5, q1, q8)
   art: doku
   gate: nein
-  status: wartet_auf_entscheidung
+  status: bereit
   abhaengig_von: []
-  offen: Bernd legt die zwei Szenenideen-Dokumente lokal ab und setzt den Status auf bereit.
+  pfad: C:\Users\bmarn\OneDrive\HTML\reling it
 - id: R06
   titel: Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereiten
   art: code-pr

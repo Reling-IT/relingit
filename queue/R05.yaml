@@ -3,7 +3,8 @@ titel: 'Hauptdokument der Szenenideen nachziehen (k5, q1, q8)'
 art: doku
 gate: nein
 abhaengig_von: []
-offen: 'Die Dateien szenenideen-offene-konzepte.md und szenenideen-fortsetzung-2026-11.md liegen im Claude-Projekt, nicht in einem Repo. Bernd legt beide lokal ab (Pfad im INDEX eintragen) und setzt den Status auf bereit.'
+pfad: 'C:\Users\bmarn\OneDrive\HTML\reling it'
+voraussetzung: 'Beide Dateien (szenenideen-offene-konzepte.md und szenenideen-fortsetzung-2026-11.md) liegen in diesem Ordner (Ablage durch Bernd am 06.11.2026). Die Begleitdatei muss im Kopf Stand 2026-11-06 tragen. Sonst als blockiert melden und nicht aendern. Vor jeder Aenderung eine Sicherungskopie neben die Datei legen (Endung .bak), die nicht committet wird.'
 ziel: Das Hauptdokument spiegelt den Stand 06.11.2026. Die Begleitdatei wird danach geloescht.
 schritte:
 - 'Idee 8 (Seite live) von nicht umgesetzt auf umgesetzt setzen.'
@@ -15,4 +16,4 @@ schritte:
 - 'Diff zeigen. Danach Begleitdatei loeschen, nur wenn Bernd das im Bericht bestaetigt.'
 nachweis: Diff der geaenderten Datei im Bericht reports/R05-BERICHT.md.
 grenzen: Nur diese zwei Dokumente. Kein Buchtext. Kein Merge.
-status: wartet_auf_entscheidung
+status: bereit
