@@ -161,6 +161,18 @@ if ($appRelease.Success -and $readerRelease.Success -and $storyDateMatch.Success
     }
 }
 
+# Die statische Seitenzahl der Landingpage muss dem Rückfallwert entsprechen.
+$landingText = Get-Content -Raw -LiteralPath "index.html"
+$appPageCount = [regex]::Match($appText, 'fallbackRelease\s*=\s*\{[\s\S]*?pageCount:\s*(?<count>\d+)')
+$landingPageCounts = [regex]::Matches($landingText, '<span\s+data-page-count>(?<count>\d+)</span>')
+if (-not $appPageCount.Success) {
+    $failures.Add("Seitenzahl in assets/js/app.js nicht lesbar")
+} elseif ($landingPageCounts.Count -ne 1) {
+    $failures.Add("Seitenzahl in index.html nicht eindeutig lesbar (<span data-page-count>)")
+} elseif ($landingPageCounts[0].Groups['count'].Value -ne $appPageCount.Groups['count'].Value) {
+    $failures.Add("Seitenzahlen widersprechen sich: index.html $($landingPageCounts[0].Groups['count'].Value), app.js $($appPageCount.Groups['count'].Value)")
+}
+
 # Die freigegebene Rückfallfassung darf niemals hinter dem eindeutigen Eingang
 # unter source zurückbleiben. HTML und PDF müssen bytegenau identisch sein.
 foreach ($pair in @(
@@ -277,4 +289,4 @@ if ($failures.Count -gt 0) {
     throw "CI-Prüfung mit $($failures.Count) Fehler(n) abgebrochen."
 }
 
-Write-Host "OK: $($htmlFiles.Count) HTML-Dateien, Version/Datum, lokale Links, PDFs und Secret-Schutz geprüft."
+Write-Host "OK: $($htmlFiles.Count) HTML-Dateien, Version/Datum/Seitenzahl, lokale Links, PDFs und Secret-Schutz geprüft."

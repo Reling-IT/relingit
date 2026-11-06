@@ -34,7 +34,7 @@ Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht au
 
 Das Skript übernimmt Version und Datum aus der HTML-Datei, verlangt den gleichen
 Stand im letzten Eintrag der Versionshistorie, liest die Seitenzahl automatisch
-aus der PDF, aktualisiert die lokale LP und
+aus der PDF, aktualisiert die lokale LP (Rückfallwert in `app.js`, `lesen.html` und die Seitenzahl in `index.html`) und
 erstellt anschließend das geprüfte FTP-Paket. `source` und `story/current`
 müssen danach für HTML und PDF bytegenau übereinstimmen. Bei einer Abweichung
 wird die Veröffentlichung abgebrochen. Bereits vorhandene FTP-Pakete werden
@@ -90,4 +90,4 @@ Nach eigenen Änderungen werden diese zuerst committed und anschließend zu GitH
 
 ## Continuous Integration
 
-GitHub Actions führt bei jedem Push auf `main`, bei Pull Requests und manuell die Workflow-Datei `.github/workflows/ci.yml` aus. Geprüft werden Pflichtdateien, die Übereinstimmung von Versionsnummer und Veröffentlichungsdatum, lokale HTML-Verweise, doppelte IDs, PDF-Kennung, JavaScript-Syntax, Git-Whitespace, Geheimnismuster sowie wesentliche MFA-, RLS- und Rate-Limit-Invarianten. Der öffentliche Publishable Key ist zulässig; Secret- und Service-Role-Keys sind es nicht. `main` darf nur über einen Pull Request mit erfolgreicher CI geändert werden.
+GitHub Actions führt bei jedem Push auf `main`, bei Pull Requests und manuell die Workflow-Datei `.github/workflows/ci.yml` aus. Geprüft werden Pflichtdateien, die Übereinstimmung von Versionsnummer, Veröffentlichungsdatum und Seitenzahl, lokale HTML-Verweise, doppelte IDs, PDF-Kennung, JavaScript-Syntax, Git-Whitespace, Geheimnismuster sowie wesentliche MFA-, RLS- und Rate-Limit-Invarianten. Der öffentliche Publishable Key ist zulässig; Secret- und Service-Role-Keys sind es nicht. `main` darf nur über einen Pull Request mit erfolgreicher CI geändert werden.
