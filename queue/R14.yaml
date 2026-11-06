@@ -3,7 +3,7 @@ titel: 'PDF-Werkzeuge ins Repo uebernehmen, in Bernds Umgebung pruefen und dokum
 art: code-pr
 gate: nein
 abhaengig_von: []
-ziel: Jede Sitzung (auch Claude Code lokal) kann die PDF der Geschichte erzeugen und das Layout pruefen. Das war bisher nur in der Cloud-Sitzung von Claude moeglich (R03 meldete: PDF fehlt, weil render_story_pdf.py und verify_layout.py nirgends im Repo lagen).
+ziel: 'Jede Sitzung (auch Claude Code lokal) kann die PDF der Geschichte erzeugen und das Layout pruefen. Das war bisher nur in der Cloud-Sitzung von Claude moeglich (R03 meldete: PDF fehlt, weil render_story_pdf.py und verify_layout.py nirgends im Repo lagen).'
 ausgangslage: 'Branch quelle-pdf-werkzeuge-20261106 (Commit 4a88f92) enthaelt scripts/pdf/render_story_pdf.py, scripts/pdf/verify_layout.py und requirements.txt. Abgeleitet aus den Werkzeugen im Claude-Projekt: Pfade per Parameter, Renderstand mit echter Zeitzone (MEZ/MESZ), Hintergrundfarbe --bg wird aus dem Quelltext gelesen. Die Skripte wurden nur in der Cloud-Sitzung getestet (70 Seiten, zwei Randhinweise auf Seite 15 und 24, vermutlich wegen fehlender Webfonts). Nicht in Bernds Umgebung bestaetigt.'
 schritte:
 - 'Neuen Branch auftrag-R14-pdf-werkzeuge von quelle-pdf-werkzeuge-20261106 anlegen. Skripte lesen und verstehen.'
