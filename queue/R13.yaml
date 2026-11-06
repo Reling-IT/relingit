@@ -1,20 +1,20 @@
 id: R13
-titel: 'Aufraeumen im Ordner C:\\Users\\bmarn\\OneDrive\\HTML\\reling it: nicht mehr benoetigte Dateien loeschen (zweistufig, mit Freigabe)'
+titel: 'Aufraeumen im Ordner C:\Users\bmarn\OneDrive\HTML\reling it: nicht mehr benoetigte Dateien loeschen (zweistufig, mit Freigabe)'
 art: lokal-loeschen
 gate: ja
 abhaengig_von: []
-pfad: 'C:\\Users\\bmarn\\OneDrive\\HTML\\reling it'
+pfad: 'C:\Users\bmarn\OneDrive\HTML\reling it'
 voraussetzung: 'Bernd setzt den Status auf bereit. Phase 1 (nur lesen) laeuft ohne weitere Freigabe, Phase 2 (loeschen) nur nach schriftlicher Bestaetigung der Liste durch Bernd im Chat der Sitzung. Ohne Bestaetigung nichts loeschen.'
-ziel: Den Ordner von Altlasten befreien (Zwischenstaende, Testausgaben, alte Pakete), ohne Arbeit zu verlieren. Der Ordner ist eine aeltere Arbeitskopie von Reling-IT/relingit (Branch codex/fix-admin-password-recovery) mit lokalen Aenderungen und dem Podcast-Audio. Die aktuelle Arbeitskopie ist C:\\dev\\relingit.
+ziel: Den Ordner von Altlasten befreien (Zwischenstaende, Testausgaben, alte Pakete), ohne Arbeit zu verlieren. Der Ordner ist eine aeltere Arbeitskopie von Reling-IT/relingit (Branch codex/fix-admin-password-recovery) mit lokalen Aenderungen und dem Podcast-Audio. Die aktuelle Arbeitskopie ist C:\dev\relingit.
 schutzregeln:
-- 'Nie loeschen: .git, .github, alle von Git verfolgten Dateien (git ls-files), alle Dateien mit lokalen Aenderungen (git status), assets\\audio und assets\\img\\reling-it-podcast-cover.png (Podcast, nicht im Repo), ideen\\ (Bernds Ideen und Bilder), archive\\README.md.'
-- 'Nie loeschen: die jeweils neuesten zwei Pakete in output\\ftp und archive\\ftp-packages sowie das neueste PDF in output\\pdf.'
+- 'Nie loeschen: .git, .github, alle von Git verfolgten Dateien (git ls-files), alle Dateien mit lokalen Aenderungen (git status), assets\audio und assets\img\reling-it-podcast-cover.png (Podcast, nicht im Repo), ideen\ (Bernds Ideen und Bilder), archive\README.md.'
+- 'Nie loeschen: die jeweils neuesten zwei Pakete in output\ftp und archive\ftp-packages sowie das neueste PDF in output\pdf.'
 - 'Nur innerhalb des genannten Ordners arbeiten. Keine Pfade ausserhalb, keine Platzhalter ausserhalb des Ordners, keine Links verfolgen (Junctions und Symlinks nicht betreten).'
 - 'Geloescht wird nur in den Papierkorb (Windows, Wiederherstellung moeglich), nie endgueltig. Dafuer die Funktion Microsoft.VisualBasic.FileIO.FileSystem mit RecycleOption SendToRecycleBin verwenden. Wenn der Papierkorb nicht verfuegbar ist (OneDrive-Pfad ohne Papierkorb), nicht loeschen, sondern melden.'
 - 'Keine Aenderung an Git (kein Checkout, kein Reset, kein Clean, kein Commit, kein Push). Kein git clean.'
 phase_1_nur_lesen:
 - 'Inventar des Ordners nach Verzeichnis mit Groessen und Datum erstellen. Alles was nicht von Git verfolgt wird, einzeln klassifizieren.'
-- 'Kandidatenliste fuer die Loeschung erstellen: zuerst archive\\_aufgeraeumt-2026-11-06 (alte Buchstaende, Flyer, alte FTP-Pakete, tmp-Inhalt), dann output\\image und output\\pdf (Zwischenausgaben), dann aeltere output\\ftp-Pakete ausser den neuesten zwei. Jeder Eintrag mit Pfad, Groesse, Datum, Grund.'
+- 'Kandidatenliste fuer die Loeschung erstellen: zuerst archive\_aufgeraeumt-2026-11-06 (alte Buchstaende, Flyer, alte FTP-Pakete, tmp-Inhalt), dann output\image und output\pdf (Zwischenausgaben), dann aeltere output\ftp-Pakete ausser den neuesten zwei. Jeder Eintrag mit Pfad, Groesse, Datum, Grund.'
 - 'Doppelte Dateien erkennen (gleicher Hash) und markieren, aber nur melden.'
 - 'Liste als reports/R13-LISTE.md auf ops/reports ablegen und Bernd in der Sitzung zur Bestaetigung vorlegen. Dann stoppen.'
 phase_2_loeschen:

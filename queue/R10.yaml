@@ -5,7 +5,7 @@ gate: nein
 abhaengig_von: []
 ziel: Die erste neue Geschichte und ihre Anhang-Box stuetzen sich auf den realen Stand des Sysingboards. Belegen, wie das Sysingboard Datenstand, Aktualitaet und Pflegeverantwortung abbildet, damit die Geschichte nichts behauptet, was die Software nicht kann.
 schritte:
-- 'Repo bmarnau/sysingdashboard (nur lesen, Referenz-Klon unter C:\\dev\\referenz\\sysingdashboard, sonst klonen) lesen: README, Architektur- und Datenmodell-Dokumente, Angaben zu Datenquellen, Zeitstempeln, Aktualitaet ("Stand", "zuletzt aktualisiert"), Pflege der Eintraege und Zustaendigkeiten.'
+- 'Repo bmarnau/sysingdashboard (nur lesen, Referenz-Klon unter C:\dev\referenz\sysingdashboard, sonst klonen) lesen: README, Architektur- und Datenmodell-Dokumente, Angaben zu Datenquellen, Zeitstempeln, Aktualitaet ("Stand", "zuletzt aktualisiert"), Pflege der Eintraege und Zustaendigkeiten.'
 - 'Beantworten mit Fundstelle (Datei und Zeile): Zeigt das Sysingboard an, wie alt ein Datensatz ist? Wer pflegt die Daten, wer ist dafuer zustaendig? Was passiert bei veralteten Daten (Warnung, Markierung, nichts)? Wie liest Navis den Stand (nur lesen, keine Bewertung)?'
 - 'Aus den Antworten drei bis fuenf Sachaussagen ableiten, die die Geschichte realistisch tragen kann, und drei bis fuenf Aussagen, die sie NICHT machen darf, weil die Software das nicht abbildet. Jeweils mit Beleg.'
 - 'Nichts erfinden. Was nicht belegbar ist, als offen markieren.'
