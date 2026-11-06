@@ -1,0 +1,17 @@
+id: R02
+titel: 'Veroeffentlichungsablauf vereinfachen (Seitenzahl ableiten, Vollstaendigkeits-Check, Checkliste)'
+art: code-pr
+gate: nein
+abhaengig_von: [R01]
+ziel: Eine neue Geschichte geht mit einem Befehl live. Version, Datum und Seitenzahl werden genau einmal gepflegt (Deckblatt der Quelle und PDF) und sonst abgeleitet.
+schritte:
+- 'README, scripts/publish-release.ps1, scripts/build-upload.ps1, scripts/ci-check.ps1, .github/workflows/ci.yml, assets/js/app.js, index.html, lesen.html lesen. Den Ist-Ablauf in fuenf Saetzen zusammenfassen.'
+- 'Seitenzahl in index.html: publish-release.ps1 soll die Angabe mitpflegen, oder index.html soll sie aus den Release-Daten rendern. Die kleinere Aenderung waehlen und begruenden.'
+- 'ci-check.ps1: neue Pruefung der Quelle auf Vollstaendigkeit (Deckblatt Version und Datum, Versionshistorie, Personenliste, Mini-Inhaltsverzeichnis, drei Deckblatt-Boxen). Fehlende oder widerspruechliche Stelle mit Namen melden. Bestehende Pruefungen nicht abschwaechen.'
+- 'Anhang als eigene Seite (Entscheidung q12): nur vorbereiten, nicht scharf schalten, solange die Seite nicht existiert (Pflichtdatei, Anker-Pruefung, build-upload als Vorschlag in der PR-Beschreibung).'
+- 'docs/NEUE-GESCHICHTE.md: Checkliste in sechs Schritten (schreiben, einbauen, bauen und pruefen, veroeffentlichen per Branch und PR, hochladen, Podcast nur bei geaendertem Erzaehltext). Jeder Schritt mit Befehl und erwartetem Ergebnis. Standardweg zum Hochladen: laut Entscheidung q15 (vom Owner einzutragen).'
+- 'README: ein Satz zur kanonischen Adresse Reling-IT/relingit (unter bmarnau nie ein Repo relingit neu anlegen, sonst bricht die Weiterleitung).'
+- 'Lokal pruefen: ./scripts/ci-check.ps1 und node --check. Mit Befehl belegen.'
+nachweis: Pull Request mit Beschreibung (Abhaengigkeiten zwischen source, story/current, app.js, lesen.html, index.html, Supabase-Admin; was weiter von Hand erfolgt), Ausgabe von ci-check.ps1. Bericht reports/R02-BERICHT.md.
+grenzen: Kein Merge. Buchtext und PDF nicht aendern. FTP, Admin-Konto, Supabase und Workflows nicht anfassen. Keine Zugangsdaten. Start erst, wenn der Owner den Status auf bereit setzt.
+status: wartet_auf_entscheidung

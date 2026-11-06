@@ -1,0 +1,16 @@
+id: R01
+titel: 'Webseiten-Pflege: Seitenzahl, Repo-Links, Handout und Logo, Podcast-Ort'
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: Die Startseite nennt den richtigen Stand, die Repo-Links stimmen, offene Auffaelligkeiten sind aufgelistet.
+schritte:
+- 'README und Struktur lesen. Buchtext und PDF nicht aendern.'
+- 'index.html: Die statische Angabe 46 Seiten (etwa Zeile 36) ist veraltet, story/current/geschichte.pdf hat 69 Seiten. Pruefen, wie assets/js/app.js Version, Datum und Seitenzahl setzt (fallbackRelease). Statische Angabe korrigieren oder neutral halten. Der Rueckfallwert in app.js muss zum aktuellen Stand passen (Version 1.37, 69 Seiten). Pruefen, ob scripts/publish-release.ps1 die Angabe in index.html kuenftig mitpflegen sollte, und nur vorschlagen. Wahl in der PR-Beschreibung begruenden.'
+- 'Repo-Links: Die Live-Seite verlinkt noch bmarnau/relingit, der Repo-Stand ist Reling-IT/relingit. Alle Vorkommen per Grep ueber das ganze Repo auflisten und die eindeutig falschen anpassen. Deployment und Workflows nicht aendern.'
+- 'Verlinkung von Handout und Logo (Landingpage, lesen.html, handout.html) pruefen und Auffaelligkeiten auflisten. Nur Vorschlaege, keine Aenderung ohne klaren Fehler.'
+- 'Pruefen, wo auf der Webseite ein Podcast-Audio eingebunden oder verlinkt ist. Ort melden oder melden, dass keiner existiert.'
+- 'Lokal pruefen: ./scripts/ci-check.ps1 und node --check fuer assets/js/*.js. Melden, was nicht pruefbar war (Live-Stand).'
+nachweis: Pull Request mit Beschreibung (Wahl zur Seitenzahl, Liste der geaenderten Links, Auffaelligkeiten), Ausgabe von ci-check.ps1 und node --check (gekuerzt). Bericht reports/R01-BERICHT.md.
+grenzen: Kein Merge. Buchtext, PDF, Workflows, Deployment und Supabase nicht aendern. Keine Zugangsdaten.
+status: bereit

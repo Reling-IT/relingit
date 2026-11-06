@@ -1,0 +1,35 @@
+stand: 2026-11-06 10:20
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+mindestbestand_bereit: 1
+hoechstbestand_offen: 10
+statuswerte:
+- bereit
+- in_arbeit
+- erledigt
+- blockiert
+- geplant
+- wartet_auf_entscheidung
+regel: Claude Code fuehrt nur Auftraege mit status bereit aus, in der Reihenfolge dieser Liste, einen zur Zeit.
+gemeinsame_regeln:
+- Sprache Deutsch, sachlich, Anforderungen mit muss/sollte. Daten als JSON oder YAML, Diagramme als Mermaid.
+- 'Zu Beginn lesen: README.md, scripts/publish-release.ps1, scripts/ci-check.ps1.'
+- Arbeit nur auf einem Feature-Branch (auftrag-<id>-<kurzname>), nie auf main. Pull Request oeffnen (gh, sonst Link ausgeben). Nicht mergen, kein Tag, keine Veroeffentlichung.
+- Buchtext (source/fahrt-zum-kunden.html, story/current/fahrt-zum-kunden.html) und PDFs nur aendern, wenn der Auftrag es ausdruecklich verlangt.
+- Nichts an Workflows (.github/workflows), Deployment, FTP, Supabase-Konfiguration oder Admin-Konten aendern. Keine Zugangsdaten in Dateien oder Commits.
+- Aussagen wie 'geprueft' oder 'bestanden' nur mit Beleg (Befehl und Ergebnis, PR, Commit, CI-Lauf).
+- 'Abschluss jedes Berichts: Hygiene in einer Zeile (gemergte Remote-Branches, offene PRs, Drafts) und YAML-Block mit Reifegrad, Projektstatus, Offene_Fragen, Roadmap (Sprints_bis_BSF, Sprints_bis_MVP).'
+auftraege:
+- id: R01
+  titel: 'Webseiten-Pflege: Seitenzahl, Repo-Links, Handout und Logo, Podcast-Ort'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R02
+  titel: 'Veroeffentlichungsablauf vereinfachen (Seitenzahl ableiten, Vollstaendigkeits-Check, Checkliste)'
+  art: code-pr
+  gate: nein
+  status: wartet_auf_entscheidung
+  abhaengig_von: [R01]
+  offen: 'Entscheidung q15 (Standardweg zum Hochladen: FTP-Paket oder Admin-Bereich) und Bestaetigung der Repo-Adresse Reling-IT/relingit durch den Owner.'
