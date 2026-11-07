@@ -1,0 +1,17 @@
+id: R31
+titel: Barrierefreiheit, Kontrast und Handy-Darstellung der Webseiten pruefen (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Belegte Liste von Barrierefreiheits- und Darstellungsproblemen der Seiten index.html, lesen.html, handout.html, pdf.html, impressum.html und datenschutz.html sowie der Lesefassung.
+schritte:
+- 'Statische Pruefung der HTML und CSS: Sprachattribut, Ueberschriftenreihenfolge, alt-Texte, aria-label, Formularbeschriftungen, Fokusreihenfolge, Link-Texte, Tastaturbedienung der Audio-Player.'
+- Kontrast der Textfarben gegen die Hintergruende berechnen (WCAG AA, 4,5 zu 1 bzw. 3 zu 1 fuer grossen Text) und die Werte im Bericht nennen.
+- 'Handy-Darstellung: viewport-Angabe, feste Breiten, horizontales Scrollen, Tippflaechen; wenn Playwright vorhanden ist, Screenshots bei 390 und 1280 Pixel Breite, sonst nur statisch. Nichts installieren.'
+- Alle Befunde mit Datei, Zeile, Vorschlag und Schweregrad.
+nachweis: Bericht reports/R31-BERICHT.md mit Befundtabelle.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen und berichten.
+status: bereit
+stand: 2026-11-07 06:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

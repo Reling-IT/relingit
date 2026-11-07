@@ -1,0 +1,17 @@
+id: R30
+titel: Sicherheits- und Konfigurationspruefung des Repos relingit (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Belegen, dass im Repo keine Geheimnisse oder unsichere Konfigurationen stehen, bevor v1.38 live geht.
+schritte:
+- 'Auf main und auf den offenen Branches (git log --all) nach Zugangsdaten suchen: Schluessel, Tokens, Passwoerter, FTP-Daten, Supabase service_role, JWT. Treffer nur mit Datei und Zeile melden, Werte nie in den Bericht schreiben.'
+- 'assets/js/supabase-config.js, admin.html, supabase/ und .htaccess lesen: Ist nur der oeffentliche (anon) Schluessel enthalten? Gibt es Platzhalter HIER_? Sind Row-Level-Security-Regeln in den Migrationen vorhanden und zu den Zugriffen der Seite passend (nur beschreiben, nichts aendern)?'
+- docs/SICHERHEIT.md gegen den Ist-Stand abgleichen und Abweichungen melden.
+- Pruefen, ob .gitignore output/, lokale Konfigurationen und Audio-Dateien sinnvoll abdeckt (siehe R23).
+nachweis: Bericht reports/R30-BERICHT.md mit Tabelle Fundstelle, Befund, Schweregrad, Vorschlag (ohne geheime Werte).
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen und berichten.
+status: bereit
+stand: 2026-11-07 06:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

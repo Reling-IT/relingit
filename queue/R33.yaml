@@ -1,0 +1,16 @@
+id: R33
+titel: Repo-Dokumentation gegen den Ist-Stand abgleichen (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: README.md und docs/ stimmen mit Skripten, Ordnerstruktur und Ablauf auf main ueberein.
+schritte:
+- README.md, docs/*.md (ohne docs/vorlagen) und scripts/*.ps1 lesen. Jede konkrete Aussage (Dateinamen, Befehle, Pfade, Zahlen, Versionen) gegen den Stand von main pruefen.
+- Veraltete, widerspruechliche oder fehlende Stellen melden, etwa Verweise auf nicht vorhandene Dateien, alte Repo-Namen (bmarnau/relingit) oder alte Ablaeufe.
+- Fuer jede Abweichung Fundstelle, Soll, Ist und Vorschlag angeben.
+nachweis: Bericht reports/R33-BERICHT.md mit Befundtabelle.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen und berichten.
+status: bereit
+stand: 2026-11-07 06:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

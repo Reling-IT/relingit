@@ -1,0 +1,16 @@
+id: R32
+titel: Sollte- und Kann-Befunde aus R19 zu Entscheidungspaketen aufbereiten (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Die 43 Sollte- und Kann-Befunde aus reports/R19-BERICHT.md werden so gruppiert, dass Bernd in wenigen Entscheidungen ueber alle befinden kann.
+schritte:
+- reports/R19-BERICHT.md lesen. Befunde nach Art gruppieren (Schreibweise, Grammatik, Stil, Zahlen, Zeitlinie, Technik) und nach Aufwand und Risiko.
+- 'Je Gruppe eine Empfehlung: umsetzen, nicht umsetzen oder Bernd fragen, mit Begruendung. Befunde, die den Erzaehlton oder die Handlung beruehren, immer als Frage an Bernd kennzeichnen.'
+- Einen Folgeauftrag als YAML-Entwurf in den Bericht schreiben (nicht in die Warteschlange legen), der die freigegebenen Gruppen auf dem Release-Branch umsetzt.
+nachweis: Bericht reports/R32-BERICHT.md mit Gruppen, Empfehlungen und Entwurf des Folgeauftrags.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen und berichten.
+status: bereit
+stand: 2026-11-07 06:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
