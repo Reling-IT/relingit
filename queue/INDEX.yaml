@@ -1,4 +1,4 @@
-stand: 2026-11-07 07:15
+stand: 2026-11-07 07:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -118,10 +118,9 @@ auftraege:
   titel: Aufraeumen im OneDrive-Ordner (zweistufig, Loeschen nur nach Freigabe)
   art: lokal-loeschen
   gate: ja
-  status: wartet_auf_entscheidung
+  status: bereit
   abhaengig_von:
   - R28
-  offen: Freigegeben von Bernd (07.11. 06:44), zusammen mit dem Tagesabschluss. Planer setzt bereit am Sitzungsende. Schutzliste Podcast beachten bis R35 erledigt. Loeschen erst nach Bestaetigung der Liste.
 - id: R14
   titel: PDF-Werkzeuge ins Repo uebernehmen und pruefen
   art: code-pr
@@ -283,6 +282,6 @@ auftraege:
   titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
   art: lesen
   gate: nein
-  status: geplant
+  status: bereit
   abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

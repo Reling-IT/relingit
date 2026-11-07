@@ -13,7 +13,8 @@ schritte:
 nachweis: 'Bericht reports/R29-JJJJMMTT-BERICHT.md mit Tabellen: Loeschkandidaten, Befunde (Fundstelle, Befund, Beleg, Vorschlag, Schweregrad muss, sollte, kann).'
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts loeschen, nichts aendern, nur lesen und berichten.
 wiederkehrend: Die Planer-Session setzt den Status am Sitzungsende auf bereit. Nach dem Lauf setzt sie ihn zurueck auf geplant. Ablauf in der Planer-Doku claude/tagesabschluss.md (Teile A und C).
-status: geplant
-stand: 2026-11-07 06:05
+status: bereit
+stand: 2026-11-07 07:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_tagesabschluss: 'Heute (07.11.) durch die Planer-Session als Tagesabschluss gesetzt. Nur lesen: Remote-Branches, PRs, main-CI, Queue gegen Reports, Buch-Stimmigkeit. Bericht reports/R29-BERICHT.md.'
