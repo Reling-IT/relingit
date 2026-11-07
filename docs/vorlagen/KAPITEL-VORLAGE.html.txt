@@ -1,0 +1,156 @@
+<!--
+  KAPITEL-VORLAGE fuer source/fahrt-zum-kunden.html
+  ==================================================
+  Zweck: Bausteine fuer ein neues Geschichten-Kapitel (Teil 1) und eine neue
+  Anhang-Box (Teil 2 "Realer Bezug" oder Anhang). Nur Platzhalter, kein Buchtext.
+
+  Warum die Endung .html.txt: scripts/ci-check.ps1 prueft jede *.html-Datei im
+  Repo (lokale Links, doppelte IDs). Die Vorlage soll dort nicht mitlaufen und
+  gehoert nicht ins FTP-Paket (scripts/build-upload.ps1 nimmt nur seine feste
+  Dateiliste). Zum Einbauen die Bausteine kopieren, nicht die ganze Datei.
+
+  Regeln aus der Buchquelle (CSS-Kommentar zu .box-shell, ca. Zeile 380-420):
+  - Jede Box mit eigenem Rahmen oder Hintergrund MUSS in <div class="box-shell">
+    stehen (.voice, .drafttasks, .disclaimer, .scene-fig, .intro, aside.real,
+    .appendix, .defbox, footer). Sonst greift der Seitenrand-Schutz im PDF nicht.
+  - <div class="box-shell-flow"> nur fuer Abschnitte, die laenger als eine Seite
+    sind UND direkt nach einer anderen Box mit wenig Restplatz beginnen.
+  - Kapitel-IDs beginnen mit "kap-" und sind im ganzen Dokument eindeutig.
+  - Jede neue ID, auf die verlinkt wird, muss existieren (ci-check prueft alle
+    href="#..." der Geschichte gegen die vorhandenen IDs).
+
+  Platzhalter: {{IN_GESCHWEIFTEN_KLAMMERN}}. Alle vor dem Einbau ersetzen.
+-->
+
+
+<!-- ========================================================================
+     BAUSTEIN A: Geschichten-Kapitel (Teil 1)
+     Ort: innerhalb von <div class="road"> ... </div>, zwischen zwei
+     bestehenden <section class="scene">, in der Reihenfolge der Handlung.
+     ======================================================================== -->
+    <section class="scene">
+      <!-- Szenen-Illustration: immer zuerst, immer in box-shell -->
+      <div class="box-shell"><figure class="scene-fig">
+        <svg viewBox="0 0 600 160" role="img" aria-label="{{BILDBESCHREIBUNG_FUER_SCREENREADER}}">
+          <!-- {{SVG_INHALT}} -->
+        </svg>
+        <figcaption>{{BILDUNTERSCHRIFT_EIN_SATZ}}</figcaption>
+      </figure></div>
+
+      <!-- Kapitelueberschrift: id="kap-..." eindeutig, gleiche ID im Mini-Inhaltsverzeichnis -->
+      <h2 id="kap-{{KURZNAME}}">{{KAPITELTITEL}}</h2>
+
+      <p>{{ABSATZ_1}}</p>
+      <p>{{ABSATZ_2}}</p>
+
+      <!-- Optional: Navis spricht. Navis liest nur das Sysingboard, schreibt nie,
+           empfiehlt, entscheidet nicht. -->
+      <div class="box-shell"><div class="voice navis">
+        <span class="who"><!-- Avatar-SVG aus einer bestehenden .voice.navis-Box kopieren --> Navis</span>
+        <span class="say">{{NAVIS_AUSSAGE}}</span>
+      </div></div>
+
+      <!-- Optional: Lumen spricht. Lumen ist fuer alle Reports zustaendig und liest
+           ausschliesslich ueber den Hub. Keine Scores. -->
+      <div class="box-shell"><div class="voice lumen">
+        <span class="who"><!-- Avatar-SVG aus einer bestehenden .voice.lumen-Box kopieren --> Lumen</span>
+        <span class="say">{{LUMEN_AUSSAGE}}</span>
+      </div></div>
+
+      <!-- Optional: Entwurf der KI, wartet auf Freigabe durch einen Menschen -->
+      <div class="box-shell"><div class="drafttasks">
+        <div class="drafttasks-head">Entwurf &middot; {{WAS}} &middot; wartet auf Freigabe</div>
+        <div class="draftitem"><span class="n">1</span> {{PUNKT_1}}</div>
+      </div></div>
+
+      <p>{{MENSCH_PRUEFT_UND_SAGT_SO_ANLEGEN}}</p>
+
+      <!-- Optional: erst NACH dem menschlichen "So anlegen" -->
+      <div class="box-shell"><div class="drafttasks approved">
+        <div class="drafttasks-head">Freigegeben &middot; jetzt im Sysingboard angelegt</div>
+        <div class="draftitem"><span class="n">&#10003;</span> {{PUNKT_1}}</div>
+      </div></div>
+    </section>
+
+
+<!-- ========================================================================
+     BAUSTEIN B: Anhang-Box "Realer Bezug" (Teil 2)
+     Ort: nach <div class="part-divider"><span>Teil 2 ...</span></div>,
+     vor dem Abschnitt "Anhang". Erklaert die Technik hinter einer Szene.
+     ======================================================================== -->
+  <div class="box-shell"><aside class="real">
+    <span class="eyebrow">Realer Bezug</span>
+    <h2 id="kap-{{KURZNAME}}">{{TITEL_DER_BOX}}</h2>
+
+    <!-- Optional: erzaehlerische Bruecke zur Szene in Teil 1 -->
+    <p class="narrative">{{BRUECKE_ZUR_SZENE}}</p>
+
+    <p>{{SACHERKLAERUNG_NUR_BELEGTES}}</p>
+
+    <!-- Optional: Begriffsbox -->
+    <div class="box-shell"><div class="defbox">
+      <div class="defbox-head">{{BEGRIFF}} &ndash; {{UNTERTITEL}}</div>
+      <div class="defitem">
+        <span class="term">{{TERM}} <i>&ndash; {{ERLAEUTERUNG_KURZ}}</i></span>
+        <p>{{DEFINITION}}</p>
+      </div>
+    </div></div>
+
+    <!-- Optional: Diagramm -->
+    <div class="box-shell"><figure class="scene-fig">
+      <svg viewBox="0 0 660 290" role="img" aria-label="{{DIAGRAMMBESCHREIBUNG}}">
+        <!-- {{SVG_INHALT}} -->
+      </svg>
+      <figcaption>{{BILDUNTERSCHRIFT}}</figcaption>
+    </figure></div>
+
+    <!-- Rueckverweis auf die Szene -->
+    <p>Zur Szene: <a href="#kap-{{KURZNAME_DER_SZENE}}">{{KAPITELTITEL_DER_SZENE}}</a>.</p>
+  </aside></div>
+
+
+<!-- ========================================================================
+     BAUSTEIN C: Anhang-Eintrag (Abschnitt "Anhang", Nachschlagen)
+     ======================================================================== -->
+  <div class="box-shell"><section class="appendix" id="kap-{{KURZNAME}}">
+    <span class="eyebrow">Anhang</span>
+    <h2>{{TITEL}}</h2>
+    <p>{{INHALT}}</p>
+  </section></div>
+
+
+<!-- ========================================================================
+     BAUSTEIN D: Pflichtstellen ausserhalb des Kapitels (bei jeder neuen Version)
+     ======================================================================== -->
+
+<!-- D1 Deckblatt (div.cover-meta): Datum und Version anpassen -->
+    <div class="cover-meta">
+      <span><b>Bernd Marnau</b></span>
+      <span>{{TT.MM.JJJJ}}</span>
+      <span>{{ANLASS}}</span>
+      <span>Version {{X.YY}}</span>
+    </div>
+
+<!-- D2 Cover-Hinweis (p.cover-whatsnew): Neuerung dieser Version in einem Satz -->
+    <p class="cover-whatsnew"><span class="tag">Neu in v{{X.YY}}</span>{{NEUERUNG}} &ndash; siehe <a href="#kap-versionen">Versionshistorie</a> am Ende.</p>
+
+<!-- D3 Mini-Inhaltsverzeichnis (nav.cover-toc): Eintrag in der richtigen Gruppe
+        (Teil 1 Geschichten / Teil 2 Realer Bezug / Anhang), Trenner wie bestehend -->
+        <span class="sep">&middot;</span><a href="#kap-{{KURZNAME}}">{{KURZTITEL}}</a>
+
+<!-- D4 Personenliste (#kap-personen .table-people): nur bei neuer Figur.
+        Acht Menschen plus Navis und Lumen sind "im Haus". Externe kenntlich machen. -->
+      <div class="person">
+        <div class="badge">{{INITIALEN}}</div>
+        <div class="name">{{VORNAME_NACHNAME}}</div>
+        <div class="role">{{ROLLE}}</div>
+        <div class="tenure">{{SEIT_WANN}}</div>
+      </div>
+
+<!-- D5 Versionshistorie (#kap-versionen table.vtable): neue Zeile ans Ende des
+        tbody. Version und Datum MUESSEN mit dem Deckblatt (D1) uebereinstimmen. -->
+        <tr>
+          <td>{{X.YY}}</td>
+          <td>{{TT.MM.JJJJ}}</td>
+          <td>{{AENDERUNG_IN_ZWEI_BIS_VIER_SAETZEN}}</td>
+        </tr>
