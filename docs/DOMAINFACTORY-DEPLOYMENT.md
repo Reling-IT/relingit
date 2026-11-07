@@ -44,7 +44,7 @@ fragen.
 
 ## Neue Fortsetzung veröffentlichen
 
-Für eine neue Geschichte ist kein weiterer FTP-Upload erforderlich:
+Standardweg für eine neue Buchfassung ist der Admin-Bereich (Entscheidung des Owners vom 06.11.2026). Für eine neue Geschichte ist kein weiterer FTP-Upload erforderlich. Den vollständigen Ablauf mit Befehlen beschreibt `docs/NEUE-GESCHICHTE.md`; die Werte und Dateien für die folgenden Schritte gibt `./scripts/publish-release.ps1` am Ende aus.
 
 1. Auf der veröffentlichten Website `admin.html` öffnen.
 2. Mit dem Supabase-Administratorkonto anmelden.
@@ -54,4 +54,6 @@ Für eine neue Geschichte ist kein weiterer FTP-Upload erforderlich:
 6. Falls geändert, das Handout als zusammengehöriges HTML/PDF-Paar auswählen.
 7. Veröffentlichen und die öffentliche Landingpage prüfen.
 
-Supabase ersetzt dabei die Dateien unter stabilen Adressen. Ein erneuter FTP-Upload ist nur notwendig, wenn sich Landingpage, Gestaltung, JavaScript, Impressum oder Datenschutz ändern.
+Supabase ersetzt dabei die Dateien unter stabilen Adressen. Ein erneuter FTP-Upload ist nur notwendig, wenn sich `index.html`, `assets/js`, `impressum.html` oder `datenschutz.html` ändern. `publish-release.ps1` meldet das als „FTP-Upload nötig: ja“ und weist zusätzlich auf weitere geänderte öffentliche Dateien hin, etwa Gestaltung unter `assets/css` oder `.htaccess`.
+
+Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlichen Konto `bmarnau` darf kein Repository `relingit` neu angelegt werden.
