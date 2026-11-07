@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><title>Admin</title></head>
+<body>
+<form id="reset-request-form"></form>
+<form id="reset-password-form"></form>
+</body>
+</html>

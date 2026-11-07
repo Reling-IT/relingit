@@ -1,0 +1,3 @@
+-- Minimaler Ersatz für supabase/setup.sql: nur die Muster, die ci-check.ps1 verlangt.
+create policy admin_only on public.reader_feedback using ((auth.jwt() ->> 'aal') = 'aal2');
+revoke all on table public.reader_feedback from anon, authenticated;

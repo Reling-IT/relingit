@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><title>Mini-Projekt für Tests</title></head>
+<body>
+<p><span data-page-count>1</span> Seiten</p>
+<img src="assets/img/reling-it-podcast-cover.png" alt="Podcast-Cover">
+<audio><source src="assets/audio/ki-als-beifahrer-im-it-systemhaus.mp3" type="audio/mpeg"></audio>
+<audio><source src="assets/audio/vom-logbuch-zum-ki-ticketsystem.mp3" type="audio/mpeg"></audio>
+<audio><source src="assets/audio/warum-ki-nicht-lenken-darf.mp3" type="audio/mpeg"></audio>
+<audio><source src="assets/audio/roman-als-ki-blaupause.mp3" type="audio/mpeg"></audio>
+<p>Mit Google NotebookLM erstellt, KI-generiert.</p>
+</body>
+</html>
