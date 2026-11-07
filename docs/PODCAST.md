@@ -63,8 +63,8 @@ Den Podcast nur neu erzeugen, wenn der Erzähltext geändert wurde. Dann:
 ## Offene Frage an den Owner
 
 Werkzeug: `datenschutz.html`, `index.html` und `ci-check.ps1` nennen
-**Google NotebookLM** (so auch live). `docs/NEUE-GESCHICHTE.md` (PR #8) und die
-Einbau-Checkliste (PR #7) nennen **Google Gemini**. Bis zur Klärung bleibt der
+**Google NotebookLM** (so auch live). `docs/NEUE-GESCHICHTE.md` §6 und
+`docs/vorlagen/EINBAU-CHECKLISTE.md` nennen **Google Gemini**. Bis zur Klärung bleibt der
 Live-Text (NotebookLM) unverändert. Bei einem Wechsel müssen Datenschutz,
 Quellenangabe, FAQ und die Prüfung in `ci-check.ps1` gemeinsam angepasst werden.
 
