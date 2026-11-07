@@ -1,0 +1,19 @@
+id: R17
+titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
+art: lesen
+gate: nein
+abhaengig_von:
+- R16
+- R15
+voraussetzung: R16 erledigt und der PR gemergt, R15 gemergt. Bernd setzt den Status auf bereit.
+ziel: 'Bernd erhaelt eine fertige Upload-Liste: was im Admin-Bereich hochgeladen wird und was per FTP.'
+schritte:
+- ./scripts/build-upload.ps1 ausfuehren, ausgegebene Version, Datum, Seitenzahl und Dateiliste uebernehmen.
+- 'Gegen docs/NEUE-GESCHICHTE.md und die FTP-UPLOAD-CHECKLISTE abgleichen: Welche Dateien haben sich gegenueber der Live-Version v1.37 geaendert (git diff gegen den Stand von v1.37)? FTP nur fuer index.html, assets/js, Impressum, Datenschutz.'
+- Eine Schritt-fuer-Schritt-Liste fuer den Upload schreiben (Admin-Bereich, bei Bedarf FTP), ohne Zugangsdaten. Pruefpunkte nach dem Upload als Verweis auf R09.
+nachweis: Bericht reports/R17-BERICHT.md mit Dateiliste und Upload-Schritten.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts hochladen, nichts veroeffentlichen.
+status: wartet_auf_voraussetzung
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

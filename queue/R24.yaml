@@ -1,0 +1,18 @@
+id: R24
+titel: Pester-Tests fuer publish-release.ps1 und ci-check.ps1
+art: code-pr
+gate: nein
+abhaengig_von:
+- R15
+voraussetzung: PR aus R15 ist durch Bernd gemergt. Bernd setzt den Status auf bereit.
+ziel: Die Release-Skripte haben automatisierte Tests, damit Aenderungen nicht unbemerkt den Ablauf brechen.
+schritte:
+- Branch auftrag-R24-pester-tests von main anlegen. Pruefen, ob Pester verfuegbar ist; wenn nicht, den Installationsbefehl melden und nur nach Rueckfrage installieren.
+- 'Tests unter tests/ anlegen: ci-check meldet bei fehlendem Anker, doppelter ID und fehlender Versionshistorien-Zeile einen Fehler; publish-release bricht bei abweichender PDF-Version ab; Testdaten als kleine Fixtures, nicht das echte Buch.'
+- In docs/NEUE-GESCHICHTE.md oder README.md einen Satz zum Ausfuehren der Tests ergaenzen. Die CI-Workflows nicht aendern; Einbau in die CI nur als Vorschlag in den Bericht.
+nachweis: Pull Request, Bericht reports/R24-BERICHT.md mit der Ausgabe von Invoke-Pester.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten.
+status: wartet_auf_voraussetzung
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

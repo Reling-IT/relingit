@@ -1,0 +1,17 @@
+id: R25
+titel: 'Doku-Diagramme: Repo-Struktur und Release-Ablauf als Mermaid'
+art: doku
+gate: nein
+abhaengig_von: []
+ziel: Neue Mitwirkende und neue Sitzungen verstehen Repo und Release-Ablauf in fuenf Minuten.
+schritte:
+- Branch auftrag-R25-doku-diagramme von main anlegen. README.md, docs/NEUE-GESCHICHTE.md, scripts/publish-release.ps1, scripts/build-upload.ps1, scripts/ci-check.ps1 lesen.
+- 'docs/ABLAUF.md anlegen mit zwei Mermaid-Diagrammen: (1) Verzeichnis- und Dateikarte (source, story/current, scripts, assets, docs, supabase) mit Zweck je Ordner, (2) Release-Ablauf von der Quelle bis zur Live-Seite (PDF erzeugen, publish-release, ci-check, build-upload, Admin-Bereich, FTP nur bei Bedarf, Live-Pruefung) mit Verantwortlichem je Schritt.'
+- Jede Aussage im Diagramm muss aus den Skripten oder der README belegbar sein. Unsicheres als offen markieren.
+- Aus README.md auf docs/ABLAUF.md verweisen. ci-check.ps1 muss weiter ohne Befund laufen (Beleg).
+nachweis: Pull Request, Bericht reports/R25-BERICHT.md mit ci-check-Ausgabe.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext, keine Skript-Aenderung.
+status: bereit
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

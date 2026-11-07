@@ -1,0 +1,17 @@
+id: R23
+titel: 'Podcast-Audio sichern: Ort, Groesse, Sicherungsweg (nur lesen, Vorschlag)'
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Die vier Podcast-Dateien liegen nur lokal unter C:\Users\bmarn\OneDrive\HTML\reling it\assets\audio und nicht im Repo. Klaeren, wie sie gesichert und eingebunden werden.
+schritte:
+- Dateien, Groessen und Pruefsummen (SHA-256) in dem lokalen Ordner auflisten; pruefen, ob sie in .gitignore stehen oder in der Seite (lesen.html, index.html, app.js) referenziert werden.
+- Pruefen, wie die Seite die Audio-Dateien heute erwartet (Pfad, Dateiname) und ob der FTP-Upload sie enthaelt (scripts/build-upload.ps1).
+- 'Optionen mit Vor- und Nachteilen beschreiben: Ablage ausserhalb des Repos mit Sicherung, Git LFS, GitHub-Release-Asset. Eine Empfehlung begruenden.'
+- Nichts kopieren, nichts committen.
+nachweis: Bericht reports/R23-BERICHT.md mit Dateitabelle und Entscheidungsvorlage fuer Bernd.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Keine Dateien verschieben, kopieren oder loeschen.
+status: bereit
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

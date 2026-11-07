@@ -1,0 +1,17 @@
+id: R22
+titel: 'Git-Hygiene: Branch- und PR-Inventar, Aufraeumvorschlag (nur lesen)'
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Ueberblick, welche Remote-Branches und PRs im Repo Reling-IT/relingit erledigt sind, ohne etwas zu loeschen.
+schritte:
+- git fetch --prune, dann alle Remote-Branches mit Datum des letzten Commits und Status (in main enthalten ja oder nein) auflisten, ops/queue und ops/reports ausnehmen.
+- 'Offene und gemergte PRs mit gh auflisten, je PR: Basis, Status, CI, Konflikte mit main.'
+- 'Vorschlag: Branches, die vollstaendig in main enthalten sind, als Loeschkandidaten nennen. Nicht loeschen.'
+- Empfohlene Merge-Reihenfolge der offenen PRs ableiten (Konflikte per git merge-tree pruefen).
+nachweis: Bericht reports/R22-BERICHT.md mit Tabellen und der empfohlenen Reihenfolge.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Keine Branches oder PRs loeschen oder schliessen.
+status: bereit
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

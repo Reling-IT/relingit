@@ -1,0 +1,18 @@
+id: R21
+titel: Sachstand E1 bis E5 gegen den aktuellen Sysingboard-Stand pruefen (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von:
+- R10
+ziel: R10 galt fuer den Stand 06.11.2026 (HEAD 7dc4699d). Vor der Veroeffentlichung belegen, dass die fuenf erlaubten Aussagen im Buch noch stimmen.
+schritte:
+- reports/R10-BERICHT.md auf ops/reports lesen (Tabelle E1 bis E5 und U1 bis U5).
+- Das Repo sysingdashboard lesend aktualisieren (nur git fetch und Lesen, keine Aenderung) und HEAD notieren. Hat sich seit 7dc4699d etwas an den belegten Dateien und Zeilen geaendert (compose.ts, KioskWallboardSections.tsx, PerformanceStatementView.tsx, work-package-work-view.types.ts, dashboard-persistence.ts, README.md)? Mit git diff belegen.
+- 'Je Aussage E1 bis E5 und U1 bis U5: gilt weiter, geaendert oder nicht mehr auffindbar, mit Fundstelle.'
+- Pruefen, ob BSF-04 (serverseitige Ablage) oder eine Erinnerungsfunktion inzwischen existiert. Das waere ein Grund, Szene und Anhang-Box Datenstand anzupassen. Als Befund melden.
+nachweis: Bericht reports/R21-BERICHT.md mit Tabelle je Aussage, Commit-Hashes und Ergebnis.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Das Repo sysingdashboard nicht veraendern, keine Commits dort.
+status: bereit
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

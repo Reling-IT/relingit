@@ -1,0 +1,17 @@
+id: R20
+titel: Externe Links im Buch pruefen und Video-Angaben ermitteln (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Alle externen Verweise im Buch erreichbar und korrekt. Zusaetzlich Titel, Kanal und Veroeffentlichungsdatum des Videos https://youtu.be/xKgY5vnzjMQ feststellen (in der Cloud-Sitzung nicht abrufbar).
+schritte:
+- Alle href mit http oder https aus source/fahrt-zum-kunden.html auf dem Branch geschichte-veraltete-daten-20261107 extrahieren (eindeutige Liste).
+- Jede URL per HTTP abrufen (HEAD, sonst GET), Status, Weiterleitungsziel und Datum notieren. Nicht erreichbare oder weitergeleitete URLs melden.
+- 'Video: Seite abrufen, Titel, Kanalname und Datum aus Titel, og:-Metadaten oder oEmbed lesen. Wenn nicht abrufbar, das so melden.'
+- Vorschlag, ob die Anhang-Box Datenstand Titel und Kanal nennen sollte (Text nicht aendern).
+nachweis: Bericht reports/R20-BERICHT.md mit URL-Tabelle und Video-Angaben.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Buchtext nicht aendern. Keine Anmeldung auf fremden Seiten.
+status: bereit
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

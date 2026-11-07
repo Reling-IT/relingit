@@ -1,8 +1,8 @@
-stand: 2026-11-06 19:00
+stand: 2026-11-07 05:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
-hoechstbestand_offen: 10
+hoechstbestand_offen: 20
 statuswerte:
 - bereit
 - in_arbeit
@@ -15,14 +15,11 @@ regel: Claude Code fuehrt nur Auftraege mit status bereit aus, in der Reihenfolg
 gemeinsame_regeln:
 - Sprache Deutsch, sachlich, Anforderungen mit muss/sollte. Daten als JSON oder YAML, Diagramme als Mermaid.
 - 'Zu Beginn lesen: README.md, scripts/publish-release.ps1, scripts/ci-check.ps1.'
-- Arbeit nur auf einem Feature-Branch (auftrag-<id>-<kurzname>), nie auf main. Pull Request oeffnen (gh, sonst Link ausgeben). Nicht mergen, kein
-  Tag, keine Veroeffentlichung.
+- Arbeit nur auf einem Feature-Branch (auftrag-<id>-<kurzname>), nie auf main. Pull Request oeffnen (gh, sonst Link ausgeben). Nicht mergen, kein Tag, keine Veroeffentlichung.
 - Buchtext (source/fahrt-zum-kunden.html, story/current/fahrt-zum-kunden.html) und PDFs nur aendern, wenn der Auftrag es ausdruecklich verlangt.
-- Nichts an Workflows (.github/workflows), Deployment, FTP, Supabase-Konfiguration oder Admin-Konten aendern. Keine Zugangsdaten in Dateien oder
-  Commits.
+- Nichts an Workflows (.github/workflows), Deployment, FTP, Supabase-Konfiguration oder Admin-Konten aendern. Keine Zugangsdaten in Dateien oder Commits.
 - Aussagen wie 'geprueft' oder 'bestanden' nur mit Beleg (Befehl und Ergebnis, PR, Commit, CI-Lauf).
-- 'Abschluss jedes Berichts: Hygiene in einer Zeile (gemergte Remote-Branches, offene PRs, Drafts) und YAML-Block mit Reifegrad, Projektstatus,
-  Offene_Fragen, Roadmap (Sprints_bis_BSF, Sprints_bis_MVP).'
+- 'Abschluss jedes Berichts: Hygiene in einer Zeile (gemergte Remote-Branches, offene PRs, Drafts) und YAML-Block mit Reifegrad, Projektstatus, Offene_Fragen, Roadmap (Sprints_bis_BSF, Sprints_bis_MVP).'
 auftraege:
 - id: R01
   titel: 'Webseiten-Pflege: Seitenzahl, Repo-Links, Handout und Logo, Podcast-Ort'
@@ -138,5 +135,71 @@ auftraege:
   - R02
   - R14
   offen: 'PR #8 und der PR aus R14 gemergt.'
-hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript,
-  Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
+- id: R19
+  titel: Lektorat und Stimmigkeit der Buchquelle v1.38 (nur lesen, Bericht)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R20
+  titel: Externe Links im Buch pruefen und Video-Angaben ermitteln (nur lesen)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R21
+  titel: Sachstand E1 bis E5 gegen den aktuellen Sysingboard-Stand pruefen (nur lesen)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R10
+- id: R22
+  titel: 'Git-Hygiene: Branch- und PR-Inventar, Aufraeumvorschlag (nur lesen)'
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R23
+  titel: 'Podcast-Audio sichern: Ort, Groesse, Sicherungsweg (nur lesen, Vorschlag)'
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R25
+  titel: 'Doku-Diagramme: Repo-Struktur und Release-Ablauf als Mermaid'
+  art: doku
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R16
+  titel: PDF v1.38 auf Bernds Rechner erzeugen und fuer den Release vorbereiten
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R14
+  - R03
+- id: R17
+  titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
+  art: lesen
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R16
+  - R15
+- id: R18
+  titel: Avatar-Icons in die neuen Navis-Bloecke der Geschichte uebernehmen
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R11
+- id: R24
+  titel: Pester-Tests fuer publish-release.ps1 und ci-check.ps1
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R15
+hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

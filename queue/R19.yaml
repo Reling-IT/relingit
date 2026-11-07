@@ -1,0 +1,17 @@
+id: R19
+titel: Lektorat und Stimmigkeit der Buchquelle v1.38 (nur lesen, Bericht)
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Eine belegte Liste von Fehlern und Unstimmigkeiten im Buch, bevor die erste neue Geschichte veroeffentlicht wird. Der Text wird nicht geaendert.
+schritte:
+- 'Quelle lesen: source/fahrt-zum-kunden.html auf dem Branch geschichte-veraltete-daten-20261107 (PR #10, Basis PR #9). Existiert der Branch nicht mehr, main verwenden und das melden.'
+- 'Pruefen und mit Fundstelle (Kapitel-ID, Zeile) belegen: Rechtschreibung und Zeichensetzung, doppelte oder fehlende Woerter, Zahlenangaben (zehn im Haus = 8 Menschen plus Navis und Lumen; Seitenzahlen; Zeitangaben), Namen der Figuren und Kunden einheitlich geschrieben, Zeitlinie der Kapitel, Wortwiederholungen in benachbarten Absaetzen.'
+- 'Regelcheck gegen docs/vorlagen/EINBAU-CHECKLISTE.md Abschnitt 5: Navis liest nur, schreibt nie, keine Scores, Lumen nur ueber den Hub, Offen bleibt offen. Verstoesse als Liste.'
+- Jede Fundstelle mit Vorschlag (alt, neu) angeben, aber nichts in die Quelle schreiben.
+nachweis: Bericht reports/R19-BERICHT.md mit Tabelle Fundstelle, Befund, Vorschlag, Schweregrad (muss, sollte, kann).
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Buchtext und PDFs nicht aendern.
+status: bereit
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

@@ -1,0 +1,20 @@
+id: R16
+titel: PDF v1.38 auf Bernds Rechner erzeugen und fuer den Release vorbereiten
+art: code-pr
+gate: nein
+abhaengig_von:
+- R14
+- R03
+voraussetzung: 'PR #9 (R03), PR #10 (Geschichte Die veralteten Daten) und der PR aus R14 sind durch Bernd gemergt (git log origin/main pruefen). Vorher nicht beginnen. Bernd setzt dann den Status auf bereit.'
+ziel: Die PDF der Buchfassung v1.38 liegt in source/Die-Fahrt-zum-Kunden.pdf, story/current ist synchron, die CI ist gruen.
+schritte:
+- Branch auftrag-R16-pdf-v138 von main anlegen.
+- Mit den Werkzeugen aus docs/PDF-ERZEUGEN.md die PDF rendern und das Layout pruefen. Seitenzahl und Befunde mit Beleg melden. In der Cloud-Probe waren es 76 Seiten (Windows-Stand der Vorversion 69), Abweichungen erklaeren.
+- Die PDF nach source/Die-Fahrt-zum-Kunden.pdf legen, ./scripts/publish-release.ps1 ausfuehren, ci-check ausfuehren. Ergebnis committen.
+- Seite fuer Seite die neuen Seiten (Geschichte, Anhang-Box Datenstand, Versionshistorie) ansehen und Layoutfehler melden, nicht beschoenigen.
+nachweis: Pull Request, Bericht reports/R16-BERICHT.md mit Seitenzahl, Layout-Befund und ci-check-Ausgabe.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Buchtext nicht aendern. Der Upload bleibt bei Bernd.
+status: wartet_auf_voraussetzung
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

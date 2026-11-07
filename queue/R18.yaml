@@ -1,0 +1,18 @@
+id: R18
+titel: Avatar-Icons in die neuen Navis-Bloecke der Geschichte uebernehmen
+art: code-pr
+gate: nein
+abhaengig_von:
+- R11
+voraussetzung: 'PR #6 (Avatare) und PR #10 (Geschichte) sind durch Bernd gemergt. Bernd setzt den Status auf bereit.'
+ziel: 'Die zwei neuen Navis-Bloecke in der Geschichte Die veralteten Daten haben dasselbe Icon-Format wie die uebrigen 15 Bloecke nach PR #6.'
+schritte:
+- 'Branch auftrag-R18-avatare-neue-bloecke von main anlegen. Ermitteln, welches Icon-Markup PR #6 in den voice-Bloecken verwendet.'
+- Die zwei neuen voice navis-Bloecke im Kapitel kap-veraltete-daten auf genau dieses Markup umstellen, sonst nichts am Text aendern.
+- 'Pruefen: gleiche Darstellung wie die uebrigen Bloecke (Seitenvorschau), ci-check ohne Befund.'
+nachweis: Pull Request, Bericht reports/R18-BERICHT.md mit Vorher-Nachher der zwei Bloecke.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur diese zwei Bloecke, kein weiterer Buchtext, keine PDF.
+status: wartet_auf_voraussetzung
+stand: 2026-11-07 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
