@@ -1,4 +1,4 @@
-stand: 2026-11-07 07:25
+stand: 2026-11-07 07:12
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -273,6 +273,13 @@ auftraege:
   - R28
 - id: R36
   titel: 'Podcast-Hilfen: Schalter -OhneAudio im Paketbau, Live-Laengenvergleich, MB/MiB-Angaben'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R28
+- id: R37
+  titel: 'Podcast-Werkzeug vereinheitlichen: Google NotebookLM statt Gemini in der Doku'
   art: code-pr
   gate: nein
   status: bereit

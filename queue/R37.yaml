@@ -1,0 +1,18 @@
+id: R37
+titel: 'Podcast-Werkzeug vereinheitlichen: Google NotebookLM statt Gemini in der Doku'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R28
+ziel: 'Entscheidung Bernd 07.11.2026 07:10: Der Podcast wird mit Google NotebookLM erzeugt. Index, Datenschutz und ci-check nennen das schon; Doku und Checklisten nennen noch Google Gemini.'
+schritte:
+- 'Auf Branch von aktuellem main alle Stellen suchen, die Gemini im Zusammenhang mit dem Podcast nennen (erwartet: docs/NEUE-GESCHICHTE.md Abschnitt 6, docs/vorlagen/EINBAU-CHECKLISTE.md, ggf. README.md, docs/PODCAST.md, docs/ABLAUF.md). Befehl und Trefferliste im Bericht.'
+- Nur die Werkzeugangabe auf Google NotebookLM umstellen, Ablauf (Podcast nur bei geaendertem Erzaehltext neu erzeugen, Dateien von Hand kopieren) unveraendert lassen.
+- index.html, datenschutz.html und ci-check.ps1 nicht aendern, sie stimmen schon. Pruefen, dass ci-check weiter gruen ist.
+- Aussagen ueber Gemini an anderer Stelle (z. B. andere Zwecke) nicht anfassen.
+nachweis: Pull Request, Bericht reports/R37-BERICHT.md mit Trefferliste vorher/nachher und ci-check-Ausgabe.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext.
+status: bereit
+stand: 2026-11-07 07:12
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
