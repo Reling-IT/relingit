@@ -21,8 +21,18 @@ Aufruf (aus dem Repo-Stamm): python scripts/pdf/verify_layout.py [--source ...] 
 import argparse, html, os, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
-import numpy as np
-from PIL import Image
+# Windows: Ausgabe in Datei oder Pipe nutzt sonst cp1252 und bricht bei Zeichen ausserhalb davon ab.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+try:
+    import numpy as np
+    from PIL import Image
+    import pypdf  # noqa: F401  (wird erst spaeter benutzt, hier nur frueh geprueft)
+except ModuleNotFoundError as exc:
+    print(f"ABBRUCH: Python-Paket fehlt ({exc.name}). Einrichtung: "
+          "python -m pip install -r scripts/pdf/requirements.txt  (siehe docs/PDF-ERZEUGEN.md)")
+    sys.exit(2)
 
 ROOT = Path(__file__).resolve().parents[2]
 HTML = str(ROOT / "source" / "fahrt-zum-kunden.html")
@@ -188,7 +198,8 @@ def main():
     a = ap.parse_args()
     HTML, PDF = str(Path(a.source).resolve()), str(Path(a.pdf).resolve())
     global BG
-    m = re.search(r"--bg:\s*#([0-9a-fA-F]{6})", open(HTML, encoding="utf-8").read())
+    with open(HTML, encoding="utf-8") as f:
+        m = re.search(r"--bg:\s*#([0-9a-fA-F]{6})", f.read())
     if m:
         hx = m.group(1)
         BG = np.array([int(hx[0:2], 16), int(hx[2:4], 16), int(hx[4:6], 16)])
@@ -197,7 +208,8 @@ def main():
         print("HINWEIS: --bg nicht im Quelltext gefunden, Standardfarbe wird verwendet.")
 
     if not shutil.which("pdftoppm"):
-        print("ABBRUCH: pdftoppm (Poppler) fehlt im PATH.")
+        print("ABBRUCH: pdftoppm (Poppler) fehlt im PATH. Windows: winget install oschwartz10612.Poppler "
+              "(danach neues Terminal; siehe docs/PDF-ERZEUGEN.md)")
         sys.exit(2)
 
     structure = []

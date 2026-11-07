@@ -9,15 +9,27 @@ Abgeleitet von render_story_pdf.py (Claude-Projekt, Stand 27.08.2026). Unterschi
 Aufruf (aus dem Repo-Stamm): python scripts/pdf/render_story_pdf.py [--source ...] [--out ...]
 """
 import argparse
+import sys
 from datetime import datetime
 from pathlib import Path
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+# Windows: Ausgabe in Datei oder Pipe nutzt sonst cp1252 und bricht bei Zeichen ausserhalb davon ab.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+SETUP_HINT = "Einrichtung siehe docs/PDF-ERZEUGEN.md"
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def stamp_text():
-    now = datetime.now(ZoneInfo("Europe/Berlin"))
+    try:
+        tz = ZoneInfo("Europe/Berlin")
+    except ZoneInfoNotFoundError:
+        # Windows hat keine IANA-Zeitzonendatenbank; sie kommt dort aus dem Paket tzdata.
+        sys.exit("ABBRUCH: Zeitzone Europe/Berlin unbekannt. python -m pip install tzdata  (" + SETUP_HINT + ")")
+    now = datetime.now(tz)
     zone = "MESZ" if now.dst() else "MEZ"
     return "Renderstand: " + now.strftime("%d.%m.%Y, %H:%M Uhr") + f" ({zone})"
 
@@ -31,9 +43,22 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     stamp = stamp_text()
 
-    from playwright.sync_api import sync_playwright
+    if not src.is_file():
+        sys.exit(f"ABBRUCH: Quelle nicht gefunden: {src}")
+    try:
+        from playwright.sync_api import sync_playwright, Error as PlaywrightError
+        from pypdf import PdfReader, PdfWriter
+    except ModuleNotFoundError as exc:
+        sys.exit(f"ABBRUCH: Python-Paket fehlt ({exc.name}). "
+                 "python -m pip install -r scripts/pdf/requirements.txt  (" + SETUP_HINT + ")")
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        try:
+            browser = p.chromium.launch()
+        except PlaywrightError as exc:
+            if "Executable doesn't exist" in str(exc):
+                sys.exit("ABBRUCH: Chromium fuer Playwright fehlt. python -m playwright install chromium  ("
+                         + SETUP_HINT + ")")
+            raise
         page = browser.new_page()
         page.goto(src.as_uri())
         page.wait_for_timeout(400)  # Webfonts setzen lassen
@@ -53,7 +78,6 @@ def main():
         )
         browser.close()
 
-    from pypdf import PdfReader, PdfWriter
     reader = PdfReader(str(out))
     writer = PdfWriter()
     writer.append(reader)

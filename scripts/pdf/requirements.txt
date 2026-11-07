@@ -2,3 +2,5 @@ playwright
 pypdf
 numpy
 pillow
+# Windows hat keine IANA-Zeitzonendatenbank; zoneinfo braucht dort tzdata (Renderstand Europe/Berlin).
+tzdata; sys_platform == "win32"
