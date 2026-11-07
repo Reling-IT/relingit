@@ -1,4 +1,4 @@
-stand: 2026-11-07 07:12
+stand: 2026-11-07 07:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -203,7 +203,7 @@ auftraege:
   titel: Schriften des Buchs lokal per @font-face einbinden (reproduzierbare Seitenzahl)
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R14
   - R26
@@ -235,7 +235,7 @@ auftraege:
   titel: 'Release-Zweig v1.38: Avatare (#6) und Buchtext (#9) einbeziehen, PDF und story/current erzeugen, CI gruen'
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R15
   - R26

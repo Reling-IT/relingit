@@ -16,7 +16,7 @@ schritte:
 nachweis: Pull Request, Bericht reports/R27-BERICHT.md mit Lizenzbeleg, Hashes, pdffonts-Ausgabe und Seitenzahl.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext, keine PDF im Commit.
 hinweis: 'Release-Kette v1.38: Jede Aenderung an source/fahrt-zum-kunden.html macht die CI rot, solange story/current nicht neu erzeugt ist. Deshalb alle Quelltext-Aenderungen der Version v1.38 (R26, R27, R16) als Commits auf demselben Branch geschichte-veraltete-daten-20261107 (PR #10) stapeln, nicht als eigene PRs auf main.'
-status: bereit
-stand: 2026-11-07 06:10
+status: erledigt
+stand: 2026-11-07 07:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
