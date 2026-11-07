@@ -5,7 +5,7 @@ gate: nein
 abhaengig_von:
 - R14
 - R26
-voraussetzung: 'R26 ist erledigt (Commit auf dem Branch geschichte-veraltete-daten-20261107). PR #11 ist bereits gemergt. Bernd oder die Planer-Session setzt den Status auf bereit.'
+voraussetzung: 'Erfuellt: R26 erledigt (Commit 9dfdc54 auf dem Branch von PR #10), PR #11 gemergt.'
 ziel: 'Die drei Schriften der Quelle (Fraunces, Work Sans, IBM Plex Mono) werden mitgeliefert, damit die PDF auf jedem Rechner dieselbe Seitenzahl ergibt (Befund R14: Seitenzahl haengt vom Rechner ab).'
 schritte:
 - 'Auf dem Branch geschichte-veraltete-daten-20261107 (PR #10) weiterarbeiten, nicht von main abzweigen. Lizenzen der drei Schriften pruefen (erwartet SIL Open Font License) und im Bericht belegen; Lizenztexte in assets/fonts/ ablegen.'
@@ -16,7 +16,7 @@ schritte:
 nachweis: Pull Request, Bericht reports/R27-BERICHT.md mit Lizenzbeleg, Hashes, pdffonts-Ausgabe und Seitenzahl.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext, keine PDF im Commit.
 hinweis: 'Release-Kette v1.38: Jede Aenderung an source/fahrt-zum-kunden.html macht die CI rot, solange story/current nicht neu erzeugt ist. Deshalb alle Quelltext-Aenderungen der Version v1.38 (R26, R27, R16) als Commits auf demselben Branch geschichte-veraltete-daten-20261107 (PR #10) stapeln, nicht als eigene PRs auf main.'
-status: wartet_auf_voraussetzung
-stand: 2026-11-07 06:05
+status: bereit
+stand: 2026-11-07 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

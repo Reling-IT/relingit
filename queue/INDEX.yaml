@@ -1,4 +1,4 @@
-stand: 2026-11-07 06:05
+stand: 2026-11-07 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -186,14 +186,15 @@ auftraege:
   titel: 'Korrekturen aus R19 (Muss-Befunde M1 bis M11) auf PR #10 umsetzen'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R19
+  pr: Reling-IT/relingit#10 (Commit 9dfdc54)
 - id: R27
   titel: Schriften des Buchs lokal per @font-face einbinden (reproduzierbare Seitenzahl)
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R14
   - R26
