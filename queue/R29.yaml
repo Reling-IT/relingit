@@ -1,0 +1,19 @@
+id: R29
+titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Belegte Liste von Aufraeum-Kandidaten im Git und von Fehlern oder Unstimmigkeiten in Buch, Webseite und Skripten. Nichts wird geloescht oder geaendert.
+schritte:
+- 'Repo Reling-IT/relingit: git fetch --prune, Remote-Branches mit Datum, Autor, in main enthalten ja oder nein, zugehoeriger PR auflisten. Gemergte Branches als Loeschkandidaten nennen, nicht loeschen. ops/queue und ops/reports nie anfassen. Offene PRs mit Basis, CI und Konflikten.'
+- 'Lokal: git worktree list und git status in C:\dev\relingit sowie in angelegten Worktrees (z. B. C:\dev\wt-*); verwaiste Worktrees, ungenutzte Branches und uncommittete Aenderungen melden. Im OneDrive-Klon nur lesen.'
+- 'ops/queue: INDEX.yaml gegen ops/reports und STATUS.yaml abgleichen, Widersprueche melden; alle YAML-Dateien auf Gueltigkeit pruefen.'
+- 'Buch und Webseite auf main und auf offenen Buch-PRs: ci-check.ps1; Version und Datum im Deckblatt gegen Versionshistorie; Seitenzahl in Deckblatt, PDF, story/current und Startseite; interne Anker und doppelte IDs; Repo-Links (nie bmarnau/relingit); Podcast-Einbindung vorhanden; keine Platzhalter HIER_ in der Konfiguration; keine Zugangsdaten in Dateien.'
+- Regelcheck gegen docs/vorlagen/EINBAU-CHECKLISTE.md Abschnitt 5 (Navis, Lumen, zehn im Haus, Offen bleibt offen) fuer neue oder geaenderte Kapitel.
+nachweis: 'Bericht reports/R29-JJJJMMTT-BERICHT.md mit Tabellen: Loeschkandidaten, Befunde (Fundstelle, Befund, Beleg, Vorschlag, Schweregrad muss, sollte, kann).'
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts loeschen, nichts aendern, nur lesen und berichten.
+wiederkehrend: Die Planer-Session setzt den Status am Sitzungsende auf bereit. Nach dem Lauf setzt sie ihn zurueck auf geplant. Ablauf in der Planer-Doku claude/tagesabschluss.md (Teile A und C).
+status: geplant
+stand: 2026-11-07 06:05
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

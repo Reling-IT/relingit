@@ -5,7 +5,7 @@ gate: nein
 abhaengig_von:
 - R16
 - R15
-voraussetzung: R16 erledigt und der PR gemergt, R15 gemergt. Bernd setzt den Status auf bereit.
+voraussetzung: 'R16 erledigt, CI auf dem Branch von PR #10 gruen und PR #10 durch die Planer-Session auf Freigabe von Bernd gemergt; R15 gemergt. Status wird dann auf bereit gesetzt.'
 ziel: 'Bernd erhaelt eine fertige Upload-Liste: was im Admin-Bereich hochgeladen wird und was per FTP.'
 schritte:
 - ./scripts/build-upload.ps1 ausfuehren, ausgegebene Version, Datum, Seitenzahl und Dateiliste uebernehmen.
@@ -14,6 +14,6 @@ schritte:
 nachweis: Bericht reports/R17-BERICHT.md mit Dateiliste und Upload-Schritten.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts hochladen, nichts veroeffentlichen.
 status: wartet_auf_voraussetzung
-stand: 2026-11-07 05:10
+stand: 2026-11-07 06:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

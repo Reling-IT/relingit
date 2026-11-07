@@ -1,20 +1,23 @@
 id: R16
-titel: PDF v1.38 auf Bernds Rechner erzeugen und fuer den Release vorbereiten
+titel: 'Release-Zweig v1.38: Avatare (#6) und Buchtext (#9) einbeziehen, PDF und story/current erzeugen, CI gruen'
 art: code-pr
 gate: nein
 abhaengig_von:
-- R14
+- R15
+- R26
+- R27
 - R03
-voraussetzung: 'PR #9 (R03), PR #10 (Geschichte Die veralteten Daten) und der PR aus R14 sind durch Bernd gemergt (git log origin/main pruefen). Vorher nicht beginnen. Bernd setzt dann den Status auf bereit.'
-ziel: Die PDF der Buchfassung v1.38 liegt in source/Die-Fahrt-zum-Kunden.pdf, story/current ist synchron, die CI ist gruen.
+voraussetzung: 'R15, R26 und R27 sind erledigt und R15 ist in main gemergt. Bernd oder die Planer-Session setzt den Status auf bereit. Hintergrund: Die PRs #6 und #9 sind einzeln nicht mergebar, weil die CI verlangt, dass story/current zur Quelle passt (Fehler: Veroeffentlichungsfassung ist nicht aktuell).'
+ziel: 'Ein einziger Zweig (Branch von PR #10) enthaelt Buchtext v1.38 (R03), die neue Geschichte, die Korrekturen (R26), die Schriften (R27), die Avatare (PR #6), die PDF und die neu erzeugte story/current, und die CI ist gruen. Danach kann PR #10 auf main umgestellt und gemergt werden; #6 und #9 gelten damit als enthalten und werden geschlossen.'
 schritte:
-- Branch auftrag-R16-pdf-v138 von main anlegen.
-- Mit den Werkzeugen aus docs/PDF-ERZEUGEN.md die PDF rendern und das Layout pruefen. Seitenzahl und Befunde mit Beleg melden. In der Cloud-Probe waren es 76 Seiten (Windows-Stand der Vorversion 69), Abweichungen erklaeren.
-- Die PDF nach source/Die-Fahrt-zum-Kunden.pdf legen, ./scripts/publish-release.ps1 ausfuehren, ci-check ausfuehren. Ergebnis committen.
-- Seite fuer Seite die neuen Seiten (Geschichte, Anhang-Box Datenstand, Versionshistorie) ansehen und Layoutfehler melden, nicht beschoenigen.
-nachweis: Pull Request, Bericht reports/R16-BERICHT.md mit Seitenzahl, Layout-Befund und ci-check-Ausgabe.
-grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Buchtext nicht aendern. Der Upload bleibt bei Bernd.
+- 'Auf dem Branch geschichte-veraltete-daten-20261107 weiterarbeiten. origin/main einmergen (kein Rebase, kein Force-Push). Danach origin/avatare-buch-und-seite-20261106 (PR #6) einmergen; Konflikte in source/fahrt-zum-kunden.html sorgfaeltig loesen und jede Loesung im Bericht belegen.'
+- 'Die zwei neuen voice navis-Bloecke im Kapitel kap-veraltete-daten auf das Icon-Format von PR #6 umstellen (gleiches Markup wie die uebrigen 15 Bloecke). Sonst keinen Text aendern.'
+- PDF mit den Werkzeugen aus docs/PDF-ERZEUGEN.md rendern (Voraussetzungen vorher pruefen; fehlende Pakete nur nach Rueckfrage bei Bernd installieren), Layout pruefen, Seitenzahl melden (Cloud-Probe 76, Windows-Vorversion 69). Seiten der Geschichte, der Anhang-Box Datenstand und der Versionshistorie ansehen.
+- PDF nach source/Die-Fahrt-zum-Kunden.pdf legen, ./scripts/publish-release.ps1 ausfuehren (prueft jetzt die PDF-Version gegen das Deckblatt), ci-check.ps1 ausfuehren. Ergebnis committen und pushen. Die CI auf dem Branch muss gruen sein; Beleg mit gh pr checks.
+- 'PR-Kommentar an #10 mit Zusammenfassung; Hinweis an Bernd, dass #10 auf main umgestellt werden kann und #6 und #9 danach zu schliessen sind (nicht selbst schliessen oder mergen).'
+nachweis: 'Commits auf dem Branch von PR #10, gruene CI, Bericht reports/R16-BERICHT.md mit Seitenzahl, Layoutbefund, Konfliktloesungen und ci-check-Ausgabe.'
+grenzen: 'Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Force-Push, kein Merge, #6 und #9 nicht schliessen.'
 status: wartet_auf_voraussetzung
-stand: 2026-11-07 05:10
+stand: 2026-11-07 06:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

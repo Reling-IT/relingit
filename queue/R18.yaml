@@ -12,7 +12,8 @@ schritte:
 - 'Pruefen: gleiche Darstellung wie die uebrigen Bloecke (Seitenvorschau), ci-check ohne Befund.'
 nachweis: Pull Request, Bericht reports/R18-BERICHT.md mit Vorher-Nachher der zwei Bloecke.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur diese zwei Bloecke, kein weiterer Buchtext, keine PDF.
-status: wartet_auf_voraussetzung
-stand: 2026-11-07 05:10
+hinweis: 'Entfaellt als eigener Auftrag: Die Avatar-Icons in den neuen Navis-Bloecken sind Teil von R16 (Release-Zusammenfuehrung).'
+status: erledigt
+stand: 2026-11-07 06:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

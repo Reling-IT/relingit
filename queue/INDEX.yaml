@@ -1,4 +1,4 @@
-stand: 2026-11-07 05:50
+stand: 2026-11-07 06:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -198,12 +198,14 @@ auftraege:
   - R14
   - R26
 - id: R16
-  titel: PDF v1.38 auf Bernds Rechner erzeugen und fuer den Release vorbereiten
+  titel: 'Release-Zweig v1.38: Avatare (#6) und Buchtext (#9) einbeziehen, PDF und story/current erzeugen, CI gruen'
   art: code-pr
   gate: nein
   status: wartet_auf_voraussetzung
   abhaengig_von:
-  - R14
+  - R15
+  - R26
+  - R27
   - R03
 - id: R17
   titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
@@ -217,7 +219,7 @@ auftraege:
   titel: Avatar-Icons in die neuen Navis-Bloecke der Geschichte uebernehmen
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: erledigt
   abhaengig_von:
   - R11
 - id: R24
@@ -227,4 +229,10 @@ auftraege:
   status: wartet_auf_voraussetzung
   abhaengig_von:
   - R15
+- id: R29
+  titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
+  art: lesen
+  gate: nein
+  status: geplant
+  abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
