@@ -110,7 +110,7 @@ hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Mer
     pr: https://github.com/Reling-IT/relingit/pull/10 (Commit 9dfdc54)
     bericht: reports/R26-BERICHT.md
   - id: R15
-    status: erledigt (PR offen, nicht gemergt)
+    status: erledigt
     start: 2026-11-07T06:00+01:00
     ende: 2026-11-07T06:35+01:00
     branch: auftrag-R15-release-pruefungen
