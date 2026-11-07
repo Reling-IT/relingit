@@ -39,13 +39,26 @@ $publicFiles = @(
     ".htaccess", "admin.html", "datenschutz.html", "handout-pdf.html",
     "handout.html", "impressum.html", "index.html", "lesen.html", "pdf.html",
     "assets/css/legal.css", "assets/css/styles.css",
+    "assets/audio/ki-als-beifahrer-im-it-systemhaus.mp3",
+    "assets/audio/vom-logbuch-zum-ki-ticketsystem.mp3",
+    "assets/audio/warum-ki-nicht-lenken-darf.mp3",
+    "assets/audio/roman-als-ki-blaupause.mp3",
     "assets/img/favicon.png", "assets/img/reling-it-logo.svg",
+    "assets/img/reling-it-podcast-cover.png",
     "assets/js/admin.js", "assets/js/app.js", "assets/js/handout-viewer.js",
     "assets/js/pdf-viewer.js", "assets/js/story-viewer.js",
     "assets/js/supabase-config.js",
     "story/current/fahrt-zum-kunden.html", "story/current/geschichte.pdf",
     "story/current/workshop-handout.html", "story/current/workshop-handout.pdf"
 )
+
+# MP3 und Podcast-Cover liegen nicht im Repository (docs/PODCAST.md). Fehlt eine
+# Datei, wird abgebrochen, bevor ein Paketordner entsteht. So kann kein Paket
+# ohne Podcast entstehen, das den Abschnitt live beschädigen würde.
+$missingPublicFiles = @($publicFiles | Where-Object { -not (Test-Path -LiteralPath (Join-Path $projectRoot $_) -PathType Leaf) })
+if ($missingPublicFiles.Count -gt 0) {
+    throw "Paket abgebrochen, Dateien fehlen: $($missingPublicFiles -join ', '). Podcast-Dateien aus der lokalen Ablage kopieren (siehe docs/PODCAST.md)."
+}
 
 New-Item -ItemType Directory -Path $packageDirectory | Out-Null
 foreach ($relativePath in $publicFiles) {
