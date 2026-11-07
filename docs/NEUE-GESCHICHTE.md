@@ -29,7 +29,7 @@ Erwartetes Ergebnis: In `source/` liegen genau die neue HTML-Datei und die dazu 
 ./scripts/publish-release.ps1
 ```
 
-Das Skript prüft die Buchquelle (Version, Datum, Versionshistorie, Inhaltsverzeichnis, Personenliste, Deckblatt-Boxen), liest die Seitenzahl aus der PDF, aktualisiert `story/current` und die Rückfallwerte, ruft `scripts/ci-check.ps1` auf und baut das FTP-Paket unter `output/ftp`.
+Das Skript prüft die Buchquelle (Version, Datum, Versionshistorie, Inhaltsverzeichnis, Personenliste, Deckblatt-Boxen), liest die Seitenzahl aus der PDF, prüft die Version auf dem PDF-Deckblatt gegen die HTML-Quelle, aktualisiert `story/current` und die Rückfallwerte, ruft `scripts/ci-check.ps1` auf und baut das FTP-Paket unter `output/ftp`.
 
 Erwartetes Ergebnis: Die Ausgabe endet mit
 
@@ -46,6 +46,8 @@ Vergleichsstand:   <Commit des letzten Releases>
 Handout geändert:  ja/nein
 FTP-Upload nötig:  ja/nein
 ```
+
+**PDF-Version:** Vor dem Kopieren nach `story/current` liest das Skript mit `pdftotext` (Poppler) die erste Seite von `source/Die-Fahrt-zum-Kunden.pdf` und vergleicht die dort stehende „Version X.YY“ mit dem Deckblatt der HTML-Quelle. Weichen beide ab, bricht es ab und nennt beide Versionen, zum Beispiel `PDF passt nicht zur HTML-Quelle: source/Die-Fahrt-zum-Kunden.pdf trägt Version 1.37, source/fahrt-zum-kunden.html Version 1.38`. Dann die PDF aus der aktuellen HTML neu erzeugen (`docs/PDF-ERZEUGEN.md`). Fehlt `pdftotext`, bricht das Skript ebenfalls ab. Nur im Notfall lässt der Schalter `-OhnePdfVersionspruefung` den Lauf mit Warnung weiterlaufen; das PDF-Deckblatt ist dann von Hand zu prüfen.
 
 Diese Werte werden in Schritt 5 gebraucht. Bricht das Skript mit `FEHLER:` ab, die genannte Stelle in der Buchquelle korrigieren und erneut starten.
 
