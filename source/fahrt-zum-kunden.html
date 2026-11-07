@@ -4,6 +4,29 @@
 <meta charset="UTF-8">
 <title>Die Fahrt zum Kunden</title>
 <style>
+  /* SCHRIFTEN LOKAL (R27): Die drei Familien werden aus assets/fonts/ geladen, damit
+     Bildschirm und PDF ueberall dieselben Schriften nutzen und die Seitenzahl nicht
+     mehr von zufaellig installierten Ersatzschriften abhaengt. Keine externen Server.
+     Zwei relative Pfade je Schnitt, der Browser nimmt den ersten, der laedt:
+       ../assets/fonts/     -> von source/ aus (PDF-Rendering) und in lesen.html
+                               (srcdoc, Basis-URL ist lesen.html im Web-Stamm)
+       ../../assets/fonts/  -> von story/current/ aus (lokal und auf der Website)
+     Lizenz: SIL Open Font License 1.1, Herkunft und SHA-256 in assets/fonts/HERKUNFT.txt.
+     font-display:block, damit beim Drucken nicht mit einer Ersatzschrift umbrochen wird. */
+  @font-face{font-family:"Fraunces"; font-style:normal; font-weight:100 900; font-display:block;
+    src:url("../assets/fonts/Fraunces-Variable.woff2") format("woff2"), url("../../assets/fonts/Fraunces-Variable.woff2") format("woff2");}
+  @font-face{font-family:"Work Sans"; font-style:normal; font-weight:400; font-display:block;
+    src:url("../assets/fonts/WorkSans-Regular.woff2") format("woff2"), url("../../assets/fonts/WorkSans-Regular.woff2") format("woff2");}
+  @font-face{font-family:"Work Sans"; font-style:italic; font-weight:400; font-display:block;
+    src:url("../assets/fonts/WorkSans-Italic.woff2") format("woff2"), url("../../assets/fonts/WorkSans-Italic.woff2") format("woff2");}
+  @font-face{font-family:"Work Sans"; font-style:normal; font-weight:700; font-display:block;
+    src:url("../assets/fonts/WorkSans-Bold.woff2") format("woff2"), url("../../assets/fonts/WorkSans-Bold.woff2") format("woff2");}
+  @font-face{font-family:"IBM Plex Mono"; font-style:normal; font-weight:400; font-display:block;
+    src:url("../assets/fonts/IBMPlexMono-Regular.woff2") format("woff2"), url("../../assets/fonts/IBMPlexMono-Regular.woff2") format("woff2");}
+  @font-face{font-family:"IBM Plex Mono"; font-style:italic; font-weight:400; font-display:block;
+    src:url("../assets/fonts/IBMPlexMono-Italic.woff2") format("woff2"), url("../../assets/fonts/IBMPlexMono-Italic.woff2") format("woff2");}
+  @font-face{font-family:"IBM Plex Mono"; font-style:normal; font-weight:500; font-display:block;
+    src:url("../assets/fonts/IBMPlexMono-Medium.woff2") format("woff2"), url("../../assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");}
 
 
   :root{
