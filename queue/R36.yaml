@@ -6,7 +6,7 @@ abhaengig_von:
 - R28
 ziel: Textkorrekturen sollen hochgeladen werden koennen, ohne 71 MiB neu zu uebertragen. Die Live-MP3 sollen ohne Download pruefbar sein.
 schritte:
-- 'Delta aus R34: assets/audio/SHA256SUMS.txt mit den vier Pruefsummen aus docs/PODCAST.md anlegen (lokal mit Get-FileHash gegenpruefen) und lokale Hash-Pruefung vor dem Paketbau ergaenzen; CI darf ohne MP3 weiter gruen bleiben. Cover committen (und .gitignore-Zeile fuer das Cover entfernen) nur, wenn Bernd es entscheidet; sonst Vorschlag im Bericht.'
+- 'Delta aus R34: assets/audio/SHA256SUMS.txt mit den vier Pruefsummen aus docs/PODCAST.md anlegen (lokal mit Get-FileHash gegenpruefen) und lokale Hash-Pruefung vor dem Paketbau ergaenzen; CI darf ohne MP3 weiter gruen bleiben. Cover committen und die .gitignore-Zeile fuer das Cover entfernen (von Bernd freigegeben).'
 - 'Auf Branch von aktuellem main (nach Merge R34) scripts/build-upload.ps1 um den Schalter -OhneAudio erweitern: dann werden MP3 weder verlangt noch in ZIP und Manifest aufgenommen; Standard bleibt wie heute. Pruefung der Dateiliste im Skript entsprechend anpassen.'
 - 'Kleines Pruefskript scripts/pruefe-podcast-live.ps1: HTTP HEAD auf die vier Live-MP3, Content-Length gegen assets/audio/SHA256SUMS.txt bzw. die dort vermerkten Groessen vergleichen (nur lesend, kein FTP, kein Download).'
 - 'Groessenangaben auf index.html (10,7/17,7/21,2/21,1 MB sind MiB) pruefen: Vorschlag MiB schreiben oder MB umrechnen; Aenderung nur, wenn sie ohne Layoutrisiko moeglich ist, sonst als Vorschlag im Bericht.'
@@ -15,6 +15,7 @@ nachweis: Pull Request und Bericht reports/R36-BERICHT.md mit Ausgabe beider Skr
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Skripte nur trocken ausfuehren, kein Upload.
 status: bereit
 voraussetzung: 'Erfuellt: R28 gemergt (PR #13). Status bereit, sobald R24 erledigt ist (beide fassen scripts/ an).'
-stand: 2026-11-07 07:15
+stand: 2026-11-07 07:38
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+entscheidung: 'Bernd 07.11.2026 07:37: Cover ins Repo committen (assets/img/reling-it-podcast-cover.png, .gitignore-Zeile dafuer entfernen, SHA-256 6068294e... gegenpruefen). MP3 bleiben ausserhalb des Repos.'
