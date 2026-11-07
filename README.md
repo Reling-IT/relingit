@@ -7,7 +7,8 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 ## Projektstruktur
 
 - `assets/css`: gemeinsame Gestaltung und Rechtseiten-Stile
-- `assets/img`: RelingIT-Logo und Browser-Symbol
+- `assets/audio`: lokal ausgelieferter, KI-generierter Podcast (MP3 nicht im Repository, siehe `docs/PODCAST.md`)
+- `assets/img`: RelingIT-Logo und Browser-Symbol; das Podcast-Cover liegt nur lokal
 - `assets/js`: öffentliche Logik, PDF-Ansicht, Administration und Supabase-Konfiguration
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`

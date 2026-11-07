@@ -22,6 +22,8 @@ Folgende Dateien und Ordner in das Zielverzeichnis der Domain kopieren:
 
 Nicht auf den Webspace gehören `.git`, `.github`, `archive`, `docs`, `scripts`, `source`, `supabase`, `README.md` und `repo-aktualisieren.ps1`.
 
+Die vier Podcast-MP3 unter `assets/audio` und das Podcast-Cover `assets/img/reling-it-podcast-cover.png` liegen nicht im Repository. Vor dem Paketbau aus der lokalen Ablage kopieren, sonst bricht `scripts/build-upload.ps1` ab (siehe `docs/PODCAST.md`).
+
 ## Vor dem FTP-Upload
 
 1. Die lokale Arbeitskopie mit `repo-aktualisieren.ps1` aktualisieren.
