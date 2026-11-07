@@ -333,6 +333,44 @@ foreach ($file in $publicMarkupFiles) {
     }
 }
 
+# Podcast: Die vier MP3 und das Cover liegen bewusst nicht im Repository
+# (Größe, siehe docs/PODCAST.md und .gitignore). Sie werden nur lokal vor dem
+# Paketbau abgelegt. Fehlen sie, ist das hier kein Fehler, weil GitHub Actions
+# sie nie besitzt; build-upload.ps1 bricht in diesem Fall ab. Sind sie
+# vorhanden, wird ihre Dateikennung geprüft. Die Ausnahme in der Verweisprüfung
+# unten gilt nur für genau diese Pfade und nur in index.html.
+$podcastAudioFiles = @(
+    "assets/audio/ki-als-beifahrer-im-it-systemhaus.mp3",
+    "assets/audio/vom-logbuch-zum-ki-ticketsystem.mp3",
+    "assets/audio/warum-ki-nicht-lenken-darf.mp3",
+    "assets/audio/roman-als-ki-blaupause.mp3"
+)
+$podcastCoverFile = "assets/img/reling-it-podcast-cover.png"
+$podcastExternalFiles = @($podcastAudioFiles) + $podcastCoverFile
+$podcastMissing = @($podcastExternalFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) })
+foreach ($podcastFile in $podcastExternalFiles) {
+    if (-not $landingText.Contains("""$podcastFile""")) {
+        $failures.Add("Podcast-Datei wird in index.html nicht mehr verwendet, Liste in ci-check.ps1 anpassen: $podcastFile")
+    }
+    if ($podcastFile -in $podcastMissing) { continue }
+    $podcastStream = [System.IO.File]::OpenRead((Resolve-Path $podcastFile))
+    try {
+        $podcastHeader = New-Object byte[] 4
+        [void]$podcastStream.Read($podcastHeader, 0, 4)
+    } finally { $podcastStream.Dispose() }
+    if ($podcastFile -eq $podcastCoverFile) {
+        if ($podcastHeader[0] -ne 0x89 -or [System.Text.Encoding]::ASCII.GetString($podcastHeader, 1, 3) -ne "PNG") {
+            $failures.Add("Podcast-Cover besitzt keine gültige PNG-Kennung: $podcastFile")
+        }
+    } elseif ([System.Text.Encoding]::ASCII.GetString($podcastHeader, 0, 3) -ne "ID3" -and $podcastHeader[0] -ne 0xFF) {
+        $failures.Add("Podcast besitzt keine gültige MP3-Kennung: $podcastFile")
+    }
+}
+# Die sichtbare Quellenangabe bleibt Pflicht, auch ohne Audiodateien.
+if ($landingText -notmatch 'Google NotebookLM' -or $landingText -notmatch 'KI-generiert') {
+    $failures.Add("Podcast enthält keine sichtbare Google-NotebookLM- und KI-Quellenangabe")
+}
+
 # Prüft lokale Verweise und doppelte IDs in sämtlichen HTML-Dateien.
 $htmlFiles = Get-ChildItem -Path $projectRoot -Filter "*.html" -File -Recurse
 foreach ($htmlFile in $htmlFiles) {
@@ -352,6 +390,8 @@ foreach ($htmlFile in $htmlFiles) {
         if ($reference -match '^(?:https?:|mailto:|tel:|data:|#|javascript:)') { continue }
         $cleanReference = ($reference -split '[?#]')[0]
         if ([string]::IsNullOrWhiteSpace($cleanReference)) { continue }
+        # Nur die bekannten, bewusst nicht versionierten Podcast-Dateien (siehe oben).
+        if ($relativeHtmlPath -eq "index.html" -and $cleanReference -in $podcastMissing) { continue }
         $resolved = Join-Path -Path $htmlFile.DirectoryName -ChildPath $cleanReference
         if (-not (Test-Path -LiteralPath $resolved)) {
             $failures.Add("Fehlender lokaler Verweis in ${relativeHtmlPath}: $reference")
@@ -395,6 +435,12 @@ foreach ($file in $scanFiles) {
             $failures.Add("Möglicher Supabase-Secret-Key in $($file.FullName.Substring($projectRoot.Length + 1))")
         }
     }
+}
+
+if ($podcastMissing.Count -gt 0) {
+    Write-Host "Hinweis: $($podcastMissing.Count) von $($podcastExternalFiles.Count) Podcast-Dateien liegen nicht vor (in CI erwartet, nicht im Repo; siehe docs/PODCAST.md). build-upload.ps1 baut ohne sie kein Paket."
+} else {
+    Write-Host "OK: $($podcastExternalFiles.Count) Podcast-Dateien lokal vorhanden, Dateikennungen geprüft."
 }
 
 if ($failures.Count -gt 0) {
