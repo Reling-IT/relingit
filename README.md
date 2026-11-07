@@ -41,6 +41,11 @@ wird die Veröffentlichung abgebrochen. Bereits vorhandene FTP-Pakete werden
 vorher automatisch ins lokale Archiv verschoben; in `output/ftp` bleibt damit
 immer nur die aktuelle Ausgabe.
 
+Die PDF lässt sich lokal aus der HTML-Quelle erzeugen und auf Layoutfehler prüfen
+(`scripts/pdf/render_story_pdf.py`, `scripts/pdf/verify_layout.py`). Einrichtung,
+Befehle und bekannte Stolpersteine stehen in [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md).
+Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
+
 ### Veröffentlichung über Supabase
 
 1. Den geschützten Bereich `admin.html` aufrufen und mit dem Supabase-Administratorkonto anmelden.
