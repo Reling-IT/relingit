@@ -64,8 +64,11 @@ auftraege:
     pr: Kommentar https://github.com/Reling-IT/relingit/pull/10#issuecomment-6702074191
     bericht: reports/R20-BERICHT.md
   - id: R21
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-07T05:06+01:00
+    ende: 2026-11-07T05:11+01:00
+    pr: Kommentar https://github.com/Reling-IT/relingit/pull/10#issuecomment-6702096500
+    bericht: reports/R21-BERICHT.md
   - id: R22
     status: in_arbeit
     start: 2026-11-07T05:06+01:00
