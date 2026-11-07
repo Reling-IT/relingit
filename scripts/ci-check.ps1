@@ -371,8 +371,12 @@ if ($landingText -notmatch 'Google NotebookLM' -or $landingText -notmatch 'KI-ge
     $failures.Add("Podcast enthält keine sichtbare Google-NotebookLM- und KI-Quellenangabe")
 }
 
-# Prüft lokale Verweise und doppelte IDs in sämtlichen HTML-Dateien.
-$htmlFiles = Get-ChildItem -Path $projectRoot -Filter "*.html" -File -Recurse
+# Prüft lokale Verweise und doppelte IDs in sämtlichen HTML-Dateien des Repos.
+# Lokal erzeugte, git-ignorierte Ordner (FTP-Paket unter output/, archive/, tmp/)
+# zählen nicht mit: Ihre Kopien würden doppelt gezählt und relative Verweise
+# dort falsch auflösen. Gleiche Ausnahme wie bei Google-Fonts und Secret-Schutz.
+$htmlFiles = Get-ChildItem -Path $projectRoot -Filter "*.html" -File -Recurse |
+    Where-Object { $_.FullName.Substring($projectRoot.Length + 1) -notmatch '^(?:archive|output|tmp)[\\/]' }
 foreach ($htmlFile in $htmlFiles) {
     $content = Get-Content -Raw -LiteralPath $htmlFile.FullName
     $relativeHtmlPath = $htmlFile.FullName.Substring($projectRoot.Length + 1)

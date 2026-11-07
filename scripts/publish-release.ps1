@@ -4,7 +4,10 @@ param(
     [string]$Suffix = "",
     # Git-Stand, gegen den Handout- und FTP-Änderungen verglichen werden.
     # Standard: letzter Commit, der die veröffentlichte Geschichte geändert hat.
-    [string]$VergleichMit = ""
+    [string]$VergleichMit = "",
+    # Nur für den Notfall ohne Poppler: überspringt den Vergleich der
+    # PDF-Version mit dem Deckblatt der HTML-Quelle. Die PDF dann von Hand prüfen.
+    [switch]$OhnePdfVersionspruefung
 )
 
 # Einziger vorgesehener Ablauf für eine neue Story-Version:
@@ -79,6 +82,40 @@ if ($pdfInfoCommand) {
     $PageCount = $detectedPageCount
 } elseif ($PageCount -eq 0) {
     throw "pdfinfo fehlt. Bitte Seitenzahl ersatzweise mit -PageCount angeben."
+}
+
+# Die PDF muss zur HTML-Quelle passen: Die Version auf dem Deckblatt (erste
+# Seite) wird per pdftotext gelesen und mit dem Deckblatt der HTML verglichen.
+# So kann keine alte PDF neben einer neuen HTML veröffentlicht werden.
+# Ohne pdftotext wird abgebrochen; nur der ausdrückliche Schalter
+# -OhnePdfVersionspruefung lässt den Lauf mit sichtbarer Warnung weiter.
+$pdfToTextCommand = Get-Command pdftotext -ErrorAction SilentlyContinue
+if ($pdfToTextCommand) {
+    $previousOutputEncoding = [Console]::OutputEncoding
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    try {
+        $coverText = (& $pdfToTextCommand.Source -f 1 -l 1 -enc UTF-8 $sourcePdf -) -join "`n"
+        $pdfToTextExit = $LASTEXITCODE
+    } finally { [Console]::OutputEncoding = $previousOutputEncoding }
+    if ($pdfToTextExit -ne 0) {
+        throw "pdftotext konnte die erste Seite von $sourcePdf nicht lesen (Exit-Code $pdfToTextExit)."
+    }
+    $pdfVersions = @([regex]::Matches($coverText, '\bVersion\s+(?<v>\d+\.\d+)\b') |
+        ForEach-Object { $_.Groups['v'].Value } | Select-Object -Unique)
+    if ($pdfVersions.Count -eq 0) {
+        throw "Auf dem Deckblatt (Seite 1) von $sourcePdf steht keine lesbare Versionsangabe 'Version X.YY'."
+    }
+    if ($pdfVersions.Count -gt 1) {
+        throw "Deckblatt von $sourcePdf nennt mehrere Versionen ($($pdfVersions -join ', ')); erwartet: $version."
+    }
+    if ($pdfVersions[0] -ne $version) {
+        throw "PDF passt nicht zur HTML-Quelle: $sourcePdf trägt Version $($pdfVersions[0]), $sourceHtml Version $version. Bitte die PDF aus der aktuellen HTML neu erzeugen (docs/PDF-ERZEUGEN.md)."
+    }
+    Write-Host "OK: PDF-Deckblatt trägt Version $version wie die HTML-Quelle."
+} elseif ($OhnePdfVersionspruefung) {
+    Write-Warning "pdftotext fehlt; die PDF-Version wird auf ausdrücklichen Wunsch (-OhnePdfVersionspruefung) NICHT geprüft. Deckblatt von $sourcePdf bitte von Hand auf Version $version prüfen."
+} else {
+    throw "pdftotext fehlt (Poppler). Die PDF-Version kann nicht gegen das Deckblatt ($version) geprüft werden. Poppler installieren oder bewusst mit -OhnePdfVersionspruefung starten und die PDF von Hand prüfen."
 }
 
 $culture = [System.Globalization.CultureInfo]::GetCultureInfo('de-DE')
