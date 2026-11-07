@@ -3,7 +3,7 @@ titel: 'Aufraeumen im Ordner C:\Users\bmarn\OneDrive\HTML\reling it: nicht mehr 
 art: lokal-loeschen
 gate: ja
 abhaengig_von:
-- R34
+- R28
 pfad: C:\Users\bmarn\OneDrive\HTML\reling it
 voraussetzung: Bernd setzt den Status auf bereit. Phase 1 (nur lesen) laeuft ohne weitere Freigabe, Phase 2 (loeschen) nur nach schriftlicher Bestaetigung der Liste durch Bernd im Chat der Sitzung. Ohne Bestaetigung nichts loeschen.
 ziel: Den Ordner von Altlasten befreien (Zwischenstaende, Testausgaben, alte Pakete), ohne Arbeit zu verlieren. Der Ordner ist eine aeltere Arbeitskopie von Reling-IT/relingit (Branch codex/fix-admin-password-recovery) mit lokalen Aenderungen und dem Podcast-Audio. Die aktuelle Arbeitskopie ist C:\dev\relingit.
@@ -27,4 +27,4 @@ grenzen: Kein Zugriff ausserhalb des Ordners. Kein endgueltiges Loeschen. Keine 
 status: wartet_auf_entscheidung
 freigabe: 'Bernd 07.11.2026 06:44: Ja, R13 gemeinsam mit dem Tagesabschluss ausfuehren. Der Status wird von der Planer-Session am Sitzungsende auf bereit gesetzt. Stufe 1 (Liste) darf laufen; Loeschen weiterhin erst nach Bestaetigung der Liste durch Bernd, nur in den Papierkorb.'
 schutzliste: 'Nicht auf die Loeschliste: assets/audio/*.mp3, assets/img/reling-it-podcast-cover.png, output/ftp/*podcast* (einzige Zweitkopie), uncommittete Aenderungen im OneDrive-Klon (index.html, datenschutz.html, styles.css, README.md, scripts/*), solange R34 nicht gemergt und R35 nicht entschieden ist. Diese Dateien nur melden.'
-stand: 2026-11-07 06:58
+stand: 2026-11-07 07:15

@@ -7,8 +7,8 @@ abhaengig_von:
 - R26
 - R27
 - R03
-- R34
-voraussetzung: 'R15, R26 und R27 sind erledigt und R15 ist in main gemergt. Bernd oder die Planer-Session setzt den Status auf bereit. Hintergrund: Die PRs #6 und #9 sind einzeln nicht mergebar, weil die CI verlangt, dass story/current zur Quelle passt (Fehler: Veroeffentlichungsfassung ist nicht aktuell). Zusaetzlich: R34 (Podcast-Einbindung) ist in main gemergt, damit der Release-Zweig den Podcast-Stand erbt.'
+- R28
+voraussetzung: 'R15, R26 und R27 sind erledigt und R15 ist in main gemergt. Bernd oder die Planer-Session setzt den Status auf bereit. Hintergrund: Die PRs #6 und #9 sind einzeln nicht mergebar, weil die CI verlangt, dass story/current zur Quelle passt (Fehler: Veroeffentlichungsfassung ist nicht aktuell). R28 (Podcast, PR #13) ist bereits in main und wird beim Einmergen von main uebernommen.'
 ziel: 'Ein einziger Zweig (Branch von PR #10) enthaelt Buchtext v1.38 (R03), die neue Geschichte, die Korrekturen (R26), die Schriften (R27), die Avatare (PR #6), die PDF und die neu erzeugte story/current, und die CI ist gruen. Danach kann PR #10 auf main umgestellt und gemergt werden; #6 und #9 gelten damit als enthalten und werden geschlossen.'
 schritte:
 - 'Auf dem Branch geschichte-veraltete-daten-20261107 weiterarbeiten. origin/main einmergen (kein Rebase, kein Force-Push). Danach origin/avatare-buch-und-seite-20261106 (PR #6) einmergen; Konflikte in source/fahrt-zum-kunden.html sorgfaeltig loesen und jede Loesung im Bericht belegen.'
@@ -19,6 +19,6 @@ schritte:
 nachweis: 'Commits auf dem Branch von PR #10, gruene CI, Bericht reports/R16-BERICHT.md mit Seitenzahl, Layoutbefund, Konfliktloesungen und ci-check-Ausgabe.'
 grenzen: 'Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Force-Push, kein Merge, #6 und #9 nicht schliessen.'
 status: wartet_auf_voraussetzung
-stand: 2026-11-07 06:55
+stand: 2026-11-07 07:15
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

@@ -1,4 +1,4 @@
-stand: 2026-11-07 07:08
+stand: 2026-11-07 07:15
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -120,8 +120,8 @@ auftraege:
   gate: ja
   status: wartet_auf_entscheidung
   abhaengig_von:
-  - R34
-  offen: Freigegeben von Bernd (07.11. 06:44) zusammen mit dem Tagesabschluss. Planer setzt bereit am Sitzungsende, nach R34. Schutzliste Podcast beachten. Loeschen erst nach Bestaetigung der Liste.
+  - R28
+  offen: Freigegeben von Bernd (07.11. 06:44), zusammen mit dem Tagesabschluss. Planer setzt bereit am Sitzungsende. Schutzliste Podcast beachten bis R35 erledigt. Loeschen erst nach Bestaetigung der Liste.
 - id: R14
   titel: PDF-Werkzeuge ins Repo uebernehmen und pruefen
   art: code-pr
@@ -197,7 +197,7 @@ auftraege:
   titel: Podcast-Einbindung nach main bringen (Regressionsschutz vor dem naechsten Upload), MP3 nicht committen
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R23
 - id: R27
@@ -242,7 +242,7 @@ auftraege:
   - R26
   - R27
   - R03
-  - R34
+  - R28
 - id: R17
   titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
   art: lesen
@@ -269,18 +269,16 @@ auftraege:
   titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Pruefsummen)
   art: sicherung
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
-  - R34
-  voraussetzung: R34 ist in main gemergt (SHA256SUMS.txt liegt im Repo). Dann Status bereit.
+  - R28
 - id: R36
   titel: 'Podcast-Hilfen: Schalter -OhneAudio im Paketbau, Live-Laengenvergleich, MB/MiB-Angaben'
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
-  - R34
-  voraussetzung: R34 ist in main gemergt.
+  - R28
 - id: R29
   titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
   art: lesen

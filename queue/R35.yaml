@@ -3,7 +3,7 @@ titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Prue
 art: sicherung
 gate: nein
 abhaengig_von:
-- R34
+- R28
 ziel: Die vier MP3 (74 222 992 Byte) und das Cover liegen nur in OneDrive und im selben OneDrive unter output/ftp. Es fehlt eine von OneDrive unabhaengige Kopie.
 schritte:
 - 'Variante C: Release podcast-2026-10 anlegen, vier MP3 und Cover als Assets hochladen (gh release create / upload), danach Download der Assets und SHA-256 gegen assets/audio/SHA256SUMS.txt pruefen. Nur nach ausdruecklicher Freigabe, weil ein Tag entsteht.'
@@ -12,9 +12,9 @@ schritte:
 - 'OneDrive: Hinweis an Bernd, assets/audio auf Immer auf diesem Geraet behalten zu stellen, damit die Dateien nicht zu Platzhaltern werden.'
 nachweis: Bericht reports/R35-BERICHT.md mit Asset-Liste, Hash-Vergleich und Link; PR fuer docs/PODCAST.md.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur der freigegebene Release podcast-2026-10 (Tag ohne Seitenwirkung); Release als normales Release (nicht latest), Beschreibung mit Dateiliste und SHA-256. Keine Dateien im OneDrive loeschen.
-status: wartet_auf_voraussetzung
-stand: 2026-11-07 07:08
+status: bereit
+stand: 2026-11-07 07:15
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 freigabe: 'Bernd 07.11.2026 07:06: Variante C (GitHub-Release-Asset) freigegeben. Ausdruecklich erlaubt nur fuer diesen Auftrag: Tag und Release podcast-2026-10 in Reling-IT/relingit, Assets = vier MP3 und Cover. Kein weiterer Tag, keine Veroeffentlichung der Seite.'
-voraussetzung: R34 ist in main gemergt (SHA256SUMS.txt liegt im Repo). Dann Status bereit.
+voraussetzung: 'Erfuellt: Pruefsummen stehen in docs/PODCAST.md (R28). Status bereit.'

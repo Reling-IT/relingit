@@ -16,7 +16,8 @@ schritte:
 nachweis: Pull Request, Bericht reports/R34-BERICHT.md mit Diff-Uebersicht, SHA-256-Vergleich index.html (PR gegen Live), ci-check-Ausgabe, CI-Beleg.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Keine MP3 committen, keine Dateien im OneDrive verschieben oder loeschen, nur lesen und kopieren der Textdateien in den Branch.
 hinweis: Dringlichkeit hoch (Regressionsrisiko Live-Seite). R16 wartet auf den Merge dieses PR, damit der Release-Zweig den Podcast-Stand mit erbt. Merge nur nach Freigabe von Bernd durch die Planer-Session.
-status: bereit
-stand: 2026-11-07 06:55
+status: erledigt
+stand: 2026-11-07 07:15
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+abschluss: 'Kern bereits durch R28 (PR #13, gemergt, main 44898de) erledigt. Planer-Fehler: R23-Bericht war vor R28 geschrieben. Delta-Punkte (Cover, SHA256SUMS.txt, lokale Hash-Pruefung) wandern nach R36, Cover-Entscheidung liegt bei Bernd.'
