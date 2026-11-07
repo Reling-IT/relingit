@@ -12,7 +12,7 @@ schritte:
 - In docs/NEUE-GESCHICHTE.md oder README.md einen Satz zum Ausfuehren der Tests ergaenzen. Die CI-Workflows nicht aendern; Einbau in die CI nur als Vorschlag in den Bericht.
 nachweis: Pull Request, Bericht reports/R24-BERICHT.md mit der Ausgabe von Invoke-Pester.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten.
-status: wartet_auf_voraussetzung
-stand: 2026-11-07 05:10
+status: erledigt
+stand: 2026-11-07 08:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

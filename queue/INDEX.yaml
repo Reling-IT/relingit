@@ -1,4 +1,4 @@
-stand: 2026-11-07 07:55
+stand: 2026-11-07 08:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -211,25 +211,25 @@ auftraege:
   titel: Sicherheits- und Konfigurationspruefung des Repos relingit (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R31
   titel: Barrierefreiheit, Kontrast und Handy-Darstellung der Webseiten pruefen (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R32
   titel: Sollte- und Kann-Befunde aus R19 zu Entscheidungspaketen aufbereiten (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R33
   titel: Repo-Dokumentation gegen den Ist-Stand abgleichen (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R38
   titel: 'Sollte- und Kann-Befunde (R19/R32) mit den Antworten von Bernd auf PR #10 umsetzen'
@@ -273,9 +273,10 @@ auftraege:
   titel: Pester-Tests fuer publish-release.ps1 und ci-check.ps1
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R15
+  pr: Reling-IT/relingit#15 (offen)
 - id: R35
   titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Pruefsummen)
   art: sicherung

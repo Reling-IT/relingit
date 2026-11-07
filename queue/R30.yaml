@@ -11,7 +11,7 @@ schritte:
 - Pruefen, ob .gitignore output/, lokale Konfigurationen und Audio-Dateien sinnvoll abdeckt (siehe R23).
 nachweis: Bericht reports/R30-BERICHT.md mit Tabelle Fundstelle, Befund, Schweregrad, Vorschlag (ohne geheime Werte).
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen und berichten.
-status: bereit
-stand: 2026-11-07 06:15
+status: erledigt
+stand: 2026-11-07 08:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
