@@ -1,4 +1,4 @@
-stand: 2026-11-07 06:58
+stand: 2026-11-07 07:08
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -268,11 +268,11 @@ auftraege:
 - id: R35
   titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Pruefsummen)
   art: sicherung
-  gate: ja
-  status: wartet_auf_entscheidung
+  gate: nein
+  status: wartet_auf_voraussetzung
   abhaengig_von:
   - R34
-  offen: 'Bernd entscheidet: Variante C (GitHub-Release-Asset, legt einen Tag an, z. B. podcast-2026-10) oder eine rein lokale Sicherung (externe Platte, zweiter Cloud-Ort). Danach setzt Bernd den Status auf bereit und nennt die Variante.'
+  voraussetzung: R34 ist in main gemergt (SHA256SUMS.txt liegt im Repo). Dann Status bereit.
 - id: R36
   titel: 'Podcast-Hilfen: Schalter -OhneAudio im Paketbau, Live-Laengenvergleich, MB/MiB-Angaben'
   art: code-pr
