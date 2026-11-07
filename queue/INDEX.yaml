@@ -1,4 +1,4 @@
-stand: 2026-11-07 06:15
+stand: 2026-11-07 06:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -179,9 +179,10 @@ auftraege:
   titel: Podcast-Einbindung aus dem OneDrive-Klon nach main holen (hohe Prioritaet)
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R23
+  pr: Reling-IT/relingit#13 (gemergt, main 44898de)
 - id: R26
   titel: 'Korrekturen aus R19 (Muss-Befunde M1 bis M11) auf PR #10 umsetzen'
   art: code-pr
