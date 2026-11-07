@@ -253,7 +253,7 @@ auftraege:
   titel: Pester-Tests fuer publish-release.ps1 und ci-check.ps1
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R15
 - id: R29
