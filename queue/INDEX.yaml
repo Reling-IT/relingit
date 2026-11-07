@@ -1,4 +1,4 @@
-stand: 2026-11-07 06:20
+stand: 2026-11-07 06:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -132,11 +132,12 @@ auftraege:
   titel: 'Release-Pruefungen: PDF-Version, output/ ausnehmen'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R02
   - R14
   offen: 'PR #8 und der PR aus R14 gemergt.'
+  pr: Reling-IT/relingit#14 (gemergt, main 002f079)
 - id: R19
   titel: Lektorat und Stimmigkeit der Buchquelle v1.38 (nur lesen, Bericht)
   art: lesen
