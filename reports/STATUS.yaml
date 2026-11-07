@@ -1,4 +1,4 @@
-stand: 2026-11-07T05:13+01:00
+stand: 2026-11-07T05:15+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 0f77f9f (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -70,8 +70,11 @@ auftraege:
     pr: Kommentar https://github.com/Reling-IT/relingit/pull/10#issuecomment-6702096500
     bericht: reports/R21-BERICHT.md
   - id: R22
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-07T05:06+01:00
+    ende: 2026-11-07T05:15+01:00
+    pr: Kommentare an #6 bis #10
+    bericht: reports/R22-BERICHT.md
   - id: R23
     status: erledigt
     start: 2026-11-07T05:06+01:00
