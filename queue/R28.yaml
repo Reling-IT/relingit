@@ -1,0 +1,19 @@
+id: R28
+titel: Podcast-Einbindung aus dem OneDrive-Klon nach main holen (hohe Prioritaet)
+art: code-pr
+gate: nein
+abhaengig_von:
+- R23
+ziel: Ein FTP-Paket aus main darf die Podcast-Einbindung der Live-Seite nicht entfernen. Die Einbindung steht bisher nur in uncommitteten Aenderungen im OneDrive-Klon (Befund R23).
+schritte:
+- 'Branch auftrag-R28-podcast-einbindung von origin/main anlegen (nicht aus dem OneDrive-Klon, dessen Basis ist alt). Den OneDrive-Klon nur lesen: git diff und git status dort ansehen, nichts darin aendern.'
+- 'Nur die Podcast-Teile uebernehmen: Abschnitt und Player in index.html (ca. Z. 62 bis 112 im lokalen Stand), Datenschutzhinweis in datenschutz.html, passende Regeln in styles.css. Dateien nicht komplett kopieren, sondern die Aenderungen gegen main portieren, damit Aenderungen aus PR #4 und #5 (Seitenzahl, Repo-Links) nicht verloren gehen.'
+- 'build-upload.ps1 und ci-check.ps1: Die lokale Aenderung (Audio-Dateien im Paket, Pruefung) gegen die Fassung im Branch auftrag-R02-veroeffentlichung (PR #8) abgleichen und nur das Audio-Thema ergaenzen. Ist PR #8 noch nicht gemergt, auf main aufbauen und im Bericht auf die absehbare Ueberschneidung hinweisen.'
+- 'MP3-Dateien und das Cover nicht ins Repo legen. Stattdessen docs/PODCAST.md anlegen: Dateinamen, Groessen und SHA-256 aus reports/R23-BERICHT.md, Ablageort lokal, Einbindungspfade, Regel Podcast nur neu erzeugen wenn der Erzaehltext geaendert wurde (Google Gemini). ci-check darf fehlende MP3 nicht als Fehler melden, wenn der Ordner nicht im Repo liegt; Verhalten beschreiben und mit Probelauf belegen.'
+- 'Lokal pruefen: ci-check.ps1 ohne Befund; Vergleich der Seiten index.html und datenschutz.html gegen den Live-Stand nur ueber die lokalen Dateien. Vorschlag in den Bericht, wie die MP3 zusaetzlich gesichert werden (GitHub-Release-Asset nur als Vorschlag, keinen Release anlegen).'
+nachweis: Pull Request, Bericht reports/R28-BERICHT.md mit Diff-Zusammenfassung und ci-check-Ausgabe.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Keine Dateien im OneDrive-Ordner aendern oder loeschen, keine MP3 committen.
+status: bereit
+stand: 2026-11-07 05:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

@@ -1,0 +1,19 @@
+id: R26
+titel: 'Korrekturen aus R19 (Muss-Befunde M1 bis M11) auf PR #10 umsetzen'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R19
+ziel: Die elf Muss-Befunde aus reports/R19-BERICHT.md sind im Buchtext behoben, bevor die PDF neu gerendert wird.
+schritte:
+- 'Arbeiten auf dem Branch geschichte-veraltete-daten-20261107 (PR #10), nicht auf main. Neuen Commit anlegen, nicht umschreiben.'
+- 'M1 bis M9 und M11 genau nach der Spalte Vorschlag (alt, neu) in reports/R19-BERICHT.md umsetzen. M2 betrifft die neue Geschichte: Donnerstag wird Freitag (drei Stellen), die Rechnung Stand vor neun Tagen und Cockpit seit gestern bleibt stimmig; das pruefen und belegen. M3 und M4: Ende September wird Ende November (Z. 1608 und Fussnote).'
+- 'M10 (Navis nennt die Verfuegbarkeit der Kernsysteme): Satz bei Navis streichen und als Lumen-Aussage voranstellen wie im Vorschlag. Danach Konferenztisch-Szene noch einmal lesen und pruefen, dass Navis nichts aus der Report-Familie nennt und der Anschluss stimmt.'
+- 'Versionshistorie: Die Zeile v1.38 (Datum 07.11.2026) um einen Satz zu diesen Korrekturen ergaenzen; Version und Datum im Deckblatt unveraendert lassen. Sollte-Befunde (23) und Kann-Befunde (20) NICHT umsetzen.'
+- 'Pruefen: ci-check.ps1 ohne Befund, keine doppelten IDs, alle Anker loesen auf. Die PDF nicht rendern und nicht committen.'
+nachweis: 'Commit auf dem Branch von PR #10, Kommentar im PR mit Tabelle M1 bis M11 und Zeilen vorher nachher, Bericht reports/R26-BERICHT.md.'
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur die elf Muss-Befunde, kein weiterer Buchtext, keine PDF.
+status: bereit
+stand: 2026-11-07 05:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
