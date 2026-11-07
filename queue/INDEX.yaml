@@ -1,4 +1,4 @@
-stand: 2026-11-07 06:55
+stand: 2026-11-07 06:58
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -119,8 +119,9 @@ auftraege:
   art: lokal-loeschen
   gate: ja
   status: wartet_auf_entscheidung
-  abhaengig_von: []
-  offen: Bernd setzt den Status auf bereit. Loeschen erst nach Bestaetigung der Liste.
+  abhaengig_von:
+  - R34
+  offen: Freigegeben von Bernd (07.11. 06:44) zusammen mit dem Tagesabschluss. Planer setzt bereit am Sitzungsende, nach R34. Schutzliste Podcast beachten. Loeschen erst nach Bestaetigung der Liste.
 - id: R14
   titel: PDF-Werkzeuge ins Repo uebernehmen und pruefen
   art: code-pr
