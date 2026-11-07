@@ -21,6 +21,10 @@ Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht au
 
 ## Neue Version veröffentlichen
 
+Standardweg für eine neue Buchfassung ist der Admin-Bereich `admin.html` mit Supabase. FTP ist nur nötig, wenn sich `index.html`, `assets/js`, `impressum.html` oder `datenschutz.html` ändern. Der vollständige Ablauf mit Befehlen und erwarteten Ergebnissen steht in `docs/NEUE-GESCHICHTE.md`.
+
+Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlichen Konto `bmarnau` darf kein Repository `relingit` neu angelegt werden.
+
 ### Empfohlener lokaler Ablauf
 
 1. Die neue HTML-Datei immer als `source/fahrt-zum-kunden.html` ablegen.
@@ -39,7 +43,9 @@ erstellt anschließend das geprüfte FTP-Paket. `source` und `story/current`
 müssen danach für HTML und PDF bytegenau übereinstimmen. Bei einer Abweichung
 wird die Veröffentlichung abgebrochen. Bereits vorhandene FTP-Pakete werden
 vorher automatisch ins lokale Archiv verschoben; in `output/ftp` bleibt damit
-immer nur die aktuelle Ausgabe.
+immer nur die aktuelle Ausgabe. Am Ende gibt das Skript Version, Datum,
+Seitenzahl und die im Admin-Bereich auszuwählenden Dateien aus und meldet, ob
+das Handout geändert ist und ob ein FTP-Upload nötig ist.
 
 Die PDF lässt sich lokal aus der HTML-Quelle erzeugen und auf Layoutfehler prüfen
 (`scripts/pdf/render_story_pdf.py`, `scripts/pdf/verify_layout.py`). Einrichtung,
