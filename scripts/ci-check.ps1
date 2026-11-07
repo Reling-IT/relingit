@@ -173,6 +173,119 @@ if (-not $appPageCount.Success) {
     $failures.Add("Seitenzahlen widersprechen sich: index.html $($landingPageCounts[0].Groups['count'].Value), app.js $($appPageCount.Groups['count'].Value)")
 }
 
+# Vollständigkeit der Buchquelle: Jede Pflichtstelle wird mit Namen gemeldet,
+# wenn sie fehlt oder dem Deckblatt widerspricht. Erkennungsregeln siehe
+# docs/NEUE-GESCHICHTE.md und docs/vorlagen/EINBAU-CHECKLISTE.md.
+function Test-StoryCompleteness([string]$text, [string]$label) {
+    $found = [System.Collections.Generic.List[string]]::new()
+
+    # Deckblatt: div.cover-meta mit "Version X.YY" und Datum TT.MM.JJJJ.
+    $cover = [regex]::Match($text, '<div\s+class="cover-meta">(?<c>[\s\S]*?)</div>')
+    $coverVersion = $null
+    $coverDate = $null
+    if (-not $cover.Success) {
+        $found.Add("${label}: Deckblatt (div.cover-meta) fehlt")
+    } else {
+        $v = [regex]::Match($cover.Groups['c'].Value, '<span>\s*Version\s+(?<v>\d+\.\d+)\s*</span>')
+        $d = [regex]::Match($cover.Groups['c'].Value, '<span>\s*(?<d>\d{2}\.\d{2}\.\d{4})\s*</span>')
+        if ($v.Success) { $coverVersion = $v.Groups['v'].Value } else { $found.Add("${label}: Deckblatt ohne Version (<span>Version X.YY</span>)") }
+        if ($d.Success) { $coverDate = $d.Groups['d'].Value } else { $found.Add("${label}: Deckblatt ohne Datum (<span>TT.MM.JJJJ</span>)") }
+    }
+
+    # Cover-Hinweis: p.cover-whatsnew mit "Neu in vX.YY" passend zum Deckblatt.
+    $whatsNew = [regex]::Match($text, '<p\s+class="cover-whatsnew">\s*<span\s+class="tag">\s*Neu in v(?<v>\d+\.\d+)\s*</span>')
+    if (-not $whatsNew.Success) {
+        $found.Add("${label}: Cover-Hinweis (p.cover-whatsnew mit 'Neu in vX.YY') fehlt")
+    } elseif ($coverVersion -and $whatsNew.Groups['v'].Value -ne $coverVersion) {
+        $found.Add("${label}: Cover-Hinweis nennt v$($whatsNew.Groups['v'].Value), Deckblatt Version $coverVersion")
+    }
+
+    # Drei Deckblatt-Boxen, jeweils genau einmal und in box-shell gehüllt.
+    foreach ($box in @(
+        @{ name = "Zur Einordnung"; pattern = '<div\s+class="box-shell">\s*<p\s+class="disclaimer">\s*<b>Zur Einordnung:</b>' },
+        @{ name = "Aufbau in zwei Teilen"; pattern = '<div\s+class="box-shell">\s*<p\s+class="disclaimer">\s*<b>Aufbau in zwei Teilen:</b>' },
+        @{ name = "Ausgangslage"; pattern = '<div\s+class="box-shell">\s*<div\s+class="intro">\s*<p>\s*<b>Ausgangslage:</b>' }
+    )) {
+        $count = [regex]::Matches($text, $box.pattern).Count
+        if ($count -ne 1) {
+            $found.Add("${label}: Deckblatt-Box '$($box.name)' ist $count-mal vorhanden (erwartet genau einmal, in div.box-shell)")
+        }
+    }
+
+    # Personenliste: #kap-personen mit vollständigen Einträgen, Navis und Lumen dabei.
+    # Der Block endet nach dem letzten Eintrag (tenure und person), danach schließen table-people und intro.
+    $people = [regex]::Match($text, 'id="kap-personen"[\s\S]*?<div\s+class="table-people">(?<p>[\s\S]*?</div>\s*</div>)\s*</div>\s*</div>')
+    if (-not $people.Success) {
+        $found.Add("${label}: Personenliste (#kap-personen .table-people) fehlt")
+    } else {
+        $entries = @($people.Groups['p'].Value -split '<div\s+class="person">' | Select-Object -Skip 1)
+        if ($entries.Count -eq 0) { $found.Add("${label}: Personenliste ohne Einträge") }
+        $names = @()
+        foreach ($entry in $entries) {
+            $name = [regex]::Match($entry, '<div\s+class="name">(?<v>[^<]*)</div>').Groups['v'].Value.Trim()
+            $names += $name
+            foreach ($field in @("badge", "name", "role", "tenure")) {
+                if (-not [regex]::IsMatch($entry, "<div\s+class=""$field[^""]*"">\s*[^<\s][^<]*</div>")) {
+                    $found.Add("${label}: Personenliste, Eintrag '$name': Feld '$field' fehlt oder ist leer")
+                }
+            }
+        }
+        foreach ($required in @("Navis", "Lumen")) {
+            if ($required -notin $names) { $found.Add("${label}: Personenliste ohne '$required'") }
+        }
+    }
+
+    # Mini-Inhaltsverzeichnis: drei Gruppen, jedes Kapitel und jeder Anhang mit ID verlinkt.
+    $toc = [regex]::Match($text, '<nav\s+class="cover-toc"[\s\S]*?</nav>')
+    if (-not $toc.Success) {
+        $found.Add("${label}: Mini-Inhaltsverzeichnis (nav.cover-toc) fehlt")
+    } else {
+        $tocLabels = @([regex]::Matches($toc.Value, 'class="cover-toc-label">(?<l>[^<]*)</span>') | ForEach-Object {
+            [System.Net.WebUtility]::HtmlDecode($_.Groups['l'].Value) -replace '\s+', ' '
+        })
+        foreach ($group in @("Teil 1", "Teil 2", "Anhang")) {
+            if (-not ($tocLabels | Where-Object { $_ -like "$group*" })) {
+                $found.Add("${label}: Mini-Inhaltsverzeichnis ohne Gruppe '$group'")
+            }
+        }
+        $tocTargets = @([regex]::Matches($toc.Value, 'href="#(?<t>[^"]+)"') | ForEach-Object { $_.Groups['t'].Value })
+        $chapterIds = @(
+            [regex]::Matches($text, '<h2\s+id="(?<id>kap-[^"]+)"') | ForEach-Object { $_.Groups['id'].Value }
+            [regex]::Matches($text, '<section\s+class="appendix"\s+id="(?<id>kap-[^"]+)"') | ForEach-Object { $_.Groups['id'].Value }
+        )
+        foreach ($id in $chapterIds) {
+            if ($id -notin $tocTargets) { $found.Add("${label}: Kapitel #$id fehlt im Mini-Inhaltsverzeichnis") }
+        }
+    }
+
+    # Versionshistorie: jede Zeile mit Version und Datum, aufsteigend, letzte Zeile = Deckblatt.
+    $history = [regex]::Match($text, 'id="kap-versionen"[\s\S]*?<table\s+class="vtable">[\s\S]*?<tbody>(?<b>[\s\S]*?)</tbody>')
+    if (-not $history.Success) {
+        $found.Add("${label}: Versionshistorie (#kap-versionen table.vtable) fehlt")
+    } else {
+        $rowCount = [regex]::Matches($history.Groups['b'].Value, '<tr>').Count
+        $rows = @([regex]::Matches($history.Groups['b'].Value, '<tr>\s*<td>(?<v>\d+\.\d+)</td>\s*<td>(?<d>\d{2}\.\d{2}\.\d{4})</td>'))
+        if ($rows.Count -ne $rowCount) {
+            $found.Add("${label}: Versionshistorie: $($rowCount - $rows.Count) von $rowCount Zeilen ohne lesbare Version (X.YY) oder Datum (TT.MM.JJJJ)")
+        }
+        for ($i = 1; $i -lt $rows.Count; $i++) {
+            if ([version]$rows[$i].Groups['v'].Value -le [version]$rows[$i - 1].Groups['v'].Value) {
+                $found.Add("${label}: Versionshistorie nicht aufsteigend: $($rows[$i - 1].Groups['v'].Value) vor $($rows[$i].Groups['v'].Value)")
+            }
+        }
+        if ($rows.Count -gt 0 -and $coverVersion -and $coverDate) {
+            $last = $rows[$rows.Count - 1]
+            if ($last.Groups['v'].Value -ne $coverVersion -or $last.Groups['d'].Value -ne $coverDate) {
+                $found.Add("${label}: Letzter Eintrag der Versionshistorie ($($last.Groups['v'].Value), $($last.Groups['d'].Value)) passt nicht zum Deckblatt ($coverVersion, $coverDate)")
+            }
+        }
+    }
+    return $found
+}
+foreach ($finding in (Test-StoryCompleteness $sourceStoryText "source/fahrt-zum-kunden.html")) {
+    $failures.Add($finding)
+}
+
 # Die freigegebene Rückfallfassung darf niemals hinter dem eindeutigen Eingang
 # unter source zurückbleiben. HTML und PDF müssen bytegenau identisch sein.
 foreach ($pair in @(
@@ -289,4 +402,4 @@ if ($failures.Count -gt 0) {
     throw "CI-Prüfung mit $($failures.Count) Fehler(n) abgebrochen."
 }
 
-Write-Host "OK: $($htmlFiles.Count) HTML-Dateien, Version/Datum/Seitenzahl, lokale Links, PDFs und Secret-Schutz geprüft."
+Write-Host "OK: $($htmlFiles.Count) HTML-Dateien, Version/Datum/Seitenzahl, Vollständigkeit der Buchquelle, lokale Links, PDFs und Secret-Schutz geprüft."
