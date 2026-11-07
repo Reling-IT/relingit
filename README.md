@@ -47,6 +47,11 @@ immer nur die aktuelle Ausgabe. Am Ende gibt das Skript Version, Datum,
 Seitenzahl und die im Admin-Bereich auszuwählenden Dateien aus und meldet, ob
 das Handout geändert ist und ob ein FTP-Upload nötig ist.
 
+Die PDF lässt sich lokal aus der HTML-Quelle erzeugen und auf Layoutfehler prüfen
+(`scripts/pdf/render_story_pdf.py`, `scripts/pdf/verify_layout.py`). Einrichtung,
+Befehle und bekannte Stolpersteine stehen in [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md).
+Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
+
 ### Veröffentlichung über Supabase
 
 1. Den geschützten Bereich `admin.html` aufrufen und mit dem Supabase-Administratorkonto anmelden.
