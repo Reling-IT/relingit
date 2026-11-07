@@ -1,0 +1,22 @@
+id: R34
+titel: Podcast-Einbindung nach main bringen (Regressionsschutz vor dem naechsten Upload), MP3 nicht committen
+art: code-pr
+gate: nein
+abhaengig_von:
+- R23
+ziel: Die Live-Seite enthaelt den Podcast nur aus uncommitteten Aenderungen im OneDrive-Klon (Befund R23). Ein Upload aus main wuerde Podcast-Abschnitt und Datenschutz-Paragraf 4 entfernen. Der Stand muss versioniert werden.
+schritte:
+- Neuen Branch auftrag-r34-podcast von aktuellem origin/main (nicht von den PR-Branches) anlegen.
+- 'Die uncommitteten Podcast-Aenderungen im OneDrive-Klon lesen (git diff): index.html, datenschutz.html, styles.css, README.md, scripts/build-upload.ps1, scripts/ci-check.ps1, dazu assets/img/reling-it-podcast-cover.png. Nicht den alten Branch mergen. Jede Datei als Diff gegen den aktuellen main-Stand uebernehmen; seit dem 05.09. geaenderte Stellen auf main (#4, #5, #13 u.a.) nicht zuruecksetzen. Konfliktfaelle im Bericht belegen.'
+- MP3-Dateien nicht committen. assets/audio/*.mp3 in .gitignore aufnehmen und assets/audio/SHA256SUMS.txt mit den vier Pruefsummen aus reports/R23-BERICHT.md versionieren (vorher lokal mit Get-FileHash gegenpruefen).
+- 'ci-check.ps1: Auf GitHub (CI) duerfen fehlende MP3 nicht zum Fehler fuehren; lokal (vor build-upload) muessen sie vorhanden sein und zu SHA256SUMS.txt passen. Das Cover-PNG (ca. 1 MB) wird committet. Den bestehenden Hinweis auf Google NotebookLM unveraendert lassen und die Abweichung zu NEUE-GESCHICHTE.md (Google Gemini) nur im Bericht nennen, nicht aufloesen.'
+- 'docs/PODCAST.md mit Dateinamen, Groessen, SHA-256, Ablageort, Sicherungsweg (Stand: OneDrive plus Zweitkopie output/ftp) und der Regel aktualisieren: Neue Folge = Datei ablegen, Pruefsumme eintragen, Sicherung aktualisieren.'
+- 'Pruefen: ci-check.ps1 lokal, CI auf dem PR gruen, index.html im PR bytegleich mit der Live-Seite (SHA-256 612941de... laut R23) oder Abweichungen begruenden. Unterschiede zwischen Live-Datei und PR-Stand benennen.'
+- 'PR oeffnen (nicht Draft, wenn CI gruen). Hinweis im PR: Muss vor dem naechsten FTP-Upload in main sein.'
+nachweis: Pull Request, Bericht reports/R34-BERICHT.md mit Diff-Uebersicht, SHA-256-Vergleich index.html (PR gegen Live), ci-check-Ausgabe, CI-Beleg.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Keine MP3 committen, keine Dateien im OneDrive verschieben oder loeschen, nur lesen und kopieren der Textdateien in den Branch.
+hinweis: Dringlichkeit hoch (Regressionsrisiko Live-Seite). R16 wartet auf den Merge dieses PR, damit der Release-Zweig den Podcast-Stand mit erbt. Merge nur nach Freigabe von Bernd durch die Planer-Session.
+status: bereit
+stand: 2026-11-07 06:55
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

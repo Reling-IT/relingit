@@ -1,4 +1,4 @@
-stand: 2026-11-07 06:45
+stand: 2026-11-07 06:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -192,6 +192,13 @@ auftraege:
   abhaengig_von:
   - R19
   pr: Reling-IT/relingit#10 (Commit 9dfdc54)
+- id: R34
+  titel: Podcast-Einbindung nach main bringen (Regressionsschutz vor dem naechsten Upload), MP3 nicht committen
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R23
 - id: R27
   titel: Schriften des Buchs lokal per @font-face einbinden (reproduzierbare Seitenzahl)
   art: code-pr
@@ -234,6 +241,7 @@ auftraege:
   - R26
   - R27
   - R03
+  - R34
 - id: R17
   titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
   art: lesen
@@ -256,6 +264,22 @@ auftraege:
   status: bereit
   abhaengig_von:
   - R15
+- id: R35
+  titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Pruefsummen)
+  art: sicherung
+  gate: ja
+  status: wartet_auf_entscheidung
+  abhaengig_von:
+  - R34
+  offen: 'Bernd entscheidet: Variante C (GitHub-Release-Asset, legt einen Tag an, z. B. podcast-2026-10) oder eine rein lokale Sicherung (externe Platte, zweiter Cloud-Ort). Danach setzt Bernd den Status auf bereit und nennt die Variante.'
+- id: R36
+  titel: 'Podcast-Hilfen: Schalter -OhneAudio im Paketbau, Live-Laengenvergleich, MB/MiB-Angaben'
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R34
+  voraussetzung: R34 ist in main gemergt.
 - id: R29
   titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
   art: lesen

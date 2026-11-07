@@ -1,0 +1,19 @@
+id: R35
+titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Pruefsummen)
+art: sicherung
+gate: ja
+abhaengig_von:
+- R34
+ziel: Die vier MP3 (74 222 992 Byte) und das Cover liegen nur in OneDrive und im selben OneDrive unter output/ftp. Es fehlt eine von OneDrive unabhaengige Kopie.
+offen: 'Bernd entscheidet: Variante C (GitHub-Release-Asset, legt einen Tag an, z. B. podcast-2026-10) oder eine rein lokale Sicherung (externe Platte, zweiter Cloud-Ort). Danach setzt Bernd den Status auf bereit und nennt die Variante.'
+schritte:
+- 'Variante C: Release podcast-2026-10 anlegen, vier MP3 und Cover als Assets hochladen (gh release create / upload), danach Download der Assets und SHA-256 gegen assets/audio/SHA256SUMS.txt pruefen. Nur nach ausdruecklicher Freigabe, weil ein Tag entsteht.'
+- 'Lokale Sicherung: Pruefsummenliste und Kopierbefehle fuer Bernd vorbereiten, nichts selbst auf fremde Medien schreiben.'
+- In docs/PODCAST.md den tatsaechlichen Sicherungsort eintragen (PR, bevor etwas als gesichert gilt).
+- 'OneDrive: Hinweis an Bernd, assets/audio auf Immer auf diesem Geraet behalten zu stellen, damit die Dateien nicht zu Platzhaltern werden.'
+nachweis: Bericht reports/R35-BERICHT.md mit Asset-Liste, Hash-Vergleich und Link; PR fuer docs/PODCAST.md.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Release/Tag nur mit ausdruecklicher Freigabe von Bernd in diesem Auftrag. Keine Dateien im OneDrive loeschen.
+status: wartet_auf_entscheidung
+stand: 2026-11-07 06:55
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

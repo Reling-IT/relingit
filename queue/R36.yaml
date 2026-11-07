@@ -1,0 +1,19 @@
+id: R36
+titel: 'Podcast-Hilfen: Schalter -OhneAudio im Paketbau, Live-Laengenvergleich, MB/MiB-Angaben'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R34
+ziel: Textkorrekturen sollen hochgeladen werden koennen, ohne 71 MiB neu zu uebertragen. Die Live-MP3 sollen ohne Download pruefbar sein.
+schritte:
+- 'Auf Branch von aktuellem main (nach Merge R34) scripts/build-upload.ps1 um den Schalter -OhneAudio erweitern: dann werden MP3 weder verlangt noch in ZIP und Manifest aufgenommen; Standard bleibt wie heute. Pruefung der Dateiliste im Skript entsprechend anpassen.'
+- 'Kleines Pruefskript scripts/pruefe-podcast-live.ps1: HTTP HEAD auf die vier Live-MP3, Content-Length gegen assets/audio/SHA256SUMS.txt bzw. die dort vermerkten Groessen vergleichen (nur lesend, kein FTP, kein Download).'
+- 'Groessenangaben auf index.html (10,7/17,7/21,2/21,1 MB sind MiB) pruefen: Vorschlag MiB schreiben oder MB umrechnen; Aenderung nur, wenn sie ohne Layoutrisiko moeglich ist, sonst als Vorschlag im Bericht.'
+- Pester-Tests nur ergaenzen, wenn R24 bereits gemergt ist, sonst Testfaelle im Bericht beschreiben.
+nachweis: Pull Request und Bericht reports/R36-BERICHT.md mit Ausgabe beider Skripte (Trockenlauf ohne FTP).
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Skripte nur trocken ausfuehren, kein Upload.
+status: wartet_auf_voraussetzung
+voraussetzung: R34 ist in main gemergt.
+stand: 2026-11-07 06:55
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
