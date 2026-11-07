@@ -1,0 +1,28 @@
+id: R38
+titel: 'Sollte- und Kann-Befunde (R19/R32) mit den Antworten von Bernd auf PR #10 umsetzen'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R19
+- R26
+- R27
+- R32
+ziel: Alle freigegebenen Textbefunde sind im Buchtext v1.38 behoben, bevor story/current und die PDF in R16 neu erzeugt werden.
+schritte:
+- 'Arbeiten auf dem Branch geschichte-veraltete-daten-20261107 (PR #10), nicht auf main. Gemeinsame Regel: alle Quelltext-Aenderungen v1.38 auf diesem Branch stapeln. Neuen Commit auf den aktuellen Kopf setzen, nichts umschreiben, kein Force-Push. Fundstellen ueber den Text suchen, nicht ueber die Zeilennummer (seit 9dfdc54 und R27 koennen Zeilen verschoben sein). Grundlage: reports/R19-BERICHT.md und reports/R32-BERICHT.md.'
+- 'Ersetzungen per Skript als Literal-Ersetzung: genau ein Treffer pro Befund, sonst abbrechen und im Bericht melden. Anker-IDs, Klassen, href und Code nicht anfassen.'
+- 'Ohne Rueckfrage umsetzen (R32 empfohlen): G1 S23, K8, K12 (nur Linktext, Anker #kap-reportfamilie-architektur bleibt), K13 (aria-labels), K19. G4 S15, K6. G5 S8, K2, K3, K4, K11, K18. G6 S2, S3, K10, S4 (vorher pruefen, wer im Bild gemeint ist), S7, S10, S11 (Zeile im SVG streichen), K5; danach die Zaehlpointe (8 Menschen + Navis + Lumen = 10) noch einmal pruefen. G9 S22 (Version per git log ermitteln, sonst (seit einer frueheren Version)). K14 und K20 NICHT umsetzen.'
+- "Entscheidungen Bernd 07.11.2026 (Fragen 1 bis 12 aus R32): F1 ja, ueberall \xDF nach deutscher Norm (Landstra\xDFe, wei\xDF, ausschlie\xDFlich, Stra\xDFe, gro\xDF, schlie\xDFlich, au\xDFer, au\xDFen, hei\xDFt, Gro\xDFkunde, gleicherma\xDFen, abschlie\xDFend, Seitenstra\xDFe, umschlie\xDFt); nur die Versionshistorie bleibt unveraendert; Wortliste und Trefferzahlen vorher und nachher im Bericht; Anker, Klassen, Code und URLs nicht treffen."
+- 'F2: Report-Namen im Text, in der SVG und in der Bildunterschrift klein wie die Repos: ireport, qreport, nreport, sreport, areport. Historie unberuehrt. F3: K7 "der interne SharePoint". F4: K9 die Formel "Genau die Art ..." von 4 auf 1 Vorkommen ausduennen, "kurz"-Haeufung Z. 896 aufloesen. F5: K15 nichts aendern (Motto bleibt, gewollt).'
+- "F6 (S1): Mira geht um 16:10 nicht zum Auto, sondern \"auf dem Sprung zu einem Kundencall\", die Fahrt ist \"heute Abend\"; K1 (dieselbe Zeile) danach pruefen und nur falls noetig anwenden. F7 (S12, K16): A7 gilt. Die \"Landstrasse\"-Stellen, K16 (\"eine Ausfahrt weiter\") und die Zeilen zu Auffahrt und Anschlussstelle auf Autobahn A7 stimmig machen; SVG-Text \"19:42 \xB7 A7 Richtung Sueden\" bleibt. F8 (S13): Teil 2 ist eine typische andere Fahrt: ein einleitender Satz \"An einem anderen Morgen ...\", Teil 1 unberuehrt. F9 (K17): um 19:51 \"auf dem Heimweg von einem Abendtermin\"."
+- 'F10: S5, S6 und S9 aus R19 uebernehmen (S5 Horsts Satz "Sie ist nicht mehr die Neue ..."; S6 Z. 1648 laesst offen, ob Petra die Checkliste selbst fertigmacht; S9 Nora stellt Finn Kilians echte Frage "Und was passiert, wenn er kaputtgeht?"). F11 (S14): Navis im Erzaehl- und Sachtext "es", "er" nur in woertlicher Rede; die wenigen "er" im Erzaehltext angleichen. F12: S17, S18, S19, S20 aus R19 uebernehmen (S17 Backup als offenes Ticket statt "41 Stunden"; S18 Lumen nennt den Hub als Quelle, Ticket-Historie "laut Navis"; S19 "Navis direkt aufs Sysingboard, Lumen ueber den Hub" inkl. der zwei SVG; S20 "angelegt wird nur nach ausdruecklicher Freigabe durch einen Menschen"). Danach Regelcheck EINBAU-CHECKLISTE Abschnitt 5 fuer die betroffenen Szenen wiederholen.'
+- Danach Teil 1 und Teil 2 auf die Zeitleiste 16:10 / 16:14 / 19:42 / 19:51 / 19:54 / 07:58 gegenlesen.
+- 'Versionshistorie: die Zeile v1.38 um einen Satz zu diesen Korrekturen ergaenzen; Version und Datum im Deckblatt unveraendert.'
+- 'Pruefen: ci-check.ps1 (der vorbestehende Fehler story/current darf bleiben, keine neuen), keine doppelten IDs, alle Anker loesen auf, git diff --check. Vor dem Push den Bericht gegen die Muster aus ci.yml und ci-check.ps1 pruefen (keine Schluesselmuster im Berichtstext). story/current und PDF nicht erzeugen und nicht committen (macht R16).'
+nachweis: "Commit(s) auf dem Branch von PR #10, Kommentar im PR mit Tabelle Befund, Fundstelle (Text), alt, neu; Bericht reports/R38-BERICHT.md mit Wortliste und Trefferzahlen fuer \xDF, ci-check-Ausgabe."
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur die in diesem Auftrag genannten Befunde, kein weiterer Buchtext, keine PDF, nicht force-pushen.
+hinweis: 'Release-Kette v1.38: alle Quelltext-Aenderungen auf dem Branch von PR #10 stapeln. R16 laeuft erst nach R38.'
+status: bereit
+stand: 2026-11-07 07:55
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

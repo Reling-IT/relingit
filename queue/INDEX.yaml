@@ -1,4 +1,4 @@
-stand: 2026-11-07 07:43
+stand: 2026-11-07 07:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -231,17 +231,29 @@ auftraege:
   gate: nein
   status: bereit
   abhaengig_von: []
-- id: R16
-  titel: 'Release-Zweig v1.38: Avatare (#6) und Buchtext (#9) einbeziehen, PDF und story/current erzeugen, CI gruen'
+- id: R38
+  titel: 'Sollte- und Kann-Befunde (R19/R32) mit den Antworten von Bernd auf PR #10 umsetzen'
   art: code-pr
   gate: nein
   status: bereit
   abhaengig_von:
+  - R19
+  - R26
+  - R27
+  - R32
+- id: R16
+  titel: 'Release-Zweig v1.38: Avatare (#6) und Buchtext (#9) einbeziehen, PDF und story/current erzeugen, CI gruen'
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R03
   - R15
   - R26
   - R27
-  - R03
   - R28
+  - R38
+  voraussetzung: R38 (Textkorrekturen mit den Antworten von Bernd) ist erledigt. Dann Status bereit.
 - id: R17
   titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
   art: lesen
