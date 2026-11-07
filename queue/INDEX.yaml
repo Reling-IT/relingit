@@ -1,4 +1,4 @@
-stand: 2026-11-07 05:40
+stand: 2026-11-07 05:50
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -132,7 +132,7 @@ auftraege:
   titel: 'Release-Pruefungen: PDF-Version, output/ ausnehmen'
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R02
   - R14
