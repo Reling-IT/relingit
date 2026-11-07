@@ -155,7 +155,14 @@ hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Mer
 leerlauf:
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
+leerlauf_ende:
+  - zeit: 2026-11-07T07:17+01:00
+    hinweis: 'Arbeitsende; R16 bereit, nicht begonnen; R24 laeuft noch, Bericht folgt. Tagesbericht reports/TAGESBERICHT-2026-11-07.md'
 fehler:
+  - zeit: 2026-11-07T07:08+01:00
+    auftrag: 'Owner-Auftrag Loeschung quelle-pdf-werkzeuge-20261106'
+    art: 'Push --delete vom Auto-Modus abgelehnt (Git Destructive)'
+    massnahme: 'nicht ausgefuehrt, Owner informiert'
   - zeit: 2026-11-07T07:06+01:00
     auftrag: R34
     art: 'Auftraege widersprechen sich (R34 gegen gemergtes R28)'
