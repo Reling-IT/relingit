@@ -85,7 +85,11 @@ auftraege:
     ende: 2026-11-07T05:13+01:00
     bericht: reports/R23-BERICHT.md
   - id: R25
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-07T05:06+01:00
+    ende: 2026-11-07T05:17+01:00
+    branch: auftrag-R25-doku-diagramme
+    pr: https://github.com/Reling-IT/relingit/pull/12
+    bericht: reports/R25-BERICHT.md
 hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
 fehler: []
