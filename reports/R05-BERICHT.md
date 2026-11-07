@@ -38,7 +38,7 @@ quelle_queue: 'origin/ops/queue 0f77f9f (Autor Claude, Co-Authored-By und Claude
 1. Bernd legt die Dateien ab und setzt R05 wieder auf `bereit`. Der nächste Zyklus übernimmt dann.
 2. Die Szenenideen könnten dauerhaft in ein eigenes Verzeichnis im Repo wandern (zum Beispiel `docs/ideen/`, nicht öffentlich ausgeliefert). Dann hängt der Auftrag nicht mehr an einer lokalen OneDrive-Ablage, und jede Änderung hat einen Diff in Git.
 
-Hygiene: 2 Remote-Branches in main gemergt (Löschkandidaten, Details in R22), 5 offene PRs (#6 bis #10), davon 2 Drafts (#9, #10).
+Hygiene: 0 Remote-Branches in main gemergt (außer main), 5 offene PRs (#6 bis #10), davon 2 Drafts (#9, #10).
 
 ```yaml
 Reifegrad: "Szenenideen-Dokument unverändert, Stand vor 06.11.2026"
