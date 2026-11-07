@@ -10,7 +10,7 @@ main: 002f079
 
 ## Ergebnis
 
-- 18 Aufträge bearbeitet: 16 erledigt, 2 blockiert (R05, R34). R24 läuft beim Arbeitsende noch, der Bericht folgt. R16 wurde um 07:16 bereit und nicht mehr begonnen.
+- 18 Aufträge bearbeitet: 16 erledigt (R24 als Teilstand, PR #15 Draft), 2 blockiert (R05, R34). R16 wurde um 07:16 bereit und nicht mehr begonnen.
 - Arbeitsweise auf Anweisung des Owners: Agenten parallel statt „einer zur Zeit“, PR-Kommentare zu jedem Ergebnis, nicht auf Merges gewartet.
 - Gemergt hat Bernd heute: #11 (R14), #12 (R25), #13 (R28), #14 (R15).
 
@@ -33,7 +33,7 @@ main: 002f079
 | R32 | erledigt | 9 Gruppen, 12 Fragen an Bernd | reports/R32-BERICHT.md |
 | R33 | erledigt | 28 Doku-Befunde, 6 muss | reports/R33-BERICHT.md |
 | R34 | blockiert | Widerspruch zu R28 (Cover, SHA256SUMS.txt) | reports/R34-BERICHT.md |
-| R24 | in Arbeit | Pester-Tests | Bericht folgt |
+| R24 | erledigt (Teilstand) | 8 Pester-Tests grün mit Pester 3.4, Lauf mit Pester 5 offen | PR #15 (Draft) |
 
 ## Offene Fragen, Risiken, Abweichungen
 
