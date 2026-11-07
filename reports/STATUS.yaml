@@ -1,4 +1,4 @@
-stand: 2026-11-07T05:15+01:00
+stand: 2026-11-07T05:17+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 0f77f9f (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -52,8 +52,12 @@ auftraege:
     bericht: reports/R05-BERICHT.md
     hinweis: 'Eingangsdateien szenenideen-*.md fehlen im OneDrive-Ordner'
   - id: R14
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-07T05:06+01:00
+    ende: 2026-11-07T05:17+01:00
+    branch: auftrag-R14-pdf-werkzeuge
+    pr: https://github.com/Reling-IT/relingit/pull/11
+    bericht: reports/R14-BERICHT.md
   - id: R19
     status: in_arbeit
     start: 2026-11-07T05:06+01:00
