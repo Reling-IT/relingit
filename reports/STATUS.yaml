@@ -95,4 +95,7 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/12
     bericht: reports/R25-BERICHT.md
 hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
+leerlauf:
+  - zeit: 2026-11-07T05:26+01:00
+    hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
 fehler: []
