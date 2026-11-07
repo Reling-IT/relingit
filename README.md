@@ -53,6 +53,8 @@ Die PDF lässt sich lokal aus der HTML-Quelle erzeugen und auf Layoutfehler prü
 Befehle und bekannte Stolpersteine stehen in [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md).
 Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
 
+Die Pester-Tests für `ci-check.ps1` und `publish-release.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
+
 ### Veröffentlichung über Supabase
 
 1. Den geschützten Bereich `admin.html` aufrufen und mit dem Supabase-Administratorkonto anmelden.

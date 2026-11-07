@@ -1,0 +1,12 @@
+// Minimaler Ersatz für assets/js/admin.js: nur die Muster, die ci-check.ps1 verlangt.
+const challenge = "/factors/id/challenge";
+const verify = "/factors/id/verify";
+const user = authRequest("/user");
+const blob = new Blob([qrCode], { type: "image/svg+xml" });
+const isSvg = qrCode.trimStart().startsWith("<");
+const cleanup = factor.status === "unverified" ? { method: "DELETE" } : null;
+const totp = { issuer: "https://berndmarnau.de/relingit" };
+function validateStoryFiles() { return "Die gewählte HTML-Datei ist der Viewer"; }
+const level = "aal2";
+const recover = "/recover?redirect_to=" + recoveryRedirectUrl;
+const update = { method: "PUT" };
