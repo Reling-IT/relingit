@@ -1,6 +1,6 @@
 stand: 2026-11-07T06:50+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue 3a99d68 (vorher a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
+quelle_queue: 'origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
 auftraege:
   - id: R01
@@ -139,7 +139,20 @@ hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Mer
     start: 2026-11-07T06:31+01:00
     ende: 2026-11-07T06:49+01:00
     bericht: reports/R33-BERICHT.md
+  - id: R34
+    status: blockiert
+    start: 2026-11-07T07:02+01:00
+    ende: 2026-11-07T07:06+01:00
+    bericht: reports/R34-BERICHT.md
+    hinweis: 'Kern durch R28/PR #13 erledigt; Widerspruch zu R28 (Cover committen, SHA256SUMS.txt) - Rueckfrage Planer'
+  - id: R24
+    status: in_arbeit
+    start: 2026-11-07T07:04+01:00
 leerlauf:
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
-fehler: []
+fehler:
+  - zeit: 2026-11-07T07:06+01:00
+    auftrag: R34
+    art: 'Auftraege widersprechen sich (R34 gegen gemergtes R28)'
+    massnahme: 'nicht ausgefuehrt, Bericht R34, Rueckfrage an Planer'
