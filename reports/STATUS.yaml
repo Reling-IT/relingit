@@ -1,6 +1,6 @@
 stand: 2026-11-07T05:24+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue 0f77f9f (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
+quelle_queue: 'origin/ops/queue f355790 (vorher 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
 auftraege:
   - id: R01
@@ -95,6 +95,12 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/12
     bericht: reports/R25-BERICHT.md
 hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
+  - id: R28
+    status: in_arbeit
+    start: 2026-11-07T05:34+01:00
+  - id: R26
+    status: in_arbeit
+    start: 2026-11-07T05:34+01:00
 leerlauf:
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
