@@ -37,6 +37,7 @@ main: 002f079
 
 ## Offene Fragen, Risiken, Abweichungen
 
+- **CI rot durch Fehlalarm (dringend, von Claude Code verursacht):** Der Bericht R30 nennt die Suchmuster der Geheimnisprüfung wörtlich (Commit 23b28ac auf ops/reports). Der Workflow-Schritt `git log -G … --all` schlägt deshalb bei jedem neuen Lauf an, zuerst bei PR #15. Ein echtes Geheimnis gibt es nicht. Behebung nur über eine Workflow-Änderung (Historienprüfung auf HEAD bzw. origin/main begrenzen oder `reports/` ausnehmen), dafür ist die Freigabe von Bernd nötig. Lehre: In Berichten Suchmuster nie wörtlich zitieren.
 - **Löschung `quelle-pdf-werkzeuge-20261106`** (Owner-Auftrag 07:08): Prüfung „in main“ ok. Die Löschung hat der Auto-Modus von Claude Code als destruktiv abgelehnt, deshalb nicht ausgeführt. Bernd kann sie selbst ausführen.
 - **Release-Kette v1.38:** story/current und die PDF sind noch nicht neu erzeugt. Erst dann wird die CI von #9 und #10 grün (R16). Durch die echten Schriften ändert sich die Seitenzahl.
 - **Offene Owner-Fragen:** NotebookLM oder Gemini; FTP-Regel (vier Pfade oder zusätzlich assets/css); die 12 Fragen aus R32; R34 gegen R28; Installation playwright/numpy/pillow; Ablageort der Szenenideen (R05).
@@ -53,8 +54,9 @@ Hygiene: 2 gemergte Remote-Branches übrig (`quelle-pdf-werkzeuge-20261106`, `au
 
 ```yaml
 Reifegrad: "Release-Werkzeuge vollständig in main (PDF-Skripte, Versionsprüfung, Ablaufdoku, Podcast); Buchquelle v1.38 lektoriert, Muss-Befunde und Schriften eingearbeitet; Rendern offen"
-Projektstatus: "16 von 18 Aufträgen erledigt, R05 und R34 blockiert, R24 in Arbeit, R16 bereit"
+Projektstatus: "16 von 18 Aufträgen erledigt, R05 und R34 blockiert, R16 bereit; CI wegen Fehlalarm aus R30 rot"
 Offene_Fragen:
+  - "CI-Workflow anpassen (Historienprüfung ohne --all bzw. ohne reports/)?"
   - "playwright, numpy, pillow installieren (für R16)?"
   - "NotebookLM oder Gemini als Podcast-Werkzeug?"
   - "FTP-Regel: vier Pfade oder zusätzlich assets/css?"

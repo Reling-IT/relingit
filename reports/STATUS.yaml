@@ -163,6 +163,10 @@ leerlauf_ende:
   - zeit: 2026-11-07T07:17+01:00
     hinweis: 'Arbeitsende; R16 bereit, nicht begonnen; R24 laeuft noch, Bericht folgt. Tagesbericht reports/TAGESBERICHT-2026-11-07.md'
 fehler:
+  - zeit: 2026-11-07T07:25+01:00
+    auftrag: R30
+    art: 'CI-Fehlalarm: Bericht R30 (Commit 23b28ac auf ops/reports) nennt Suchmuster woertlich; Workflow-Historienpruefung (git log -G --all) schlaegt an. Erster roter Lauf: PR #15. Kein echtes Geheimnis.'
+    massnahme: 'Owner-Entscheidung noetig: Workflow auf HEAD/origin/main begrenzen oder reports/ ausnehmen. Kommentar PR #15. Historie nicht umschreibbar.'
   - zeit: 2026-11-07T07:08+01:00
     auftrag: 'Owner-Auftrag Loeschung quelle-pdf-werkzeuge-20261106'
     art: 'Push --delete vom Auto-Modus abgelehnt (Git Destructive)'
