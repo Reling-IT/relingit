@@ -22,7 +22,8 @@ schritte:
 nachweis: "Commit(s) auf dem Branch von PR #10, Kommentar im PR mit Tabelle Befund, Fundstelle (Text), alt, neu; Bericht reports/R38-BERICHT.md mit Wortliste und Trefferzahlen fuer \xDF, ci-check-Ausgabe."
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur die in diesem Auftrag genannten Befunde, kein weiterer Buchtext, keine PDF, nicht force-pushen.
 hinweis: 'Release-Kette v1.38: alle Quelltext-Aenderungen auf dem Branch von PR #10 stapeln. R16 laeuft erst nach R38.'
-status: bereit
-stand: 2026-11-07 07:55
+status: erledigt
+stand: 2026-11-08 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+ausgefuehrt_von: 'Planer-Session 08.11.2026 (Commit b4bb44f auf PR #10), Bericht reports/R38-BERICHT.md'

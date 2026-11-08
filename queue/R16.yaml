@@ -9,7 +9,7 @@ abhaengig_von:
 - R27
 - R28
 - R38
-voraussetzung: R38 (Textkorrekturen) ist erledigt. Dann Status bereit. Playwright-Installation ist freigegeben (siehe freigabe_playwright).
+voraussetzung: 'Erfuellt: R15, R26, R27, R28, R38 erledigt, main 1281bbe. Playwright-Installation freigegeben. Branch geschichte-veraltete-daten-20261107 steht auf b4bb44f.'
 ziel: 'Ein einziger Zweig (Branch von PR #10) enthaelt Buchtext v1.38 (R03), die neue Geschichte, die Korrekturen (R26), die Schriften (R27), die Avatare (PR #6), die PDF und die neu erzeugte story/current, und die CI ist gruen. Danach kann PR #10 auf main umgestellt und gemergt werden; #6 und #9 gelten damit als enthalten und werden geschlossen.'
 schritte:
 - 'Auf dem Branch geschichte-veraltete-daten-20261107 weiterarbeiten. origin/main einmergen (kein Rebase, kein Force-Push). Danach origin/avatare-buch-und-seite-20261106 (PR #6) einmergen; Konflikte in source/fahrt-zum-kunden.html sorgfaeltig loesen und jede Loesung im Bericht belegen.'
@@ -19,8 +19,8 @@ schritte:
 - 'PR-Kommentar an #10 mit Zusammenfassung; Hinweis an Bernd, dass #10 auf main umgestellt werden kann und #6 und #9 danach zu schliessen sind (nicht selbst schliessen oder mergen).'
 nachweis: 'Commits auf dem Branch von PR #10, gruene CI, Bericht reports/R16-BERICHT.md mit Seitenzahl, Layoutbefund, Konfliktloesungen und ci-check-Ausgabe.'
 grenzen: 'Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Force-Push, kein Merge, #6 und #9 nicht schliessen.'
-status: wartet_auf_voraussetzung
-stand: 2026-11-07 07:55
+status: bereit
+stand: 2026-11-08 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 freigabe_playwright: 'Bernd 07.11.2026 07:40: Installation von Playwright (pip) samt Chromium (playwright install chromium) ist freigegeben, nur in einer eigenen virtuellen Umgebung (z. B. C:\dev\venv-pdf), ohne Systemeingriff, ohne Aenderung am Repo. Danach PDF-Erzeugung nach docs/PDF-ERZEUGEN.md. Installationsbefehle und Versionen im Bericht nennen.'
