@@ -1,4 +1,4 @@
-stand: 2026-11-08T05:23+01:00
+stand: 2026-11-08T05:34+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -171,9 +171,13 @@ auftraege:
     bericht: reports/R35-BERICHT.md
     hinweis: 'Release podcast-2026-10 angelegt, Hashes nach Download gleich; GitHub zeigt es als Latest (einziges Release) - Rueckfrage Bernd'
   - id: R36
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-08T07:45+01:00
-    hinweis: 'auftrag-R36-podcast-hilfen'
+    ende: 2026-11-08T05:34+01:00
+    branch: auftrag-R36-podcast-hilfen
+    pr: https://github.com/Reling-IT/relingit/pull/20 (offen, CI gruen)
+    bericht: reports/R36-BERICHT.md
+    hinweis: 'index.html jetzt Dezimal-MB statt MiB - Bestaetigung Bernd offen'
   - id: R37
     status: erledigt
     start: 2026-11-08T07:45+01:00
