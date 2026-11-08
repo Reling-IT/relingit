@@ -225,7 +225,12 @@ function Test-StoryCompleteness([string]$text, [string]$label) {
             $name = [regex]::Match($entry, '<div\s+class="name">(?<v>[^<]*)</div>').Groups['v'].Value.Trim()
             $names += $name
             foreach ($field in @("badge", "name", "role", "tenure")) {
-                if (-not [regex]::IsMatch($entry, "<div\s+class=""$field[^""]*"">\s*[^<\s][^<]*</div>")) {
+                $filled = [regex]::IsMatch($entry, "<div\s+class=""$field[^""]*"">\s*[^<\s][^<]*</div>")
+                # Bildmarke statt Kürzel (PR #6): Das Badge gilt als gefüllt, wenn es ein Bild mit nicht leerem alt-Text enthält.
+                if (-not $filled -and $field -eq "badge") {
+                    $filled = [regex]::IsMatch($entry, '<div\s+class="badge[^"]*">\s*<img\s[^>]*\balt="[^"\s][^"]*"[^>]*>\s*</div>')
+                }
+                if (-not $filled) {
                     $found.Add("${label}: Personenliste, Eintrag '$name': Feld '$field' fehlt oder ist leer")
                 }
             }
