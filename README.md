@@ -12,14 +12,14 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 - `assets/js`: öffentliche Logik, PDF-Ansicht, Administration und Supabase-Konfiguration
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
-- `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md)
+- `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md); Tagesstart für KI-Sitzungen in [docs/TAGESSTART.md](docs/TAGESSTART.md)
 - `docs/vorlagen`: Kapitel-Vorlage und Einbau-Checkliste für neue Geschichten
 - `scripts`: lokale und CI-Prüfungen, Freigabeprüfung (`freigabe-pruefen.ps1`) und lokale Vorschau (`vorschau.ps1`), siehe [docs/FREIGABE.md](docs/FREIGABE.md)
 - `scripts/pdf`: freiwillige Werkzeuge zum Erzeugen und Prüfen der PDF (siehe [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md))
 - `source`: ursprüngliche Quelldateien, die nicht veröffentlicht werden
 - `supabase`: Datenbank, RLS, Edge Function und Sicherheitsprüfungen
 - `tests`: Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1` und `vorschau.ps1`
-- Projektstamm: öffentlich aufrufbare Seiten mit `.htaccess`, README, Lizenz, Wartungsskript sowie `.gitignore` und `.gitattributes`
+- Projektstamm: öffentlich aufrufbare Seiten mit `.htaccess`, README, Lizenz, Wartungsskript, `CLAUDE.md` (Hinweise und Sitzungsroutine für KI-Sitzungen) sowie `.gitignore` und `.gitattributes`
 
 Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht auf den DomainFactory-Webspace kopiert werden. Die genaue Ablageregel steht in `archive/README.md`.
 
