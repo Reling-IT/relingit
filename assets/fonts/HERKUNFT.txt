@@ -1,0 +1,42 @@
+Herkunft der Webschriften fuer source/fahrt-zum-kunden.html (Auftrag R27)
+=========================================================================
+
+Alle drei Familien stehen unter der SIL Open Font License 1.1 (Lizenztext je
+Familie in *-OFL.txt). Die Dateien sind unveraendert (kein Subsetting, keine
+Umbenennung der Schrift selbst; nur der Dateiname der variablen Fraunces wurde
+vereinfacht). IBM Plex hat den Reserved Font Name "Plex": deshalb wird die
+Datei nicht veraendert oder untergesetzt.
+
+Abruf: 2026-11-07, 05:49-05:50 UTC, per curl von raw.githubusercontent.com,
+jeweils auf einen festen Commit gepinnt.
+
+Fraunces (Undercase Type), Version 1.003, variabel (SOFT, WONK, opsz, wght)
+  Repo:   https://github.com/undercasetype/Fraunces  Commit 7ccdec31c6028118dce3e47fe864e3744460371d
+  Fraunces-Variable.woff2  <- fonts/webfonts/variable/Fraunces[SOFT,WONK,opsz,wght].woff2
+  Fraunces-OFL.txt         <- OFL.txt
+
+Work Sans (Wei Huang), statische Schnitte
+  Repo:   https://github.com/weiweihuanghuang/Work-Sans  Commit b35c81086186162164947bd39574683073d9b268
+  WorkSans-Regular.woff2   <- fonts/webfonts/WorkSans-Regular.woff2
+  WorkSans-Italic.woff2    <- fonts/webfonts/WorkSans-Italic.woff2
+  WorkSans-Bold.woff2      <- fonts/webfonts/WorkSans-Bold.woff2
+  WorkSans-OFL.txt         <- OFL.txt
+
+IBM Plex Mono (IBM), Version 2.005, vollstaendiger Zeichensatz ("complete")
+  Repo:   https://github.com/IBM/plex  Commit 48e8676114c04f29033b4b53da4ec579f8846297
+  IBMPlexMono-Regular.woff2 <- packages/plex-mono/fonts/complete/woff2/IBMPlexMono-Regular.woff2
+  IBMPlexMono-Italic.woff2  <- packages/plex-mono/fonts/complete/woff2/IBMPlexMono-Italic.woff2
+  IBMPlexMono-Medium.woff2  <- packages/plex-mono/fonts/complete/woff2/IBMPlexMono-Medium.woff2
+  IBMPlexMono-OFL.txt       <- packages/plex-mono/LICENSE.txt
+
+SHA-256
+e6638ea113d0027354a08f957a4068975c8066395a0d0f7bb7861f6409621be3  Fraunces-Variable.woff2
+2024bf2b08027dcd6d09091385756e327744bbe26b782c411381dffc40ffc622  IBMPlexMono-Italic.woff2
+33faf307fa6031fb4062276d7320a6d632de890cbb347576fd80cfa01077bc25  IBMPlexMono-Medium.woff2
+ba204497f16b6d334cee9d1e963a831b73e3a56e1d6300a8489d18df7214b350  IBMPlexMono-Regular.woff2
+b8426840585ab1093ce262d35aa03291f59719c38605d0b6ecbe2032924917a9  WorkSans-Bold.woff2
+21f75b620a355fc62e286ea0570e0a25186da16d1973c2b7e9c0239bf1408169  WorkSans-Italic.woff2
+495ec293f0e79ad3d77bcfcf4c4adffb2fe8bd993c6c3800e4528850a3634108  WorkSans-Regular.woff2
+bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b  Fraunces-OFL.txt
+7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da  IBMPlexMono-OFL.txt
+749aca05078664ce682dce1b1b10096ac397cb088c1a6df4e1bb56f0092a9272  WorkSans-OFL.txt
