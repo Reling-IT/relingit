@@ -1,0 +1,21 @@
+id: R39
+titel: 'Doku-Bereinigung nach R33: ABLAUF.md, CODEX_PROMPT.md, FTP-Regel, veraltete Dateien'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R33
+- R37
+ziel: Die Doku stimmt mit dem Stand von main ueberein (Befunde 1 bis 28 aus reports/R33-BERICHT.md, Schwerpunkt die 6 Muss-Befunde).
+schritte:
+- Auf neuem Branch auftrag-r39-doku von aktuellem origin/main arbeiten. reports/R33-BERICHT.md zuerst lesen; Fundstellen ueber den Text suchen, nicht ueber Zeilennummern.
+- 'docs/ABLAUF.md: Kennzeichnung "gilt ab Merge von PR #8", Klasse pr8 und Stand 2f8cd6d entfernen und den aktuellen Stand eintragen; Knoten B (PDF-Werkzeug) als Owner-Schritt mit Verweis auf docs/PDF-ERZEUGEN.md fuehren, den Punkt OFFEN (R14) streichen; Belegtabelle auf Abschnittsnamen oder Anker statt Zeilennummern umstellen und gegen den aktuellen Stand pruefen.'
+- 'docs/CODEX_PROMPT.md: Zeile zu anon und INSERT durch das aktuelle Modell ersetzen (kein direkter Tabellenzugriff fuer anon, Feedback nur ueber die Edge Function submit-feedback). CODEX_PROMPT.md und docs/REVIEW.md, soweit auf v1.25 oder altem Modell beruhend, oben mit einem Hinweis "veraltet, Stand v1.25" kennzeichnen statt umschreiben.'
+- 'FTP-Regel einheitlich formulieren (README Abschnitt FTP, ABLAUF, NEUE-GESCHICHTE, DOMAINFACTORY-DEPLOYMENT, publish-release-Ausgabe): Standardweg Admin-Bereich mit Supabase; FTP fuer index.html, assets/js, assets/css, assets/fonts, impressum, datenschutz und weitere Seiten, die nicht ueber den Admin-Bereich gehen. Abweichungen aus R33 (README Zeile mit q15, ABLAUF 127/137) angleichen.'
+- Alle Sollte- und Kann-Befunde aus R33 umsetzen, die reine Doku betreffen; Befunde, die Code oder Buchtext betreffen, nur im Bericht auflisten. Podcast-Werkzeug ist NotebookLM (R37), nicht aendern, nur abstimmen.
+- 'Pruefen: ci-check.ps1 lokal, alle internen Links und Anker in docs/ pruefen, Mermaid-Diagramme der Doku auf Syntax pruefen (Parser oder mmdc, falls vorhanden). Bericht vor dem Push gegen die Schluesselmuster aus ci.yml und ci-check.ps1 pruefen (R30-Fehlalarm).'
+nachweis: Pull Request (nicht Draft, wenn CI gruen), Bericht reports/R39-BERICHT.md mit Tabelle Befund, alt, neu.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext (source/, story/current), keine PDF, keine Skripte aendern (nur Doku).
+status: bereit
+stand: 2026-11-08 06:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

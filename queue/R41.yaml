@@ -1,0 +1,18 @@
+id: R41
+titel: Kontraste der Buchquelle anheben (Design-Tokens, Codebox) fuer die naechste Buchfassung
+art: code-pr
+gate: ja
+abhaengig_von:
+- R31
+- R16
+ziel: 'Die Buchquelle erfuellt AA-Kontraste (Befund R31 Muss: --ink-soft, --ink-faint, --accent, .codebox, .tenure, .cover-toc-title). Das aendert Aussehen von Buch, Lesefassung und PDF.'
+offen: 'Bernd entscheidet: ja, Kontraste jetzt anheben (dann als Teil von v1.39 nach dem Release v1.38, weil die Quelle neu gerendert werden muss), oder zurueckstellen. Vorschlag aus R31: --ink-soft #c3cbdc, --ink-faint #b0bacd, --accent #a5b6ff, .codebox auf --surface oder dunkler, .tenure ohne opacity.'
+schritte:
+- 'Nach Freigabe und nach dem Release v1.38 (R16, Merge PR #10): neuer Branch von main, Tokens und Codebox gemaess reports/R31-BERICHT.md anpassen, Kontraste nachrechnen und belegen.'
+- Vorher/Nachher-Seiten (Deckblatt, eine Szene, eine Codebox, eine SVG-Seite) als Bilder im Bericht; PDF und Lesefassung neu erzeugen ist ein eigener Auftrag.
+nachweis: Pull Request und Bericht reports/R41-BERICHT.md mit Kontrasttabelle und Bildvergleich.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Veroeffentlichen.
+status: wartet_auf_entscheidung
+stand: 2026-11-08 06:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

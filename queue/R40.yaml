@@ -1,0 +1,21 @@
+id: R40
+titel: 'Barrierefreiheit der Webseite: Muss-Befunde aus R31 (ohne Podcast-Transkripte und ohne Buchquelle)'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R31
+- R28
+ziel: 'Die sieben Muss-Befunde der Webseite aus reports/R31-BERICHT.md sind behoben und mit Kontrastwerten belegt. Nicht enthalten: Podcast-Transkripte (R42) und Kontrast der Buchquelle (R41).'
+schritte:
+- Auf neuem Branch auftrag-r40-barrierefreiheit von aktuellem origin/main arbeiten. reports/R31-BERICHT.md zuerst lesen.
+- 'index.html: aria-label des Marken-Links so aendern, dass der sichtbare Text im Namen steht (2.5.3), z. B. entfernen oder "Reling IT / Geschichte, zur Startseite".'
+- 'lesen.html, handout.html, assets/js/story-viewer.js, assets/js/handout-viewer.js: Zoom-Reset so benennen, dass der sichtbare Text (100 % bzw. 120 %) im Namen steht oder title statt aria-label nutzen (2.5.3).'
+- 'assets/css/styles.css: Fokusrahmen im Feedbackformular auf eine kontrastreiche Farbe (z. B. var(--night)), Rahmen von Select und Textarea auf mindestens 3:1 gegen Papier, .meta und footer auf --muted (mindestens 4,5:1), .form-note auf mindestens 4,5:1. Jeden neuen Wert mit berechnetem Kontrast im Bericht belegen (Skript im Bericht nennen).'
+- 'Pruefen: ci-check.ps1 lokal, Layout unveraendert (Screenshots Desktop 1280 und Handy 390 breit von index.html vor und nach der Aenderung, falls Playwright vorhanden), JavaScript-Syntaxpruefung (node --check).'
+- 'FTP-Hinweis im Bericht: geaenderte Dateien (index.html, lesen.html, handout.html, assets/css, assets/js) gehen per FTP, nicht ueber den Admin-Bereich. Bericht vor dem Push gegen die Schluesselmuster aus ci.yml und ci-check.ps1 pruefen.'
+nachweis: Pull Request, Bericht reports/R40-BERICHT.md mit Tabelle Fundstelle, alt, neu, Kontrastwert alt/neu.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext, keine PDF, keine Podcast-Dateien. Keine neue Funktion, nur die genannten Befunde.
+status: bereit
+stand: 2026-11-08 06:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

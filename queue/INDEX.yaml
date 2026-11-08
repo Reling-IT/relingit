@@ -1,4 +1,4 @@
-stand: 2026-11-08 06:10
+stand: 2026-11-08 06:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -303,4 +303,38 @@ auftraege:
   gate: nein
   status: bereit
   abhaengig_von: []
+- id: R39
+  titel: 'Doku-Bereinigung nach R33: ABLAUF.md, CODEX_PROMPT.md, FTP-Regel, veraltete Dateien'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R33
+  - R37
+- id: R40
+  titel: 'Barrierefreiheit der Webseite: Muss-Befunde aus R31 (ohne Podcast-Transkripte und ohne Buchquelle)'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R31
+  - R28
+- id: R41
+  titel: Kontraste der Buchquelle anheben (Design-Tokens, Codebox) fuer die naechste Buchfassung
+  art: code-pr
+  gate: ja
+  status: wartet_auf_entscheidung
+  abhaengig_von:
+  - R31
+  - R16
+  offen: 'Bernd entscheidet: ja, Kontraste jetzt anheben (dann als Teil von v1.39 nach dem Release v1.38, weil die Quelle neu gerendert werden muss), oder zurueckstellen. Vorschlag aus R31: --ink-soft #c3cbdc, --ink-faint #b0bacd, --accent #a5b6ff, .codebox auf --surface oder dunkler, .tenure ohne opacity.'
+- id: R42
+  titel: Podcast-Transkripte fuer die vier Folgen (WCAG 1.2.1)
+  art: lesen
+  gate: ja
+  status: wartet_auf_entscheidung
+  abhaengig_von:
+  - R31
+  - R35
+  offen: 'Bernd entscheidet: Woher kommt das Transkript (NotebookLM-Export, Whisper-Lauf auf deinem Rechner, Handarbeit) und wer prueft es? Danach wird das Anzeigeformat festgelegt (details unter dem Player oder eigene Seite).'
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
