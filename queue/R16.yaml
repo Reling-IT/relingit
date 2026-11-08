@@ -19,7 +19,7 @@ schritte:
 - 'PR-Kommentar an #10 mit Zusammenfassung; Hinweis an Bernd, dass #10 auf main umgestellt werden kann und #6 und #9 danach zu schliessen sind (nicht selbst schliessen oder mergen).'
 nachweis: 'Commits auf dem Branch von PR #10, gruene CI, Bericht reports/R16-BERICHT.md mit Seitenzahl, Layoutbefund, Konfliktloesungen und ci-check-Ausgabe.'
 grenzen: 'Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Force-Push, kein Merge, #6 und #9 nicht schliessen.'
-status: bereit
+status: erledigt
 stand: 2026-11-08 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

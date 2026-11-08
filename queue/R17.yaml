@@ -13,7 +13,8 @@ schritte:
 - Eine Schritt-fuer-Schritt-Liste fuer den Upload schreiben (Admin-Bereich, bei Bedarf FTP), ohne Zugangsdaten. Pruefpunkte nach dem Upload als Verweis auf R09.
 nachweis: Bericht reports/R17-BERICHT.md mit Dateiliste und Upload-Schritten.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts hochladen, nichts veroeffentlichen.
-status: wartet_auf_voraussetzung
+status: bereit
 stand: 2026-11-07 06:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_planer: 'PR #10 am 08.11.2026 gemergt (81849d9), #6 und #9 geschlossen, main-CI gruen.'

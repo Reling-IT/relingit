@@ -24,7 +24,7 @@ phase_2_loeschen:
 - 'Danach git status vergleichen: er muss vor und nach der Aktion identisch sein. Abweichung sofort melden.'
 nachweis: Bericht reports/R13-BERICHT.md mit Liste der geloeschten Eintraege, freigegebener Liste, git status vorher und nachher, freigewordenem Speicher.
 grenzen: Kein Zugriff ausserhalb des Ordners. Kein endgueltiges Loeschen. Keine Aenderung am Repo oder an der Git-Historie. Keine Zugangsdaten. Kein Merge, kein Push nach main.
-status: bereit
+status: erledigt
 freigabe: 'Bernd 07.11.2026 06:44: Ja, R13 gemeinsam mit dem Tagesabschluss ausfuehren. Der Status wird von der Planer-Session am Sitzungsende auf bereit gesetzt. Stufe 1 (Liste) darf laufen; Loeschen weiterhin erst nach Bestaetigung der Liste durch Bernd, nur in den Papierkorb.'
 schutzliste: 'Nicht auf die Loeschliste: assets/audio/*.mp3, assets/img/reling-it-podcast-cover.png, output/ftp/*podcast* (einzige Zweitkopie), uncommittete Aenderungen im OneDrive-Klon (index.html, datenschutz.html, styles.css, README.md, scripts/*), solange R34 nicht gemergt und R35 nicht entschieden ist. Diese Dateien nur melden.'
 stand: 2026-11-07 07:25

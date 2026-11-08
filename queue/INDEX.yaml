@@ -1,4 +1,4 @@
-stand: 2026-11-08 06:20
+stand: 2026-11-08 06:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -118,7 +118,7 @@ auftraege:
   titel: Aufraeumen im OneDrive-Ordner (zweistufig, Loeschen nur nach Freigabe)
   art: lokal-loeschen
   gate: ja
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R28
 - id: R14
@@ -245,7 +245,7 @@ auftraege:
   titel: 'Release-Zweig v1.38: Avatare (#6) und Buchtext (#9) einbeziehen, PDF und story/current erzeugen, CI gruen'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R03
   - R15
@@ -257,7 +257,7 @@ auftraege:
   titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
   art: lesen
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R16
   - R15
@@ -302,7 +302,7 @@ auftraege:
   titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R39
   titel: 'Doku-Bereinigung nach R33: ABLAUF.md, CODEX_PROMPT.md, FTP-Regel, veraltete Dateien'
