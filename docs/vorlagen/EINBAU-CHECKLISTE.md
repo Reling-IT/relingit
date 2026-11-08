@@ -50,5 +50,5 @@ So stehen die Regeln im Buch (Stand v1.37):
 
 ## 6. Abschluss
 
-- [ ] Podcast nur neu erzeugen, wenn sich der Erzähltext geändert hat (Google Gemini).
+- [ ] Podcast nur neu erzeugen, wenn sich der Erzähltext geändert hat (Google NotebookLM).
 - [ ] Änderung auf einem Feature-Branch, Pull Request, kein Merge durch Claude.

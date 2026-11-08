@@ -184,7 +184,7 @@ h2 {
 }
 
 .meta {
-  color: #8293a2;
+  color: var(--muted);
   font-size: 0.85rem;
 }
 
@@ -491,13 +491,15 @@ h2 {
 .feedback textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #aab4b6;
+  border: 1px solid #6b7880;
   border-radius: 2px;
   background: #fff;
   font: inherit;
 }
 
 .feedback textarea { resize: vertical; }
+
+.feedback :focus-visible { outline-color: var(--night); }
 
 .check {
   display: flex;
@@ -508,7 +510,7 @@ h2 {
 }
 
 .check input { margin-top: 5px; }
-.form-note { margin: 0; color: #66747c; font-size: 0.8rem; }
+.form-note { margin: 0; color: #53636d; font-size: 0.8rem; }
 
 /* Honeypot: available to bots, outside the visible viewport for readers. */
 .trap {
@@ -534,7 +536,7 @@ footer {
   gap: 24px;
   padding: 30px 28px 48px;
   border-top: 1px solid var(--line);
-  color: #8293a2;
+  color: var(--muted);
   font-size: 0.85rem;
 }
 

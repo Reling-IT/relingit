@@ -54,7 +54,9 @@ function applyZoom() {
   if (!storyDocument) return;
 
   storyDocument.documentElement.style.zoom = String(zoomLevel);
-  zoomResetButton.textContent = `${Math.round(zoomLevel * 100)} %`;
+  const zoomPercent = `${Math.round(zoomLevel * 100)} %`;
+  zoomResetButton.textContent = zoomPercent;
+  zoomResetButton.setAttribute("aria-label", `${zoomPercent} – Originalgröße wiederherstellen`);
   zoomOutButton.disabled = zoomLevel <= minimumZoom;
   zoomInButton.disabled = zoomLevel >= maximumZoom;
   updateCurrentSection();

@@ -105,6 +105,6 @@ Schritt 3 meldet Änderungen an `index.html`, `assets/js`, `impressum.html` und 
 
 ## 6. Podcast
 
-Nur wenn sich der Erzähltext geändert hat: Die Podcast-Fassung mit Google Gemini neu erzeugen. Bei reinen Korrekturen an Metadaten, Versionshistorie oder Layout entfällt dieser Schritt.
+Nur wenn sich der Erzähltext geändert hat: Die Podcast-Fassung mit Google NotebookLM neu erzeugen. Bei reinen Korrekturen an Metadaten, Versionshistorie oder Layout entfällt dieser Schritt.
 
 Erwartetes Ergebnis: Die neue Podcast-Fassung gibt den aktuellen Erzähltext wieder.
