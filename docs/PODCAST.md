@@ -60,16 +60,33 @@ Den Podcast nur neu erzeugen, wenn der Erzähltext geändert wurde. Dann:
 2. Größe, Dauer und SHA-256 in dieser Datei und in `index.html` nachtragen.
 3. Zusätzliche Sicherung außerhalb von OneDrive anlegen (Vorschlag siehe unten).
 
-## Offene Frage an den Owner
+## Werkzeug
 
-Werkzeug: `datenschutz.html`, `index.html` und `ci-check.ps1` nennen
-**Google NotebookLM** (so auch live). `docs/NEUE-GESCHICHTE.md` §6 und
-`docs/vorlagen/EINBAU-CHECKLISTE.md` nennen **Google Gemini**. Bis zur Klärung bleibt der
-Live-Text (NotebookLM) unverändert. Bei einem Wechsel müssen Datenschutz,
-Quellenangabe, FAQ und die Prüfung in `ci-check.ps1` gemeinsam angepasst werden.
+Entscheidung des Owners vom 07.11.2026: Der Podcast wird mit **Google NotebookLM**
+erzeugt. `datenschutz.html`, `index.html`, `ci-check.ps1`, `docs/NEUE-GESCHICHTE.md` §6
+und `docs/vorlagen/EINBAU-CHECKLISTE.md` nennen einheitlich dieses Werkzeug. Bei einem
+Wechsel müssen Datenschutz, Quellenangabe, FAQ und die Prüfung in `ci-check.ps1`
+gemeinsam angepasst werden.
 
-## Sicherung (Vorschlag, nicht umgesetzt)
+## Sicherung (GitHub-Release)
 
-Zusätzlich zu OneDrive die fünf Dateien als Assets eines GitHub-Release
-(z. B. `podcast-2026-10`) ablegen und die Prüfsummen oben dagegen vergleichen.
-Die Entscheidung liegt beim Owner (siehe Bericht R23, Option A + C).
+Freigabe des Owners vom 07.11.2026 (Auftrag R35, Variante C aus Bericht R23).
+Unabhängige Kopie außerhalb von OneDrive:
+
+- Release: [`podcast-2026-10`](https://github.com/Reling-IT/relingit/releases/tag/podcast-2026-10),
+  angelegt am 08.11.2026, Tag auf Commit `1281bbe` (main), kein Prerelease.
+- Assets: die vier MP3 und das Cover, Dateinamen wie in der Tabelle oben.
+- Prüfsummenabgleich am 08.11.2026: Quelle im OneDrive, die Asset-Angaben bei
+  GitHub (`digest`) und ein frischer Download per `gh release download` stimmen
+  in Größe und SHA-256 für alle fünf Dateien mit der Tabelle oben überein.
+
+Wiederherstellen und prüfen:
+
+```powershell
+gh release download podcast-2026-10 --repo Reling-IT/relingit --dir podcast
+Get-FileHash -Algorithm SHA256 podcast/*
+```
+
+Die Dateien danach an die Einbindungspfade (`assets/audio/`, `assets/img/`)
+kopieren. Neue Folge: neues Release (z. B. `podcast-JJJJ-MM`) mit eigener
+Freigabe, das alte Release bleibt als Stand erhalten.
