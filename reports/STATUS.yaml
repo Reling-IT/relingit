@@ -1,4 +1,4 @@
-stand: 2026-11-08T05:14+01:00
+stand: 2026-11-08T05:21+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -157,9 +157,11 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/15 (Draft, Teilstand)
     bericht: reports/R24-BERICHT.md
   - id: R13
-    status: in_arbeit
+    status: wartet_auf_entscheidung
     start: 2026-11-08T07:45+01:00
-    hinweis: 'Phase 1 (nur lesen, Liste)'
+    ende: 2026-11-08T05:21+01:00
+    bericht: reports/R13-LISTE.md
+    hinweis: 'Phase 1 fertig: 26 Kandidaten L01-L26 (89,69 MiB); Phase 2 erst nach Freigabe Bernd'
   - id: R35
     status: in_arbeit
     start: 2026-11-08T07:45+01:00
