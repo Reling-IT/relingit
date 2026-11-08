@@ -1,4 +1,4 @@
-stand: 2026-11-08T06:29+01:00
+stand: 2026-11-08T06:42+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -225,6 +225,14 @@ auftraege:
     ende: 2026-11-08T06:29+01:00
     bericht: reports/R17-BERICHT.md
     hinweis: 'Trockenlauf v1.38/77 S.; -OhneAudio empfohlen; Befund lesen.html Schriftpfade 404 vor Upload beheben; Supabase-Versionsangabe anonym gelesen'
+  - id: R43
+    status: erledigt
+    start: 2026-11-08T05:10+01:00
+    ende: 2026-11-08T06:42+01:00
+    branch: auftrag-r43-freigabe
+    pr: https://github.com/Reling-IT/relingit/pull/22 (offen, CI gruen)
+    bericht: reports/R43-BERICHT.md
+    hinweis: 'Probelauf: G1 bestanden, G6/G7 nicht (Stand ba5a23c vor R36, PR #10 gemergt), G2-G5 offen, G8 gesperrt; TestHelfer repariert 4 seit v1.38 rote Pester-Tests'
 leerlauf:
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
