@@ -1,15 +1,18 @@
 id: R07
-titel: 'Anhang als eigene Webseite vorbereiten (q12), ohne Doppelpflege'
+titel: Anhang als eigene Webseite vorbereiten (q12), ohne Doppelpflege
 art: code-pr
 gate: nein
-abhaengig_von: [R02, R03]
+abhaengig_von:
+- R02
+- R03
 ziel: Die Anhang-Kapitel des Buches (Teil 2) sind als eigene Seite erreichbar. Die Seite wird beim Release aus der Buchquelle erzeugt, damit der Text nur an einer Stelle gepflegt wird. Als Entwurfs-PR (Draft), nicht scharf geschaltet.
 schritte:
-- 'In source/fahrt-zum-kunden.html alle Anhang-Bloecke erfassen (Elemente section.appendix innerhalb box-shell, IDs wie kap-sysingboard-architektur, kap-reportfamilie-architektur, kap-avkk-quelle, kap-versionen). Liste mit Titel, ID (oder fehlende ID) und Zeile im Bericht und in der PR-Beschreibung.'
+- In source/fahrt-zum-kunden.html alle Anhang-Bloecke erfassen (Elemente section.appendix innerhalb box-shell, IDs wie kap-sysingboard-architektur, kap-reportfamilie-architektur, kap-avkk-quelle, kap-versionen). Liste mit Titel, ID (oder fehlende ID) und Zeile im Bericht und in der PR-Beschreibung.
 - 'Konzept im Bericht: Erzeugung einer Datei story/current/anhang.html beim Release (Erweiterung von publish-release.ps1 oder ein eigenes Skript scripts/build-anhang.ps1), gleiche Gestaltung wie die Lesefassung, ohne zusaetzliche externe Abhaengigkeiten, mit Inhaltsverzeichnis. Seite anhang.html im Projektstamm (Viewer wie lesen.html) und Verlinkung von index.html und lesen.html. Bewertung der Sicherheit (Sandbox des Viewers, CSP) wie bei lesen.html.'
 - 'Umsetzung als Draft-PR: Erzeugungsskript, anhang.html, ci-check.ps1 als Pflichtdatei und Anker-Pruefung (jeder Anhang-Block hat eine eindeutige, stabile ID), build-upload.ps1 nimmt die Dateien auf. Nur die erzeugte Seite und die Pruefungen, kein Eingriff in den Buchtext.'
-- 'Fehlende Anker nicht selbst ins Buch einbauen, sondern auflisten. Das Ergaenzen der Anker und der Rueckverweise aus den Geschichten gehoert zur Buchversion (Owner und Planer).'
+- Fehlende Anker nicht selbst ins Buch einbauen, sondern auflisten. Das Ergaenzen der Anker und der Rueckverweise aus den Geschichten gehoert zur Buchversion (Owner und Planer).
 - 'Lokal pruefen: ci-check.ps1, node --check, Seite lokal ausliefern und per Browser oeffnen (Titel, Inhaltsverzeichnis, Anker). Mit Beleg.'
 nachweis: Draft-Pull-Request, Bericht reports/R07-BERICHT.md mit Anhang-Liste, Konzept, Pruefausgaben.
 grenzen: Kein Merge, keine Veroeffentlichung, keine Aenderung am Buchtext oder PDF, kein FTP, kein Supabase-Zugriff. Wenn die Seite nicht ohne Buchaenderung moeglich ist, als blockiert melden mit Begruendung.
-status: wartet_auf_voraussetzung
+status: bereit
+hinweis_planer: 'Voraussetzung am 08.11.2026 erfuellt: PR #10 gemergt (81849d9), #6/#9 Inhalt in main.'

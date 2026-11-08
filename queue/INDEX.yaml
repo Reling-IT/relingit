@@ -1,4 +1,4 @@
-stand: 2026-11-08 06:25
+stand: 2026-11-08 07:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -69,7 +69,7 @@ auftraege:
   titel: Anhang als eigene Webseite vorbereiten (q12), ohne Doppelpflege
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R02
   - R03
@@ -101,7 +101,7 @@ auftraege:
   titel: Avatare von Navis und Lumen auf der Webseite zeigen
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R03
   offen: 'Bernd mergt PR #6 (Avatare), danach setzt Claude oder Bernd den Status auf bereit.'
@@ -257,7 +257,7 @@ auftraege:
   titel: 'Release-Trockenlauf v1.38: Paket bauen, Dateiliste fuer Upload (kein Upload)'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R16
   - R15
@@ -340,8 +340,15 @@ auftraege:
   titel: 'Qualitaetssicherung vor jeder Freigabe: FREIGABE.md, freigabe.yaml, freigabe-pruefen.ps1, lokale Vorschau und Sichtungsliste'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R39
   - R40
+- id: R44
+  titel: 'Aufraeumen nach Release-Merge: Remote-Branch auftrag-R03-buchtext-v138 und lokale Worktrees wt-r35 bis wt-r40 entfernen'
+  art: lokal
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R16
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

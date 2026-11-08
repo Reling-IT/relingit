@@ -1,0 +1,18 @@
+id: R44
+titel: 'Aufraeumen nach Release-Merge: Remote-Branch auftrag-R03-buchtext-v138 und lokale Worktrees wt-r35 bis wt-r40 entfernen'
+art: lokal
+gate: nein
+abhaengig_von:
+- R16
+ziel: 'Git und Arbeitsordner sind nach dem Merge von PR #10 aufgeraeumt (Freigabe Bernd 08.11., Option Ja, beides).'
+schritte:
+- 'Remote-Branch auftrag-R03-buchtext-v138 loeschen. Vorher pruefen: PR #9 geschlossen, Inhalt (Commit 1f49164) in origin/main, nur der Merge-Commit d7d7e16 ist nicht in main. Bei Abweichung nicht loeschen, melden.'
+- 'Lokale Worktrees wt-r35 bis wt-r40 (und weitere gemergte wt-*) je pruefen: git status sauber, Branch in origin/main enthalten. Dann git worktree remove und lokalen Branch loeschen. Bei Aenderungen oder ungemergten Commits nicht loeschen, melden.'
+- 'Remote-Branches auftrag-fix-lesen-schriften und auftrag-r43-freigabe NICHT loeschen, solange PR #22/#23 offen sind. ops/queue und ops/reports nie loeschen oder umschreiben.'
+- Bericht reports/R44-BERICHT.md mit Liste geloescht/belassen und Begruendung.
+nachweis: Bericht reports/R44-BERICHT.md
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Force-Push.
+status: bereit
+stand: 2026-11-08 07:20
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
