@@ -7,8 +7,8 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 ## Projektstruktur
 
 - `assets/css`: gemeinsame Gestaltung und Rechtseiten-Stile
-- `assets/audio`: lokal ausgelieferter, KI-generierter Podcast (MP3 nicht im Repository, siehe `docs/PODCAST.md`)
-- `assets/img`: RelingIT-Logo und Browser-Symbol; das Podcast-Cover liegt nur lokal
+- `assets/audio`: lokal ausgelieferter, KI-generierter Podcast (MP3 nicht im Repository, versioniert ist nur `SHA256SUMS.txt`, siehe `docs/PODCAST.md`)
+- `assets/img`: RelingIT-Logo, Browser-Symbol und Podcast-Cover
 - `assets/js`: öffentliche Logik, PDF-Ansicht, Administration und Supabase-Konfiguration
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
@@ -58,7 +58,7 @@ Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
 `publish-release.ps1` braucht dagegen `pdfinfo` und `pdftotext` aus Poppler
 (Einrichtung: [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md), Schritt 4).
 
-Die Pester-Tests für `ci-check.ps1` und `publish-release.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
+Die Pester-Tests für `ci-check.ps1`, `publish-release.ps1` und `build-upload.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
 
 ### Veröffentlichung über Supabase
 
@@ -84,6 +84,11 @@ SHA-256-Prüfsummen. Nach dem Packen wird das ZIP erneut geöffnet und jede
 enthaltene Nutzdatei bytegenau mit ihrer aktuellen Quelle verglichen. Ein
 bereits vorhandenes Paket wird nicht überschrieben;
 für eine weitere Ausgabe kann beispielsweise `-Suffix r2` verwendet werden.
+Für Textkorrekturen ohne neue Podcast-Folgen baut `./scripts/build-upload.ps1 -OhneAudio`
+ein Paket ohne die rund 74 MB MP3 (Name endet auf `-ohne-audio`, Live-MP3 beim
+Upload nicht löschen). Ohne den Schalter müssen die MP3 lokal vorliegen und zu
+`assets/audio/SHA256SUMS.txt` passen. Die Live-MP3 lassen sich ohne Download mit
+`./scripts/pruefe-podcast-live.ps1` prüfen (HTTP HEAD, siehe `docs/PODCAST.md`).
 
 Supabase ersetzt die Dateien unter stabilen Adressen und aktualisiert die Versionsangaben. Das Handout liegt dauerhaft unter `workshop-handout.html` und `workshop-handout.pdf`. Für eine neue Fortsetzung ist deshalb kein DomainFactory-Upload nötig. Per FTP zu DomainFactory gehen nur geänderte Dateien, die nicht über den Admin-Bereich laufen (siehe [Neue Version veröffentlichen](#neue-version-veröffentlichen)).
 

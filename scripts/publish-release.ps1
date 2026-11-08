@@ -7,7 +7,10 @@ param(
     [string]$VergleichMit = "",
     # Nur für den Notfall ohne Poppler: überspringt den Vergleich der
     # PDF-Version mit dem Deckblatt der HTML-Quelle. Die PDF dann von Hand prüfen.
-    [switch]$OhnePdfVersionspruefung
+    [switch]$OhnePdfVersionspruefung,
+    # Wird an build-upload.ps1 weitergegeben: Paket ohne Podcast-MP3, z. B. für
+    # Textkorrekturen. Die Live-MP3 bleiben beim Upload unverändert.
+    [switch]$OhneAudio
 )
 
 # Einziger vorgesehener Ablauf für eine neue Story-Version:
@@ -163,7 +166,7 @@ if ($oldPackages.Count -gt 0) {
     }
 }
 
-& "$PSScriptRoot/build-upload.ps1" -Suffix $Suffix
+& "$PSScriptRoot/build-upload.ps1" -Suffix $Suffix -OhneAudio:$OhneAudio
 
 Write-Host "OK: Version $version vom $displayDate mit $PageCount Seiten veröffentlicht und paketiert."
 
