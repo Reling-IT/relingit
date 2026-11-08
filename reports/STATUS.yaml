@@ -156,15 +156,9 @@ auftraege:
     branch: auftrag-R24-pester-tests
     pr: https://github.com/Reling-IT/relingit/pull/15 (Draft, Teilstand)
     bericht: reports/R24-BERICHT.md
-  - id: R13
-    status: wartet_auf_entscheidung
-    start: 2026-11-08T07:45+01:00
-    ende: 2026-11-08T05:21+01:00
-    bericht: reports/R13-LISTE.md
-    hinweis: 'Phase 1 fertig: 26 Kandidaten L01-L26 (89,69 MiB); Phase 2 erst nach Freigabe Bernd'
   - id: R35
     status: erledigt
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     ende: 2026-11-08T05:23+01:00
     branch: auftrag-R35-podcast-sicherung
     pr: https://github.com/Reling-IT/relingit/pull/18 (offen, CI gruen)
@@ -172,7 +166,7 @@ auftraege:
     hinweis: 'Release podcast-2026-10 angelegt, Hashes nach Download gleich; GitHub zeigt es als Latest (einziges Release) - Rueckfrage Bernd'
   - id: R36
     status: erledigt
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     ende: 2026-11-08T05:34+01:00
     branch: auftrag-R36-podcast-hilfen
     pr: https://github.com/Reling-IT/relingit/pull/20 (offen, CI gruen)
@@ -180,7 +174,7 @@ auftraege:
     hinweis: 'index.html jetzt Dezimal-MB statt MiB - Bestaetigung Bernd offen'
   - id: R37
     status: erledigt
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     ende: 2026-11-08T05:14+01:00
     branch: auftrag-R37-notebooklm
     pr: https://github.com/Reling-IT/relingit/pull/17 (offen, CI gruen)
@@ -188,11 +182,11 @@ auftraege:
     hinweis: 'Abschnitt Offene Frage in docs/PODCAST.md zu Werkzeug umgeschrieben'
   - id: R16
     status: in_arbeit
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     hinweis: 'geschichte-veraltete-daten-20261107'
   - id: R40
     status: erledigt
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     ende: 2026-11-08T05:34+01:00
     branch: auftrag-r40-barrierefreiheit
     pr: https://github.com/Reling-IT/relingit/pull/19 (offen, CI gruen)
@@ -203,7 +197,7 @@ auftraege:
     hinweis: 'durch Planer-Session erledigt (b4bb44f, reports/R38-BERICHT.md); Claude Code hat den Auftrag nicht erneut ausgefuehrt'
   - id: R39
     status: erledigt
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     ende: 2026-11-08T05:35+01:00
     branch: auftrag-r39-doku
     pr: https://github.com/Reling-IT/relingit/pull/21 (offen, CI gruen)
@@ -211,14 +205,14 @@ auftraege:
     hinweis: '24 von 28 Befunden; FTP-Liste braucht Bestaetigung Bernd'
   - id: R13
     status: erledigt
-    start: 2026-11-08T07:45+01:00
+    start: 2026-11-08T05:10+01:00
     ende: 2026-11-08T05:41+01:00
     bericht: reports/R13-BERICHT.md
     hinweis: 'Phase 2: L01-L11, L16, L17 im Papierkorb (26,48 MiB); L12-L15 ausgelassen (Cloud-Platzhalter, Notiz); L18-L26 nicht freigegeben; git status unveraendert; Liste in reports/R13-LISTE.md'
 leerlauf:
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
-  - zeit: 2026-11-08T07:50+01:00
+  - zeit: 2026-11-08T05:14+01:00
     hinweis: 'Sitzungsstart; parallel per Agenten (Owner-Anweisung): R13 Phase 1, R35, R36, R37, R16, R40. R39 folgt nach R37, R29 zum Abschluss.'
 leerlauf_ende:
   - zeit: 2026-11-07T07:17+01:00
