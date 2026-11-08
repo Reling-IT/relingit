@@ -1,0 +1,3 @@
+// Minimaler Ersatz: nur die Muster, die ci-check.ps1 verlangt.
+const salt = Deno.env.get("FEEDBACK_HASH_SALT");
+const rpc = "submit_reader_feedback";

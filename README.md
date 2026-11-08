@@ -7,11 +7,12 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 ## Projektstruktur
 
 - `assets/css`: gemeinsame Gestaltung und Rechtseiten-Stile
-- `assets/img`: RelingIT-Logo und Browser-Symbol
+- `assets/audio`: lokal ausgelieferter, KI-generierter Podcast (MP3 nicht im Repository, siehe `docs/PODCAST.md`)
+- `assets/img`: RelingIT-Logo und Browser-Symbol; das Podcast-Cover liegt nur lokal
 - `assets/js`: öffentliche Logik, PDF-Ansicht, Administration und Supabase-Konfiguration
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
-- `docs`: redaktionelle, Supabase- und FTP-Anleitungen
+- `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md)
 - `scripts`: lokale und CI-Prüfungen
 - `source`: ursprüngliche Quelldateien, die nicht veröffentlicht werden
 - `supabase`: Datenbank, RLS, Edge Function und Sicherheitsprüfungen
@@ -20,6 +21,10 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht auf den DomainFactory-Webspace kopiert werden. Die genaue Ablageregel steht in `archive/README.md`.
 
 ## Neue Version veröffentlichen
+
+Standardweg für eine neue Buchfassung ist der Admin-Bereich `admin.html` mit Supabase. FTP ist nur nötig, wenn sich `index.html`, `assets/js`, `impressum.html` oder `datenschutz.html` ändern. Der vollständige Ablauf mit Befehlen und erwarteten Ergebnissen steht in `docs/NEUE-GESCHICHTE.md`.
+
+Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlichen Konto `bmarnau` darf kein Repository `relingit` neu angelegt werden.
 
 ### Empfohlener lokaler Ablauf
 
@@ -39,7 +44,16 @@ erstellt anschließend das geprüfte FTP-Paket. `source` und `story/current`
 müssen danach für HTML und PDF bytegenau übereinstimmen. Bei einer Abweichung
 wird die Veröffentlichung abgebrochen. Bereits vorhandene FTP-Pakete werden
 vorher automatisch ins lokale Archiv verschoben; in `output/ftp` bleibt damit
-immer nur die aktuelle Ausgabe.
+immer nur die aktuelle Ausgabe. Am Ende gibt das Skript Version, Datum,
+Seitenzahl und die im Admin-Bereich auszuwählenden Dateien aus und meldet, ob
+das Handout geändert ist und ob ein FTP-Upload nötig ist.
+
+Die PDF lässt sich lokal aus der HTML-Quelle erzeugen und auf Layoutfehler prüfen
+(`scripts/pdf/render_story_pdf.py`, `scripts/pdf/verify_layout.py`). Einrichtung,
+Befehle und bekannte Stolpersteine stehen in [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md).
+Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
+
+Die Pester-Tests für `ci-check.ps1` und `publish-release.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
 
 ### Veröffentlichung über Supabase
 

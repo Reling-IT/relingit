@@ -1,11 +1,18 @@
 param(
     [ValidateRange(0, 9999)]
     [int]$PageCount = 0,
-    [string]$Suffix = ""
+    [string]$Suffix = "",
+    # Git-Stand, gegen den Handout- und FTP-Änderungen verglichen werden.
+    # Standard: letzter Commit, der die veröffentlichte Geschichte geändert hat.
+    [string]$VergleichMit = "",
+    # Nur für den Notfall ohne Poppler: überspringt den Vergleich der
+    # PDF-Version mit dem Deckblatt der HTML-Quelle. Die PDF dann von Hand prüfen.
+    [switch]$OhnePdfVersionspruefung
 )
 
 # Einziger vorgesehener Ablauf für eine neue Story-Version:
-# source prüfen -> lokale Veröffentlichung aktualisieren -> FTP-Paket bauen.
+# source prüfen -> lokale Veröffentlichung aktualisieren -> FTP-Paket bauen
+# -> Werte und Dateien für den Admin-Bereich ausgeben (Standardweg, q15).
 $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $projectRoot
@@ -77,6 +84,40 @@ if ($pdfInfoCommand) {
     throw "pdfinfo fehlt. Bitte Seitenzahl ersatzweise mit -PageCount angeben."
 }
 
+# Die PDF muss zur HTML-Quelle passen: Die Version auf dem Deckblatt (erste
+# Seite) wird per pdftotext gelesen und mit dem Deckblatt der HTML verglichen.
+# So kann keine alte PDF neben einer neuen HTML veröffentlicht werden.
+# Ohne pdftotext wird abgebrochen; nur der ausdrückliche Schalter
+# -OhnePdfVersionspruefung lässt den Lauf mit sichtbarer Warnung weiter.
+$pdfToTextCommand = Get-Command pdftotext -ErrorAction SilentlyContinue
+if ($pdfToTextCommand) {
+    $previousOutputEncoding = [Console]::OutputEncoding
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    try {
+        $coverText = (& $pdfToTextCommand.Source -f 1 -l 1 -enc UTF-8 $sourcePdf -) -join "`n"
+        $pdfToTextExit = $LASTEXITCODE
+    } finally { [Console]::OutputEncoding = $previousOutputEncoding }
+    if ($pdfToTextExit -ne 0) {
+        throw "pdftotext konnte die erste Seite von $sourcePdf nicht lesen (Exit-Code $pdfToTextExit)."
+    }
+    $pdfVersions = @([regex]::Matches($coverText, '\bVersion\s+(?<v>\d+\.\d+)\b') |
+        ForEach-Object { $_.Groups['v'].Value } | Select-Object -Unique)
+    if ($pdfVersions.Count -eq 0) {
+        throw "Auf dem Deckblatt (Seite 1) von $sourcePdf steht keine lesbare Versionsangabe 'Version X.YY'."
+    }
+    if ($pdfVersions.Count -gt 1) {
+        throw "Deckblatt von $sourcePdf nennt mehrere Versionen ($($pdfVersions -join ', ')); erwartet: $version."
+    }
+    if ($pdfVersions[0] -ne $version) {
+        throw "PDF passt nicht zur HTML-Quelle: $sourcePdf trägt Version $($pdfVersions[0]), $sourceHtml Version $version. Bitte die PDF aus der aktuellen HTML neu erzeugen (docs/PDF-ERZEUGEN.md)."
+    }
+    Write-Host "OK: PDF-Deckblatt trägt Version $version wie die HTML-Quelle."
+} elseif ($OhnePdfVersionspruefung) {
+    Write-Warning "pdftotext fehlt; die PDF-Version wird auf ausdrücklichen Wunsch (-OhnePdfVersionspruefung) NICHT geprüft. Deckblatt von $sourcePdf bitte von Hand auf Version $version prüfen."
+} else {
+    throw "pdftotext fehlt (Poppler). Die PDF-Version kann nicht gegen das Deckblatt ($version) geprüft werden. Poppler installieren oder bewusst mit -OhnePdfVersionspruefung starten und die PDF von Hand prüfen."
+}
+
 $culture = [System.Globalization.CultureInfo]::GetCultureInfo('de-DE')
 $releaseDate = [datetime]::ParseExact($dateMatch.Groups['date'].Value, 'dd.MM.yyyy', $culture)
 $displayDate = $releaseDate.ToString('d. MMMM yyyy', $culture)
@@ -125,3 +166,99 @@ if ($oldPackages.Count -gt 0) {
 & "$PSScriptRoot/build-upload.ps1" -Suffix $Suffix
 
 Write-Host "OK: Version $version vom $displayDate mit $PageCount Seiten veröffentlicht und paketiert."
+
+# Übergabe an den Admin-Bereich. Seit der Entscheidung q15 (06.11.2026) ist
+# admin.html mit Supabase der Standardweg für neue Buchfassungen. FTP ist nur
+# nötig, wenn sich Startseite, JavaScript, Impressum oder Datenschutz ändern.
+# Es wird nichts hochgeladen; die Ausgabe ist nur eine Anleitung.
+
+# Vergleicht Zeilen ohne die Werte, die dieses Skript bei jedem Release selbst
+# setzt (Rückfallwerte in app.js, Seitenzahl in index.html, Stand in lesen.html).
+function ConvertTo-ReleaseNeutralLine([string]$line) {
+    $line = $line.TrimEnd("`r")
+    $line = $line -replace '(version:\s*")[^"]*(")', '${1}X${2}'
+    $line = $line -replace '(date:\s*")[^"]*(")', '${1}X${2}'
+    $line = $line -replace '(pageCount:\s*)\d+', '${1}X'
+    $line = $line -replace '(data-page-count>)\d+(<)', '${1}X${2}'
+    $line = $line -replace '(id="story-release">)Version\s+[^<]+(<)', '${1}X${2}'
+    return $line
+}
+
+# Wahr, wenn sich eine Datei gegenüber dem Vergleichsstand nur in diesen Werten unterscheidet.
+function Test-OnlyReleaseValues([string]$baseline, [string]$path) {
+    $removed = [System.Collections.Generic.List[string]]::new()
+    $added = [System.Collections.Generic.List[string]]::new()
+    foreach ($line in @(& git -c core.quotepath=false diff -U0 --no-color $baseline -- $path)) {
+        if ($line -match '^(---|\+\+\+) ' -or $line -match '^\\') { continue }
+        if ($line.StartsWith('-')) { $removed.Add((ConvertTo-ReleaseNeutralLine $line.Substring(1))) }
+        elseif ($line.StartsWith('+')) { $added.Add((ConvertTo-ReleaseNeutralLine $line.Substring(1))) }
+    }
+    if ($removed.Count -eq 0 -and $added.Count -eq 0) { return $false }
+    return ((@($removed | Sort-Object) -join "`n") -ceq (@($added | Sort-Object) -join "`n"))
+}
+
+# Geänderte und neue (noch nicht versionierte) Dateien gegenüber dem Vergleichsstand.
+function Get-ChangedPublicFiles([string]$baseline, [string[]]$paths) {
+    $changed = @(& git -c core.quotepath=false diff --name-only $baseline -- @paths)
+    $changed += @(& git -c core.quotepath=false ls-files --others --exclude-standard -- @paths)
+    return @($changed | Where-Object { $_ } | Sort-Object -Unique)
+}
+
+Write-Host ""
+Write-Host "=== Übergabe an den Admin-Bereich (admin.html, Standardweg) ==="
+Write-Host "Versionsnummer:    $version"
+Write-Host "Angezeigtes Datum: $displayDate"
+Write-Host "Seitenzahl:        $PageCount"
+Write-Host "HTML-Lesefassung:  $(Join-Path $projectRoot $sourceHtml)"
+Write-Host "PDF:               $(Join-Path $projectRoot $sourcePdf)"
+
+$gitCommand = Get-Command git -ErrorAction SilentlyContinue
+$baseline = $VergleichMit
+if ($gitCommand -and -not $baseline) {
+    $baseline = (& git log -1 --format=%H -- $storyHtml 2>$null | Select-Object -First 1)
+}
+if ($baseline -and $gitCommand) {
+    $baselineLabel = (& git log -1 --format='%h %ad %s' --date=short $baseline 2>$null | Select-Object -First 1)
+}
+if (-not $gitCommand -or -not $baselineLabel) {
+    Write-Host "Handout und FTP-Bedarf: nicht ermittelbar (kein Git-Vergleichsstand). Bitte von Hand prüfen."
+} else {
+    Write-Host "Vergleichsstand:   $baselineLabel"
+
+    $handoutFiles = @("story/current/workshop-handout.html", "story/current/workshop-handout.pdf")
+    if ((Get-ChangedPublicFiles $baseline $handoutFiles).Count -gt 0) {
+        Write-Host "Handout geändert:  ja. Im Admin-Bereich beide Dateien als Paar auswählen:"
+        foreach ($file in $handoutFiles) { Write-Host "                   $(Join-Path $projectRoot $file)" }
+    } else {
+        Write-Host "Handout geändert:  nein. Im Admin-Bereich kein Handout auswählen."
+    }
+
+    # FTP-relevant laut Entscheidung q15.
+    $ftpPaths = @("index.html", "assets/js", "impressum.html", "datenschutz.html")
+    # Weitere öffentliche Dateien, die ebenfalls nur per FTP auf den Webspace kommen.
+    $otherPublicPaths = @(".htaccess", "lesen.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "assets/css", "assets/img")
+
+    $ftpReasons = @()
+    $fallbackOnly = @()
+    foreach ($file in (Get-ChangedPublicFiles $baseline $ftpPaths)) {
+        if (Test-OnlyReleaseValues $baseline $file) { $fallbackOnly += $file } else { $ftpReasons += $file }
+    }
+    $otherChanged = @()
+    foreach ($file in (Get-ChangedPublicFiles $baseline $otherPublicPaths)) {
+        if (Test-OnlyReleaseValues $baseline $file) { $fallbackOnly += $file } else { $otherChanged += $file }
+    }
+
+    if ($ftpReasons.Count -gt 0) {
+        Write-Host "FTP-Upload nötig:  ja, geändert: $($ftpReasons -join ', ')"
+        Write-Host "                   Paket: output/ftp (siehe oben). Upload erfolgt von Hand."
+    } else {
+        Write-Host "FTP-Upload nötig:  nein"
+    }
+    if ($fallbackOnly.Count -gt 0) {
+        Write-Host "Nur Rückfallwerte: $($fallbackOnly -join ', ') (Version, Datum, Seitenzahl)."
+        Write-Host "                   Die Live-Seite liest diese Werte aus Supabase; ein FTP-Upload hält nur die Rückfallwerte aktuell."
+    }
+    if ($otherChanged.Count -gt 0) {
+        Write-Host "Hinweis:           weitere öffentliche Dateien geändert: $($otherChanged -join ', '). Bitte prüfen, ob sie per FTP hochgeladen werden müssen."
+    }
+}

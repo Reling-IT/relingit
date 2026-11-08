@@ -1,0 +1,7 @@
+// Minimaler Ersatz für assets/js/app.js: nur die Stellen, die ci-check.ps1 liest.
+const fallbackRelease = {
+  version: "1.02",
+  date: "7. November 2026",
+  pageCount: 1,
+};
+const feedbackEndpoint = "/functions/v1/submit-feedback";

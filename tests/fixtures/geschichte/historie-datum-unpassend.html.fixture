@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><title>Mini-Geschichte für Tests</title></head>
+<body>
+<div class="cover-meta">
+<span>Version 1.02</span>
+<span>07.11.2026</span>
+</div>
+<p class="cover-whatsnew"><span class="tag">Neu in v1.02</span>Testfassung.</p>
+<nav class="cover-toc" aria-label="Inhaltsverzeichnis">
+<span class="cover-toc-label">Teil 1</span><a href="#kap-eins">Kapitel eins</a>
+<span class="cover-toc-label">Teil 2</span><a href="#kap-zwei">Kapitel zwei</a>
+<span class="cover-toc-label">Anhang</span><a href="#kap-versionen">Versionshistorie</a>
+</nav>
+<div class="box-shell"><p class="disclaimer"><b>Zur Einordnung:</b> Erfundene Testdaten.</p></div>
+<div class="box-shell"><p class="disclaimer"><b>Aufbau in zwei Teilen:</b> Teil 1 und Teil 2.</p></div>
+<div class="box-shell"><div class="intro"><p><b>Ausgangslage:</b> Ein Test.</p></div></div>
+<div class="box-shell"><div class="intro" id="kap-personen">
+<div class="table-people">
+<div class="person"><div class="badge">N</div><div class="name">Navis</div><div class="role">KI-Beifahrer</div><div class="tenure">seit 2026</div></div>
+<div class="person"><div class="badge">L</div><div class="name">Lumen</div><div class="role">KI-Beraterin</div><div class="tenure">seit 2026</div></div>
+</div>
+</div></div>
+<h2 id="kap-eins">Kapitel eins</h2>
+<p>Text.</p>
+<h2 id="kap-zwei">Kapitel zwei</h2>
+<p>Text.</p>
+<div class="box-shell"><section class="appendix" id="kap-versionen">
+<table class="vtable">
+<tbody>
+<tr><td>1.01</td><td>01.11.2026</td><td>Erste Testfassung</td></tr>
+<tr><td>1.02</td><td>06.11.2026</td><td>Zweite Testfassung</td></tr>
+</tbody>
+</table>
+</section></div>
+</body>
+</html>
