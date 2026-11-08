@@ -29,7 +29,9 @@ async function fetchMarkup(url) {
 function applyZoom() {
   if (!frame.contentDocument) return;
   frame.contentDocument.documentElement.style.zoom = String(zoomLevel);
-  zoomResetButton.textContent = `${Math.round(zoomLevel * 100)} %`;
+  const zoomPercent = `${Math.round(zoomLevel * 100)} %`;
+  zoomResetButton.textContent = zoomPercent;
+  zoomResetButton.setAttribute("aria-label", `${zoomPercent} – Originalgröße wiederherstellen`);
   zoomOutButton.disabled = zoomLevel <= 0.7;
   zoomInButton.disabled = zoomLevel >= 1.6;
 }
