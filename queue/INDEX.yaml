@@ -1,4 +1,4 @@
-stand: 2026-11-08 06:10
+stand: 2026-11-08 06:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -337,7 +337,7 @@ auftraege:
   - R31
   - R35
 - id: R43
-  titel: 'Qualitaetssicherung vor jeder Freigabe: docs/FREIGABE.md, docs/freigabe.yaml, scripts/freigabe-pruefen.ps1'
+  titel: 'Qualitaetssicherung vor jeder Freigabe: FREIGABE.md, freigabe.yaml, freigabe-pruefen.ps1, lokale Vorschau und Sichtungsliste'
   art: code-pr
   gate: nein
   status: bereit
