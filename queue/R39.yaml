@@ -15,7 +15,7 @@ schritte:
 - 'Pruefen: ci-check.ps1 lokal, alle internen Links und Anker in docs/ pruefen, Mermaid-Diagramme der Doku auf Syntax pruefen (Parser oder mmdc, falls vorhanden). Bericht vor dem Push gegen die Schluesselmuster aus ci.yml und ci-check.ps1 pruefen (R30-Fehlalarm).'
 nachweis: Pull Request (nicht Draft, wenn CI gruen), Bericht reports/R39-BERICHT.md mit Tabelle Befund, alt, neu.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext (source/, story/current), keine PDF, keine Skripte aendern (nur Doku).
-status: bereit
+status: erledigt
 stand: 2026-11-08 06:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

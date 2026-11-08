@@ -1,4 +1,4 @@
-stand: 2026-11-08 05:30
+stand: 2026-11-08 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -261,6 +261,7 @@ auftraege:
   abhaengig_von:
   - R16
   - R15
+  - R43
 - id: R18
   titel: Avatar-Icons in die neuen Navis-Bloecke der Geschichte uebernehmen
   art: code-pr
@@ -280,21 +281,21 @@ auftraege:
   titel: Podcast-MP3 und Cover unabhaengig sichern (GitHub-Release-Asset plus Pruefsummen)
   art: sicherung
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R28
 - id: R36
   titel: 'Podcast-Hilfen: Schalter -OhneAudio im Paketbau, Live-Laengenvergleich, MB/MiB-Angaben'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R28
 - id: R37
   titel: 'Podcast-Werkzeug vereinheitlichen: Google NotebookLM statt Gemini in der Doku'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R28
 - id: R29
@@ -307,7 +308,7 @@ auftraege:
   titel: 'Doku-Bereinigung nach R33: ABLAUF.md, CODEX_PROMPT.md, FTP-Regel, veraltete Dateien'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R33
   - R37
@@ -315,7 +316,7 @@ auftraege:
   titel: 'Barrierefreiheit der Webseite: Muss-Befunde aus R31 (ohne Podcast-Transkripte und ohne Buchquelle)'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R31
   - R28
@@ -335,4 +336,12 @@ auftraege:
   abhaengig_von:
   - R31
   - R35
+- id: R43
+  titel: 'Qualitaetssicherung vor jeder Freigabe: docs/FREIGABE.md, docs/freigabe.yaml, scripts/freigabe-pruefen.ps1'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R39
+  - R40
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

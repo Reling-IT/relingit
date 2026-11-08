@@ -1,0 +1,20 @@
+id: R43
+titel: 'Qualitaetssicherung vor jeder Freigabe: docs/FREIGABE.md, docs/freigabe.yaml, scripts/freigabe-pruefen.ps1'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R39
+- R40
+ziel: 'Jede neue Version durchlaeuft vor der Freigabe die Tore G1 Code, G2 Kommentare, G3 Layout, G4 UI, G5 Inhalt, G6 Lokal, G7 Git, G8 Freigabe Bernd (Entscheidung Bernd 08.11.). Quelle der Tore: Reiter Freigabe der Abstimmungsseite, Entwurf freigabe.yaml.'
+schritte:
+- Neuer Branch auftrag-r43-freigabe von aktuellem origin/main.
+- 'docs/FREIGABE.md (Prozess, Tore, Nachweise, Rollen, Regel: kein Merge, Tag oder Upload bei offenem Tor) und docs/freigabe.yaml (maschinenlesbar, gueltiges YAML) anlegen; in README und docs/ABLAUF.md verlinken.'
+- 'scripts/freigabe-pruefen.ps1: fuehrt die automatisierbaren Pruefungen aus (ci-check.ps1, Pester, node --check, git status sauber, Hash-Pruefung Podcast, Branch/PR-Stand per gh falls vorhanden) und schreibt reports/FREIGABE-vX.YY.md (Tabelle Tor, Ergebnis, Nachweis). Kopfkommentar mit Zweck, Eingabe, Ausgabe. Tore ohne Automatik (G3 Sichtung, G4 Breiten, G5 Lesen, G8) als offen ausgeben, nie als bestanden.'
+- Pester-Test fuer das Skript; ci-check.ps1 und build-upload.ps1 duerfen nicht veraendert werden, ausser eine Pflichtdateiliste verlangt die neuen Dateien.
+- Probelauf auf dem Release-Zweig geschichte-veraltete-daten-20261107 (nur lesen, nichts aendern) und Ergebnis im Bericht reports/R43-BERICHT.md. Bericht vor dem Push gegen die Schluesselmuster aus ci.yml und ci-check.ps1 pruefen.
+nachweis: Pull Request, Bericht mit Probelauf.
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext, keine PDF.
+status: bereit
+stand: 2026-11-08 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

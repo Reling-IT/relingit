@@ -12,7 +12,7 @@ schritte:
 - 'OneDrive: Hinweis an Bernd, assets/audio auf Immer auf diesem Geraet behalten zu stellen, damit die Dateien nicht zu Platzhaltern werden.'
 nachweis: Bericht reports/R35-BERICHT.md mit Asset-Liste, Hash-Vergleich und Link; PR fuer docs/PODCAST.md.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur der freigegebene Release podcast-2026-10 (Tag ohne Seitenwirkung); Release als normales Release (nicht latest), Beschreibung mit Dateiliste und SHA-256. Keine Dateien im OneDrive loeschen.
-status: bereit
+status: erledigt
 stand: 2026-11-07 07:15
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

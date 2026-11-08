@@ -12,7 +12,7 @@ schritte:
 - Aussagen ueber Gemini an anderer Stelle (z. B. andere Zwecke) nicht anfassen.
 nachweis: Pull Request, Bericht reports/R37-BERICHT.md mit Trefferliste vorher/nachher und ci-check-Ausgabe.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext.
-status: bereit
+status: erledigt
 stand: 2026-11-07 07:12
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

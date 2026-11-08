@@ -15,7 +15,7 @@ schritte:
 - 'FTP-Hinweis im Bericht: geaenderte Dateien (index.html, lesen.html, handout.html, assets/css, assets/js) gehen per FTP, nicht ueber den Admin-Bereich. Bericht vor dem Push gegen die Schluesselmuster aus ci.yml und ci-check.ps1 pruefen.'
 nachweis: Pull Request, Bericht reports/R40-BERICHT.md mit Tabelle Fundstelle, alt, neu, Kontrastwert alt/neu.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Buchtext, keine PDF, keine Podcast-Dateien. Keine neue Funktion, nur die genannten Befunde.
-status: bereit
+status: erledigt
 stand: 2026-11-08 06:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit

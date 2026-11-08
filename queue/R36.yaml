@@ -13,7 +13,7 @@ schritte:
 - Pester-Tests nur ergaenzen, wenn R24 bereits gemergt ist, sonst Testfaelle im Bericht beschreiben.
 nachweis: Pull Request und Bericht reports/R36-BERICHT.md mit Ausgabe beider Skripte (Trockenlauf ohne FTP).
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Skripte nur trocken ausfuehren, kein Upload.
-status: bereit
+status: erledigt
 voraussetzung: 'Erfuellt: R28 gemergt (PR #13). Status bereit, sobald R24 erledigt ist (beide fassen scripts/ an).'
 stand: 2026-11-07 07:38
 planer: Claude (Planer-Session)
