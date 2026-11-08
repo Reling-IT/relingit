@@ -1,4 +1,4 @@
-stand: 2026-11-08T05:41+01:00
+stand: 2026-11-08T05:48+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -181,9 +181,13 @@ auftraege:
     bericht: reports/R37-BERICHT.md
     hinweis: 'Abschnitt Offene Frage in docs/PODCAST.md zu Werkzeug umgeschrieben'
   - id: R16
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-08T05:10+01:00
-    hinweis: 'geschichte-veraltete-daten-20261107'
+    ende: 2026-11-08T05:48+01:00
+    branch: geschichte-veraltete-daten-20261107
+    pr: https://github.com/Reling-IT/relingit/pull/10 (Draft, Basis nicht main; CI per workflow_dispatch gruen, Lauf 42447886785)
+    bericht: reports/R16-BERICHT.md
+    hinweis: '77 Seiten; Abweichung: scripts/ci-check.ps1 angepasst (Badge mit Bild zaehlt als gefuellt); publish-release Exit 1 wegen fehlender MP3 im Repo'
   - id: R40
     status: erledigt
     start: 2026-11-08T05:10+01:00
