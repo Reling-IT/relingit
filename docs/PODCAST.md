@@ -60,13 +60,13 @@ Den Podcast nur neu erzeugen, wenn der Erzähltext geändert wurde. Dann:
 2. Größe, Dauer und SHA-256 in dieser Datei und in `index.html` nachtragen.
 3. Zusätzliche Sicherung außerhalb von OneDrive anlegen (Vorschlag siehe unten).
 
-## Offene Frage an den Owner
+## Werkzeug
 
-Werkzeug: `datenschutz.html`, `index.html` und `ci-check.ps1` nennen
-**Google NotebookLM** (so auch live). `docs/NEUE-GESCHICHTE.md` §6 und
-`docs/vorlagen/EINBAU-CHECKLISTE.md` nennen **Google Gemini**. Bis zur Klärung bleibt der
-Live-Text (NotebookLM) unverändert. Bei einem Wechsel müssen Datenschutz,
-Quellenangabe, FAQ und die Prüfung in `ci-check.ps1` gemeinsam angepasst werden.
+Entscheidung des Owners vom 07.11.2026: Der Podcast wird mit **Google NotebookLM**
+erzeugt. `datenschutz.html`, `index.html`, `ci-check.ps1`, `docs/NEUE-GESCHICHTE.md` §6
+und `docs/vorlagen/EINBAU-CHECKLISTE.md` nennen einheitlich dieses Werkzeug. Bei einem
+Wechsel müssen Datenschutz, Quellenangabe, FAQ und die Prüfung in `ci-check.ps1`
+gemeinsam angepasst werden.
 
 ## Sicherung (GitHub-Release)
 
