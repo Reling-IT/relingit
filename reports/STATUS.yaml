@@ -1,7 +1,8 @@
-stand: 2026-11-07T07:22+01:00
+stand: 2026-11-08T07:50+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
+quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
+hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
 auftraege:
   - id: R01
     status: erledigt
@@ -94,7 +95,6 @@ auftraege:
     branch: auftrag-R25-doku-diagramme
     pr: https://github.com/Reling-IT/relingit/pull/12
     bericht: reports/R25-BERICHT.md
-hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
   - id: R28
     status: erledigt
     start: 2026-11-07T05:34+01:00
@@ -156,9 +156,37 @@ hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Mer
     branch: auftrag-R24-pester-tests
     pr: https://github.com/Reling-IT/relingit/pull/15 (Draft, Teilstand)
     bericht: reports/R24-BERICHT.md
+  - id: R13
+    status: in_arbeit
+    start: 2026-11-08T07:45+01:00
+    hinweis: 'Phase 1 (nur lesen, Liste)'
+  - id: R35
+    status: in_arbeit
+    start: 2026-11-08T07:45+01:00
+  - id: R36
+    status: in_arbeit
+    start: 2026-11-08T07:45+01:00
+    hinweis: 'auftrag-R36-podcast-hilfen'
+  - id: R37
+    status: in_arbeit
+    start: 2026-11-08T07:45+01:00
+    hinweis: 'auftrag-R37-notebooklm'
+  - id: R16
+    status: in_arbeit
+    start: 2026-11-08T07:45+01:00
+    hinweis: 'geschichte-veraltete-daten-20261107'
+  - id: R40
+    status: in_arbeit
+    start: 2026-11-08T07:45+01:00
+    hinweis: 'auftrag-r40-barrierefreiheit'
+  - id: R38
+    status: erledigt
+    hinweis: 'durch Planer-Session erledigt (b4bb44f, reports/R38-BERICHT.md); Claude Code hat den Auftrag nicht erneut ausgefuehrt'
 leerlauf:
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
+  - zeit: 2026-11-08T07:50+01:00
+    hinweis: 'Sitzungsstart; parallel per Agenten (Owner-Anweisung): R13 Phase 1, R35, R36, R37, R16, R40. R39 folgt nach R37, R29 zum Abschluss.'
 leerlauf_ende:
   - zeit: 2026-11-07T07:17+01:00
     hinweis: 'Arbeitsende; R16 bereit, nicht begonnen; R24 laeuft noch, Bericht folgt. Tagesbericht reports/TAGESBERICHT-2026-11-07.md'
