@@ -45,6 +45,13 @@ $publicFiles = @(
     ".htaccess", "admin.html", "datenschutz.html", "handout-pdf.html",
     "handout.html", "impressum.html", "index.html", "lesen.html", "pdf.html",
     "assets/css/legal.css", "assets/css/styles.css",
+    # Webschriften der Geschichte (R27); lesen.html und story/current laden sie von hier.
+    "assets/fonts/Fraunces-Variable.woff2", "assets/fonts/WorkSans-Regular.woff2",
+    "assets/fonts/WorkSans-Italic.woff2", "assets/fonts/WorkSans-Bold.woff2",
+    "assets/fonts/IBMPlexMono-Regular.woff2", "assets/fonts/IBMPlexMono-Italic.woff2",
+    "assets/fonts/IBMPlexMono-Medium.woff2",
+    "assets/fonts/Fraunces-OFL.txt", "assets/fonts/WorkSans-OFL.txt",
+    "assets/fonts/IBMPlexMono-OFL.txt", "assets/fonts/HERKUNFT.txt",
     "assets/audio/ki-als-beifahrer-im-it-systemhaus.mp3",
     "assets/audio/vom-logbuch-zum-ki-ticketsystem.mp3",
     "assets/audio/warum-ki-nicht-lenken-darf.mp3",
