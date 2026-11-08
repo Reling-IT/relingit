@@ -82,8 +82,9 @@ Content-Security-Policy, `nosniff`, Frame- und Berechtigungsbeschränkungen.
 - Force-Push und Löschen von `main` sind untersagt.
 - Der Workflow besitzt nur Leserechte.
 - Fremde Actions sind auf feste Commit-Prüfsummen fixiert.
-- CI prüft Website, Versionen, PDFs, Links, JavaScript, Git-Whitespace,
-  Geheimnismuster und die wesentlichen MFA-/RLS-/Rate-Limit-Invarianten.
+- CI prüft Website, Versionen, Vollständigkeit der Buchquelle, PDFs,
+  Podcast-Quellenangabe, Links, JavaScript, Git-Whitespace, Geheimnismuster
+  und die wesentlichen MFA-/RLS-/Rate-Limit-Invarianten.
 
 Das persönliche GitHub-Konto muss zusätzlich mit Zwei-Faktor-Authentifizierung
 oder Passkey geschützt sein. Diese persönliche Kontoeinstellung kann nicht im
@@ -110,8 +111,8 @@ Solange Schritte 1 bis 5 nicht erledigt sind, dürfen die neuen Website-Dateien
 nicht produktiv hochgeladen werden: Die neue Feedbackroute wäre sonst noch
 nicht erreichbar und die neuen AAL2-Regeln noch nicht aktiv.
 
-Bei der Kontrolle am 4. September 2026 lieferte die Live-Domain diese Header
-noch nicht aus. Falls `.htaccess` nachweislich übertragen wurde, muss
+Bei den Kontrollen am 4. September 2026 und am 8. November 2026 lieferte die
+Live-Domain diese Header noch nicht aus. Falls `.htaccess` nachweislich übertragen wurde, muss
 DomainFactory klären, ob `mod_headers` beziehungsweise eigene Headerregeln im
 Tarif freigeschaltet sind.
 
