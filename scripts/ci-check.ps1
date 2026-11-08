@@ -338,12 +338,14 @@ foreach ($file in $publicMarkupFiles) {
     }
 }
 
-# Podcast: Die vier MP3 und das Cover liegen bewusst nicht im Repository
-# (Größe, siehe docs/PODCAST.md und .gitignore). Sie werden nur lokal vor dem
-# Paketbau abgelegt. Fehlen sie, ist das hier kein Fehler, weil GitHub Actions
-# sie nie besitzt; build-upload.ps1 bricht in diesem Fall ab. Sind sie
-# vorhanden, wird ihre Dateikennung geprüft. Die Ausnahme in der Verweisprüfung
-# unten gilt nur für genau diese Pfade und nur in index.html.
+# Podcast: Die vier MP3 liegen bewusst nicht im Repository (Größe, siehe
+# docs/PODCAST.md und .gitignore). Sie werden nur lokal vor dem Paketbau
+# abgelegt. Fehlen sie, ist das hier kein Fehler, weil GitHub Actions sie nie
+# besitzt; build-upload.ps1 bricht in diesem Fall ab (außer mit -OhneAudio).
+# Das Cover ist seit R36 versioniert und damit Pflicht. Sind die MP3 vorhanden,
+# werden Dateikennung und Größe geprüft; die SHA-256-Prüfung übernimmt
+# build-upload.ps1. Die Ausnahme in der Verweisprüfung unten gilt nur für genau
+# die fehlenden MP3 und nur in index.html.
 $podcastAudioFiles = @(
     "assets/audio/ki-als-beifahrer-im-it-systemhaus.mp3",
     "assets/audio/vom-logbuch-zum-ki-ticketsystem.mp3",
@@ -352,7 +354,36 @@ $podcastAudioFiles = @(
 )
 $podcastCoverFile = "assets/img/reling-it-podcast-cover.png"
 $podcastExternalFiles = @($podcastAudioFiles) + $podcastCoverFile
-$podcastMissing = @($podcastExternalFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) })
+$podcastMissing = @($podcastAudioFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) })
+if (-not (Test-Path -LiteralPath $podcastCoverFile -PathType Leaf)) {
+    $failures.Add("Podcast-Cover fehlt im Repository: $podcastCoverFile")
+    $podcastMissing += $podcastCoverFile
+}
+
+# assets/audio/SHA256SUMS.txt ist versioniert und muss genau die vier MP3 mit
+# Prüfsumme und Größe in Byte nennen (Format siehe Datei). Diese Prüfung läuft
+# auch in CI ohne MP3.
+$podcastSumsFile = "assets/audio/SHA256SUMS.txt"
+$podcastSizes = @{}
+if (-not (Test-Path -LiteralPath $podcastSumsFile -PathType Leaf)) {
+    $failures.Add("Podcast-Prüfsummen fehlen: $podcastSumsFile")
+} else {
+    $podcastHashes = @{}
+    foreach ($sumLine in (Get-Content -LiteralPath $podcastSumsFile -Encoding utf8)) {
+        $sumMatch = [regex]::Match($sumLine, '^(?<hash>[0-9a-fA-F]{64}) [ *](?<name>\S+)$')
+        if ($sumMatch.Success) { $podcastHashes[$sumMatch.Groups['name'].Value] = $sumMatch.Groups['hash'].Value; continue }
+        $sizeMatch = [regex]::Match($sumLine, '^#\s*groesse\s+(?<bytes>\d+)\s+(?<name>\S+)\s*$')
+        if ($sizeMatch.Success) { $podcastSizes[$sizeMatch.Groups['name'].Value] = [long]$sizeMatch.Groups['bytes'].Value }
+    }
+    $podcastNames = @($podcastAudioFiles | ForEach-Object { Split-Path -Leaf $_ })
+    foreach ($podcastName in $podcastNames) {
+        if (-not $podcastHashes.ContainsKey($podcastName)) { $failures.Add("${podcastSumsFile}: Prüfsumme fehlt für $podcastName") }
+        if (-not $podcastSizes.ContainsKey($podcastName)) { $failures.Add("${podcastSumsFile}: Größe (# groesse <Byte> <Datei>) fehlt für $podcastName") }
+    }
+    foreach ($listedName in @(@($podcastHashes.Keys) + @($podcastSizes.Keys) | Sort-Object -Unique)) {
+        if ($listedName -notin $podcastNames) { $failures.Add("${podcastSumsFile}: unbekannte Datei $listedName, Liste in ci-check.ps1 anpassen") }
+    }
+}
 foreach ($podcastFile in $podcastExternalFiles) {
     if (-not $landingText.Contains("""$podcastFile""")) {
         $failures.Add("Podcast-Datei wird in index.html nicht mehr verwendet, Liste in ci-check.ps1 anpassen: $podcastFile")
@@ -367,8 +398,15 @@ foreach ($podcastFile in $podcastExternalFiles) {
         if ($podcastHeader[0] -ne 0x89 -or [System.Text.Encoding]::ASCII.GetString($podcastHeader, 1, 3) -ne "PNG") {
             $failures.Add("Podcast-Cover besitzt keine gültige PNG-Kennung: $podcastFile")
         }
-    } elseif ([System.Text.Encoding]::ASCII.GetString($podcastHeader, 0, 3) -ne "ID3" -and $podcastHeader[0] -ne 0xFF) {
-        $failures.Add("Podcast besitzt keine gültige MP3-Kennung: $podcastFile")
+    } else {
+        if ([System.Text.Encoding]::ASCII.GetString($podcastHeader, 0, 3) -ne "ID3" -and $podcastHeader[0] -ne 0xFF) {
+            $failures.Add("Podcast besitzt keine gültige MP3-Kennung: $podcastFile")
+        }
+        $podcastName = Split-Path -Leaf $podcastFile
+        $podcastLength = (Get-Item -LiteralPath $podcastFile).Length
+        if ($podcastSizes.ContainsKey($podcastName) -and $podcastSizes[$podcastName] -ne $podcastLength) {
+            $failures.Add("Podcast-Größe weicht von ${podcastSumsFile} ab: $podcastFile hat $podcastLength Byte, erwartet $($podcastSizes[$podcastName])")
+        }
     }
 }
 # Die sichtbare Quellenangabe bleibt Pflicht, auch ohne Audiodateien.
@@ -446,10 +484,11 @@ foreach ($file in $scanFiles) {
     }
 }
 
-if ($podcastMissing.Count -gt 0) {
-    Write-Host "Hinweis: $($podcastMissing.Count) von $($podcastExternalFiles.Count) Podcast-Dateien liegen nicht vor (in CI erwartet, nicht im Repo; siehe docs/PODCAST.md). build-upload.ps1 baut ohne sie kein Paket."
+$podcastAudioMissing = @($podcastMissing | Where-Object { $_ -in $podcastAudioFiles })
+if ($podcastAudioMissing.Count -gt 0) {
+    Write-Host "Hinweis: $($podcastAudioMissing.Count) von $($podcastAudioFiles.Count) Podcast-MP3 liegen nicht vor (in CI erwartet, nicht im Repo; siehe docs/PODCAST.md). build-upload.ps1 baut ohne sie nur mit -OhneAudio ein Paket."
 } else {
-    Write-Host "OK: $($podcastExternalFiles.Count) Podcast-Dateien lokal vorhanden, Dateikennungen geprüft."
+    Write-Host "OK: $($podcastAudioFiles.Count) Podcast-MP3 lokal vorhanden, Dateikennungen und Größen geprüft."
 }
 
 if ($failures.Count -gt 0) {

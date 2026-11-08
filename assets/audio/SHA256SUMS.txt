@@ -1,0 +1,11 @@
+# SHA-256-Prüfsummen und Größen der vier Podcast-MP3 (Dateien nicht im Repository, siehe docs/PODCAST.md).
+# Prüfen im Ordner assets/audio: sha256sum -c SHA256SUMS.txt
+# scripts/build-upload.ps1 prüft die Prüfsummen vor dem Paketbau, scripts/pruefe-podcast-live.ps1 die Größen live.
+# groesse 11262465 ki-als-beifahrer-im-it-systemhaus.mp3
+# groesse 18608515 vom-logbuch-zum-ki-ticketsystem.mp3
+# groesse 22233475 warum-ki-nicht-lenken-darf.mp3
+# groesse 22118537 roman-als-ki-blaupause.mp3
+4098a1416ca256dbc518c7786b0909b1bc63be9ab63ebdbfbe8150d2029accff  ki-als-beifahrer-im-it-systemhaus.mp3
+9e4e409963d969474096da0f236b2c6094b15284a45da43277dff62895df2bad  vom-logbuch-zum-ki-ticketsystem.mp3
+63091782bf2d8c62020fc69a2746887cdb7fbb136b1c4006be23f2f793ade844  warum-ki-nicht-lenken-darf.mp3
+816100ff810bcbcef4dd965f0ceb1bcecd1f8de12064f7c02d25968a6b2d9f30  roman-als-ki-blaupause.mp3

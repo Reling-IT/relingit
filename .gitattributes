@@ -4,3 +4,6 @@
 # (SHA-256 in assets/fonts/HERKUNFT.txt); keine Zeilenende-Umwandlung, keine Leerraumprüfung.
 *.woff2 binary
 assets/fonts/*-OFL.txt -text -whitespace
+
+# Prüfsummendatei für sha256sum -c: immer LF.
+assets/audio/SHA256SUMS.txt text eol=lf

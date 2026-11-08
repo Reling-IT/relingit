@@ -4,11 +4,15 @@ Die Landingpage (`index.html`, Abschnitt `#podcast`) bindet vier KI-generierte
 Audio-Zusammenfassungen und ein Cover-Bild ein. Die Dateien werden vom
 DomainFactory-Webspace ausgeliefert (siehe `datenschutz.html`, Abschnitt 4).
 
-## Dateien (nicht im Repository)
+## Dateien
 
-Die MP3 und das Cover sind zusammen rund 72 MB groß und werden deshalb nicht
-versioniert. `.gitignore` schließt `assets/audio/*.mp3` und
-`assets/img/reling-it-podcast-cover.png` aus.
+Die vier MP3 sind zusammen 74 222 992 Byte (rund 74,2 MB bzw. 70,8 MiB) groß
+und werden deshalb nicht versioniert; `.gitignore` schließt `assets/audio/*.mp3`
+aus. Versioniert sind seit R36:
+
+- `assets/audio/SHA256SUMS.txt`: Prüfsummen und Größen in Byte der vier MP3
+  (Format von `sha256sum`, Größen als Kommentarzeilen `# groesse <Byte> <Datei>`),
+- `assets/img/reling-it-podcast-cover.png`: das Cover (Freigabe Bernd, 07.11.2026).
 
 | Folge | Datei (Einbindungspfad) | Größe | SHA-256 |
 |---|---|---|---|
@@ -18,13 +22,26 @@ versioniert. `.gitignore` schließt `assets/audio/*.mp3` und
 | 04 Ein Roman als Blaupause für verantwortungsvolle KI (23:02) | `assets/audio/roman-als-ki-blaupause.mp3` | 22 118 537 B (21,1 MiB) | `816100ff810bcbcef4dd965f0ceb1bcecd1f8de12064f7c02d25968a6b2d9f30` |
 | Cover | `assets/img/reling-it-podcast-cover.png` | 1 005 947 B | `6068294ea84e215e20d265d949b32d01f024cd4d9a7cbfee832b9d4be28d9edd` |
 
-Quelle der Werte: Bericht R23 vom 07.11.2026 (Messung im OneDrive-Ordner). Die
-Größenangaben auf der Seite („10,7 MB“ usw.) sind MiB-Werte.
+Quelle der Werte: Bericht R23 vom 07.11.2026 (Messung im OneDrive-Ordner),
+gegengeprüft in R36 am 08.11.2026. Die Seite nennt seit R36 Dezimal-MB
+(11,3 / 18,6 / 22,2 / 22,1 MB), vorher standen dort die MiB-Werte mit „MB“.
 
-Prüfen unter PowerShell im Projektordner:
+Prüfen lokal (Git Bash bzw. PowerShell):
+
+```sh
+cd assets/audio && sha256sum -c SHA256SUMS.txt
+```
 
 ```powershell
-Get-FileHash -Algorithm SHA256 assets/audio/*.mp3, assets/img/reling-it-podcast-cover.png
+Get-FileHash -Algorithm SHA256 assets/audio/*.mp3
+```
+
+Prüfen live, ohne Download (HTTP HEAD, vergleicht `Content-Length` mit den
+Größen aus `SHA256SUMS.txt`; nur lesend, kein FTP):
+
+```powershell
+./scripts/pruefe-podcast-live.ps1           # echte HEAD-Anfragen
+./scripts/pruefe-podcast-live.ps1 -Trocken  # nur geplante Anfragen anzeigen
 ```
 
 ## Ablageort
@@ -35,41 +52,67 @@ Get-FileHash -Algorithm SHA256 assets/audio/*.mp3, assets/img/reling-it-podcast-
   (keine unabhängige Sicherung, weil derselbe Speicherort)
 - Live: `https://berndmarnau.de/relingit/assets/audio/<datei>.mp3`
 
-Für einen Paketbau aus einem anderen Klon die fünf Dateien an die oben genannten
-Einbindungspfade kopieren.
+Für einen Paketbau mit Audio aus einem anderen Klon die vier MP3 an die oben
+genannten Einbindungspfade kopieren.
 
 ## Verhalten der Skripte
 
-- `scripts/ci-check.ps1`: Fehlen die Dateien (immer in GitHub Actions), meldet
+- `scripts/ci-check.ps1`: Fehlen die MP3 (immer in GitHub Actions), meldet
   die Prüfung einen Hinweis und keinen Fehler. Die Verweisprüfung überspringt
-  nur genau diese fünf Pfade in `index.html` und nur dann, wenn sie fehlen.
-  Sind die Dateien vorhanden, prüft sie die MP3- bzw. PNG-Kennung. Immer Pflicht:
-  Jede der fünf Dateien muss in `index.html` noch eingebunden sein, und die
-  Seite muss die sichtbare Quellenangabe „Google NotebookLM“ und
-  „KI-generiert“ enthalten.
+  nur genau diese vier Pfade in `index.html` und nur dann, wenn sie fehlen.
+  Sind die MP3 vorhanden, prüft sie MP3-Kennung und Größe gegen
+  `SHA256SUMS.txt`. Immer Pflicht: das Cover (PNG-Kennung), eine
+  `SHA256SUMS.txt` mit Prüfsumme und Größe für genau die vier MP3, die
+  Einbindung aller fünf Dateien in `index.html` und die sichtbare
+  Quellenangabe „Google NotebookLM“ und „KI-generiert“.
 - `scripts/build-upload.ps1` (und damit `publish-release.ps1`): bricht ab,
-  bevor ein Paketordner angelegt wird, wenn eine der Dateien fehlt. Ein
-  FTP-Paket ohne Podcast kann so nicht unbemerkt entstehen.
+  bevor ein Paketordner angelegt wird, wenn eine MP3 fehlt oder ihre SHA-256
+  nicht zu `SHA256SUMS.txt` passt. Ein FTP-Paket ohne Podcast kann so nicht
+  unbemerkt entstehen.
+- `-OhneAudio` (bei `build-upload.ps1` und `publish-release.ps1`): Für
+  Textkorrekturen ohne neue Folgen. Die MP3 werden weder verlangt noch in ZIP
+  und Manifest aufgenommen, der Paketname endet auf `-ohne-audio`, das Manifest
+  trägt den Hinweis „Ohne Audio“. Beim Upload die Live-MP3 auf dem Server nicht
+  löschen; danach `pruefe-podcast-live.ps1` ausführen.
 
 ## Regel für neue Folgen
 
 Den Podcast nur neu erzeugen, wenn der Erzähltext geändert wurde. Dann:
 
 1. Neue MP3 an den Einbindungspfad legen (gleicher Name oder neuer Name plus
-   Anpassung in `index.html`, `ci-check.ps1` und `build-upload.ps1`).
-2. Größe, Dauer und SHA-256 in dieser Datei und in `index.html` nachtragen.
+   Anpassung in `index.html`, `ci-check.ps1`, `build-upload.ps1` und
+   `tests/TestHelfer.ps1`).
+2. Größe, Dauer und SHA-256 in dieser Datei, in `assets/audio/SHA256SUMS.txt`
+   und in `index.html` (Dezimal-MB) nachtragen.
 3. Zusätzliche Sicherung außerhalb von OneDrive anlegen (Vorschlag siehe unten).
 
-## Offene Frage an den Owner
+## Werkzeug
 
-Werkzeug: `datenschutz.html`, `index.html` und `ci-check.ps1` nennen
-**Google NotebookLM** (so auch live). `docs/NEUE-GESCHICHTE.md` §6 und
-`docs/vorlagen/EINBAU-CHECKLISTE.md` nennen **Google Gemini**. Bis zur Klärung bleibt der
-Live-Text (NotebookLM) unverändert. Bei einem Wechsel müssen Datenschutz,
-Quellenangabe, FAQ und die Prüfung in `ci-check.ps1` gemeinsam angepasst werden.
+Entscheidung des Owners vom 07.11.2026: Der Podcast wird mit **Google NotebookLM**
+erzeugt. `datenschutz.html`, `index.html`, `ci-check.ps1`, `docs/NEUE-GESCHICHTE.md` §6
+und `docs/vorlagen/EINBAU-CHECKLISTE.md` nennen einheitlich dieses Werkzeug. Bei einem
+Wechsel müssen Datenschutz, Quellenangabe, FAQ und die Prüfung in `ci-check.ps1`
+gemeinsam angepasst werden.
 
-## Sicherung (Vorschlag, nicht umgesetzt)
+## Sicherung (GitHub-Release)
 
-Zusätzlich zu OneDrive die fünf Dateien als Assets eines GitHub-Release
-(z. B. `podcast-2026-10`) ablegen und die Prüfsummen oben dagegen vergleichen.
-Die Entscheidung liegt beim Owner (siehe Bericht R23, Option A + C).
+Freigabe des Owners vom 07.11.2026 (Auftrag R35, Variante C aus Bericht R23).
+Unabhängige Kopie außerhalb von OneDrive:
+
+- Release: [`podcast-2026-10`](https://github.com/Reling-IT/relingit/releases/tag/podcast-2026-10),
+  angelegt am 08.11.2026, Tag auf Commit `1281bbe` (main), kein Prerelease.
+- Assets: die vier MP3 und das Cover, Dateinamen wie in der Tabelle oben.
+- Prüfsummenabgleich am 08.11.2026: Quelle im OneDrive, die Asset-Angaben bei
+  GitHub (`digest`) und ein frischer Download per `gh release download` stimmen
+  in Größe und SHA-256 für alle fünf Dateien mit der Tabelle oben überein.
+
+Wiederherstellen und prüfen:
+
+```powershell
+gh release download podcast-2026-10 --repo Reling-IT/relingit --dir podcast
+Get-FileHash -Algorithm SHA256 podcast/*
+```
+
+Die Dateien danach an die Einbindungspfade (`assets/audio/`, `assets/img/`)
+kopieren. Neue Folge: neues Release (z. B. `podcast-JJJJ-MM`) mit eigener
+Freigabe, das alte Release bleibt als Stand erhalten.

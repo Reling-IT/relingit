@@ -1,5 +1,7 @@
 # Redaktionelle Prüfung – Version 1.25
 
+> **Veraltet, Stand v1.25** (03.09.2026, 57 Seiten). Aktuell ist v1.37 mit 69 Seiten. Die Punkte 1 (n8n „quelloffen“) und 2 (Platzhalter „v1.??“) sind im Buchtext v1.37 (`source/fahrt-zum-kunden.html`) weiterhin vorhanden (je zwei Treffer, geprüft am 08.11.2026); die übrigen Punkte wurden nicht neu geprüft.
+
 ## Kurzurteil
 
 Die als neuer Eingang bereitgestellte PDF ist bytegenau identisch mit Version 1.24 und umfasst weiterhin 57 Seiten. Die HTML-Datei unterscheidet sich inhaltlich ebenfalls nicht; hinzugekommen war ausschließlich ein externer Google-Fonts-Aufruf. Dieser wird wegen Datenschutz, Offline-Fähigkeit und Ausfallsicherheit nicht veröffentlicht. Version 1.25 dokumentiert daher eine technische Bereinigung ohne neue Handlung oder fachliche Aussagen.

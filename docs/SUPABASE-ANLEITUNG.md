@@ -91,12 +91,7 @@ Die öffentliche Website setzt keine Cookies und nutzt kein Tracking. Der gesch�
 
 ## G. Ihr Ablauf bei jeder neuen Fortsetzung
 
-1. Neue PDF und neue HTML-Lesefassung fertigstellen.
-2. `admin.html` aufrufen und anmelden.
-3. Versionsnummer, Datum und Seitenzahl eintragen.
-4. Beide Dateien auswählen und veröffentlichen.
-5. Landingpage in einem privaten Browserfenster prüfen.
-6. Alte Fassungen müssen nicht manuell gelöscht werden: Die stabilen Dateien werden ersetzt.
+Der vollständige Ablauf (`publish-release.ps1`, Pull Request, dann Upload über `admin.html`, Handout nur bei Änderung) steht in [docs/NEUE-GESCHICHTE.md](NEUE-GESCHICHTE.md). Alte Fassungen müssen nicht manuell gelöscht werden: Die stabilen Dateien werden ersetzt.
 
 ## H. Spam-Schutz
 
