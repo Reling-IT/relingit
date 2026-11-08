@@ -3,6 +3,8 @@ archive/*
 !archive/README.md
 tmp/
 output/
+# Ausgabe von scripts/freigabe-pruefen.ps1 (FREIGABE-/SICHTUNG-Berichte), nur lokal, siehe docs/FREIGABE.md.
+reports/
 ideen/
 .tmp-inspect.py
 

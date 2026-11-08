@@ -14,11 +14,11 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
 - `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md)
 - `docs/vorlagen`: Kapitel-Vorlage und Einbau-Checkliste für neue Geschichten
-- `scripts`: lokale und CI-Prüfungen
+- `scripts`: lokale und CI-Prüfungen, Freigabeprüfung (`freigabe-pruefen.ps1`) und lokale Vorschau (`vorschau.ps1`), siehe [docs/FREIGABE.md](docs/FREIGABE.md)
 - `scripts/pdf`: freiwillige Werkzeuge zum Erzeugen und Prüfen der PDF (siehe [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md))
 - `source`: ursprüngliche Quelldateien, die nicht veröffentlicht werden
 - `supabase`: Datenbank, RLS, Edge Function und Sicherheitsprüfungen
-- `tests`: Pester-Tests für `ci-check.ps1` und `publish-release.ps1`
+- `tests`: Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1` und `vorschau.ps1`
 - Projektstamm: öffentlich aufrufbare Seiten mit `.htaccess`, README, Lizenz, Wartungsskript sowie `.gitignore` und `.gitattributes`
 
 Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht auf den DomainFactory-Webspace kopiert werden. Die genaue Ablageregel steht in `archive/README.md`.
@@ -26,6 +26,8 @@ Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht au
 ## Neue Version veröffentlichen
 
 Standardweg für eine neue Buchfassung ist der Admin-Bereich `admin.html` mit Supabase. FTP ist nur für Dateien nötig, die nicht über den Admin-Bereich gehen: `index.html`, `assets/js`, `assets/css`, `assets/fonts` (sobald vorhanden), `impressum.html`, `datenschutz.html` und weitere Seiten (vollständige Regel: [FTP-Fall in docs/NEUE-GESCHICHTE.md](docs/NEUE-GESCHICHTE.md#ftp-fall)). Der vollständige Ablauf mit Befehlen und erwarteten Ergebnissen steht in `docs/NEUE-GESCHICHTE.md`.
+
+Vor jeder Freigabe durchläuft die Version die Tore G1 Code bis G8 Freigabe Bernd. Ohne bestandene bzw. von Bernd erteilte Tore gibt es keinen Merge, keinen Tag und keinen Upload. Prozess, Tore und Nachweise: [docs/FREIGABE.md](docs/FREIGABE.md) (maschinenlesbar: [docs/freigabe.yaml](docs/freigabe.yaml)); Prüfung mit `./scripts/freigabe-pruefen.ps1`.
 
 Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlichen Konto `bmarnau` darf kein Repository `relingit` neu angelegt werden.
 
@@ -58,7 +60,7 @@ Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
 `publish-release.ps1` braucht dagegen `pdfinfo` und `pdftotext` aus Poppler
 (Einrichtung: [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md), Schritt 4).
 
-Die Pester-Tests für `ci-check.ps1`, `publish-release.ps1` und `build-upload.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
+Die Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1` und `vorschau.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
 
 ### Veröffentlichung über Supabase
 
@@ -107,6 +109,8 @@ Restrisiken stehen in [docs/SICHERHEIT.md](docs/SICHERHEIT.md).
 ## Lokale Vorschau
 
 Die Website ist statisch und kann mit jedem lokalen Webserver ausgeliefert werden. Einstiegspunkt ist `index.html`.
+
+Für die Sichtung vor einer Freigabe startet `./scripts/vorschau.ps1` eine Kopie der öffentlichen Dateien aus dem aktuellen Zweig in einem temporären Ordner außerhalb des Repositorys, mit einem Webserver nur auf `127.0.0.1` und ohne Supabase-Zugriff (Beenden mit Strg+C). Details: [docs/FREIGABE.md](docs/FREIGABE.md#2-lokale-vorschau).
 
 ## Lokale Arbeitskopie aktuell halten
 

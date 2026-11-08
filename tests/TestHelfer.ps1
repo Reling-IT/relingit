@@ -23,7 +23,14 @@ $script:Platzhalter = @(
     "assets/img/reling-it-logo.svg", "assets/img/favicon.png",
     "assets/css/styles.css", "assets/css/legal.css",
     "assets/js/pdf-viewer.js", "assets/js/story-viewer.js", "assets/js/handout-viewer.js",
-    "assets/js/supabase-config.js", "supabase/tests/security-checks.sql"
+    "assets/js/supabase-config.js", "supabase/tests/security-checks.sql",
+    # Lokale Schriften (seit v1.38 in $publicFiles von build-upload.ps1).
+    "assets/fonts/Fraunces-Variable.woff2", "assets/fonts/WorkSans-Regular.woff2",
+    "assets/fonts/WorkSans-Italic.woff2", "assets/fonts/WorkSans-Bold.woff2",
+    "assets/fonts/IBMPlexMono-Regular.woff2", "assets/fonts/IBMPlexMono-Italic.woff2",
+    "assets/fonts/IBMPlexMono-Medium.woff2",
+    "assets/fonts/Fraunces-OFL.txt", "assets/fonts/WorkSans-OFL.txt",
+    "assets/fonts/IBMPlexMono-OFL.txt", "assets/fonts/HERKUNFT.txt"
 )
 
 function Get-PwshPfad {

@@ -15,7 +15,7 @@ flowchart LR
     root --> pages["index.html, lesen.html, pdf.html,<br/>handout.html, handout-pdf.html,<br/>admin.html, impressum.html,<br/>datenschutz.html, .htaccess<br/>öffentliche Seiten"]
     root --> source["source<br/>Eingang der neuen Fassung:<br/>fahrt-zum-kunden.html und<br/>Die-Fahrt-zum-Kunden.pdf<br/>wird nicht veröffentlicht"]
     root --> story["story/current<br/>aktuell veröffentlichte lokale<br/>Rückfallfassung, entspricht dem<br/>Supabase-Pfad story/current"]
-    root --> scripts["scripts<br/>publish-release.ps1, ci-check.ps1,<br/>build-upload.ps1<br/>lokale und CI-Prüfungen"]
+    root --> scripts["scripts<br/>publish-release.ps1, ci-check.ps1,<br/>build-upload.ps1, freigabe-pruefen.ps1,<br/>vorschau.ps1<br/>lokale und CI-Prüfungen"]
     scripts --> pdfwerkzeug["scripts/pdf<br/>render_story_pdf.py, verify_layout.py<br/>PDF erzeugen und Layout prüfen<br/>freiwillig, siehe docs/PDF-ERZEUGEN.md"]
     root --> tests["tests<br/>Pester-Tests für ci-check.ps1<br/>und publish-release.ps1"]
     root --> assets["assets<br/>css: Gestaltung<br/>img: Logo und Browser-Symbol<br/>js: öffentliche Logik, PDF-Ansicht,<br/>Administration, Supabase-Konfiguration"]
@@ -48,7 +48,8 @@ flowchart TD
     H["Skript<br/>gibt Übergabe an den Admin-Bereich aus:<br/>Version, Datum, Seitenzahl, Dateien,<br/>Handout geändert, FTP-Upload nötig"]
     I["Bernd/Owner<br/>Branch und Pull Request auf main"]
     J["CI<br/>Website prüfen: ci-check.ps1,<br/>JavaScript-Syntax, Git-Historie,<br/>Whitespace"]
-    K["Bernd/Owner<br/>merged nach grüner CI"]
+    T["Skript und Bernd/Owner<br/>Freigabe G1 bis G8: freigabe-pruefen.ps1,<br/>vorschau.ps1, Sichtungsliste,<br/>G8 nur durch Bernd<br/>siehe docs/FREIGABE.md"]
+    K["Bernd/Owner<br/>merged nach grüner CI<br/>und erteilter Freigabe G8"]
     L["Bernd/Owner<br/>admin.html: Anmeldung mit MFA,<br/>Version, Datum, Seitenzahl eintragen,<br/>HTML und PDF wählen, Handout nur bei Änderung<br/>STANDARDWEG"]
     M["Supabase<br/>ersetzt Dateien unter stabilen Adressen<br/>und aktualisiert Versionsangaben"]
     N{"Geändert: Dateien, die nicht über<br/>den Admin-Bereich gehen?<br/>index.html, assets/js, assets/css,<br/>Rechtsseiten, weitere Seiten"}
@@ -58,7 +59,7 @@ flowchart TD
     S["Bernd/Owner<br/>Podcast mit Google NotebookLM<br/>neu erzeugen"]
     Z(["fertig"])
 
-    A --> B --> Q --> C --> D --> E --> F --> G --> H --> I --> J --> K --> L --> M --> N
+    A --> B --> Q --> C --> D --> E --> F --> G --> H --> I --> J --> T --> K --> L --> M --> N
     N -- "ja" --> O --> P
     N -- "nein" --> P
     P --> R
@@ -68,7 +69,7 @@ flowchart TD
     classDef owner fill:#e8f0fe,stroke:#3367d6,color:#000
     classDef skript fill:#e6f4ea,stroke:#188038,color:#000
     classDef ci fill:#fef7e0,stroke:#b06000,color:#000
-    class A,B,Q,C,I,K,L,O,P,S owner
+    class A,B,Q,C,I,T,K,L,O,P,S owner
     class D,E,F,G,H skript
     class J ci
 ```
@@ -90,6 +91,7 @@ Reihenfolge: Erst Pull Request und Merge, dann Upload über den Admin-Bereich (`
 | `story/current` ist die lokale Rückfallfassung und entspricht dem Supabase-Pfad | README.md › Projektstruktur |
 | `publish-release.ps1` kopiert `source` nach `story/current` | scripts/publish-release.ps1 „Erst nach allen Eingangsprüfungen“ |
 | `scripts` enthält lokale und CI-Prüfungen, `scripts/pdf` die PDF-Werkzeuge | README.md › Projektstruktur; docs/PDF-ERZEUGEN.md (Einleitung) |
+| `scripts` enthält auch Freigabeprüfung und lokale Vorschau | README.md › Projektstruktur; docs/FREIGABE.md › Ablauf |
 | `tests` enthält die Pester-Tests | README.md › Empfohlener lokaler Ablauf „Invoke-Pester -Path tests“ |
 | Inhalt von `assets` (css, audio, img, js) | README.md › Projektstruktur |
 | Podcast-MP3 und Cover liegen nicht in Git | .gitignore „Podcast-Dateien“; docs/PODCAST.md |
@@ -128,6 +130,7 @@ Reihenfolge: Erst Pull Request und Merge, dann Upload über den Admin-Bereich (`
 | J: CI läuft bei Push auf `main`, bei Pull Requests und manuell | .github/workflows/ci.yml „on:“; README.md › Continuous Integration |
 | J: CI-Schritte ci-check, JavaScript-Syntax, Git-Historie, Whitespace | .github/workflows/ci.yml, Job „Website prüfen“ |
 | J: CI führt kein Deployment aus | README.md (Einleitung); .github/workflows/ci.yml „Qualitätskontrolle ohne Deployment“ |
+| T: Vor dem Merge Tore G1 bis G8 mit `freigabe-pruefen.ps1`, lokaler Vorschau und Sichtungsliste; kein Merge, Tag oder Upload bei offenem Tor | docs/FREIGABE.md › Regel, › Ablauf; docs/freigabe.yaml „tore“ |
 | K: Gemergt wird nur durch den Owner | docs/NEUE-GESCHICHTE.md › 4. Per Branch und Pull Request veröffentlichen |
 | L: Ablauf im Admin-Bereich (Anmeldung, Authenticator-Code, Version, Datum, Seitenzahl, PDF und HTML, Handout falls geändert) | README.md › Veröffentlichung über Supabase; docs/NEUE-GESCHICHTE.md › 5. Über den Admin-Bereich hochladen |
 | L: Admin-Bereich mit Supabase ist der **Standardweg** | README.md › Neue Version veröffentlichen; docs/NEUE-GESCHICHTE.md (Einleitung) |

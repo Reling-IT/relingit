@@ -1,0 +1,89 @@
+# Freigabetore für jede neue Version (maschinenlesbar). Prozessbeschreibung: docs/FREIGABE.md
+# Auswertung: scripts/freigabe-pruefen.ps1 schreibt reports/FREIGABE-vX.YY.md und reports/SICHTUNG-vX.YY.md.
+schema: 1
+stand: "2026-11-08"
+entscheidung: "Bernd, 08.11.2026: Jede neue Version durchläuft vor der Freigabe die Tore G1 bis G8 und wird vorher lokal gesichtet."
+quelle: "Auftrag R43. Ein Entwurf freigabe.yaml bzw. der Reiter Freigabe der Abstimmungsseite lag im Repository nicht vor; die Tore sind aus dem Auftrag abgeleitet."
+regel: "Kein Merge, kein Tag und kein Upload (Admin-Bereich oder FTP), solange ein Tor nicht bestanden, offen oder gesperrt ist. Nur Bernd setzt G8."
+ergebniswerte:
+  bestanden: "Automatische Prüfung mit Beleg erfolgreich."
+  nicht_bestanden: "Automatische Prüfung mit Beleg fehlgeschlagen."
+  offen: "Keine Automatik oder Prüfung nicht ausführbar; Nachweis durch einen Menschen nötig."
+  gesperrt: "G8 kann nicht erteilt werden, weil ein anderes Tor nicht bestanden ist oder die Sichtung Nein-Punkte oder leere Punkte enthält."
+ausgabe:
+  bericht: "reports/FREIGABE-v{version}.md"
+  sichtung: "reports/SICHTUNG-v{version}.md"
+  hinweis: "reports/ ist in .gitignore eingetragen; die Berichte werden nicht in main committet."
+tore:
+  - id: G1
+    name: Code
+    automatisch: true
+    verantwortlich: Skript
+    pruefungen:
+      - "scripts/ci-check.ps1 endet ohne Fehler"
+      - "node --check für alle Dateien unter assets/js"
+      - "Pester-Tests unter tests/ ohne Fehlschlag (Invoke-Pester -Path tests)"
+    nachweis: "Befehl und Ergebnis im Freigabebericht"
+  - id: G2
+    name: Kommentare
+    automatisch: true
+    verantwortlich: Skript
+    pruefungen:
+      - "Jedes Skript unter scripts/ (ps1, py) beginnt mit einem erklärenden Kommentar oder Param-Block mit Kommentar"
+      - "Pull Request ohne Review-Status CHANGES_REQUESTED (per gh, falls vorhanden)"
+    nachweis: "Liste der Skripte ohne Kopfkommentar, Review-Status des PR"
+  - id: G3
+    name: Layout
+    automatisch: false
+    verantwortlich: Bernd
+    pruefungen:
+      - "PDF gesichtet: Deckblatt, neue Szene, Codebox, SVG-Seite, Mini-TOC, Seitenzahl"
+    nachweis: "reports/SICHTUNG-v{version}.md, Abschnitt PDF, alle Punkte Ja"
+  - id: G4
+    name: UI
+    automatisch: false
+    verantwortlich: Bernd
+    breiten_px: [390, 768, 1280]
+    seiten:
+      - Startseite
+      - Lesefassung
+      - Handout
+      - Datenschutz
+      - Impressum
+      - Podcast-Player
+    pruefungen:
+      - "Jede Seite in jeder Breite in der lokalen Vorschau (scripts/vorschau.ps1) gesichtet"
+    nachweis: "reports/SICHTUNG-v{version}.md, Abschnitt Webseiten, alle Punkte Ja"
+  - id: G5
+    name: Inhalt
+    automatisch: false
+    verantwortlich: Bernd
+    pruefungen:
+      - "Neue Szene vollständig gelesen"
+      - "Deckblatt, Hinweis Neu in vX.YY und Versionshistorie inhaltlich stimmig"
+    nachweis: "reports/SICHTUNG-v{version}.md, Abschnitt Inhalt, alle Punkte Ja"
+  - id: G6
+    name: Lokal
+    automatisch: true
+    verantwortlich: Skript
+    pruefungen:
+      - "Podcast-MP3 entsprechen assets/audio/SHA256SUMS.txt (ohne lokale MP3: offen)"
+      - "Lokale Vorschau möglich: scripts/vorschau.ps1 vorhanden, Python gefunden"
+    nachweis: "Prüfsummenvergleich je Datei, gefundener Python-Pfad"
+  - id: G7
+    name: Git
+    automatisch: true
+    verantwortlich: Skript
+    pruefungen:
+      - "git status ohne Änderungen und ohne unversionierte Dateien"
+      - "Branch ist nicht main und stimmt mit dem Upstream überein"
+      - "Offener Pull Request gegen main, kein Draft, alle Checks erfolgreich (per gh, falls vorhanden)"
+    nachweis: "Branch, Commit, PR-Nummer und Check-Ergebnis"
+  - id: G8
+    name: Freigabe Bernd
+    automatisch: false
+    verantwortlich: Bernd
+    pruefungen:
+      - "Bernd erteilt die Freigabe ausdrücklich, z. B. als PR-Kommentar 'Freigabe G8 vX.YY: ja'"
+    voraussetzung: "G1, G2, G6, G7 bestanden; G3, G4, G5 durch Sichtungsliste ohne Nein- und ohne leere Punkte belegt"
+    nachweis: "PR-Kommentar oder Eintrag von Bernd"
