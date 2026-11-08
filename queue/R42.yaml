@@ -1,17 +1,17 @@
 id: R42
 titel: Podcast-Transkripte fuer die vier Folgen (WCAG 1.2.1)
 art: lesen
-gate: ja
+gate: nein
 abhaengig_von:
 - R31
 - R35
 ziel: Zu den vier Podcast-Folgen gibt es Textfassungen (Befund R31 Muss, Nur-Audio). Das ist ein inhaltliches Dokument aus KI-erzeugtem Audio und braucht redaktionelle Pruefung durch Bernd.
-offen: 'Bernd entscheidet: Woher kommt das Transkript (NotebookLM-Export, Whisper-Lauf auf deinem Rechner, Handarbeit) und wer prueft es? Danach wird das Anzeigeformat festgelegt (details unter dem Player oder eigene Seite).'
 schritte:
-- 'Nach Entscheidung: Vorschlag zum Anzeigeformat und zur Dateiablage ausarbeiten (nur Entwurf, nichts committen), Datenschutz- und Hinweistext pruefen (KI-generiert, NotebookLM).'
+- Pruefen, ob NotebookLM fuer die vier Folgen ein Transkript liefert; falls ja, Bernd muss es selbst exportieren (kein Zugang aus Claude Code). Auftrag legt Anzeigeformat (details unter dem Player oder eigene Seite), Dateiablage und Hinweistext (KI-erzeugt) als Entwurf vor, nichts committen.
 nachweis: Vorschlag im Bericht reports/R42-BERICHT.md.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Keine Audiodateien kopieren oder verschieben.
-status: wartet_auf_entscheidung
-stand: 2026-11-08 06:25
+status: wartet_auf_voraussetzung
+stand: 2026-11-08 05:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+entscheidung: 'Bernd 08.11.: Quelle ist der NotebookLM-Export; Bernd prueft redaktionell. Anzeigeformat im Bericht vorschlagen.'
