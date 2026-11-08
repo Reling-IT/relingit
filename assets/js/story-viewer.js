@@ -46,7 +46,22 @@ async function fetchStory(url) {
     window.clearTimeout(timeout);
   }
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.text();
+  return withAbsoluteFontUrls(await response.text());
+}
+
+/**
+ * In srcdoc gelten relative Pfade gegenueber lesen.html, nicht gegenueber
+ * story/current/. Die Buchquelle verweist mit ../assets/fonts/ bzw.
+ * ../../assets/fonts/ auf die Schriften; ohne Umschreiben landen diese
+ * Pfade ausserhalb des Seitenordners (404). Deshalb werden sie hier auf
+ * den assets/fonts/-Ordner neben lesen.html abgebildet.
+ */
+function withAbsoluteFontUrls(markup) {
+  const fontBase = new URL("assets/fonts/", document.baseURI).href;
+  return markup.replace(
+    /url\((["']?)(?:\.\.\/)+assets\/fonts\//g,
+    (_match, quote) => `url(${quote}${fontBase}`,
+  );
 }
 
 function applyZoom() {
