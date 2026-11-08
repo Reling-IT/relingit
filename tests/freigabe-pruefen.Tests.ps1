@@ -157,7 +157,7 @@ Describe "vorschau.ps1" {
         Copy-Item -LiteralPath (Join-Path $script:RepoRoot "scripts/vorschau.ps1") -Destination (Join-Path $projekt "scripts/vorschau.ps1")
         $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "vorschau.ps1" -Argumente @("-NurBauen")
         Assert-Erfolg $ergebnis "Vorschau gebaut: .*Supabase in der Kopie abgeschaltet"
-        Assert-Enthaelt $ergebnis "Hinweis: 4 Datei\(en\) nicht vorhanden, übersprungen: assets/audio/"
+        Assert-Enthaelt $ergebnis "Hinweis: 4 Datei\(en\) nicht vorhanden, übersprungen: assets/audio/ki-als-beifahrer"
         $ziel = ($ergebnis.Ausgabe -split "`n" | Select-Object -Last 1).Trim()
         try {
             if (-not (Test-Path -LiteralPath (Join-Path $ziel "index.html"))) { throw "index.html fehlt in der Vorschau: $ziel" }
