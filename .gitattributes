@@ -1,2 +1,5 @@
 # PDFs are binary release assets; never run text conversion or whitespace checks.
 *.pdf binary
+
+# Prüfsummendatei für sha256sum -c: immer LF.
+assets/audio/SHA256SUMS.txt text eol=lf

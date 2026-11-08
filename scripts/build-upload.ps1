@@ -1,5 +1,10 @@
 param(
-    [string]$Suffix = ""
+    [string]$Suffix = "",
+    # Baut ein Paket ohne die vier Podcast-MP3 (z. B. für Textkorrekturen).
+    # Die MP3 werden dann weder verlangt noch in ZIP und Manifest aufgenommen;
+    # beim Upload bleiben die Live-MP3 unverändert. Der Paketname erhält den
+    # Zusatz "-ohne-audio".
+    [switch]$OhneAudio
 )
 
 # Erstellt ein geprüftes FTP-Paket ausschließlich aus den öffentlichen Dateien.
@@ -26,6 +31,7 @@ $releaseDate = [datetime]::ParseExact(
 )
 $dateStamp = $releaseDate.ToString('yyyy-MM-dd')
 $suffixPart = if ([string]::IsNullOrWhiteSpace($Suffix)) { "" } else { "-$Suffix" }
+if ($OhneAudio) { $suffixPart += "-ohne-audio" }
 $packageName = "relingit-upload-v$version-$dateStamp$suffixPart"
 $outputRoot = Join-Path $projectRoot "output/ftp"
 $packageDirectory = Join-Path $outputRoot $packageName
@@ -52,12 +58,49 @@ $publicFiles = @(
     "story/current/workshop-handout.html", "story/current/workshop-handout.pdf"
 )
 
-# MP3 und Podcast-Cover liegen nicht im Repository (docs/PODCAST.md). Fehlt eine
-# Datei, wird abgebrochen, bevor ein Paketordner entsteht. So kann kein Paket
-# ohne Podcast entstehen, das den Abschnitt live beschädigen würde.
+# Die MP3 liegen nicht im Repository (docs/PODCAST.md). Mit -OhneAudio werden sie
+# aus der Paketliste genommen; alle weiteren Prüfungen gelten dann für die
+# verkleinerte Liste.
+$audioFiles = @($publicFiles | Where-Object { $_ -like "assets/audio/*.mp3" })
+if ($OhneAudio) {
+    $publicFiles = @($publicFiles | Where-Object { $_ -notin $audioFiles })
+}
+
+# Fehlt eine Datei, wird abgebrochen, bevor ein Paketordner entsteht. So kann
+# ohne -OhneAudio kein Paket ohne Podcast entstehen, das den Abschnitt live
+# beschädigen würde.
 $missingPublicFiles = @($publicFiles | Where-Object { -not (Test-Path -LiteralPath (Join-Path $projectRoot $_) -PathType Leaf) })
 if ($missingPublicFiles.Count -gt 0) {
-    throw "Paket abgebrochen, Dateien fehlen: $($missingPublicFiles -join ', '). Podcast-Dateien aus der lokalen Ablage kopieren (siehe docs/PODCAST.md)."
+    throw "Paket abgebrochen, Dateien fehlen: $($missingPublicFiles -join ', '). Podcast-Dateien aus der lokalen Ablage kopieren (siehe docs/PODCAST.md) oder mit -OhneAudio bauen."
+}
+
+# Die lokalen MP3 müssen bytegenau den versionierten Prüfsummen in
+# assets/audio/SHA256SUMS.txt entsprechen. Sonst würde eine veraltete oder
+# beschädigte Folge hochgeladen.
+if (-not $OhneAudio) {
+    $sumsPath = Join-Path $projectRoot "assets/audio/SHA256SUMS.txt"
+    if (-not (Test-Path -LiteralPath $sumsPath -PathType Leaf)) {
+        throw "Paket abgebrochen, assets/audio/SHA256SUMS.txt fehlt."
+    }
+    $expectedHashes = @{}
+    foreach ($line in (Get-Content -LiteralPath $sumsPath -Encoding utf8)) {
+        $sumMatch = [regex]::Match($line, '^(?<hash>[0-9a-fA-F]{64}) [ *](?<name>\S+)$')
+        if ($sumMatch.Success) { $expectedHashes[$sumMatch.Groups['name'].Value] = $sumMatch.Groups['hash'].Value.ToUpperInvariant() }
+    }
+    $hashFailures = [System.Collections.Generic.List[string]]::new()
+    foreach ($audioFile in $audioFiles) {
+        $audioName = Split-Path -Leaf $audioFile
+        if (-not $expectedHashes.ContainsKey($audioName)) {
+            $hashFailures.Add("$audioFile (keine Prüfsumme in SHA256SUMS.txt)")
+            continue
+        }
+        $actualHash = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $projectRoot $audioFile)).Hash
+        if ($actualHash -ne $expectedHashes[$audioName]) { $hashFailures.Add("$audioFile (Prüfsumme weicht ab)") }
+    }
+    if ($hashFailures.Count -gt 0) {
+        throw "Paket abgebrochen, Podcast-Dateien passen nicht zu assets/audio/SHA256SUMS.txt: $($hashFailures -join '; ')"
+    }
+    Write-Host "OK: $($audioFiles.Count) Podcast-MP3 entsprechen assets/audio/SHA256SUMS.txt."
 }
 
 New-Item -ItemType Directory -Path $packageDirectory | Out-Null
@@ -73,10 +116,12 @@ $manifestLines = @(
     "RelingIT FTP-Upload-Paket",
     "Version: $version",
     "Veröffentlichungsdatum: $($release.Groups['date'].Value.Trim())",
-    "Erstellt: $([datetime]::Now.ToString('yyyy-MM-dd HH:mm:ss zzz'))",
-    "",
-    "SHA-256-Prüfsummen:"
+    "Erstellt: $([datetime]::Now.ToString('yyyy-MM-dd HH:mm:ss zzz'))"
 )
+if ($OhneAudio) {
+    $manifestLines += "Ohne Audio: Die Podcast-MP3 sind nicht enthalten, die Live-Dateien unter assets/audio bleiben unverändert."
+}
+$manifestLines += @("", "SHA-256-Prüfsummen:")
 foreach ($relativePath in $publicFiles) {
     $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $packageDirectory $relativePath)).Hash
     $manifestLines += "$hash  $($relativePath.Replace('\', '/'))"
@@ -120,4 +165,5 @@ try {
 $zipHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $zipPath).Hash
 Write-Host "OK: geprüftes Upload-Paket erstellt: $zipPath"
 Write-Host "OK: $($publicFiles.Count) aktuelle Quelldateien bytegenau im ZIP bestätigt."
+if ($OhneAudio) { Write-Host "Hinweis: Paket ohne Podcast-MP3 (-OhneAudio). Beim Upload die Live-MP3 nicht löschen." }
 Write-Host "SHA-256 des ZIP: $zipHash"

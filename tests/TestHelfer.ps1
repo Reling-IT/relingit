@@ -68,6 +68,13 @@ function New-MiniProjekt {
         Write-Utf8Datei (Join-Path $Ziel $relativ) "Platzhalter für Tests`n"
     }
 
+    # Podcast: versionierte Prüfsummendatei aus dem echten Projekt und ein
+    # kleines Cover mit PNG-Kennung. MP3 legt bei Bedarf New-PodcastMp3 an.
+    New-Item -ItemType Directory -Path (Join-Path $Ziel "assets/audio") -Force | Out-Null
+    Copy-Item -LiteralPath (Join-Path $script:RepoRoot "assets/audio/SHA256SUMS.txt") -Destination (Join-Path $Ziel "assets/audio/SHA256SUMS.txt")
+    [System.IO.File]::WriteAllBytes((Join-Path $Ziel "assets/img/reling-it-podcast-cover.png"),
+        [byte[]](0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A))
+
     $geschichtePfad = Join-Path $script:FixtureRoot "geschichte/$Geschichte"
     foreach ($relativ in @("source/fahrt-zum-kunden.html", "story/current/fahrt-zum-kunden.html")) {
         $zielDatei = Join-Path $Ziel $relativ
@@ -80,6 +87,44 @@ function New-MiniProjekt {
         Copy-Item -LiteralPath $pdfPfad -Destination (Join-Path $Ziel $relativ)
     }
     return $Ziel
+}
+
+# Die vier MP3-Namen aus scripts/ci-check.ps1 und scripts/build-upload.ps1.
+$script:PodcastMp3 = @(
+    "ki-als-beifahrer-im-it-systemhaus.mp3", "vom-logbuch-zum-ki-ticketsystem.mp3",
+    "warum-ki-nicht-lenken-darf.mp3", "roman-als-ki-blaupause.mp3"
+)
+
+# Legt kleine Ersatz-MP3 (ID3-Kennung) im Mini-Projekt an. Mit
+# -PruefsummenAnpassen wird assets/audio/SHA256SUMS.txt passend zu diesen
+# Dateien neu geschrieben; ohne bleibt die echte Datei und die Prüfsummen weichen ab.
+function New-PodcastMp3 {
+    param(
+        [Parameter(Mandatory)][string]$Projekt,
+        [switch]$PruefsummenAnpassen
+    )
+    $groessen = @()
+    $summen = @()
+    foreach ($name in $script:PodcastMp3) {
+        $pfad = Join-Path $Projekt "assets/audio/$name"
+        Write-Utf8Datei $pfad "ID3 Ersatz-MP3 für Tests: $name`n"
+        $groessen += "# groesse $((Get-Item -LiteralPath $pfad).Length) $name"
+        $summen += "$((Get-FileHash -Algorithm SHA256 -LiteralPath $pfad).Hash.ToLowerInvariant())  $name"
+    }
+    if ($PruefsummenAnpassen) {
+        Write-Utf8Datei (Join-Path $Projekt "assets/audio/SHA256SUMS.txt") ((@("# Testdaten") + $groessen + $summen) -join "`n")
+    }
+}
+
+# Liefert die Dateinamen im ZIP (ohne Ordnereinträge).
+function Get-ZipEintraege([string]$ZipPfad) {
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archiv = [System.IO.Compression.ZipFile]::OpenRead($ZipPfad)
+    try {
+        return @($archiv.Entries | Where-Object { -not $_.FullName.EndsWith('/') } | ForEach-Object FullName)
+    } finally {
+        $archiv.Dispose()
+    }
 }
 
 # Startet ein Skript des Mini-Projekts in einem eigenen pwsh-Prozess und

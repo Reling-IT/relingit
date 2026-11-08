@@ -16,6 +16,5 @@ ideen/
 *.p12
 supabase/.temp/
 
-# Podcast-Dateien (rund 72 MB) bleiben außerhalb von Git, siehe docs/PODCAST.md.
+# Podcast-MP3 (rund 74 MB) bleiben außerhalb von Git, siehe docs/PODCAST.md.
 assets/audio/*.mp3
-assets/img/reling-it-podcast-cover.png
