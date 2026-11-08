@@ -13,16 +13,19 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
 - `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md)
+- `docs/vorlagen`: Kapitel-Vorlage und Einbau-Checkliste für neue Geschichten
 - `scripts`: lokale und CI-Prüfungen
+- `scripts/pdf`: freiwillige Werkzeuge zum Erzeugen und Prüfen der PDF (siehe [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md))
 - `source`: ursprüngliche Quelldateien, die nicht veröffentlicht werden
 - `supabase`: Datenbank, RLS, Edge Function und Sicherheitsprüfungen
-- Projektstamm: ausschließlich öffentlich aufrufbare Seiten, README, Lizenz und Wartungsskript
+- `tests`: Pester-Tests für `ci-check.ps1` und `publish-release.ps1`
+- Projektstamm: öffentlich aufrufbare Seiten mit `.htaccess`, README, Lizenz, Wartungsskript sowie `.gitignore` und `.gitattributes`
 
 Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht auf den DomainFactory-Webspace kopiert werden. Die genaue Ablageregel steht in `archive/README.md`.
 
 ## Neue Version veröffentlichen
 
-Standardweg für eine neue Buchfassung ist der Admin-Bereich `admin.html` mit Supabase. FTP ist nur nötig, wenn sich `index.html`, `assets/js`, `impressum.html` oder `datenschutz.html` ändern. Der vollständige Ablauf mit Befehlen und erwarteten Ergebnissen steht in `docs/NEUE-GESCHICHTE.md`.
+Standardweg für eine neue Buchfassung ist der Admin-Bereich `admin.html` mit Supabase. FTP ist nur für Dateien nötig, die nicht über den Admin-Bereich gehen: `index.html`, `assets/js`, `assets/css`, `assets/fonts` (sobald vorhanden), `impressum.html`, `datenschutz.html` und weitere Seiten (vollständige Regel: [FTP-Fall in docs/NEUE-GESCHICHTE.md](docs/NEUE-GESCHICHTE.md#ftp-fall)). Der vollständige Ablauf mit Befehlen und erwarteten Ergebnissen steht in `docs/NEUE-GESCHICHTE.md`.
 
 Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlichen Konto `bmarnau` darf kein Repository `relingit` neu angelegt werden.
 
@@ -52,6 +55,8 @@ Die PDF lässt sich lokal aus der HTML-Quelle erzeugen und auf Layoutfehler prü
 (`scripts/pdf/render_story_pdf.py`, `scripts/pdf/verify_layout.py`). Einrichtung,
 Befehle und bekannte Stolpersteine stehen in [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md).
 Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
+`publish-release.ps1` braucht dagegen `pdfinfo` und `pdftotext` aus Poppler
+(Einrichtung: [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md), Schritt 4).
 
 Die Pester-Tests für `ci-check.ps1` und `publish-release.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
 
@@ -64,7 +69,9 @@ Die Pester-Tests für `ci-check.ps1` und `publish-release.ps1` laufen im Projekt
 5. Falls geändert, das Handout zusätzlich als HTML und PDF auswählen.
 6. Veröffentlichen und anschließend die öffentliche Landingpage prüfen.
 
-Vor einem FTP-Upload im Projektordner ausführen:
+`publish-release.ps1` baut das FTP-Paket bereits mit. `build-upload.ps1` ist nur
+nötig, wenn ohne neue Buchfassung ein Paket gebaut werden soll (zum Beispiel nach
+einer Änderung am Impressum). Dazu im Projektordner ausführen:
 
 ```powershell
 ./scripts/build-upload.ps1
@@ -78,7 +85,7 @@ enthaltene Nutzdatei bytegenau mit ihrer aktuellen Quelle verglichen. Ein
 bereits vorhandenes Paket wird nicht überschrieben;
 für eine weitere Ausgabe kann beispielsweise `-Suffix r2` verwendet werden.
 
-Supabase ersetzt die Dateien unter stabilen Adressen und aktualisiert die Versionsangaben. Das Handout liegt dauerhaft unter `workshop-handout.html` und `workshop-handout.pdf`. Für eine neue Fortsetzung ist deshalb kein DomainFactory-Upload nötig. Nur Änderungen an der Landingpage selbst werden erneut zu DomainFactory übertragen.
+Supabase ersetzt die Dateien unter stabilen Adressen und aktualisiert die Versionsangaben. Das Handout liegt dauerhaft unter `workshop-handout.html` und `workshop-handout.pdf`. Für eine neue Fortsetzung ist deshalb kein DomainFactory-Upload nötig. Per FTP zu DomainFactory gehen nur geänderte Dateien, die nicht über den Admin-Bereich laufen (siehe [Neue Version veröffentlichen](#neue-version-veröffentlichen)).
 
 ## Rückmeldungen mit Supabase
 
@@ -104,4 +111,4 @@ Nach eigenen Änderungen werden diese zuerst committed und anschließend zu GitH
 
 ## Continuous Integration
 
-GitHub Actions führt bei jedem Push auf `main`, bei Pull Requests und manuell die Workflow-Datei `.github/workflows/ci.yml` aus. Geprüft werden Pflichtdateien, die Übereinstimmung von Versionsnummer, Veröffentlichungsdatum und Seitenzahl, lokale HTML-Verweise, doppelte IDs, PDF-Kennung, JavaScript-Syntax, Git-Whitespace, Geheimnismuster sowie wesentliche MFA-, RLS- und Rate-Limit-Invarianten. Der öffentliche Publishable Key ist zulässig; Secret- und Service-Role-Keys sind es nicht. `main` darf nur über einen Pull Request mit erfolgreicher CI geändert werden.
+GitHub Actions führt bei jedem Push auf `main`, bei Pull Requests und manuell die Workflow-Datei `.github/workflows/ci.yml` aus. Der Job heißt „Website prüfen“ im Workflow „Website CI“. Geprüft werden Pflichtdateien, die Übereinstimmung von Versionsnummer, Veröffentlichungsdatum und Seitenzahl, die Vollständigkeit der Buchquelle (Deckblatt, Inhaltsverzeichnis, Personenliste, Versionshistorie), Podcast-Dateien und Quellenangabe, lokale HTML-Verweise, doppelte IDs, PDF-Kennung, JavaScript-Syntax, Git-Whitespace, Geheimnismuster sowie wesentliche MFA-, RLS- und Rate-Limit-Invarianten. Der öffentliche Publishable Key ist zulässig; Secret- und Service-Role-Keys sind es nicht. `main` darf nur über einen Pull Request mit erfolgreicher CI geändert werden.

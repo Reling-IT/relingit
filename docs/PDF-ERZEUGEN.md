@@ -24,7 +24,7 @@ Alle Befehle in PowerShell, im Repo-Stamm.
    ```powershell
    python -m playwright install chromium
    ```
-4. **Poppler** für `pdftoppm` (Seitenbilder für die Pixelprüfung):
+4. **Poppler** für `pdftoppm` (Seitenbilder für die Pixelprüfung). Poppler liefert auch `pdfinfo` und `pdftotext`, die `scripts/publish-release.ps1` für Seitenzahl und PDF-Version braucht:
    ```powershell
    winget install oschwartz10612.Poppler
    ```
@@ -79,7 +79,7 @@ OK - alle Seiten erfuellen den Layout-Check UND den Inhalt-Praesenz-/Positions-C
 
 Exit-Codes von `verify_layout.py`: 0 = sauber, 1 = mindestens eine Verletzung (Liste folgt), 2 = Werkzeug fehlt (Meldung nennt den Installationsbefehl).
 
-Bezugswert: `story/current/geschichte.pdf` (v1.29) hat 69 Seiten. Sie wurde unter Linux mit den Ersatzschriften DejaVu Sans Mono, Liberation Serif und Liberation Sans gerendert (`pdffonts story/current/geschichte.pdf`).
+Bezugswert: `story/current/geschichte.pdf` (v1.37) hat 69 Seiten. Sie wurde unter Linux mit den Ersatzschriften DejaVu Sans Mono, Liberation Serif und Liberation Sans gerendert (`pdffonts story/current/geschichte.pdf`).
 
 ## Bekannte Stolpersteine
 

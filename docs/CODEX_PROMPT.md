@@ -1,5 +1,7 @@
 # Wiederverwendbarer Codex-Prompt
 
+> **Veraltet, Stand v1.25.** Dieser Prompt beschreibt den Ablauf vor `source/` und `scripts/publish-release.ps1` (Handkopien nach `story/current`, PDF als Eingang). Der aktuelle Ablauf steht in [docs/NEUE-GESCHICHTE.md](NEUE-GESCHICHTE.md), das Sicherheitsmodell in [docs/SICHERHEIT.md](SICHERHEIT.md). Nur die Zeile zum Feedbackformular ist an das heutige Modell angepasst.
+
 ```text
 Du arbeitest im Repository https://github.com/Reling-IT/relingit an der statischen Landingpage für die fortlaufende Geschichte „Die Fahrt zum Kunden“.
 
@@ -20,7 +22,7 @@ Umsetzung:
 - Keine Frameworks und kein Build-Schritt.
 - Semantisches HTML, gute Tastaturbedienung, sichtbare Fokuszustände, ausreichende Kontraste und responsive Darstellung ab 320 px.
 - Der primäre Button öffnet die HTML-Lesefassung; `pdf.html` bietet PDF-Ansicht, Download und Rückweg zur Landingpage.
-- Das Feedbackformular speichert anonym in Supabase. Verwende ausschließlich den öffentlichen Publishable Key, halte RLS aktiv und erlaube `anon` nur INSERT – niemals SELECT, UPDATE oder DELETE. Zeige Erfolg und Fehler verständlich an.
+- Das Feedbackformular speichert anonym in Supabase. Verwende ausschließlich den öffentlichen Publishable Key und halte RLS aktiv. `anon` erhält keinen direkten Zugriff auf die Feedbacktabellen; Rückmeldungen laufen nur über die Edge Function `submit-feedback`. Lesend darf `anon` nur die öffentlichen Versionsangaben (`story_release`) abfragen. Zeige Erfolg und Fehler verständlich an.
 - Keine echten Kundendaten, Tracking-Skripte oder unnötigen externen Abhängigkeiten.
 
 Prüfung vor Abschluss:
