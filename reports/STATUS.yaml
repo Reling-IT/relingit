@@ -191,9 +191,13 @@ auftraege:
     start: 2026-11-08T07:45+01:00
     hinweis: 'geschichte-veraltete-daten-20261107'
   - id: R40
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-08T07:45+01:00
-    hinweis: 'auftrag-r40-barrierefreiheit'
+    ende: 2026-11-08T05:34+01:00
+    branch: auftrag-r40-barrierefreiheit
+    pr: https://github.com/Reling-IT/relingit/pull/19 (offen, CI gruen)
+    bericht: reports/R40-BERICHT.md
+    hinweis: '7 Muss-Befunde umgesetzt; FTP nach Merge'
   - id: R38
     status: erledigt
     hinweis: 'durch Planer-Session erledigt (b4bb44f, reports/R38-BERICHT.md); Claude Code hat den Auftrag nicht erneut ausgefuehrt'
