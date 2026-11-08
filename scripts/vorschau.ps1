@@ -16,7 +16,8 @@ Ablauf und Ausgabe:
     1. Kopiert die öffentlichen Dateien (Liste $publicFiles aus
        scripts/build-upload.ps1) in einen neuen Ordner unter dem
        Temp-Verzeichnis des Benutzers, außerhalb des Repositorys. Fehlende
-       Podcast-MP3 werden übersprungen (sie liegen nicht im Repository).
+       Dateien (z. B. die Podcast-MP3, die nicht im Repository liegen) werden
+       mit Hinweis übersprungen; nur ohne index.html bricht das Skript ab.
     2. Ersetzt in der Kopie assets/js/supabase-config.js durch eine leere
        Konfiguration. Die Seiten zeigen damit die lokale Rückfallfassung
        dieses Zweigs und rufen Supabase nicht auf.
@@ -64,9 +65,12 @@ $uebersprungen = @()
 foreach ($relativ in $dateien) {
     $quelle = Join-Path $Projekt $relativ
     if (-not (Test-Path -LiteralPath $quelle -PathType Leaf)) {
-        if ($relativ -like "assets/audio/*.mp3") { $uebersprungen += $relativ; continue }
-        Remove-Item -LiteralPath $ziel -Recurse -Force
-        throw "Datei fehlt: $relativ"
+        if ($relativ -eq "index.html") {
+            Remove-Item -LiteralPath $ziel -Recurse -Force
+            throw "Datei fehlt: $relativ"
+        }
+        $uebersprungen += $relativ
+        continue
     }
     $zielDatei = Join-Path $ziel $relativ
     New-Item -ItemType Directory -Path (Split-Path -Parent $zielDatei) -Force | Out-Null
@@ -79,7 +83,9 @@ $leereKonfiguration = "// Lokale Vorschau (scripts/vorschau.ps1): ohne Supabase,
 [System.IO.File]::WriteAllText((Join-Path $ziel "assets/js/supabase-config.js"), $leereKonfiguration, (New-Object System.Text.UTF8Encoding($false)))
 
 Write-Host "Vorschau gebaut: $ziel ($kopiert Dateien, Supabase in der Kopie abgeschaltet)."
-if ($uebersprungen.Count -gt 0) { Write-Host "Hinweis: $($uebersprungen.Count) Podcast-MP3 nicht vorhanden, der Player zeigt nur die Darstellung." }
+if ($uebersprungen.Count -gt 0) {
+    Write-Host "Hinweis: $($uebersprungen.Count) Datei(en) nicht vorhanden, übersprungen: $($uebersprungen -join ', '). Podcast-MP3 liegen nicht im Repository; ohne sie zeigt der Player nur die Darstellung."
+}
 if ($NurBauen) {
     Write-Output $ziel
     return
