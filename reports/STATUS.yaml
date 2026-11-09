@@ -1,4 +1,4 @@
-stand: 2026-11-08T07:11+01:00
+stand: 2026-11-09T04:46+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -233,7 +233,33 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/22 (offen, CI gruen)
     bericht: reports/R43-BERICHT.md
     hinweis: 'Probelauf: G1 bestanden, G6/G7 nicht (Stand ba5a23c vor R36, PR #10 gemergt), G2-G5 offen, G8 gesperrt; TestHelfer repariert 4 seit v1.38 rote Pester-Tests'
+  - id: R44
+    status: erledigt
+    start: 2026-11-09T04:36+01:00
+    ende: 2026-11-09T04:41+01:00
+    bericht: reports/R44-BERICHT.md
+    hinweis: 'Remote auftrag-R03-buchtext-v138 geloescht (PR 9 geschlossen, Baum gleich main); wt-fix-lesen, wt-r43 entfernt; 10 lokale Branches geloescht'
+  - id: PAKET-v1.38-2026-11-09
+    status: erledigt
+    start: 2026-11-09T04:42+01:00
+    ende: 2026-11-09T04:44+01:00
+    bericht: reports/PAKET-v1.38-2026-11-09-BERICHT.md
+    hinweis: 'build-upload -OhneAudio auf main 01defe7, 36 Eintraege, 4666966 Bytes, SHA-256 7118198F...FAE4; freigabe-pruefen G1 bestanden, G7 auf main nicht bestanden, G8 gesperrt'
+  - id: R07
+    status: in_arbeit
+    start: 2026-11-09T04:41+01:00
+  - id: R11
+    status: in_arbeit
+    start: 2026-11-09T04:41+01:00
+  - id: R06
+    status: in_arbeit
+    start: 2026-11-09T04:41+01:00
+  - id: R45
+    status: in_arbeit
+    start: 2026-11-09T04:41+01:00
 leerlauf:
+  - zeit: 2026-11-09T04:36+01:00
+    hinweis: 'Sitzungsstart 09.11.; Reihenfolge nach Owner-Anweisung: R44, Paketbau, dann R07, R11, R06, R45 parallel per Agenten (Owner-Anweisung Agenten).'
   - zeit: 2026-11-07T05:26+01:00
     hinweis: 'ops/queue unveraendert 0f77f9f; alle bereiten Auftraege bearbeitet (R05 blockiert, R14 R19 R20 R21 R22 R23 R25 erledigt). Naechste Pruefung in ca. 25 Minuten, Arbeitsende ca. 07:15.'
   - zeit: 2026-11-08T05:14+01:00
