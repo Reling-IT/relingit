@@ -249,8 +249,13 @@ auftraege:
     status: in_arbeit
     start: 2026-11-09T04:41+01:00
   - id: R11
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-09T04:41+01:00
+    ende: 2026-11-09T04:47+01:00
+    branch: auftrag-R11-avatare-webseite
+    pr: https://github.com/Reling-IT/relingit/pull/25 (Draft, CI gruen)
+    bericht: reports/R11-BERICHT.md
+    hinweis: 'Bildmarken nur auf index.html (Hero, Abschnitt Worum es geht); lesen.html ohne eigene Einfuehrung der Figuren; build-upload nimmt navis.svg, lumen.svg auf'
   - id: R06
     status: in_arbeit
     start: 2026-11-09T04:41+01:00
