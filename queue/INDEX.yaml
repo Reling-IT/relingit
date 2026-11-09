@@ -1,4 +1,4 @@
-stand: 2026-11-08 07:20
+stand: 2026-11-09 04:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -85,7 +85,7 @@ auftraege:
   titel: Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereiten
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R03
   - R04
@@ -113,7 +113,7 @@ auftraege:
   abhaengig_von:
   - R11
   - R03
-  offen: Bernd gibt Layout und Text frei und setzt den Status auf bereit.
+  offen: 'Bernd 09.11.: erst nach Release v1.38 (nach R09).'
 - id: R13
   titel: Aufraeumen im OneDrive-Ordner (zweistufig, Loeschen nur nach Freigabe)
   art: lokal-loeschen
@@ -351,4 +351,11 @@ auftraege:
   status: bereit
   abhaengig_von:
   - R16
+- id: R45
+  titel: 'OneDrive-Aufraeumen Phase 3: L18 bis L26 pruefen und einzeln vorlegen (nur lesen)'
+  art: lesen
+  gate: ja
+  status: bereit
+  abhaengig_von:
+  - R13
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

@@ -1,15 +1,19 @@
 id: R06
-titel: 'Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereiten'
+titel: Anhang-Box Die sieben Standards und Klarstellung ADR gegen ADG vorbereiten
 art: code-pr
 gate: nein
-abhaengig_von: [R03, R04]
-entscheidung: 'Owner am 06.11.2026: Idee 19 ja, in Version 1.38. k6: Im Text ADG nennen, ADR einmal in einer Fussnote erklaeren (frueherer Name, Alias bis 30.06.2027).'
+abhaengig_von:
+- R03
+- R04
+entscheidung: 'Bernd 09.11.2026: i19 Ja (Anhang-Box Die sieben Standards in v1.39); k6 Fussnote im Buch (ADR bleibt im Text, Fussnote erklaert den Alias ADR zu ADG, nicht pauschal ersetzen).'
 ziel: Neue Anhang-Box mit je einem belegten Satz pro Standard, ADR-Klarstellung im TDF/ADR-Wissensblock. Teil von Version 1.38 (Entscheidung des Owners).
 schritte:
 - 'Saetze aus dem Bericht R04 uebernehmen, nur Belegtes. Einleitungssatz: Diese Standards regeln, wie die KI-Seite des Systemhauses gebaut wird, nicht den Betrieb bei den Kunden.'
-- 'Rueckverweis aus der Box Functional is not Done. Beide Bibliotheken nennen (tdfbibliothek abgeglichen, HI-Bibliothek nur so weit belegt).'
+- Rueckverweis aus der Box Functional is not Done. Beide Bibliotheken nennen (tdfbibliothek abgeglichen, HI-Bibliothek nur so weit belegt).
 - 'k6: Im Text ADG nennen, ADR einmal in einer Fussnote erklaeren (frueherer Name, Alias bis 30.06.2027). Stellen mit ADR vorher auflisten und nur dort aendern, wo der Standard gemeint ist, nicht bei anderen Bedeutungen der Abkuerzung.'
-- 'Vollstaendigkeit wie bei R03 (Version, Historie, Personenliste, Inhaltsverzeichnis, Boxen), verify_layout und Link-Check.'
+- Vollstaendigkeit wie bei R03 (Version, Historie, Personenliste, Inhaltsverzeichnis, Boxen), verify_layout und Link-Check.
 nachweis: Pull Request mit Vorher-Nachher, Pruefausgaben, Bericht reports/R06-BERICHT.md.
 grenzen: Kein Merge, keine Veroeffentlichung, keine neuen Szenen. Nichts behaupten, was R04 nicht belegt.
-status: wartet_auf_voraussetzung
+status: bereit
+hinweis_planer: Voraussetzungen R03 und R04 erledigt. Aenderung an der Buchquelle gehoert in v1.39 (Branch von main). Zuordnung nur belegte Aussagen (R04-Bericht).
+stand: 2026-11-09 04:45

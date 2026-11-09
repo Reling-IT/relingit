@@ -1,0 +1,17 @@
+id: R45
+titel: 'OneDrive-Aufraeumen Phase 3: L18 bis L26 pruefen und einzeln vorlegen (nur lesen)'
+art: lesen
+gate: ja
+abhaengig_von:
+- R13
+ziel: Bernd entscheidet einzeln ueber die Kandidaten L18 bis L26. L12 bis L15 (Cloud-Platzhalter) bleiben unberuehrt.
+schritte:
+- 'Fuer L18 bis L26: Pfad, Groesse, Datum, Hash, Referenzen (Suche in Repo und Projektdokumenten) und Empfehlung (Papierkorb oder behalten) in einer Tabelle auflisten.'
+- Nichts loeschen, nichts verschieben, keine Cloud-Platzhalter hydrieren.
+- Bericht reports/R45-BERICHT.md. Loeschen erst nach Freigabe je Kandidat durch Bernd.
+nachweis: Bericht mit Tabelle
+grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen.
+status: bereit
+stand: 2026-11-09 04:45
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
