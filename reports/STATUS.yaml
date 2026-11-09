@@ -1,4 +1,4 @@
-stand: 2026-11-09T05:03+01:00
+stand: 2026-11-09T05:20+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -275,7 +275,26 @@ auftraege:
     ende: 2026-11-09T04:50+01:00
     bericht: reports/R45-BERICHT.md
     hinweis: 'Nur gelesen. L18 bis L26 vollstaendig lokal (keine Platzhalter), gehasht; Empfehlung Papierkorb L18-L24, L26 (55,75 MiB), L25 behalten bis Klon-Branch codex/fix-admin-password-recovery gesichert; Freigabe je Kandidat durch Bernd'
+  - id: R48
+    status: erledigt
+    start: 2026-11-09T05:16+01:00
+    ende: 2026-11-09T05:19+01:00
+    bericht: reports/R48-BERICHT.md
+    hinweis: 'L18-L24, L26 nach Hash-Gleichheit mit R45 in den Windows-Papierkorb (225 Dateien, 58459633 Byte); L25, 20260905-193924-327, L12-L15 unberuehrt; erster Trockenlauf mit falscher Sortierung, nichts veraendert'
+  - id: R47
+    status: erledigt
+    start: 2026-11-09T05:17+01:00
+    ende: 2026-11-09T05:18+01:00
+    bericht: reports/R47-BERICHT.md
+    hinweis: 'Bundle archive/codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle im OneDrive-Klon, verify okay, SHA-256 39340105...9b64; L25 erneut Bernd vorgelegt'
+  - id: R46
+    status: in_arbeit
+    start: 2026-11-09T05:16+01:00
+    branch: auftrag-R07-anhang-seite
+    pr: https://github.com/Reling-IT/relingit/pull/26
 leerlauf:
+  - zeit: 2026-11-09T05:16+01:00
+    hinweis: 'Owner-Auftrag 05:15: R46 (Agent), R06-Ergaenzung verify_layout (Agent), R48 und R47 durch Koordinator; R45-Bericht Methode Punkt 4 praezisiert (Sortierung nach FullName).'
   - zeit: 2026-11-09T05:03+01:00
     hinweis: 'Alle Auftraege der Owner-Liste bearbeitet: R44, Paketbau, R07 (#26), R11 (#25), R06 (#27), R45. Offene Drafts 25, 26, 27.'
   - zeit: 2026-11-09T04:50+01:00
