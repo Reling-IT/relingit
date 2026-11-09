@@ -33,6 +33,15 @@ Hinweis zur Durchführung: Der erste Trockenlauf (05:16) hat bei allen neun Ordn
 
 Papierkorb (Auszug `Shell.Application`): alle acht Ordnernamen mit Originalpfad `C:\Users\bmarn\OneDrive\HTML\reling it\archive\ftp-packages`. Wiederherstellen ist über den Papierkorb möglich. Speicher wird lokal erst nach Leeren des Papierkorbs frei, in OneDrive erst nach Leeren des Online-Papierkorbs.
 
+## Nachtrag 09.11.2026: L25 (Freigabe Bernd)
+
+Stand 06:05 (Ortszeit). Freigabe Bernd 09.11.2026: L25 (20260905-192045-642) ist nach der Sicherung durch R47 frei.
+- Trockenlauf mit derselben Methode (Platzhalter-Prüfung, Ordner-Hash nach `Sort-Object FullName`): 25 Dateien, 6 538 559 Byte, keine Platzhalter. Ordner-Hash `B6EB7A443E4010F6C7776DF7190C746A83300EAEBD0941C750C5382B3914B13E`, **gleich** R45.
+- Danach in den Windows-Papierkorb verschoben (`DeleteDirectory … SendToRecycleBin`), nicht endgültig gelöscht. Nachkontrolle: Der Ordner ist weg und liegt im Papierkorb mit Originalpfad `C:\Users\bmarn\OneDrive\HTML\reling it\archive\ftp-packages`.
+- Für diesen Lauf waren im Skript `20260905-193924-327` und `20260905-195306-580` geschützt.
+- `archive\ftp-packages` enthält jetzt nur noch `20260905-193924-327` (geschützt) und `20260905-195306-580` (Vorlage in R49: behalten).
+- Summe Phase 3b mit Nachtrag: 9 Ordner, 250 Dateien, 64 998 192 Byte im Papierkorb.
+
 ## Vorschläge und Ideen (Claude)
 - Die Ordner-Hash-Methode als kleines Skript ins Repo aufnehmen (z. B. `scripts/ordner-hash.ps1`, nur lesend), damit Inventur und Löschlauf denselben Code nutzen. Der heutige Fehlstart hätte sich so vermeiden lassen.
 - In der Methodenbeschreibung künftiger Inventurberichte die Sortierung ausdrücklich nennen („Sort-Object FullName, kulturabhängig“).
@@ -44,7 +53,7 @@ Hygiene: keine Branch-Löschung, keine Remote-Änderung; offene PRs: Drafts #25,
 Reifegrad: OneDrive-Archiv Phase 3b abgeschlossen; Verfahren mit Hash-Gegenprobe belegt
 Projektstatus: 8 Ordner im Papierkorb (58459633 Byte), L25 wartet auf Freigabe nach R47
 Offene_Fragen:
-  - Freigabe L25 nach Sicherung per Bundle (R47)?
+  - Freigabe L25 erteilt und am 09.11. 06:05 umgesetzt (Nachtrag)
   - Wann darf der Papierkorb geleert werden?
 Roadmap:
   Sprints_bis_BSF: 1

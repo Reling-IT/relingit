@@ -1,4 +1,4 @@
-stand: 2026-11-09T05:25+01:00
+stand: 2026-11-09T06:06+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -280,13 +280,13 @@ auftraege:
     start: 2026-11-09T05:16+01:00
     ende: 2026-11-09T05:19+01:00
     bericht: reports/R48-BERICHT.md
-    hinweis: 'L18-L24, L26 nach Hash-Gleichheit mit R45 in den Windows-Papierkorb (225 Dateien, 58459633 Byte); L25, 20260905-193924-327, L12-L15 unberuehrt; erster Trockenlauf mit falscher Sortierung, nichts veraendert'
+    hinweis: 'L18-L24, L26 nach Hash-Gleichheit mit R45 in den Windows-Papierkorb (225 Dateien, 58459633 Byte); L25, 20260905-193924-327, L12-L15 unberuehrt; erster Trockenlauf mit falscher Sortierung, nichts veraendert; Nachtrag 06:05: L25 nach Hash-Gleichheit ebenfalls in den Papierkorb'
   - id: R47
     status: erledigt
     start: 2026-11-09T05:17+01:00
     ende: 2026-11-09T05:18+01:00
     bericht: reports/R47-BERICHT.md
-    hinweis: 'Bundle archive/codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle im OneDrive-Klon, verify okay, SHA-256 39340105...9b64; L25 erneut Bernd vorgelegt'
+    hinweis: 'Bundle archive/codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle im OneDrive-Klon, verify okay, SHA-256 39340105...9b64; L25 erneut Bernd vorgelegt; Nachtrag 06:05: Patch README.md und styles.css (SHA-256 07a7786b...f0ce); Korrektur: im Klon 6 geaenderte Dateien, index.html und zwei Skripte nicht gesichert'
   - id: R46
     status: erledigt
     start: 2026-11-09T05:16+01:00
@@ -295,7 +295,25 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/26 (Draft, CI gruen, Commit 6336236)
     bericht: reports/R46-BERICHT.md
     hinweis: 'Anhang per DOMParser im Browser aus der Buchfassung; build-anhang.ps1 und story/current/anhang.html entfernt; Anker-Pruefung nur Quelle; Pester 23/0; Supabase-Pfad nicht live geprueft'
+  - id: R49
+    status: erledigt
+    start: 2026-11-09T05:28+01:00
+    ende: 2026-11-09T06:06+01:00
+    branch: auftrag-R49-aufbewahrung
+    pr: https://github.com/Reling-IT/relingit/pull/28 (Draft, CI gruen)
+    bericht: reports/R49-BERICHT.md
+    hinweis: 'publish-release meldet Pakete aelter als die letzten drei, Schutz per GESCHUETZT.txt; Zusatz: Inventur 20260905-195306-580 (Ordner-Hash D80F6E06...6618), Empfehlung behalten'
+  - id: R50
+    status: erledigt
+    start: 2026-11-09T05:52+01:00
+    ende: 2026-11-09T06:06+01:00
+    branch: auftrag-R50-kleines-systemhaus
+    pr: https://github.com/Reling-IT/relingit/pull/29 (kein Draft, CI gruen, nicht gemergt)
+    bericht: reports/R50-BERICHT.md
+    hinweis: 'Eine Stelle Zeile 1367; PDF 77 Seiten, verify_layout OK; Paket ohne Audio SHA-256 A906DDF4...205A; freigabe-pruefen G1 G2 G7 bestanden, G3-G6 offen, G8 gesperrt; Vorschau 127.0.0.1:8050'
 leerlauf:
+  - zeit: 2026-11-09T06:06+01:00
+    hinweis: 'Owner-Auftrag 05:55: R50 (#29), R49 mit Inventur (#28), R48-Nachtrag L25, R47-Nachtrag Patch erledigt. archive/ftp-packages: nur noch 193924-327 und 195306-580.'
   - zeit: 2026-11-09T05:25+01:00
     hinweis: 'Owner-Auftrag 05:15 vollstaendig: R46 (#26), R06-Ergaenzung, R48, R47 erledigt. Offen: Drafts 25, 26, 27 bis Veroeffentlichung v1.38; Freigabe L25 durch Bernd.'
   - zeit: 2026-11-09T05:16+01:00
