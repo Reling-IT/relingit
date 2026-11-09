@@ -1,0 +1,19 @@
+id: R46
+titel: 'Anhang-Seite per Browser-Extraktion aus der Buchfassung (PR #26 umbauen, kein zweiter Upload)'
+art: code-pr
+gate: nein
+status: bereit
+abhaengig_von:
+- R07
+entscheidung: 'Bernd 09.11.2026: Viewer extrahiert die Anhang-Bloecke im Browser aus der hochgeladenen Buchfassung (q15: nur ein Upload).'
+ziel: anhang.html laedt die Buchfassung (wie lesen.html, lokal oder Supabase), schneidet die sechs section.appendix-Bloecke im Browser heraus und zeigt sie mit Inhaltsverzeichnis. Kein story/current/anhang.html, kein zweiter FTP-Upload.
+schritte:
+- 'Auf PR #26 (Branch auftrag-R07-anhang-seite) aufbauen: erzeugte Datei und Gleichheitspruefung in ci-check, publish-release und build-upload entfernen; Viewer und Verlinkung behalten.'
+- Extraktion im Browser ohne Skriptausfuehrung im Anhang-Inhalt; Sandbox ohne allow-scripts bleibt; Anker-Pruefung der sechs IDs bleibt in ci-check (nur Quelle).
+- Pester-Tests anpassen, ci-check, node --check, lokale Vorschau mit Beleg.
+- Draft-PR bleibt Draft. Merge erst nach Release v1.38 und Freigabe durch Bernd.
+nachweis: 'Aktualisierter Draft-PR #26, Bericht reports/R46-BERICHT.md'
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, keine Aenderung am Buchtext.
+stand: 2026-11-09 05:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

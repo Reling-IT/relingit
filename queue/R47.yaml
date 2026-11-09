@@ -1,0 +1,17 @@
+id: R47
+titel: Sicherung des Branches codex/fix-admin-password-recovery des OneDrive-Klons (git bundle)
+art: lokal
+gate: ja
+status: bereit
+abhaengig_von:
+- R45
+ziel: Der letzte v1.32-Admin-Stand (HEAD b671d7c, Upstream gone) wird als git bundle gesichert, damit L25 spaeter in den Papierkorb kann.
+schritte:
+- Im OneDrive-Klon git bundle create fuer den Branch erstellen, ausserhalb des Repos in archive ablegen, mit git bundle verify pruefen, SHA-256 notieren.
+- Nichts loeschen, kein Push, kein Force.
+- Bericht reports/R47-BERICHT.md; L25 erst danach Bernd erneut vorlegen.
+nachweis: Bundle-Datei mit Verify-Ausgabe und Hash im Bericht
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten; nur lesen und eine Bundle-Datei schreiben.
+stand: 2026-11-09 05:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

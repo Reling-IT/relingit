@@ -14,5 +14,7 @@ schritte:
 - 'Lokal pruefen: ci-check.ps1, node --check, Seite lokal ausliefern und per Browser oeffnen (Titel, Inhaltsverzeichnis, Anker). Mit Beleg.'
 nachweis: Draft-Pull-Request, Bericht reports/R07-BERICHT.md mit Anhang-Liste, Konzept, Pruefausgaben.
 grenzen: Kein Merge, keine Veroeffentlichung, keine Aenderung am Buchtext oder PDF, kein FTP, kein Supabase-Zugriff. Wenn die Seite nicht ohne Buchaenderung moeglich ist, als blockiert melden mit Begruendung.
-status: bereit
+status: erledigt
 hinweis_planer: 'Voraussetzung am 08.11.2026 erfuellt: PR #10 gemergt (81849d9), #6/#9 Inhalt in main.'
+entscheidung: 'Bernd 09.11.2026: Viewer extrahiert im Browser; Umbau als R46. Merge erst nach Release v1.38.'
+stand: 2026-11-09 05:15

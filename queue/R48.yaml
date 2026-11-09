@@ -1,0 +1,18 @@
+id: R48
+titel: 'OneDrive-Aufraeumen Phase 3b: L18-L24 und L26 in den Papierkorb (nach Freigabe R45)'
+art: lokal-loeschen
+gate: ja
+status: bereit
+abhaengig_von:
+- R45
+entscheidung: 'Bernd 09.11.2026: L18, L19, L20, L21, L22, L23, L24, L26 frei; L25 bleibt bis R47; L12-L15 unberuehrt.'
+ziel: 8 Ordner (225 Dateien, 58459633 Byte) unter archive/ftp-packages im OneDrive-Ordner in den Papierkorb verschieben.
+schritte:
+- 'Trockenlauf: Ordner-Hash je Kandidat neu berechnen und mit reports/R45-BERICHT.md vergleichen; nur bei Gleichheit weitermachen, sonst Kandidat auslassen und melden.'
+- 'Schutz: Paket 20260905-193924-327, L25 (20260905-192045-642) und L12-L15 nie anfassen; keine Cloud-Platzhalter hydrieren.'
+- In den Papierkorb verschieben (keine endgueltige Loeschung), Ergebnis je Kandidat in reports/R48-BERICHT.md.
+nachweis: Bericht mit Hash-Vergleich je Kandidat
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten; nur die 8 freigegebenen Ordner.
+stand: 2026-11-09 05:15
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

@@ -5,7 +5,7 @@ gate: nein
 abhaengig_von:
 - R03
 - R04
-entscheidung: 'Bernd 09.11.2026: i19 Ja (Anhang-Box Die sieben Standards in v1.39); k6 Fussnote im Buch (ADR bleibt im Text, Fussnote erklaert den Alias ADR zu ADG, nicht pauschal ersetzen).'
+entscheidung: 'Bernd 09.11.2026: i19 Ja (Anhang-Box Die sieben Standards in v1.39); k6 Fussnote im Buch (ADR bleibt im Text, Fussnote erklaert den Alias ADR zu ADG, nicht pauschal ersetzen). Bestaetigt 09.11. 05:12: ADR im Text, ADG nur Fussnote und Box; numpy/pillow in C:\dev\venv-pdf erlaubt; Merge #27 erst nach Release v1.38.'
 ziel: Neue Anhang-Box mit je einem belegten Satz pro Standard, ADR-Klarstellung im TDF/ADR-Wissensblock. Teil von Version 1.38 (Entscheidung des Owners).
 schritte:
 - 'Saetze aus dem Bericht R04 uebernehmen, nur Belegtes. Einleitungssatz: Diese Standards regeln, wie die KI-Seite des Systemhauses gebaut wird, nicht den Betrieb bei den Kunden.'
@@ -14,6 +14,6 @@ schritte:
 - Vollstaendigkeit wie bei R03 (Version, Historie, Personenliste, Inhaltsverzeichnis, Boxen), verify_layout und Link-Check.
 nachweis: Pull Request mit Vorher-Nachher, Pruefausgaben, Bericht reports/R06-BERICHT.md.
 grenzen: Kein Merge, keine Veroeffentlichung, keine neuen Szenen. Nichts behaupten, was R04 nicht belegt.
-status: bereit
+status: erledigt
 hinweis_planer: Voraussetzungen R03 und R04 erledigt. Aenderung an der Buchquelle gehoert in v1.39 (Branch von main). Zuordnung nur belegte Aussagen (R04-Bericht).
-stand: 2026-11-09 04:45
+stand: 2026-11-09 05:15

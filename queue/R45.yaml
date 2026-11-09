@@ -11,7 +11,7 @@ schritte:
 - Bericht reports/R45-BERICHT.md. Loeschen erst nach Freigabe je Kandidat durch Bernd.
 nachweis: Bericht mit Tabelle
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur lesen.
-status: bereit
-stand: 2026-11-09 04:45
+status: erledigt
+stand: 2026-11-09 05:15
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
