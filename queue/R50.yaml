@@ -1,0 +1,19 @@
+id: R50
+titel: 'Muss-Korrektur v1.38: zehn Koepfen durch kleines Systemhaus ersetzen (Kapitel Warum Navis und Lumen)'
+art: code-pr
+gate: nein
+status: bereit
+abhaengig_von:
+- R38
+entscheidung: 'Bernd 09.11.2026: Ja, ein kleines Systemhaus. Grund: Zum Zeitpunkt der Weiterbildung (ein Vierteljahr vor der Fahrt) sind Finn, Enno, Navis und Lumen noch nicht im Haus; zehn im Haus gilt erst danach.'
+ziel: In source/fahrt-zum-kunden.html im Kapitel kap-warum-navis-lumen steht statt "ein Systemhaus mit zehn Koepfen und einer Kaffeeecke" die Formulierung "ein kleines Systemhaus mit einer Kaffeeecke". Keine weitere Textaenderung.
+schritte:
+- Stelle per Literal-Ersetzung mit genau einem Treffer aendern; Suche vorher auf weitere Vorkommen von "zehn Koepfen" im Buch (Kaffeeecke "zwei von zehn Koepfen" bleibt, dort gilt die Gegenwart).
+- Versionshistorie v1.38 um keinen weiteren Satz ergaenzen, Version und Datum unveraendert.
+- ci-check, verify_layout, PDF neu rendern, Seitenzahl 77 pruefen, story/current aktualisieren (publish-release), Upload-Paket ohne Audio neu bauen, freigabe-pruefen.ps1 neu (G1 bis G7).
+- Als PR auf main (nicht Draft-Pflicht, aber nicht mergen), Bericht reports/R50-BERICHT.md.
+nachweis: PR, Bericht mit Vorher-Nachher, neues Paket mit Hash
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, keine weiteren Textaenderungen.
+stand: 2026-11-09 05:55
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

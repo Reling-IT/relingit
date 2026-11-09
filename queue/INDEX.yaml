@@ -1,4 +1,4 @@
-stand: 2026-11-09 05:25
+stand: 2026-11-09 05:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -363,7 +363,7 @@ auftraege:
   art: code-pr
   gate: nein
   status: erledigt
-  pr: 'Reling-IT/relingit#26 (Draft, CI gruen, Commit 6336236)'
+  pr: Reling-IT/relingit#26 (Draft, CI gruen, Commit 6336236)
   abhaengig_von:
   - R07
 - id: R47
@@ -387,4 +387,11 @@ auftraege:
   status: bereit
   abhaengig_von:
   - R45
+- id: R50
+  titel: 'Muss-Korrektur v1.38: zehn Koepfen durch kleines Systemhaus ersetzen (Kapitel Warum Navis und Lumen)'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R38
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
