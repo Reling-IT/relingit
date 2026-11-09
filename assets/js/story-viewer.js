@@ -4,6 +4,19 @@
  * Supabase may serve uploaded HTML as text/plain for security reasons. Fetching
  * the trusted release as text and assigning it to iframe.srcdoc preserves the
  * intended design without depending on the storage response's MIME type.
+ *
+ * Der Viewer dient lesen.html (ganze Geschichte) und anhang.html (nur der
+ * Anhang, erzeugt von scripts/build-anhang.ps1). Unterschiede stehen als
+ * data-Attribute am iframe:
+ *   data-local-url         lokale Datei (Standard: die Geschichte)
+ *   data-remote-path       Pfad im Supabase-Speicher; leer = nur lokal laden
+ *   data-release-info      "static" = Versionsangabe der Seite nicht aus
+ *                          Supabase ueberschreiben (die lokale Datei kann
+ *                          aelter sein als die Supabase-Fassung)
+ *   data-top-label         erster Eintrag im Inhaltsverzeichnis
+ *   data-outside-target    Seite fuer interne Links, deren Ziel nicht im
+ *                          geladenen Dokument steht (z. B. lesen.html)
+ *   data-status-text       Statustext nach erfolgreichem Laden
  */
 const config = window.SUPABASE_CONFIG ?? {};
 const frame = document.querySelector("#story-frame");
@@ -15,7 +28,12 @@ const currentSectionNode = document.querySelector("#current-section");
 const zoomOutButton = document.querySelector("#zoom-out");
 const zoomResetButton = document.querySelector("#zoom-reset");
 const zoomInButton = document.querySelector("#zoom-in");
-const localStoryUrl = "story/current/fahrt-zum-kunden.html";
+const localStoryUrl = frame.dataset.localUrl || "story/current/fahrt-zum-kunden.html";
+const remoteStoryPath = frame.dataset.remotePath ?? "story/current/fahrt-zum-kunden.html";
+const staticReleaseInfo = frame.dataset.releaseInfo === "static";
+const topLabel = frame.dataset.topLabel || "Anfang der Geschichte";
+const outsideTargetPage = frame.dataset.outsideTarget || "";
+const loadedStatusText = frame.dataset.statusText || "";
 const minimumZoom = 0.7;
 const maximumZoom = 1.6;
 const zoomStep = 0.1;
@@ -125,7 +143,7 @@ function buildChapterNavigation() {
     .filter((chapter) => chapter.title);
 
   chapterSelect.replaceChildren();
-  chapterSelect.add(new Option("Anfang der Geschichte", "__top"));
+  chapterSelect.add(new Option(topLabel, "__top"));
   storyChapters.forEach((chapter) => {
     chapterSelect.add(new Option(chapter.title, chapter.id));
   });
@@ -148,7 +166,15 @@ function enableInternalStoryLinks() {
 
       const targetId = decodeURIComponent(fragment);
       const target = storyDocument.getElementById(targetId);
-      if (!target) return;
+      if (!target) {
+        // Ziel liegt ausserhalb des geladenen Dokuments (Anhang verweist auf
+        // ein Kapitel): im Hauptfenster auf der Lesefassung oeffnen.
+        if (outsideTargetPage) {
+          event.preventDefault();
+          window.location.assign(`${outsideTargetPage}#${encodeURIComponent(targetId)}`);
+        }
+        return;
+      }
 
       event.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -156,8 +182,26 @@ function enableInternalStoryLinks() {
   });
 }
 
+/**
+ * Springt nach dem Laden zu einem Anker aus der Adresse (z. B.
+ * lesen.html#kap-umweg oder anhang.html#kap-versionen).
+ */
+function scrollToLocationHash() {
+  const storyDocument = frame.contentDocument;
+  const fragment = window.location.hash.slice(1);
+  if (!storyDocument || !fragment) return;
+
+  let targetId;
+  try {
+    targetId = decodeURIComponent(fragment);
+  } catch {
+    return;
+  }
+  storyDocument.getElementById(targetId)?.scrollIntoView({ block: "start" });
+}
+
 async function loadReleaseInfo() {
-  if (!hasSupabaseConfig()) return;
+  if (!hasSupabaseConfig() || staticReleaseInfo) return;
 
   try {
     const endpoint =
@@ -179,17 +223,17 @@ async function loadReleaseInfo() {
 }
 
 async function loadStory() {
-  const remoteStoryUrl = hasSupabaseConfig()
-    ? `${config.url}/storage/v1/object/public/story/current/fahrt-zum-kunden.html`
+  const remoteStoryUrl = hasSupabaseConfig() && remoteStoryPath
+    ? `${config.url}/storage/v1/object/public/story/${remoteStoryPath.replace(/^story\//, "")}`
     : localStoryUrl;
 
   try {
     frame.srcdoc = await fetchStory(remoteStoryUrl);
-    statusNode.textContent = "Aktuelle HTML-Lesefassung";
+    statusNode.textContent = loadedStatusText || "Aktuelle HTML-Lesefassung";
   } catch (remoteError) {
     try {
       frame.srcdoc = await fetchStory(localStoryUrl);
-      statusNode.textContent = "Lokale HTML-Lesefassung";
+      statusNode.textContent = loadedStatusText || "Lokale HTML-Lesefassung";
     } catch (localError) {
       statusNode.textContent = "Laden fehlgeschlagen";
       errorNode.hidden = false;
@@ -205,6 +249,7 @@ frame.addEventListener("load", () => {
   buildChapterNavigation();
   enableInternalStoryLinks();
   applyZoom();
+  scrollToLocationHash();
 });
 chapterSelect.addEventListener("change", () => {
   const storyDocument = frame.contentDocument;

@@ -44,7 +44,8 @@ Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlich
 
 Das Skript übernimmt Version und Datum aus der HTML-Datei, verlangt den gleichen
 Stand im letzten Eintrag der Versionshistorie, liest die Seitenzahl automatisch
-aus der PDF, aktualisiert die lokale LP (Rückfallwert in `app.js`, `lesen.html` und die Seitenzahl in `index.html`) und
+aus der PDF, erzeugt die Anhang-Seite `story/current/anhang.html` aus der Buchquelle
+(`scripts/build-anhang.ps1`), aktualisiert die lokale LP (Rückfallwert in `app.js`, `lesen.html`, `anhang.html` und die Seitenzahl in `index.html`) und
 erstellt anschließend das geprüfte FTP-Paket. `source` und `story/current`
 müssen danach für HTML und PDF bytegenau übereinstimmen. Bei einer Abweichung
 wird die Veröffentlichung abgebrochen. Bereits vorhandene FTP-Pakete werden
@@ -105,6 +106,10 @@ laufen ausschließlich über eine Supabase Edge Function mit Plausibilitäts- un
 Rate-Limit-Prüfung. Leser können vorhandene Einträge weder lesen noch ändern
 oder löschen. Das Formular fragt keine Kontaktdaten ab. Einrichtung und
 Restrisiken stehen in [docs/SICHERHEIT.md](docs/SICHERHEIT.md).
+
+## Anhang-Seite
+
+`anhang.html` zeigt nur den Anhang des Buches (alle Blöcke `section.appendix`) mit eigenem Inhaltsverzeichnis, im gleichen Viewer wie `lesen.html` (`assets/js/story-viewer.js`, iframe ohne Skriptausführung). Der Inhalt `story/current/anhang.html` wird nie von Hand bearbeitet: `./scripts/build-anhang.ps1` erzeugt ihn aus `source/fahrt-zum-kunden.html` (Liste der Blöcke mit `-Liste`), `publish-release.ps1` ruft das bei jedem Release auf. `ci-check.ps1` verlangt für jeden Anhang-Block eine eindeutige, stabile ID (an der `section` oder an ihrer ersten `h2`) und bricht ab, wenn die erzeugte Seite nicht mehr zur Buchquelle passt. Die Anhang-Seite geht nicht über den Admin-Bereich, sondern per FTP.
 
 ## Lokale Vorschau
 

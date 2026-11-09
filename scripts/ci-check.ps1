@@ -6,14 +6,15 @@ $failures = [System.Collections.Generic.List[string]]::new()
 
 # Diese Dateien bilden die minimale veröffentlichungsfähige Website.
 $requiredFiles = @(
-    ".htaccess", "index.html", "lesen.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "impressum.html", "datenschutz.html",
-    "story/current/fahrt-zum-kunden.html", "story/current/geschichte.pdf", "story/current/workshop-handout.html", "story/current/workshop-handout.pdf",
+    ".htaccess", "index.html", "lesen.html", "anhang.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "impressum.html", "datenschutz.html",
+    "story/current/fahrt-zum-kunden.html", "story/current/anhang.html", "story/current/geschichte.pdf", "story/current/workshop-handout.html", "story/current/workshop-handout.pdf",
     "assets/img/reling-it-logo.svg", "assets/img/favicon.png",
     "assets/css/styles.css", "assets/css/legal.css",
     "assets/js/app.js", "assets/js/admin.js", "assets/js/pdf-viewer.js", "assets/js/story-viewer.js", "assets/js/handout-viewer.js",
     "assets/js/supabase-config.js", "supabase/setup.sql", "supabase/config.toml",
     "supabase/functions/submit-feedback/index.ts", "supabase/tests/security-checks.sql",
-    "source/fahrt-zum-kunden.html", "source/Die-Fahrt-zum-Kunden.pdf"
+    "source/fahrt-zum-kunden.html", "source/Die-Fahrt-zum-Kunden.pdf",
+    "scripts/build-anhang.ps1"
 )
 foreach ($file in $requiredFiles) {
     if (-not (Test-Path -LiteralPath $file -PathType Leaf)) {
@@ -32,6 +33,7 @@ $supabaseConfigText = Get-Content -Raw -LiteralPath "supabase/config.toml"
 $viewerTexts = @(
     Get-Content -Raw -LiteralPath "lesen.html"
     Get-Content -Raw -LiteralPath "handout.html"
+    if (Test-Path -LiteralPath "anhang.html") { Get-Content -Raw -LiteralPath "anhang.html" }
 )
 if ($adminText -notmatch '/factors/.+/challenge' -or $adminText -notmatch '/factors/.+/verify') {
     $failures.Add("Adminbereich enthält keinen vollständigen MFA-Challenge-/Verify-Ablauf")
@@ -103,6 +105,18 @@ if ($storyInternalLinks.Count -eq 0) {
     $failures.Add("Geschichte enthält keine prüfbaren internen Inhaltsverzeichnis-Links")
 }
 
+# Anhang-Seite (R07): Jeder Anhang-Block der Buchquelle braucht eine eindeutige,
+# stabile ID (an section.appendix oder an seiner ersten h2), und
+# story/current/anhang.html muss genau dem entsprechen, was
+# scripts/build-anhang.ps1 aus der Buchquelle erzeugt. So gibt es keine
+# Doppelpflege: Wer den Anhang von Hand ändert oder das Neuerzeugen vergisst,
+# bekommt hier einen Fehler.
+if (Test-Path -LiteralPath "scripts/build-anhang.ps1" -PathType Leaf) {
+    foreach ($anhangBefund in @(& "$PSScriptRoot/build-anhang.ps1" -Projekt $projectRoot -Pruefen)) {
+        $failures.Add("Anhang: $anhangBefund")
+    }
+}
+
 # Versionsnummer und Veröffentlichungsdatum müssen in Landingpage-Logik,
 # Leseansicht und eigentlicher Geschichte denselben Stand ausweisen.
 $appText = Get-Content -Raw -LiteralPath "assets/js/app.js"
@@ -131,6 +145,22 @@ $storyVersionMatch = if ($storyMeta.Success) {
 
 if (-not $appRelease.Success) { $failures.Add("Versionsangabe in assets/js/app.js nicht lesbar") }
 if (-not $readerRelease.Success) { $failures.Add("Versionsangabe in lesen.html nicht lesbar") }
+# Die Anhang-Seite zeigt ihren Stand statisch (data-release-info="static") und
+# muss denselben Stand wie lesen.html tragen; publish-release.ps1 setzt beide.
+if (Test-Path -LiteralPath "anhang.html") {
+    $anhangViewerText = Get-Content -Raw -LiteralPath "anhang.html"
+    $anhangRelease = [regex]::Match(
+        $anhangViewerText,
+        'id="story-release"[^>]*>\s*Version\s+(?<version>[^<·]+?)\s*·\s*(?<date>[^<]+?)\s*</strong>'
+    )
+    if (-not $anhangRelease.Success) {
+        $failures.Add("Versionsangabe in anhang.html nicht lesbar")
+    } elseif ($readerRelease.Success -and (
+        $anhangRelease.Groups['version'].Value.Trim() -ne $readerRelease.Groups['version'].Value.Trim() -or
+        $anhangRelease.Groups['date'].Value.Trim() -ne $readerRelease.Groups['date'].Value.Trim())) {
+        $failures.Add("Versionsangabe in anhang.html weicht von lesen.html ab")
+    }
+}
 if (-not $storyDateMatch.Success -or -not $storyVersionMatch.Success) {
     $failures.Add("Version oder Datum in der HTML-Geschichte nicht lesbar")
 }

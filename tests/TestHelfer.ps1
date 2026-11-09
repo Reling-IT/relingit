@@ -59,7 +59,7 @@ function New-MiniProjekt {
     if (Test-Path -LiteralPath $Ziel) { Remove-Item -LiteralPath $Ziel -Recurse -Force }
     New-Item -ItemType Directory -Path (Join-Path $Ziel "scripts") -Force | Out-Null
 
-    foreach ($skript in @("ci-check.ps1", "publish-release.ps1", "build-upload.ps1")) {
+    foreach ($skript in @("ci-check.ps1", "publish-release.ps1", "build-upload.ps1", "build-anhang.ps1")) {
         Copy-Item -LiteralPath (Join-Path $script:RepoRoot "scripts/$skript") -Destination (Join-Path $Ziel "scripts/$skript")
     }
 
@@ -88,6 +88,13 @@ function New-MiniProjekt {
         New-Item -ItemType Directory -Path (Split-Path -Parent $zielDatei) -Force | Out-Null
         Copy-Item -LiteralPath $geschichtePfad -Destination $zielDatei
     }
+
+    # Anhang-Seite wie bei publish-release.ps1 aus der Buchquelle erzeugen.
+    # Verletzt die Fixture die Anker-Regeln, bleibt die Seite aus; ci-check.ps1
+    # meldet das dann selbst.
+    try {
+        & (Join-Path $Ziel "scripts/build-anhang.ps1") -Projekt $Ziel 6>$null | Out-Null
+    } catch { }
 
     $pdfPfad = Join-Path $script:FixtureRoot "pdf/$Pdf"
     foreach ($relativ in @("source/Die-Fahrt-zum-Kunden.pdf", "story/current/geschichte.pdf", "story/current/workshop-handout.pdf")) {

@@ -39,6 +39,35 @@ Describe "ci-check.ps1" {
         Assert-Fehlschlag $ergebnis "Deckblatt-Datum stimmt nicht mit letztem Historieneintrag überein"
     }
 
+    It "meldet einen Anhang-Block ohne ID und baut die Anhang-Seite nicht" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-id" -Geschichte "anhang-ohne-id.html.fixture"
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
+        Assert-Fehlschlag $ergebnis "Anhang: Anhang-Block in Zeile \d+ \('Ohne Anker'\): keine ID an section\.appendix oder an der ersten h2"
+        Assert-Enthaelt $ergebnis "Pflichtdatei fehlt: story/current/anhang\.html"
+    }
+
+    It "meldet eine von Hand geänderte Anhang-Seite" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-hand"
+        $anhang = Join-Path $projekt "story/current/anhang.html"
+        $text = [System.IO.File]::ReadAllText($anhang)
+        Write-Utf8Datei $anhang ($text.Replace("<h2>Versionshistorie</h2>", "<h2>Versionshistorie von Hand</h2>"))
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
+        Assert-Fehlschlag $ergebnis "Anhang: Anhang-Seite ist nicht aktuell: story/current/anhang\.html"
+    }
+
+    It "erzeugt die Anhang-Seite mit Titel, Inhaltsverzeichnis und Anker" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-ok"
+        $text = [System.IO.File]::ReadAllText((Join-Path $projekt "story/current/anhang.html"))
+        foreach ($muster in @(
+            '<title>Anhang \| Die Fahrt zum Kunden</title>',
+            '<nav class="cover-toc" id="anhang-inhalt"',
+            '<a href="#kap-versionen">Versionshistorie</a>',
+            '<section class="appendix" id="kap-versionen">'
+        )) {
+            if ($text -notmatch $muster) { throw "Anhang-Seite ohne '$muster':`n$text" }
+        }
+    }
+
     It "meldet eine Versionshistorien-Zeile ohne lesbares Datum" {
         $projekt = New-MiniProjekt -Ziel "$script:Basis-unlesbar" -Geschichte "historie-zeile-unlesbar.html.fixture"
         $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"

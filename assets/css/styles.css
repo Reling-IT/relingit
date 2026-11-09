@@ -566,6 +566,10 @@ footer nav { text-align: right; }
   gap: 12px;
 }
 
+.viewer-brand .button {
+  white-space: nowrap;
+}
+
 .viewer-brand img {
   display: block;
   width: 46px;
@@ -713,6 +717,7 @@ footer nav { text-align: right; }
   .audio-card { padding: 18px; }
   .audio-links { align-items: flex-start; flex-direction: column; gap: 4px; }
   .viewer-header { align-items: stretch; flex-direction: column; }
+  .viewer-brand { flex-wrap: wrap; }
   .viewer-header .button { width: 100%; }
   .reader-navigation { grid-template-columns: 1fr; }
   .reader-navigation label,
