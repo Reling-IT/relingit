@@ -44,8 +44,8 @@ if ((Test-Path -LiteralPath $packageDirectory) -or (Test-Path -LiteralPath $zipP
 $publicFiles = @(
     ".htaccess", "admin.html", "datenschutz.html", "handout-pdf.html",
     "handout.html", "impressum.html", "index.html", "lesen.html", "pdf.html",
-    # Anhang-Seite (R07): Viewer im Projektstamm und die aus der Buchquelle erzeugte Seite.
-    "anhang.html", "story/current/anhang.html",
+    # Anhang-Seite (R07, R46): Viewer, der den Anhang aus der Buchfassung herausschneidet.
+    "anhang.html",
     "assets/css/legal.css", "assets/css/styles.css",
     # Webschriften der Geschichte (R27); lesen.html und story/current laden sie von hier.
     "assets/fonts/Fraunces-Variable.woff2", "assets/fonts/WorkSans-Regular.woff2",

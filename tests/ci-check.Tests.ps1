@@ -39,33 +39,21 @@ Describe "ci-check.ps1" {
         Assert-Fehlschlag $ergebnis "Deckblatt-Datum stimmt nicht mit letztem Historieneintrag überein"
     }
 
-    It "meldet einen Anhang-Block ohne ID und baut die Anhang-Seite nicht" {
+    It "meldet einen Anhang-Block ohne ID" {
         $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-id" -Geschichte "anhang-ohne-id.html.fixture"
         $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
-        Assert-Fehlschlag $ergebnis "Anhang: Anhang-Block in Zeile \d+ \('Ohne Anker'\): keine ID an section\.appendix oder an der ersten h2"
-        Assert-Enthaelt $ergebnis "Pflichtdatei fehlt: story/current/anhang\.html"
+        Assert-Fehlschlag $ergebnis "Anhang: source/fahrt-zum-kunden\.html: Anhang-Block in Zeile \d+ \('Ohne Anker'\) ohne ID an section\.appendix oder an der ersten h2"
     }
 
-    It "meldet eine von Hand geänderte Anhang-Seite" {
-        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-hand"
-        $anhang = Join-Path $projekt "story/current/anhang.html"
-        $text = [System.IO.File]::ReadAllText($anhang)
-        Write-Utf8Datei $anhang ($text.Replace("<h2>Versionshistorie</h2>", "<h2>Versionshistorie von Hand</h2>"))
-        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
-        Assert-Fehlschlag $ergebnis "Anhang: Anhang-Seite ist nicht aktuell: story/current/anhang\.html"
-    }
-
-    It "erzeugt die Anhang-Seite mit Titel, Inhaltsverzeichnis und Anker" {
-        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-ok"
-        $text = [System.IO.File]::ReadAllText((Join-Path $projekt "story/current/anhang.html"))
-        foreach ($muster in @(
-            '<title>Anhang \| Die Fahrt zum Kunden</title>',
-            '<nav class="cover-toc" id="anhang-inhalt"',
-            '<a href="#kap-versionen">Versionshistorie</a>',
-            '<section class="appendix" id="kap-versionen">'
-        )) {
-            if ($text -notmatch $muster) { throw "Anhang-Seite ohne '$muster':`n$text" }
+    It "meldet eine Anhang-ID, die nicht dem Muster kap-<name> entspricht" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-muster" -Geschichte "anhang-ohne-id.html.fixture"
+        foreach ($relativ in @("source/fahrt-zum-kunden.html", "story/current/fahrt-zum-kunden.html")) {
+            $pfad = Join-Path $projekt $relativ
+            $text = [System.IO.File]::ReadAllText($pfad)
+            Write-Utf8Datei $pfad ($text.Replace('<section class="appendix">', '<section class="appendix" id="Anhang_1">'))
         }
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
+        Assert-Fehlschlag $ergebnis "Anhang: source/fahrt-zum-kunden\.html: Anhang-Block in Zeile \d+ \('Ohne Anker'\): ID 'Anhang_1' entspricht nicht dem Muster"
     }
 
     It "meldet eine Versionshistorien-Zeile ohne lesbares Datum" {

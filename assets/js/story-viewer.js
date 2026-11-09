@@ -6,13 +6,11 @@
  * intended design without depending on the storage response's MIME type.
  *
  * Der Viewer dient lesen.html (ganze Geschichte) und anhang.html (nur der
- * Anhang, erzeugt von scripts/build-anhang.ps1). Unterschiede stehen als
+ * Anhang). Beide laden dieselbe Buchfassung (Supabase, sonst lokal); es gibt
+ * keinen zweiten Upload (Entscheidung q15, R46). Unterschiede stehen als
  * data-Attribute am iframe:
- *   data-local-url         lokale Datei (Standard: die Geschichte)
- *   data-remote-path       Pfad im Supabase-Speicher; leer = nur lokal laden
- *   data-release-info      "static" = Versionsangabe der Seite nicht aus
- *                          Supabase ueberschreiben (die lokale Datei kann
- *                          aelter sein als die Supabase-Fassung)
+ *   data-extract           "anhang" = nur die Bloecke section.appendix aus der
+ *                          Buchfassung zeigen, mit eigenem Inhaltsverzeichnis
  *   data-top-label         erster Eintrag im Inhaltsverzeichnis
  *   data-outside-target    Seite fuer interne Links, deren Ziel nicht im
  *                          geladenen Dokument steht (z. B. lesen.html)
@@ -28,9 +26,8 @@ const currentSectionNode = document.querySelector("#current-section");
 const zoomOutButton = document.querySelector("#zoom-out");
 const zoomResetButton = document.querySelector("#zoom-reset");
 const zoomInButton = document.querySelector("#zoom-in");
-const localStoryUrl = frame.dataset.localUrl || "story/current/fahrt-zum-kunden.html";
-const remoteStoryPath = frame.dataset.remotePath ?? "story/current/fahrt-zum-kunden.html";
-const staticReleaseInfo = frame.dataset.releaseInfo === "static";
+const localStoryUrl = "story/current/fahrt-zum-kunden.html";
+const extractAppendixOnly = frame.dataset.extract === "anhang";
 const topLabel = frame.dataset.topLabel || "Anfang der Geschichte";
 const outsideTargetPage = frame.dataset.outsideTarget || "";
 const loadedStatusText = frame.dataset.statusText || "";
@@ -80,6 +77,112 @@ function withAbsoluteFontUrls(markup) {
     /url\((["']?)(?:\.\.\/)+assets\/fonts\//g,
     (_match, quote) => `url(${quote}${fontBase}`,
   );
+}
+
+/**
+ * Entfernt alles Ausfuehrbare aus einem Teilbaum: Skripte, eingebettete
+ * Dokumente, Formulare, Event-Handler-Attribute und javascript:-Adressen.
+ * Die Sandbox des iframes (ohne allow-scripts) verhindert Skripte ohnehin;
+ * das hier ist die zweite Sicherung fuer den Anhang.
+ */
+function removeExecutableContent(root) {
+  root
+    .querySelectorAll("script, noscript, iframe, frame, object, embed, form, link, meta, base")
+    .forEach((node) => node.remove());
+  root.querySelectorAll("*").forEach((element) => {
+    Array.from(element.attributes).forEach((attribute) => {
+      const name = attribute.name.toLowerCase();
+      const value = attribute.value.replace(/[\s\u0000-\u001f]+/g, "").toLowerCase();
+      const isUrlAttribute = ["href", "src", "xlink:href", "action", "formaction", "srcset"].includes(name);
+      if (
+        name.startsWith("on") ||
+        (isUrlAttribute && (value.startsWith("javascript:") || value.startsWith("vbscript:")))
+      ) {
+        element.removeAttribute(attribute.name);
+      }
+    });
+  });
+}
+
+/**
+ * Baut aus der Buchfassung ein eigenes Dokument nur mit dem Anhang:
+ * Stylesheets der Buchfassung (gleiche Gestaltung, Schriften bereits auf
+ * assets/fonts/ umgeschrieben), Inhaltsverzeichnis, alle Bloecke
+ * section.appendix samt ihrer box-shell-Huelle und der Buch-Fuss.
+ * DOMParser fuehrt keine Skripte aus und laedt keine Ressourcen.
+ */
+function extractAppendix(markup) {
+  const book = new DOMParser().parseFromString(markup, "text/html");
+  const sections = Array.from(book.querySelectorAll("section.appendix"));
+  if (sections.length === 0) throw new Error("Keine Anhang-Bloecke in der Buchfassung");
+
+  const appendix = document.implementation.createHTMLDocument("Anhang | Die Fahrt zum Kunden");
+  const charset = appendix.createElement("meta");
+  charset.setAttribute("charset", "utf-8");
+  appendix.head.prepend(charset);
+  book.querySelectorAll("head style").forEach((style) => {
+    appendix.head.append(appendix.importNode(style, true));
+  });
+
+  const wrap = appendix.createElement("div");
+  wrap.className = "wrap";
+  const toc = appendix.createElement("nav");
+  toc.className = "cover-toc";
+  toc.id = "anhang-inhalt";
+  toc.setAttribute("aria-label", "Inhaltsverzeichnis des Anhangs");
+  const tocTitle = appendix.createElement("div");
+  tocTitle.className = "cover-toc-title";
+  tocTitle.textContent = "Anhang \u00b7 Inhalt";
+  toc.append(tocTitle);
+  const coverSpans = Array.from(book.querySelectorAll(".cover-meta span"))
+    .map((span) => span.textContent.trim());
+  const version = coverSpans.find((text) => /^Version\s+\d+\.\d+$/.test(text));
+  const date = coverSpans.find((text) => /^\d{2}\.\d{2}\.\d{4}$/.test(text));
+  if (version) {
+    const stand = appendix.createElement("div");
+    stand.className = "cover-toc-group";
+    const label = appendix.createElement("span");
+    label.className = "cover-toc-label";
+    label.textContent = `Die Fahrt zum Kunden \u00b7 ${version}${date ? ` vom ${date}` : ""}`;
+    stand.append(label);
+    toc.append(stand);
+  }
+  wrap.append(toc);
+
+  sections.forEach((section) => {
+    const heading = section.querySelector("h2");
+    const id = section.id || heading?.id || "";
+    const title = heading?.textContent.replace(/\s+/g, " ").trim() || "";
+    const shell = section.parentElement;
+    const block =
+      shell?.classList.contains("box-shell") && shell.children.length === 1 ? shell : section;
+    wrap.append(appendix.importNode(block, true));
+    if (!id || !title) return;
+
+    const group = appendix.createElement("div");
+    group.className = "cover-toc-group";
+    const link = appendix.createElement("a");
+    link.href = `#${id}`;
+    link.textContent = title;
+    group.append(link);
+    toc.append(group);
+  });
+
+  const footer = book.querySelector("footer");
+  if (footer) {
+    const footerShell = footer.parentElement?.classList.contains("box-shell")
+      ? footer.parentElement
+      : footer;
+    wrap.append(appendix.importNode(footerShell, true));
+  }
+
+  appendix.body.append(wrap);
+  removeExecutableContent(appendix.body);
+  return `<!DOCTYPE html>\n${appendix.documentElement.outerHTML}`;
+}
+
+function prepareMarkup(markup) {
+  return extractAppendixOnly ? extractAppendix(markup) : markup;
 }
 
 function applyZoom() {
@@ -201,7 +304,7 @@ function scrollToLocationHash() {
 }
 
 async function loadReleaseInfo() {
-  if (!hasSupabaseConfig() || staticReleaseInfo) return;
+  if (!hasSupabaseConfig()) return;
 
   try {
     const endpoint =
@@ -223,16 +326,16 @@ async function loadReleaseInfo() {
 }
 
 async function loadStory() {
-  const remoteStoryUrl = hasSupabaseConfig() && remoteStoryPath
-    ? `${config.url}/storage/v1/object/public/story/${remoteStoryPath.replace(/^story\//, "")}`
+  const remoteStoryUrl = hasSupabaseConfig()
+    ? `${config.url}/storage/v1/object/public/story/current/fahrt-zum-kunden.html`
     : localStoryUrl;
 
   try {
-    frame.srcdoc = await fetchStory(remoteStoryUrl);
+    frame.srcdoc = prepareMarkup(await fetchStory(remoteStoryUrl));
     statusNode.textContent = loadedStatusText || "Aktuelle HTML-Lesefassung";
   } catch (remoteError) {
     try {
-      frame.srcdoc = await fetchStory(localStoryUrl);
+      frame.srcdoc = prepareMarkup(await fetchStory(localStoryUrl));
       statusNode.textContent = loadedStatusText || "Lokale HTML-Lesefassung";
     } catch (localError) {
       statusNode.textContent = "Laden fehlgeschlagen";
