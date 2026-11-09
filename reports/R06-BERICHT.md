@@ -137,3 +137,54 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schätzung
 ```
+
+## Ergänzung 09.11.2026: verify_layout vollständig
+
+Am 09.11.2026 hat Bernd die Installation freigegeben, nur in `C:\dev\venv-pdf`.
+
+**Installation**
+
+Befehl: `C:\dev\venv-pdf\Scripts\python.exe -m pip install numpy pillow`
+
+```text
+Installing collected packages: pillow, numpy
+Successfully installed numpy-2.4.6 pillow-13.0.0
+```
+
+Kontrolle: `python -c "import numpy, PIL; ..."` gibt `numpy 2.4.6 pillow 13.0.0` aus. Außerhalb der venv ist nichts installiert, auch kein pip-Update.
+
+**Lauf 1: committete PDF**
+
+Worktree `C:\dev\wt-r06`, nach `git pull --ff-only` (`Already up to date`), Stand 8fabbf2.
+
+Befehl: `C:\dev\venv-pdf\Scripts\python.exe scripts/pdf/verify_layout.py --pdf source/Die-Fahrt-zum-Kunden.pdf --no-render`
+
+```text
+Hintergrundfarbe aus dem Quelltext: #123b4e
+Struktur-Check OK - alle vier Fix-Mechanismen sind im CSS vorhanden.
+Geprueft: 80 Seiten (Rand/Luftzone/Fast-leer-Check)
+Geprueft: Ueberschriften-Reihenfolge + Kapitel-Verlinkung (Inhalt-Check)
+OK - alle Seiten erfuellen den Layout-Check UND den Inhalt-Praesenz-/Positions-Check.
+```
+
+Exit-Code 0.
+
+**Lauf 2: frisch gerendert**
+
+Befehl: `…python.exe scripts/pdf/verify_layout.py --source source/fahrt-zum-kunden.html --pdf output/Die-Fahrt-zum-Kunden.pdf`
+
+Ergebnis: `OK -> …\output\Die-Fahrt-zum-Kunden.pdf | Seiten: 80 | Renderstand: 09.11.2026, 05:18 Uhr (MEZ)`. Danach folgen dieselben OK-Zeilen wie in Lauf 1. Exit-Code 0.
+
+Die Seitenzahl ist damit deterministisch, beide Läufe ergeben 80.
+
+**Ergebnis**
+
+- Das Layout hat keinen Befund. Am Buch habe ich nichts geändert.
+- Die Prüfung hat nur `output/` erzeugt. Der Ordner ist gitignored, also gibt es nichts zu committen; `git status` ist sauber.
+
+**Offene Fragen aus dem Bericht, jetzt beantwortet (Bernd, 09.11.2026)**
+
+1. k6-Auslegung: bestätigt. ADR bleibt im Text, ADG steht nur in Fußnote und Box.
+2. Wortlaut der Fußnote: bestätigt, sie bleibt so.
+3. numpy und pillow: erlaubt, nur in `C:\dev\venv-pdf`. Installiert, verify_layout ist grün.
+4. Merge-Reihenfolge: erst #27, dann das umgebaute #26, dann #25. Gemergt wird erst nach der Veröffentlichung von v1.38.
