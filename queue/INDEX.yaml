@@ -1,4 +1,4 @@
-stand: 2026-11-09 05:15
+stand: 2026-11-09 05:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -376,6 +376,13 @@ auftraege:
   titel: 'OneDrive-Aufraeumen Phase 3b: L18-L24 und L26 in den Papierkorb (nach Freigabe R45)'
   art: lokal-loeschen
   gate: ja
+  status: bereit
+  abhaengig_von:
+  - R45
+- id: R49
+  titel: Aufbewahrungsregel fuer archive/ftp-packages (nur melden, nichts loeschen)
+  art: code-pr
+  gate: nein
   status: bereit
   abhaengig_von:
   - R45

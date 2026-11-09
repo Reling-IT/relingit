@@ -1,0 +1,18 @@
+id: R49
+titel: Aufbewahrungsregel fuer archive/ftp-packages (nur melden, nichts loeschen)
+art: code-pr
+gate: nein
+status: bereit
+abhaengig_von:
+- R45
+entscheidung: 'Bernd 09.11.2026: Ja, als eigener Auftrag.'
+ziel: publish-release.ps1 meldet nach dem Verschieben, welche Pakete in archive/ftp-packages aelter als die letzten drei sind. Regel steht in docs/ABLAUF.md.
+schritte:
+- Regel (letzte drei Pakete behalten, geschuetzte Pakete nie melden) in docs/ABLAUF.md dokumentieren.
+- 'publish-release.ps1: nur Meldung, kein Loeschen, kein Verschieben; Pester-Test ergaenzen.'
+- Draft-PR, ci-check und Pester mit Beleg, Bericht reports/R49-BERICHT.md.
+nachweis: Draft-PR, Bericht
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten; Skript loescht nichts.
+stand: 2026-11-09 05:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
