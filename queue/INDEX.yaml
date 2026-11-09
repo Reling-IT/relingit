@@ -384,14 +384,16 @@ auftraege:
   titel: Aufbewahrungsregel fuer archive/ftp-packages (nur melden, nichts loeschen)
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
+  pr: 'Reling-IT/relingit#28 (Draft, CI gruen)'
   abhaengig_von:
   - R45
 - id: R50
   titel: 'Muss-Korrektur v1.38: zehn Koepfen durch kleines Systemhaus ersetzen (Kapitel Warum Navis und Lumen)'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
+  pr: 'Reling-IT/relingit#29 (offen, kein Draft, CI gruen, nicht gemergt)'
   abhaengig_von:
   - R38
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
