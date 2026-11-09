@@ -1,4 +1,4 @@
-stand: 2026-11-09T04:58+01:00
+stand: 2026-11-09T05:03+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -262,8 +262,13 @@ auftraege:
     bericht: reports/R11-BERICHT.md
     hinweis: 'Bildmarken nur auf index.html (Hero, Abschnitt Worum es geht); lesen.html ohne eigene Einfuehrung der Figuren; build-upload nimmt navis.svg, lumen.svg auf'
   - id: R06
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-09T04:41+01:00
+    ende: 2026-11-09T05:03+01:00
+    branch: auftrag-R06-standards-box-v139
+    pr: https://github.com/Reling-IT/relingit/pull/27 (Draft, CI gruen)
+    bericht: reports/R06-BERICHT.md
+    hinweis: 'v1.39: Box Die sieben Standards (kap-sieben-standards), Rueckverweis, eine Fussnote ADR/ADG; alle ADR-Stellen meinen den Dokumenttyp, keine ersetzt; PDF 80 Seiten; verify_layout ohne numpy nur teilweise; nach Merge von 26 und 27 anhang.html neu erzeugen'
   - id: R45
     status: erledigt
     start: 2026-11-09T04:41+01:00
@@ -271,6 +276,8 @@ auftraege:
     bericht: reports/R45-BERICHT.md
     hinweis: 'Nur gelesen. L18 bis L26 vollstaendig lokal (keine Platzhalter), gehasht; Empfehlung Papierkorb L18-L24, L26 (55,75 MiB), L25 behalten bis Klon-Branch codex/fix-admin-password-recovery gesichert; Freigabe je Kandidat durch Bernd'
 leerlauf:
+  - zeit: 2026-11-09T05:03+01:00
+    hinweis: 'Alle Auftraege der Owner-Liste bearbeitet: R44, Paketbau, R07 (#26), R11 (#25), R06 (#27), R45. Offene Drafts 25, 26, 27.'
   - zeit: 2026-11-09T04:50+01:00
     hinweis: 'Korrektur: R11-Ende und stand im Commit 78edc5f/4a8140d geschaetzt (04:47/04:46), mit date berichtigt.'
   - zeit: 2026-11-09T04:36+01:00
