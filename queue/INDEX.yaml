@@ -362,21 +362,22 @@ auftraege:
   titel: 'Anhang-Seite per Browser-Extraktion aus der Buchfassung (PR #26 umbauen, kein zweiter Upload)'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
+  pr: 'Reling-IT/relingit#26 (Draft, CI gruen, Commit 6336236)'
   abhaengig_von:
   - R07
 - id: R47
   titel: Sicherung des Branches codex/fix-admin-password-recovery des OneDrive-Klons (git bundle)
   art: lokal
   gate: ja
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R45
 - id: R48
   titel: 'OneDrive-Aufraeumen Phase 3b: L18-L24 und L26 in den Papierkorb (nach Freigabe R45)'
   art: lokal-loeschen
   gate: ja
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R45
 - id: R49
