@@ -1,4 +1,4 @@
-stand: 2026-11-09T05:20+01:00
+stand: 2026-11-09T05:25+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -288,11 +288,16 @@ auftraege:
     bericht: reports/R47-BERICHT.md
     hinweis: 'Bundle archive/codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle im OneDrive-Klon, verify okay, SHA-256 39340105...9b64; L25 erneut Bernd vorgelegt'
   - id: R46
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-09T05:16+01:00
+    ende: 2026-11-09T05:25+01:00
     branch: auftrag-R07-anhang-seite
-    pr: https://github.com/Reling-IT/relingit/pull/26
+    pr: https://github.com/Reling-IT/relingit/pull/26 (Draft, CI gruen, Commit 6336236)
+    bericht: reports/R46-BERICHT.md
+    hinweis: 'Anhang per DOMParser im Browser aus der Buchfassung; build-anhang.ps1 und story/current/anhang.html entfernt; Anker-Pruefung nur Quelle; Pester 23/0; Supabase-Pfad nicht live geprueft'
 leerlauf:
+  - zeit: 2026-11-09T05:25+01:00
+    hinweis: 'Owner-Auftrag 05:15 vollstaendig: R46 (#26), R06-Ergaenzung, R48, R47 erledigt. Offen: Drafts 25, 26, 27 bis Veroeffentlichung v1.38; Freigabe L25 durch Bernd.'
   - zeit: 2026-11-09T05:16+01:00
     hinweis: 'Owner-Auftrag 05:15: R46 (Agent), R06-Ergaenzung verify_layout (Agent), R48 und R47 durch Koordinator; R45-Bericht Methode Punkt 4 praezisiert (Sortierung nach FullName).'
   - zeit: 2026-11-09T05:03+01:00
