@@ -400,7 +400,7 @@ auftraege:
   titel: Upload-Checkliste v1.38 (nur lesen, Bericht)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R17
   - R50
