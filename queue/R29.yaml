@@ -13,9 +13,9 @@ schritte:
 nachweis: 'Bericht reports/R29-JJJJMMTT-BERICHT.md mit Tabellen: Loeschkandidaten, Befunde (Fundstelle, Befund, Beleg, Vorschlag, Schweregrad muss, sollte, kann).'
 grenzen: 'Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts loeschen, nichts aendern, nur lesen und berichten. Einzige Schreibausnahme: das Loeschen dieses einen Branches (freigegeben).'
 wiederkehrend: Die Planer-Session setzt den Status am Sitzungsende auf bereit. Nach dem Lauf setzt sie ihn zurueck auf geplant. Ablauf in der Planer-Doku claude/tagesabschluss.md (Teile A und C).
-status: erledigt
-stand: 2026-11-07 07:43
+status: bereit
+stand: 2026-11-10 07:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-hinweis_tagesabschluss: 'Heute (07.11.) durch die Planer-Session als Tagesabschluss gesetzt. Nur lesen: Remote-Branches, PRs, main-CI, Queue gegen Reports, Buch-Stimmigkeit. Bericht reports/R29-BERICHT.md.'
-zusatzschritt_branch_loeschen: 'Freigabe Bernd 07.11.2026 07:42: Remote-Branch quelle-pdf-werkzeuge-20261106 loeschen. Zuerst git fetch und git merge-base --is-ancestor origin/quelle-pdf-werkzeuge-20261106 origin/main (muss wahr sein, letzter Commit 4a88f92), dann git push origin --delete quelle-pdf-werkzeuge-20261106, danach git ls-remote --heads origin quelle-pdf-werkzeuge-20261106 muss leer sein. Lokalen Branch nur mit git branch -d. Kein anderer Branch, ops/queue und ops/reports nie.'
+hinweis_tagesabschluss: 'Tagesabschluss 10.11.2026 (Planer-Session). Nur lesen. Schwerpunkt: Branches und Drafts #25-#28, #30-#32, Queue gegen Berichte, Pruefung gegen Paket 76692313...984C.'
+zusatzschritt_branch_loeschen: ERLEDIGT 07.11.2026, gilt nicht mehr. Nicht erneut ausfuehren, es wird kein Branch geloescht.
