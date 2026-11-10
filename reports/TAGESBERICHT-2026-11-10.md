@@ -88,3 +88,100 @@ Roadmap:
 - R51 erledigt: `reports/UPLOAD-CHECKLISTE-v1.38.md` (nur gelesen). Der Abschnitt zu den Sicherheitsheadern ist nach TP-09 gekürzt; das Ergebnis der Header-Prüfung geht direkt an den Product Owner.
 - Korrektur: Die beiden `HERKUNFT.txt` in `archive/ftp-packages/20261109-*` hatten einen verstümmelten Pfad (Escape-Fehler beim Schreiben); sie sind neu geschrieben, die Pakete selbst sind unberührt.
 - R54, R55, R56 laufen parallel auf eigenen Branches (der Product Owner hat das am 10.11. bestätigt); die Ergebnisse werden einzeln in der Reihenfolge der Warteschlange abgelegt.
+
+## Tagesabschluss (07:20, Claude Code)
+
+Sitzung von etwa 05:00 bis 07:20 Uhr. Gearbeitet nach dem Tagesauftrag des Product Owners und danach die Warteschlange R51, R54, R55, R56. Die Code-Aufträge liefen parallel über Agenten in eigenen Worktrees; Ablagen auf ops/queue und ops/reports hat der Koordinator selbst gemacht. Prüfbericht: `reports/R29-20261110-BERICHT.md`.
+
+### TA-01 Aufgaben
+
+| Auftrag | Stand | Nachweis |
+|---|---|---|
+| Tagesauftrag 1–5 | erledigt: main ff, Paket v1.38 aus main (76692313…984C, inhaltsgleich mit R50), R47-Patch, #25 #26 #27 #28 nachgezogen, R49-Entscheidung | Abschnitt oben, R47-BERICHT.md |
+| R51 | erledigt: Upload-Checkliste v1.38 | UPLOAD-CHECKLISTE-v1.38.md |
+| R54 | erledigt: G6 „nicht zutreffend“ bei Paketen ohne Audio | PR #31, R54-BERICHT.md |
+| R55 | erledigt: scripts/ordner-hash.ps1, Referenz-Hash aus R49 reproduziert | PR #30, R55-BERICHT.md |
+| R56 | erledigt: scripts/aufraeumen-pruefen.ps1 | PR #32, R56-BERICHT.md |
+| R29 (Tagesabschluss-Prüfung) | erledigt, ein Muss-Befund (C1) | R29-20261110-BERICHT.md |
+| offen | Upload v1.38, R09, R52, R53 (warten auf den Product Owner) | – |
+
+Abweichungen:
+- Der Shell-Aufruf für den ersten Tagesbericht brach am Quoting ab; danach mit Dateien geschrieben, nichts verändert.
+- Meine HERKUNFT.txt im Archiv hatten einen verstümmelten Pfad; korrigiert.
+- Die Kreuzprüfung am Morgen (nur merge-tree) hat C1 nicht gezeigt; erst der nachgestellte Merge mit ci-check im R29-Lauf.
+
+### TA-02 Fragen an den Product Owner
+Heute beantwortet: geschützte Pakete zählen bei den letzten drei mit (ja); R54 bis R56 parallel weiterlaufen lassen (ja); G6 ohne Audio „nicht zutreffend“ (ja, R54).
+
+Noch offen (mit Empfehlung):
+1. Ist v1.38 hochgeladen? Empfehlung: nach Checkliste R51 hochladen, dann R09 auf bereit.
+2. Merges in Blöcken freigeben? Empfehlung siehe TA-03.
+3. Lokalen Branch auftrag-R50-kleines-systemhaus löschen (`git branch -d`)? Empfehlung: ja, er ist in main.
+4. Papierkorb leeren? Empfehlung: nach R09.
+5. OneDrive-Klon ganz entfallen lassen (Auftrag über R13)? Empfehlung: ja, er enthält nichts Ungesichertes mehr.
+6. C1: Nachzug beim zweiten Merge von #26/#27 oder eigener Auftrag? Empfehlung: Nachzug durch Claude Code beim zweiten Merge.
+
+### TA-03 Offene Pull Requests (Stand 07:15)
+
+| PR | Head | Draft | Mergefähig | CI | Empfohlene Reihenfolge |
+|---|---|---|---|---|---|
+| #25 R11 | d1257f7 | ja | CLEAN | grün | 1 (bringt die Testkorrektur für Pester) |
+| #31 R54 | b2bc305 | ja | CLEAN | grün | 2 |
+| #28 R49 | 81f8e48 | ja | CLEAN | grün | 3 |
+| #30 R55 | 586404f | ja | CLEAN | grün | 4 |
+| #32 R56 | 35c2d44 | ja | CLEAN | grün | 5, vorher main nachziehen (Konflikt mit #30 in docs/ABLAUF.md) |
+| #26 R07/R46 | 2133502 | ja | CLEAN | grün | 6 |
+| #27 R06 v1.39 | 8ea4c62 | ja | CLEAN | grün | 7, erst nach Upload und R09; vorher main nachziehen und anhang.html auf 1.39 (C1) |
+
+Nach jedem Merge stehen die übrigen PRs ggf. auf BEHIND und werden per update-branch nachgezogen.
+
+### TA-04 Aufräumen
+- Entfernt heute: wt-r50 (Paket und Berichte vorher gesichert), wt-r49, wt-r54, wt-r55, wt-r56, wt-r11, wt-r07, der Ablage-Worktree vom 09.11.; nach diesem Bericht die Ablage-Worktrees q und rep.
+- Belassen: wt-r06 (#27).
+- Hygiene: 0 gemergte Remote-Branches; offene PRs 7, alle Draft; lokal 1 gemergter Branch (auftrag-R50, Freigabe offen).
+
+### TA-05 Statusquelle
+reports/STATUS.yaml und queue/INDEX.yaml sind nachgezogen (R51, R54, R55, R56 erledigt) und vor jedem Push mit PyYAML geprüft. In der Warteschlange stehen 0 Aufträge auf bereit; den Mindestbestand füllt der Planer.
+
+### TA-06 Erreicht
+1. Das Upload-Paket v1.38 ist aus main gebaut, geprüft und mit einer vollständigen Upload-Checkliste versehen (R51).
+2. Sieben PRs liegen grün und mergefähig vor; Merge-Reihenfolge mit Kreuzprüfung (TA-03).
+3. Der OneDrive-Klon enthält nichts Ungesichertes mehr (R47-Nachtrag).
+4. Drei Hilfen für Freigabe und Aufräumen sind gebaut: G6 ohne Audio (R54), Ordner-Hash (R55), Aufräumtabelle (R56).
+5. Tagesabschluss-Prüfung R29 ohne Befund im Buchtext; ein Muss-Befund zur Merge-Reihenfolge (C1).
+
+Nächste Aufgaben (geordnet):
+1. Upload v1.38 durch den Product Owner nach der Checkliste.
+2. R09 Live-Prüfung.
+3. Merges in Blöcken nach TA-03, mit Nachzug #32 und C1.
+4. R52 Tag v1.38, R53 Aufräumen nach dem Release.
+5. Planer: Warteschlange auffüllen (R12, R41, Pester in der CI als Vorschlag).
+
+### TA-07 Arbeitspaket nächste Sitzung (ca. 2 Stunden)
+- **Ziel:** v1.38 ist live geprüft und getaggt, die Drafts #25, #31, #28, #30, #32 und #26 sind auf main.
+- **Zielbezug:** Projektstatus „Release v1.38 vor dem Workshop Ende November“.
+- **Schritte:**
+  1. `git fetch`; Warteschlange, PR-Stand und Upload-Bestätigung lesen.
+  2. R09 Live-Prüfung (nur lesend), Kurzabnahme aus R51.
+  3. Merge-Blöcke nach Freigabe: update-branch, CI abwarten, Merge, main prüfen; #32 nach #30 nachziehen.
+  4. R52 Tag v1.38 nach Freigabe.
+  5. #27 auf main nachziehen, anhang.html auf 1.39, PDF neu, Prüfungen.
+- **Abnahmekriterium:** R09-Bericht ohne Muss-Befund; main grün nach jedem Merge; #27 grün gegen main mit #26.
+- **Vorbedingungen:** Upload v1.38 und Freigabe der Merges durch den Product Owner; R09 auf bereit.
+- **Risiken:** Ohne Upload bleiben Schritt 2 und 4 blockiert, dann nur Schritt 3 und 5. Pester läuft nicht in der CI; Testfehler fallen nur lokal auf.
+
+```yaml
+Reifegrad: v1.38-Paket aus main gebaut und mit Checkliste uploadbereit; sieben Drafts gruen und mergefaehig; Buchtext ohne Regelbefund
+Projektstatus: Release v1.38 wartet auf Upload und Live-Pruefung R09 durch den Product Owner; danach Tag und Merge-Bloecke
+Offene_Fragen:
+  - Ist v1.38 hochgeladen (Voraussetzung R09)?
+  - Merges in Bloecken nach TA-03 freigeben?
+  - Lokalen Branch auftrag-R50-kleines-systemhaus loeschen?
+  - Papierkorb nach R09 leeren?
+  - OneDrive-Klon entfallen lassen (Auftrag ueber R13)?
+  - C1 beim zweiten Merge von 26 und 27 nachziehen?
+Roadmap:
+  Sprints_bis_BSF: 1
+  Sprints_bis_MVP: 2
+  Hinweis: unbelegte Schaetzung
+```
