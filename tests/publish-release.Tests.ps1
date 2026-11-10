@@ -107,6 +107,17 @@ Describe "publish-release.ps1: Aufbewahrung archive/ftp-packages" {
         if ($gemeldet -match '20260905-193924-327') { throw "Geschütztes Paket wurde gemeldet:`n$text" }
     }
 
+    It "zählt geschützte Pakete bei den letzten drei mit (Entscheidung Bernd 10.11.2026)" {
+        $archiv = Join-Path $TestDrive "geschuetzt-zaehlt"
+        # Die beiden neuesten sind geschützt; behalten werden trotzdem nur drei insgesamt.
+        New-Archiv $archiv @("20261101-000000-000", "20261102-000000-000", "20261103-000000-000",
+            "20261104-000000-000", "20261105-000000-000") -Geschuetzt @("20261105-000000-000", "20261104-000000-000")
+        $erg = Get-FtpPaketAufbewahrung -ArchivOrdner $archiv
+        Assert-Namen $erg.Behalten @("20261105-000000-000", "20261104-000000-000", "20261103-000000-000") "Behalten"
+        Assert-Namen $erg.Melden @("20261102-000000-000", "20261101-000000-000") "Melden"
+        if (@($erg.Geschuetzt).Count -ne 0) { throw "Geschützte Pakete unter den letzten drei dürfen nicht als ältere geschützte Pakete erscheinen." }
+    }
+
     It "verändert das Archiv nicht (kein Löschen, kein Verschieben, keine neue Datei)" {
         $archiv = Join-Path $TestDrive "unveraendert"
         New-Archiv $archiv @("20260901-000000-000", "20260902-000000-000", "20260903-000000-000",

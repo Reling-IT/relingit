@@ -149,7 +149,7 @@ Seit R49 (Entscheidung Bernd vom 09.11.2026). `publish-release.ps1` verschiebt a
 
 Regel:
 
-1. Die **letzten drei Pakete** bleiben immer. „Letzte“ richtet sich nach dem Zeitstempel im Ordnernamen (`yyyyMMdd-HHmmss-fff`, z. B. `20260905-193924-327`), nicht nach dem Änderungsdatum. Geschützte Pakete zählen bei den drei mit.
+1. Die **letzten drei Pakete** bleiben immer. „Letzte“ richtet sich nach dem Zeitstempel im Ordnernamen (`yyyyMMdd-HHmmss-fff`, z. B. `20260905-193924-327`), nicht nach dem Änderungsdatum. Geschützte Pakete zählen bei den drei mit (Entscheidung Bernd vom 10.11.2026).
 2. Ältere Pakete werden **nur gemeldet**. Das Skript löscht, verschiebt und ändert im Archiv nichts. Gelöscht wird nur nach Freigabe durch Bernd, je Paket, als eigener Aufräumauftrag (Verfahren wie R45/R48: Ordner-Hash, Papierkorb).
 3. **Geschützte Pakete werden nie gemeldet**, egal wie alt.
 4. Ordner, deren Name kein solcher Zeitstempel ist, gelten nicht als Paket; das Skript nennt sie nur als Hinweis.
