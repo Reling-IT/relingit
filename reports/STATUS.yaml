@@ -1,4 +1,4 @@
-stand: 2026-11-10T05:10+01:00
+stand: 2026-11-10T05:30+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -260,7 +260,7 @@ auftraege:
     branch: auftrag-R11-avatare-webseite
     pr: https://github.com/Reling-IT/relingit/pull/25 (Draft, CI gruen)
     bericht: reports/R11-BERICHT.md
-    hinweis: 'Bildmarken nur auf index.html (Hero, Abschnitt Worum es geht); lesen.html ohne eigene Einfuehrung der Figuren; build-upload nimmt navis.svg, lumen.svg auf'
+    hinweis: 'Bildmarken nur auf index.html (Hero, Abschnitt Worum es geht); lesen.html ohne eigene Einfuehrung der Figuren; build-upload nimmt navis.svg, lumen.svg auf; Nachtrag 10.11.: main per Merge nachgezogen, Head d1257f7, Testhelfer um navis/lumen.svg ergaenzt (4 Pester-Tests seit fa4a49f rot), CI gruen, CLEAN, Draft'
   - id: R06
     status: erledigt
     start: 2026-11-09T04:41+01:00
@@ -268,7 +268,7 @@ auftraege:
     branch: auftrag-R06-standards-box-v139
     pr: https://github.com/Reling-IT/relingit/pull/27 (Draft, CI gruen)
     bericht: reports/R06-BERICHT.md
-    hinweis: 'v1.39: Box Die sieben Standards (kap-sieben-standards), Rueckverweis, eine Fussnote ADR/ADG; alle ADR-Stellen meinen den Dokumenttyp, keine ersetzt; PDF 80 Seiten; verify_layout ohne numpy nur teilweise; nach Merge von 26 und 27 anhang.html neu erzeugen'
+    hinweis: 'v1.39: Box Die sieben Standards (kap-sieben-standards), Rueckverweis, eine Fussnote ADR/ADG; alle ADR-Stellen meinen den Dokumenttyp, keine ersetzt; PDF 80 Seiten; verify_layout ohne numpy nur teilweise; nach Merge von 26 und 27 anhang.html neu erzeugen; Nachtrag 10.11.: main 8abe213 per Merge 8ea4c62 nachgezogen, PDFs neu (80 S.), verify_layout vollstaendig OK, CI gruen, CLEAN, Draft'
   - id: R45
     status: erledigt
     start: 2026-11-09T04:41+01:00
@@ -294,7 +294,7 @@ auftraege:
     branch: auftrag-R07-anhang-seite
     pr: https://github.com/Reling-IT/relingit/pull/26 (Draft, CI gruen, Commit 6336236)
     bericht: reports/R46-BERICHT.md
-    hinweis: 'Anhang per DOMParser im Browser aus der Buchfassung; build-anhang.ps1 und story/current/anhang.html entfernt; Anker-Pruefung nur Quelle; Pester 23/0; Supabase-Pfad nicht live geprueft'
+    hinweis: 'Anhang per DOMParser im Browser aus der Buchfassung; build-anhang.ps1 und story/current/anhang.html entfernt; Anker-Pruefung nur Quelle; Pester 23/0; Supabase-Pfad nicht live geprueft; Nachtrag 10.11.: main per Merge nachgezogen, Head 2133502, Anhang-Schnitt passt, CI gruen, CLEAN, Draft'
   - id: R49
     status: erledigt
     start: 2026-11-09T05:28+01:00
@@ -302,7 +302,7 @@ auftraege:
     branch: auftrag-R49-aufbewahrung
     pr: https://github.com/Reling-IT/relingit/pull/28 (Draft, CI gruen)
     bericht: reports/R49-BERICHT.md
-    hinweis: 'publish-release meldet Pakete aelter als die letzten drei, Schutz per GESCHUETZT.txt; Zusatz: Inventur 20260905-195306-580 (Ordner-Hash D80F6E06...6618), Empfehlung behalten'
+    hinweis: 'publish-release meldet Pakete aelter als die letzten drei, Schutz per GESCHUETZT.txt; Zusatz: Inventur 20260905-195306-580 (Ordner-Hash D80F6E06...6618), Empfehlung behalten; Nachtrag 10.11.: main per Merge nachgezogen; Entscheidung Owner: geschuetzte Pakete zaehlen bei den letzten drei mit (Test und Doku, Head 81f8e48), CI gruen, CLEAN, Draft'
   - id: R50
     status: erledigt
     start: 2026-11-09T05:52+01:00
@@ -310,8 +310,10 @@ auftraege:
     branch: auftrag-R50-kleines-systemhaus
     pr: https://github.com/Reling-IT/relingit/pull/29 (gemergt 2026-11-09T11:05+01:00 durch Product Owner, Merge 8abe213)
     bericht: reports/R50-BERICHT.md
-    hinweis: 'Eine Stelle Zeile 1367; PDF 77 Seiten, verify_layout OK; Paket ohne Audio SHA-256 A906DDF4...205A; freigabe-pruefen G1 G2 G7 bestanden, G3-G6 offen, G8 gesperrt; Vorschau 127.0.0.1:8050'
+    hinweis: 'Eine Stelle Zeile 1367; PDF 77 Seiten, verify_layout OK; Paket ohne Audio SHA-256 A906DDF4...205A; freigabe-pruefen G1 G2 G7 bestanden, G3-G6 offen, G8 gesperrt; Vorschau 127.0.0.1:8050; Nachtrag 10.11.: Paket aus main 8abe213 neu gebaut, SHA-256 76692313...984C, 36 Eintraege, inhaltsgleich mit A906DDF4 (nur Manifest-Zeit); Pakete und Berichte aus wt-r50 gesichert (archive/ftp-packages, R50-FREIGABE/SICHTUNG-v1.38.md), wt-r50 entfernt'
 leerlauf:
+  - zeit: 2026-11-10T05:30+01:00
+    hinweis: 'Tagesauftrag 10.11. erledigt (TAGESBERICHT-2026-11-10.md): main ff, Paket v1.38 aus main, R47-Nachtrag, #25 #26 #27 #28 nachgezogen und gruen, R49-Entscheidung, wt-r50 gesichert und entfernt.'
   - zeit: 2026-11-10T05:10+01:00
     hinweis: 'Tagesstart 10.11. (TAGESSTART-2026-11-10.md); Owner-Auftrag: main lokal Fast-Forward auf 8abe213; per Agenten R47-Nachtrag (Patch drei Dateien), #27 auf main nachziehen, #25 #26 #28 auf main nachziehen. wt-r50 bleibt vorerst (enthaelt ungesichertes Paket v1.38 und Freigabeberichte).'
   - zeit: 2026-11-09T06:06+01:00
