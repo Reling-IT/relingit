@@ -1,4 +1,4 @@
-stand: 2026-11-09 05:55
+stand: 2026-11-10 06:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -385,7 +385,7 @@ auftraege:
   art: code-pr
   gate: nein
   status: erledigt
-  pr: 'Reling-IT/relingit#28 (Draft, CI gruen)'
+  pr: Reling-IT/relingit#28 (Draft, CI gruen)
   abhaengig_von:
   - R45
 - id: R50
@@ -393,7 +393,31 @@ auftraege:
   art: code-pr
   gate: nein
   status: erledigt
-  pr: 'Reling-IT/relingit#29 (offen, kein Draft, CI gruen, nicht gemergt)'
+  pr: Reling-IT/relingit#29 (offen, kein Draft, CI gruen, nicht gemergt)
   abhaengig_von:
   - R38
+- id: R51
+  titel: Upload-Checkliste v1.38 (nur lesen, Bericht)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R17
+  - R50
+- id: R52
+  titel: Tag v1.38 setzen (nach Upload und Live-Pruefung)
+  art: lokal
+  gate: ja
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R09
+  - R51
+- id: R53
+  titel: 'Nach dem Release v1.38: Aufraeumen und Merge-Kette vorbereiten'
+  art: lokal
+  gate: ja
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R09
+  - R52
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

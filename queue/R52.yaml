@@ -1,0 +1,19 @@
+id: R52
+titel: Tag v1.38 setzen (nach Upload und Live-Pruefung)
+art: lokal
+gate: ja
+status: wartet_auf_voraussetzung
+abhaengig_von:
+- R09
+- R51
+voraussetzung: Bernd meldet Upload fertig UND R09 hat keine Abweichung gemeldet UND Bernd gibt Tor G8 mit Ja frei. Vorher nicht beginnen.
+ziel: Der Stand, aus dem das Paket gebaut wurde, ist als Version v1.38 im Repo markiert.
+schritte:
+- Pruefen, dass main 8abe213 (oder der Commit, aus dem das hochgeladene Paket gebaut wurde) dem Paket entspricht; nicht auf einen spaeteren Merge-Stand taggen.
+- 'Annotierten Tag v1.38 auf diesen Commit setzen und pushen; Tagtext: Version, Datum, Seitenzahl 77, Paket-Hash.'
+- Bericht reports/R52-BERICHT.md mit Commit, Tag und Pruefausgabe.
+nachweis: Tag v1.38 auf dem richtigen Commit, Bericht
+grenzen: Ausnahme von der Regel kein Tag, nur fuer diesen Auftrag und nach ausdruecklicher Freigabe von Bernd. Kein Merge, kein FTP, keine Zugangsdaten, kein Force-Push.
+stand: 2026-11-10 06:00
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

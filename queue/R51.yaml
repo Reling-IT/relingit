@@ -1,0 +1,20 @@
+id: R51
+titel: Upload-Checkliste v1.38 (nur lesen, Bericht)
+art: lesen
+gate: nein
+status: bereit
+abhaengig_von:
+- R17
+- R50
+ziel: Bernd laedt v1.38 anhand einer Checkliste hoch, ohne etwas zu raten. Die Liste nennt Datei, Zielweg (Admin-Bereich oder FTP), Pruefsumme und die Handschritte.
+schritte:
+- 'Aus dem Paket relingit-upload-v1.38-2026-11-07-ohne-audio.zip (SHA-256 766923139AD9955DCBAB3678783DBCEC96FFA91E0CDA2F8CF945D554542C984C, inhaltsgleich zu A906DDF4...205A) alle 36 Eintraege als Tabelle: Datei, SHA-256, Zielweg nach Liste R17 und docs/DOMAINFACTORY-DEPLOYMENT.md (Buchfassung ueber Admin-Bereich mit Supabase, Startseite, assets/js, assets/css, assets/fonts, Impressum, Datenschutz und weitere Seiten per FTP).'
+- 'Reihenfolge des Uploads, was NICHT hochgeladen oder geloescht wird (Live-MP3, admin-Dateien nur wenn laut Paket geaendert), Handschritte: R40-Dateien per FTP, .htaccess-Header live pruefen.'
+- 'Rueckfall: Paket v1.37 mit Pfad im Archiv nennen (archive/ftp-packages), Weg zurueck beschreiben, ohne etwas auszufuehren.'
+- 'Kurzabnahme fuer Bernd nach dem Upload: 6 Adressen mit erwartetem Inhalt (Version 1.38, 77 Seiten, Repo-Link Reling-IT/relingit).'
+- Das alte Paket 7118198F...FAE4 (vor R50) ausdruecklich als NICHT hochladen kennzeichnen.
+nachweis: Bericht reports/UPLOAD-CHECKLISTE-v1.38.md mit Tabelle und Hashes
+grenzen: Nur lesen und einen Bericht schreiben. Kein Upload, kein FTP, kein Tag, kein Merge, keine Zugangsdaten.
+stand: 2026-11-10 06:00
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

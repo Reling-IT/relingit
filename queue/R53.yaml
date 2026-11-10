@@ -1,0 +1,21 @@
+id: R53
+titel: 'Nach dem Release v1.38: Aufraeumen und Merge-Kette vorbereiten'
+art: lokal
+gate: ja
+status: wartet_auf_voraussetzung
+abhaengig_von:
+- R09
+- R52
+voraussetzung: R09 ohne Abweichung und Tag v1.38 gesetzt. Vorher nicht beginnen.
+ziel: 'Der Arbeitsstand ist nach dem Release sauber und die Drafts sind bereit fuer die Merge-Kette (Reihenfolge: #25, #28, #26, danach #27).'
+schritte:
+- Worktree wt-r50 entfernen, wenn Paket und Berichte gesichert sind (Pruefung vorher, dann entfernen).
+- Gemergte Remote-Branches auflisten und nur nach Pruefung loeschen (in main enthalten, Squash-Gleichheit per diff).
+- 'Drafts #25, #26, #27, #28 auf main nachziehen, CI-Status je PR; #27 neu rendern (PDF, story/current), Seitenzahl und Version pruefen. Nichts mergen.'
+- 'Papierkorb: nur beschreiben, was drin ist (9 Ordner, Groesse), nicht leeren. Leeren entscheidet Bernd.'
+- 'OneDrive-Klon: nur lesend pruefen, ob er etwas Ungesichertes enthaelt, und Empfehlung zum Wegfall vorlegen.'
+nachweis: Bericht reports/R53-BERICHT.md
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Force-Push. Loeschen nur wie beschrieben.
+stand: 2026-11-10 06:00
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
