@@ -86,3 +86,48 @@ Roadmap:
   Sprints_bis_MVP: 1
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 10.11.2026: Patch der drei übrigen Dateien
+
+Stand 05:10 bis 05:11 (Ortszeit, mit `date` geprüft). Ausgeführt von einem Agenten (Claude Code CLI) im Auftrag des Koordinators. Grundlage: Freigabe des Product Owners, Tagesbericht 09.11.2026. Methode wie im Nachtrag vom 09.11.: Im Klon wurde nur gelesen und immer `git --no-optional-locks` verwendet. Es wurde nichts committet, gepusht oder gelöscht und kein Branch gewechselt.
+
+- Datei: `C:\Users\bmarn\OneDrive\HTML\reling it\archive\codex-fix-admin-password-recovery-b671d7c-2026-11-10-uncommitted-2.patch` (neu, keine vorhandene Datei überschrieben)
+  - Ausnahme geprüft: `git check-ignore -v` meldet `archive/.gitignore:2:*` für den Patchpfad.
+- Größe: 9 804 Byte. Umfang: index.html +85 Zeilen, scripts/build-upload.ps1 +5 Zeilen, scripts/ci-check.ps1 +29 Zeilen, jeweils 0 Zeilen entfernt (`git diff --numstat`).
+- **SHA-256: `4749dd34a26b0f9d7fcae1e1b04bb12d17d040444be2e18ec158659ff7f6fd7b`**
+- Befehl: `git --no-optional-locks diff --binary HEAD -- index.html scripts/build-upload.ps1 scripts/ci-check.ps1`. Klon auf Branch `codex/fix-admin-password-recovery`, HEAD `b671d7c`.
+- Klon unverändert: Die Prüfsumme von `.git/index` ist vor und nach dem Lauf gleich (`f0013402e859…`). Die Ausgabe von `git status --porcelain` (6 Dateien ` M`, 2 Einträge `??`) ist vorher und nachher Zeile für Zeile gleich (Vergleich per `diff`).
+- Bundle und Patch vom 09.11. sind unverändert: SHA-256 `39340105fb16…` bzw. `07a7786b3a48…`.
+
+Gegenprobe:
+```
+$ git clone <bundle> r47-probe        # Hinweis "remote HEAD refers to nonexistent ref" erwartet
+$ git checkout b671d7c                # HEAD b671d7c5638a4cd081ee541a9c46d2b66f33a195
+$ git apply --check <patch-2>         # check=0
+$ git apply <patch-2>                 # apply=0
+index.html                ohne CR: Probe = Klon (612941de58e5…)
+scripts/build-upload.ps1  ohne CR: Probe = Klon (39ba7a139e37…)
+scripts/ci-check.ps1      ohne CR: Probe = Klon (4751897805ff…)
+$ git checkout -- .
+$ git apply --check <patch-1> <patch-2>   # check_beide=0
+$ git apply <patch-1> <patch-2>           # apply_beide=0
+README.md, assets/css/styles.css, index.html, scripts/build-upload.ps1, scripts/ci-check.ps1: gleich (ohne CR)
+```
+Der Vergleich lief ohne CR, weil die Probe mit `core.autocrlf=true` CRLF schreibt. Der Wegwerf-Ordner unter dem Scratchpad wurde danach entfernt (geprüft).
+
+Abweichungen:
+- Die Prüfsumme von `.git/index` ist heute `f0013402e859…`, am 09.11. war sie `d09ee40ad9e4…`. Die Index-Datei hat sich zwischen den beiden Läufen geändert, nicht in diesem Lauf. Die Ursache ist nicht belegt (möglich: ein anderer Git-Lauf ohne `--no-optional-locks`, eine Editor-Integration oder OneDrive). `git status` und HEAD sind gegenüber dem 09.11. unverändert.
+- In `scripts/ci-check.ps1` des Klons haben 225 von 309 Zeilen CRLF, die übrigen nur LF. Der Patch enthält wegen `core.autocrlf=true` normalisierte LF-Zeilen. Er stellt den Inhalt vollständig wieder her, die gemischten Zeilenenden aber nicht byte-genau.
+
+Einordnung (Vergleich mit origin/main `8abe213`):
+- Die 85 neuen Zeilen in index.html stimmen Zeile für Zeile mit dem überein, was R28 (`4df31e8`) in main eingefügt hat. Auf main kamen danach weitere Änderungen hinzu (MP3-Größenangaben, `data-page-count`, ein `aria-label`, Repo-Link).
+- build-upload.ps1 und ci-check.ps1 enthalten dieselben Podcast-Dateilisten und Prüfungen wie main; R28 (`9b46859`) und R36 (`11d41da`) haben das in main deutlich erweitert (`-OhneAudio`, `SHA256SUMS.txt`, Größenprüfung, PNG-Kennung).
+- Keiner der drei Dateistände des Klons kommt als Blob in der Historie von relingit vor.
+- Die drei Dateien sind damit belegbar überholte Vorstufen der Podcast-Einbindung; für index.html Zeile für Zeile geprüft, für die Skripte über Dateilisten und Prüfungen.
+
+Damit sind alle sechs geänderten Dateien des Klons gesichert: README.md und styles.css im Patch vom 09.11., datenschutz.html über R28 in main, die übrigen drei in diesem Patch. Die unversionierten Einträge sind laut Tabelle oben gesichert (R35, R36).
+
+### Vorschläge und Ideen (Claude), 10.11.
+- Der Klon hat keinen ungesicherten Inhalt mehr. Der Product Owner kann in einem eigenen Auftrag über R13 entscheiden, ob der OneDrive-Klon ganz entfallen kann.
+- In `archive/` eine Datei `SHA256SUMS-R47.txt` mit den Prüfsummen von Bundle und beiden Patches ablegen, damit eine spätere Prüfung ohne den Bericht auskommt.
+- Wird der Klon weiter benutzt, dort nur mit `--no-optional-locks` arbeiten; ein per OneDrive synchronisierter `.git`-Ordner ist anfällig.

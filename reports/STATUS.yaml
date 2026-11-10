@@ -286,7 +286,7 @@ auftraege:
     start: 2026-11-09T05:17+01:00
     ende: 2026-11-09T05:18+01:00
     bericht: reports/R47-BERICHT.md
-    hinweis: 'Bundle archive/codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle im OneDrive-Klon, verify okay, SHA-256 39340105...9b64; L25 erneut Bernd vorgelegt; Nachtrag 06:05: Patch README.md und styles.css (SHA-256 07a7786b...f0ce); Korrektur: im Klon 6 geaenderte Dateien, index.html und zwei Skripte nicht gesichert'
+    hinweis: 'Bundle archive/codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle im OneDrive-Klon, verify okay, SHA-256 39340105...9b64; L25 erneut Bernd vorgelegt; Nachtrag 06:05: Patch README.md und styles.css (SHA-256 07a7786b...f0ce); Korrektur: im Klon 6 geaenderte Dateien, index.html und zwei Skripte nicht gesichert; Nachtrag 10.11.: index.html, build-upload.ps1, ci-check.ps1 als Patch-2 gesichert (9804 Byte, SHA-256 4749dd34...fd7b), Gegenprobe gegen Bundle ok, Klon unveraendert; Dateien sind ueberholte Vorstufen von R28/R36'
   - id: R46
     status: erledigt
     start: 2026-11-09T05:16+01:00
