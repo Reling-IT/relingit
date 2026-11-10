@@ -83,3 +83,8 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag: Warteschlange R51, R54, R55, R56
+- R51 erledigt: `reports/UPLOAD-CHECKLISTE-v1.38.md` (nur gelesen). Der Abschnitt zu den Sicherheitsheadern ist nach TP-09 gekürzt; das Ergebnis der Header-Prüfung geht direkt an den Product Owner.
+- Korrektur: Die beiden `HERKUNFT.txt` in `archive/ftp-packages/20261109-*` hatten einen verstümmelten Pfad (Escape-Fehler beim Schreiben); sie sind neu geschrieben, die Pakete selbst sind unberührt.
+- R54, R55, R56 laufen parallel auf eigenen Branches (der Product Owner hat das am 10.11. bestätigt); die Ergebnisse werden einzeln in der Reihenfolge der Warteschlange abgelegt.
