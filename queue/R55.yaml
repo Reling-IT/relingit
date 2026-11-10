@@ -1,0 +1,17 @@
+id: R55
+titel: 'scripts/ordner-hash.ps1: Ordner-Hash nur lesend, mit Test'
+art: code-pr
+gate: nein
+status: bereit
+abhaengig_von:
+- R45
+ziel: Ein Skript berechnet den Ordner-Hash nach der Methode aus R45/R48 (Dateien Sort-Object FullName, Zeile SHA-256 gross + zwei Leerzeichen + relativer Pfad mit Backslash, Verbindung mit LF ohne Schluss-LF, UTF-8, SHA-256) und vermeidet den Fehlstart aus R48.
+schritte:
+- Methode aus reports/R45-BERICHT.md und R48-BERICHT.md uebernehmen, Sortierung ausdruecklich als ordinal oder kulturabhaengig dokumentieren und die Variante waehlen, die die Hashes aus R45 reproduziert.
+- Cloud-Platzhalter vor dem Hashen erkennen (Attributmaske wie R45) und melden, nichts hydrieren.
+- Pester-Test mit kleinem Testordner; Kurzbeschreibung in docs/ABLAUF.md.
+nachweis: Draft-PR, Bericht reports/R55-BERICHT.md mit Reproduktion eines Hashes aus R45
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Force-Push, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur Feature-Branch und Draft-PR, nichts auf main. Das Skript schreibt und loescht nichts.
+stand: 2026-11-10 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

@@ -1,4 +1,4 @@
-stand: 2026-11-10 06:00
+stand: 2026-11-10 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -420,4 +420,25 @@ auftraege:
   abhaengig_von:
   - R09
   - R52
+- id: R54
+  titel: 'freigabe-pruefen.ps1: G6 bei Paketen ohne Audio als nicht zutreffend werten'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R43
+- id: R55
+  titel: 'scripts/ordner-hash.ps1: Ordner-Hash nur lesend, mit Test'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R45
+- id: R56
+  titel: 'scripts/aufraeumen-pruefen.ps1: Worktrees und Branches nur lesend als Tabelle'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R44
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

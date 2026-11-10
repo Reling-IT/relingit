@@ -1,0 +1,18 @@
+id: R54
+titel: 'freigabe-pruefen.ps1: G6 bei Paketen ohne Audio als nicht zutreffend werten'
+art: code-pr
+gate: nein
+status: bereit
+abhaengig_von:
+- R43
+entscheidung: 'Bernd 10.11.2026: Ja, G6 (MP3-Hashes) gilt bei Paketen ohne Audio als nicht zutreffend.'
+ziel: Der Freigabebericht meldet G6 bei einem Paket ohne Audio nicht mehr als offen wegen fehlender MP3-Pruefung, sondern als nicht zutreffend mit Begruendung. Die uebrigen G6-Punkte (lokaler Stand, Paket frisch) bleiben.
+schritte:
+- scripts/freigabe-pruefen.ps1 und docs/FREIGABE.md / docs/freigabe.yaml lesen, Stellen zu G6 und Audio auflisten.
+- 'Aenderung klein halten: Erkennung Paket ohne Audio (Dateiname -ohne-audio oder Manifest), Ausgabe nicht zutreffend mit Satz, docs und freigabe.yaml anpassen.'
+- Pester-Test ergaenzen (mit und ohne Audio), ci-check, node --check, Beleg im Bericht reports/R54-BERICHT.md.
+nachweis: Draft-PR, Bericht mit Vorher-Nachher
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Force-Push, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur Feature-Branch und Draft-PR, nichts auf main.
+stand: 2026-11-10 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

@@ -1,0 +1,17 @@
+id: R56
+titel: 'scripts/aufraeumen-pruefen.ps1: Worktrees und Branches nur lesend als Tabelle'
+art: code-pr
+gate: nein
+status: bereit
+abhaengig_von:
+- R44
+ziel: Ein Skript gibt als Tabelle aus, welche Worktrees sauber sind und welche Branches in main enthalten oder per Squash inhaltsgleich sind. Loeschen bleibt Handarbeit.
+schritte:
+- 'Pruefungen aus reports/R44-BERICHT.md uebernehmen: git status je Worktree, git merge-base --is-ancestor gegen origin/main, git diff --stat bei Squash.'
+- 'Ausgabe: Name, Pfad, sauber ja/nein, in main ja/nein/Squash-gleich, Empfehlung (nur Text).'
+- Pester-Test mit temporaerem Repo; Kurzbeschreibung in docs/ABLAUF.md.
+nachweis: Draft-PR, Bericht reports/R56-BERICHT.md
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Force-Push, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nur Feature-Branch und Draft-PR, nichts auf main. Das Skript fuehrt kein Loeschen und kein git push aus.
+stand: 2026-11-10 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
