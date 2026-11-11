@@ -5,7 +5,7 @@ gate: ja
 abhaengig_von:
 - R09
 - R52
-stand: 2026-11-11 05:30
+stand: 2026-11-11 07:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 voraussetzung: 'Upload v1.38 und R09 sind abgeschlossen, R52 (Tag v1.38) gesetzt. #25, #28, #26, #27 und #33 sind von Bernd einzeln freigegeben und auf main. Vorher nicht beginnen.'
@@ -18,3 +18,4 @@ schritte:
 nachweis: Draft-PR mit gruener CI; Bericht mit Seitenzahl-Tabelle und Hash des Pakets.
 grenzen: 'Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Gate ja: Freigabe G1 bis G8 vor Veroeffentlichung.'
 status: wartet_auf_voraussetzung
+merge_block: 'Entscheidung Bernd 11.11.2026 (R57-Nachtrag): #27, #33 und dieser Auftrag werden als ein Block unmittelbar nacheinander gemergt, damit main nicht zwischendurch rot wird. Reihenfolge laut R57: #25, #28, #26, dann Block #27 -> #33 -> Nachzug (Lesefassung, PDF, anhang.html 1.39 Version 1.39 / 9. November 2026, ADF-Zeile, C2); danach #30, #31, #32 (ABLAUF.md-Konflikt, R55 vor R56). Nach jedem Schritt ci-check und Pester. Jeder Merge nur nach Einzelfreigabe von Bernd.'
