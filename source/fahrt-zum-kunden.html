@@ -29,20 +29,23 @@
     src:url("../assets/fonts/IBMPlexMono-Medium.woff2") format("woff2"), url("../../assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");}
 
 
+  /* KONTRAST (R41, Befund R31): --ink-soft, --ink-faint, --accent und --surface-2 erfuellen
+     WCAG AA (mind. 4,5:1) auf --bg, --surface und --surface-2. --surface-2 liegt deshalb
+     zwischen --bg und --surface statt heller als --surface. */
   :root{
     --bg:#123b4e;
     --surface:#1b4f66;
-    --surface-2:#24647e;
+    --surface-2:#15455a;
     --ink:#eef2fb;
-    --ink-soft:#aab4cc;
-    --ink-faint:#93a0ba;
+    --ink-soft:#c3cbdc;
+    --ink-faint:#b0bacd;
     --line:#265066;
     --road:#2c5c73;
     --navis:#4fd1c5;
     --navis-soft:#12292a;
     --lumen:#e8b34c;
     --lumen-soft:#2c2311;
-    --accent:#8098ff;
+    --accent:#a5b6ff;
     --accent-soft:#1a2140;
     --ok:#7bc493;
     --ok-soft:#16241c;
@@ -213,7 +216,6 @@
   .person .tenure{
     font-size:9.5px;
     color:var(--ink-faint);
-    opacity:.8;
     margin-top:2px;
   }
 
