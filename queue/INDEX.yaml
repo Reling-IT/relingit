@@ -1,4 +1,4 @@
-stand: 2026-11-11 06:30
+stand: 2026-11-11 06:50
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -445,7 +445,7 @@ auftraege:
   titel: 'Kreuzpruefung vor den Merge-Bloecken: Probe-Merge aller sieben Drafts mit ci-check (nur lesen)'
   art: lesen
   gate: nein
-  status: in_arbeit
+  status: erledigt
   abhaengig_von: []
 - id: R58
   titel: 'STATUS.yaml abgleichen: R34, R18 und Hinweis #29 (nur ops/reports)'
@@ -471,26 +471,25 @@ auftraege:
   titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: &id001 []
 - id: R62
   titel: 'scripts/pruefe-paket.ps1: ZIP gegen Manifest und Vorgaenger-Paket pruefen (Draft-PR)'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: *id001
 - id: R63
   titel: 'Trockenlauf v1.39: Probe-Merge inkl. #33, Lesefassung und PDF in Wegwerf-Ordner (nur lesen)'
   art: lesen
   gate: nein
-  status: wartet_auf_voraussetzung
-  abhaengig_von:
-  - R57
+  status: bereit
+  abhaengig_von: []
 - id: R64
   titel: 'G8 v1.38 verbuchen: Vermerk in SICHTUNG-v1.38.md und Freigabebericht (nur ops/reports)'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R61
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
