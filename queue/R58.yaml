@@ -1,0 +1,17 @@
+id: R58
+titel: 'STATUS.yaml abgleichen: R34, R18 und Hinweis #29 (nur ops/reports)'
+art: lesen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 04:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Die drei Abweichungen aus R29 vom 10.11. beseitigen, damit STATUS.yaml und INDEX.yaml uebereinstimmen.
+schritte:
+- 'reports/STATUS.yaml: R34 laut INDEX erledigt, dort noch blockiert. Beleg aus reports/R34-BERICHT.md pruefen und angleichen.'
+- 'R18: Eintrag nachtragen (INDEX erledigt, kein eigener Bericht), Hinweis auf die Quelle.'
+- 'Eintrag zu #29 (R50): gemergt seit 09.11., main 8abe213.'
+- YAML mit yaml.safe_load pruefen, Bericht reports/R58-BERICHT.md (kurz).
+nachweis: Commit auf ops/reports mit STATUS.yaml und R58-BERICHT.md.
+grenzen: Nur ops/reports, nur STATUS.yaml und der Bericht. queue/INDEX.yaml nicht anfassen (Planer). Kein Merge, kein Tag, kein FTP. Dauer etwa 15 Minuten.
+status: bereit

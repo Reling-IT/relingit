@@ -1,0 +1,16 @@
+id: R57
+titel: 'Kreuzpruefung vor den Merge-Bloecken: Probe-Merge aller sieben Drafts mit ci-check (nur lesen)'
+art: lesen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 04:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Belegen, in welcher Reihenfolge die Drafts #25, #26, #27, #28, #30, #31, #32 ohne rote CI auf main passen. Grundlage fuer die Merge-Freigabe des Product Owners. Der Befund C1 aus R29 (#26 + #27) zeigt: merge-tree allein reicht nicht.'
+schritte:
+- 'In Wegwerf-Worktrees unter dem Scratchpad (nie im Arbeitsklon): origin/main 8abe213 als Basis. Reihenfolge A: #25, #28, #26, #27, #30, #31, #32. Reihenfolge B: #25, #28, #27, #26, #30, #31, #32. Je Schritt ohne Commit nachstellen (git merge --no-commit oder git merge-tree plus git archive), danach scripts/ci-check.ps1, die Pester-Tests und bei Buch-PRs die Versionsangaben (lesen.html, anhang.html, Deckblatt) pruefen.'
+- 'Je Reihenfolge Tabelle: Schritt, Konflikte (Datei), ci-check Exit, Pester, Befund. Bekannt sind C1 (anhang.html Version) und der Konflikt #30 + #32 in docs/ABLAUF.md; zeigen, welche Datei und welcher Nachzug jeweils noetig ist.'
+- Empfehlung der Merge-Reihenfolge mit den noetigen Nachzuegen als Liste. Nichts pushen, keine Branches aendern.
+nachweis: Bericht reports/R57-BERICHT.md mit beiden Tabellen und der Empfehlung; STATUS.yaml erledigt.
+grenzen: Kein Merge, kein Push auf PR-Branches, kein Tag, kein FTP, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Wegwerf-Worktrees danach entfernen. Dauer etwa 40 Minuten.
+status: bereit

@@ -1,4 +1,4 @@
-stand: 2026-11-10 07:10
+stand: 2026-11-11 04:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -302,7 +302,7 @@ auftraege:
   titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
   art: lesen
   gate: nein
-  status: bereit
+  status: geplant
   abhaengig_von: []
 - id: R39
   titel: 'Doku-Bereinigung nach R33: ABLAUF.md, CODEX_PROMPT.md, FTP-Regel, veraltete Dateien'
@@ -441,4 +441,16 @@ auftraege:
   status: erledigt
   abhaengig_von:
   - R44
+- id: R57
+  titel: 'Kreuzpruefung vor den Merge-Bloecken: Probe-Merge aller sieben Drafts mit ci-check (nur lesen)'
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R58
+  titel: 'STATUS.yaml abgleichen: R34, R18 und Hinweis #29 (nur ops/reports)'
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
