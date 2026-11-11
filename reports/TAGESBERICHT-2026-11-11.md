@@ -102,3 +102,10 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag Tagesabschluss (07:31): R63 erledigt
+
+- Probe-Merge aller neun Drafts in Reihenfolge D plus #34 mit Nachzug v1.39: Endstand ci-check Exit 0, Pester 54/54; Seitenzahl 80 überall gleich; Probe-Paket v1.39 mit 39 Einträgen (`BB9E7170…F9A3`, wegen Zeitstempeln nicht reproduzierbar). Bericht: `reports/R63-BERICHT.md`.
+- Muss für R60: C1 über publish-release.ps1, story/current nach neuem Render, ABLAUF.md-Konflikt #30/#32, ADF-Zeile (Vorschlag `--ink-faint` 4,56:1 oder `--ink-soft` 5,47:1).
+- Neue Frage an den Product Owner: Bleibt das Datum von v1.39 der 09.11.2026 (aus #27) oder wird es beim Rendern in R60 angepasst? Empfehlung: auf das Renderdatum von R60 setzen, an allen fünf Stellen gleich.
+- Arbeitsklon gegen die Prüfsummen von 06:50 unverändert (178 Dateien); der Wegwerf-Worktree ist entfernt. Damit ist TA-01 ohne offene Aufgabe; Schritt 2 des Arbeitspakets entfällt.

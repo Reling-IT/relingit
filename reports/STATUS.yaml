@@ -1,4 +1,4 @@
-stand: 2026-11-11T06:50+01:00
+stand: 2026-11-11T07:31+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -383,9 +383,11 @@ auftraege:
     bericht: reports/R64-BERICHT.md
     hinweis: 'G8 v1.38 laut Planer-Auftrag 103c0f6 (Entscheidung Product Owner 11.11. 06:17) in SICHTUNG-v1.38.md verbucht; Liste nicht abgehakt; Upload-Termin offen'
   - id: R63
-    status: in_arbeit
+    status: erledigt
     start: 2026-11-11T06:48+01:00
-    hinweis: 'Trockenlauf v1.39 in Wegwerf-Worktrees (Agent); Merge-Reihenfolge D aus R57 plus #34'
+    ende: 2026-11-11T07:28+01:00
+    bericht: reports/R63-BERICHT.md
+    hinweis: 'Probe-Merge D plus #34 und Nachzug v1.39: Endstand ci-check Exit 0, Pester 54/54; 80 Seiten in PDF, story/current, app.js, Startseite; Probe-Paket v1.39 39 Eintraege, SHA-256 BB9E7170...F9A3 (nicht reproduzierbar, Zeitstempel); Muss: C1, story/current, ABLAUF.md, ADF-Zeile; Arbeitsklon unveraendert (Gegenprobe Koordinator)'
   - id: R41
     status: erledigt
     start: 2026-11-11T04:45+01:00
