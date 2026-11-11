@@ -1,0 +1,19 @@
+id: R67
+titel: Upload-Checkliste v1.39 aus dem Paket erzeugen (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von:
+- R60
+- R62
+stand: 2026-11-11 07:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+voraussetzung: 'R60 erledigt: v1.39-Paket gebaut. R62 (pruefe-paket.ps1, Draft #34) ist als Skript verfuegbar.'
+ziel: 'Wie R51 fuer v1.38: Bernd laedt v1.39 ohne Raten hoch.'
+schritte:
+- Paket v1.39 ohne Audio mit scripts/pruefe-paket.ps1 gegen das Manifest und gegen v1.37 und v1.38 pruefen (Hash, Eintragszahl, geaendert/neu/unveraendert).
+- 'reports/UPLOAD-CHECKLISTE-v1.39.md nach dem Muster von R51: Tabelle je Datei mit SHA-256, Zielweg, Reihenfolge Admin dann FTP, Handschritte, Rueckfall (auf v1.38), Kurzabnahme mit erwarteten Inhalten (Version 1.39, Seitenzahl, Datum), Warnung vor Paketen mit gleichem Namen.'
+- 'Hinweis: Rueckfall auf v1.38 nennt das Paket 76692313...984C; Seitenzahl 69/64-Frage fuer v1.37 notieren.'
+nachweis: reports/UPLOAD-CHECKLISTE-v1.39.md, Bericht R67-BERICHT.md.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur ops/reports. Dauer etwa 40 Minuten.
+status: wartet_auf_voraussetzung

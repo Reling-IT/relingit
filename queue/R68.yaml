@@ -1,0 +1,19 @@
+id: R68
+titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden (Draft-PR)'
+art: code-pr
+gate: nein
+abhaengig_von:
+- R54
+- R62
+stand: 2026-11-11 07:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+voraussetzung: 'Draft #31 (R54) und #34 (R62) sind auf main gemergt, damit das Skript nicht doppelt veraendert wird (Konflikt mit #31).'
+ziel: 'Befund F2 aus R61 beheben: Auf main zeigt das Freigabe-Skript G2 und G7 als Sperrgrund, obwohl sie dort strukturell nicht bestehbar sind. Dazu -Paket (Hash, Eintragszahl, Baum-Vergleich) in den Freigabebericht uebernehmen.'
+schritte:
+- 'Neuer Branch von main nach den Merges. G2 und G7 auf main als nicht zutreffend mit Verweis auf den gemergten PR werten; G8 darf dadurch nicht zu leicht werden: G8 bleibt gesperrt, solange G3 bis G5 leer sind (ausser Vermerk wie in SICHTUNG-v1.38.md).'
+- Aufruf pruefe-paket.ps1 aus freigabe-pruefen.ps1, Ergebnis im Bericht reports/FREIGABE-vX.YY.md.
+- Pester-Tests ergaenzen, docs/FREIGABE.md anpassen. Draft-PR, Bericht R68-BERICHT.md.
+nachweis: Draft-PR mit gruener CI.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 45 Minuten.
+status: wartet_auf_voraussetzung

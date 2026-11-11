@@ -1,0 +1,17 @@
+id: R66
+titel: Sichtungsliste v1.39 vorbereiten (nur ops/reports)
+art: lesen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 07:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Bernd soll G3 bis G5 fuer v1.39 in der Vorschau-Sitzung direkt abhaken koennen, ohne dass Sondervermerke noetig werden (Vorschlag aus R61).
+schritte:
+- 'reports/SICHTUNG-v1.38.md als Vorlage nehmen (26 Punkte: G3 6, G4 18, G5 2). Neue Datei reports/SICHTUNG-v1.39.md anlegen, Checkboxen leer.'
+- 'Zusaetzliche Punkte fuer v1.39 aufnehmen, jeweils mit Seitenadresse der Vorschau (vorschau.ps1) und erwartetem Ergebnis: Kontraste AA (#33: Codebox, Deckblatt, Personen, SVG-Seite, Szene, Versionen laut R41-bilder), Anhang-Seite anhang.html (#26), Box Die sieben Standards und Fussnote ADR/ADG (#27), Bildmarken Navis und Lumen auf der Startseite (#25), die fuenf R65-Stellen (Backup-Ticket, Navis-Zeitangabe, zweiter Switch, Sysingboard statt Cockpit, Handout-Datum Ende November 2026), Versionshistorie v1.39, Seitenzahl in Deckblatt, PDF und Startseite.'
+- 'Je Punkt: Gate (G3 Layout, G4 UI, G5 Inhalt), Adresse oder Stelle, erwartet, Feld Ja/Nein/Anmerkung. Kopf: Version, Paket-Hash und Basis-Commit als Platzhalter, wird nach R60 eingetragen.'
+- Kurzbericht reports/R66-BERICHT.md.
+nachweis: reports/SICHTUNG-v1.39.md und R66-BERICHT.md auf ops/reports.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur ops/reports. Dauer etwa 30 Minuten.
+status: bereit

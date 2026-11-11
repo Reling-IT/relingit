@@ -15,3 +15,4 @@ nachweis: Bericht reports/R09-BERICHT.md mit Abrufzeit, HTTP-Status je Datei und
 grenzen: Nur lesende Abrufe. Keine Anmeldung, kein Admin-Konto, kein Supabase-Zugriff, kein FTP, keine Aenderung im Repo ausser dem Bericht auf ops/reports. Keine Zugangsdaten.
 status: wartet_auf_voraussetzung
 stand: 2026-11-10 06:00
+hinweis_planung_2026_11_11: 'Bernd 11.11.: Upload erst, wenn v1.39 fertig ist; Entscheidung am Mo 16.11.2026: nur v1.39 oder v1.38 als Fallback. Dieser Auftrag bezieht sich dann auf die hochgeladene Version. Nicht beginnen, bevor Bernd die Version nennt.'

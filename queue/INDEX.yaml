@@ -1,4 +1,4 @@
-stand: 2026-11-11 07:20
+stand: 2026-11-11 07:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -499,4 +499,26 @@ auftraege:
   gate: ja
   status: bereit
   abhaengig_von: []
+- id: R66
+  titel: Sichtungsliste v1.39 vorbereiten (nur ops/reports)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R67
+  titel: Upload-Checkliste v1.39 aus dem Paket erzeugen (nur lesen)
+  art: lesen
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R60
+  - R62
+- id: R68
+  titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden (Draft-PR)'
+  art: code-pr
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R54
+  - R62
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
