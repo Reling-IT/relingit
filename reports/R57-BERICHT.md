@@ -140,3 +140,12 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 11.11.2026: Entscheidung des Product Owners
+
+| Frage | Entscheidung |
+|---|---|
+| #27, #33 und R60 als ein Schritt mergen, damit main nicht zwischendurch rot ist? | **ja** – ein Block unmittelbar nacheinander |
+| Wer stabilisiert den instabilen Test in #32? | offen |
+
+Für den Planer: R60 sollte den Block ausdrücklich enthalten (Reihenfolge #27 → #33 → Nachzug Lesefassung, PDF, anhang.html 1.39, ADF-Zeile, C2), mit ci-check und Pester nach jedem Schritt; Merge jeweils nur nach Einzelfreigabe.
