@@ -232,3 +232,7 @@ Roadmap:
 - Eigene Prüfsummen von `output/` und `archive/` im Arbeitsklon (178 Dateien, gesichert 06:50 vor dem Start) gegen den Stand nach dem Lauf: `diff` leer.
 - `git status --porcelain` im Arbeitsklon leer, HEAD main 8abe213; kein Wegwerf-Worktree mehr in `git worktree list`.
 - SHA-256 des Probe-Pakets v1.39 im Scratchpad beginnt mit `BB9E7170EA7B3414`, wie oben. ZIP und PDF bleiben im Scratchpad und werden nicht übernommen.
+
+## Nachtrag 11.11.2026: Entscheidung des Product Owners zum Datum v1.39
+
+v1.39 erhält beim Rendern in R60 das **aktuelle Datum** (Renderdatum), nicht den 09.11.2026 aus #27. Das Datum wird an allen Stellen gleich gesetzt (Buchquelle/Deckblatt, Startseite, lesen.html, anhang.html, Versionshistorie). Für den Planer: in queue/R60.yaml aufnehmen.

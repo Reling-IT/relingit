@@ -109,3 +109,4 @@ Roadmap:
 - Muss für R60: C1 über publish-release.ps1, story/current nach neuem Render, ABLAUF.md-Konflikt #30/#32, ADF-Zeile (Vorschlag `--ink-faint` 4,56:1 oder `--ink-soft` 5,47:1).
 - Neue Frage an den Product Owner: Bleibt das Datum von v1.39 der 09.11.2026 (aus #27) oder wird es beim Rendern in R60 angepasst? Empfehlung: auf das Renderdatum von R60 setzen, an allen fünf Stellen gleich.
 - Arbeitsklon gegen die Prüfsummen von 06:50 unverändert (178 Dateien); der Wegwerf-Worktree ist entfernt. Damit ist TA-01 ohne offene Aufgabe; Schritt 2 des Arbeitspakets entfällt.
+- Beantwortet (Product Owner, nach dem Nachtrag): Datum v1.39 = aktuelles Datum beim Rendern in R60, an allen Stellen gleich (vermerkt in R63-BERICHT.md).
