@@ -1,4 +1,4 @@
-stand: 2026-11-11 05:30
+stand: 2026-11-11 05:35
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -324,7 +324,7 @@ auftraege:
   titel: Kontraste der Buchquelle anheben (Design-Tokens, Codebox) fuer die naechste Buchfassung
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R31
   - R16
@@ -445,19 +445,19 @@ auftraege:
   titel: 'Kreuzpruefung vor den Merge-Bloecken: Probe-Merge aller sieben Drafts mit ci-check (nur lesen)'
   art: lesen
   gate: nein
-  status: bereit
+  status: in_arbeit
   abhaengig_von: []
 - id: R58
   titel: 'STATUS.yaml abgleichen: R34, R18 und Hinweis #29 (nur ops/reports)'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R59
   titel: Lokalen Branch auftrag-R50-kleines-systemhaus loeschen (git branch -d)
   art: lokal-aufraeumen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R60
   titel: 'v1.39 rendern: Lesefassung und PDF nach Merge von #26, #27, #33, dazu C1 und ADF-Zeile'
