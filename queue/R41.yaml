@@ -11,8 +11,9 @@ schritte:
 - Vorher/Nachher-Seiten (Deckblatt, eine Szene, eine Codebox, eine SVG-Seite) als Bilder im Bericht; PDF und Lesefassung neu erzeugen ist ein eigener Auftrag.
 nachweis: Pull Request und Bericht reports/R41-BERICHT.md mit Kontrasttabelle und Bildvergleich.
 grenzen: Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Kein Veroeffentlichen.
-status: wartet_auf_voraussetzung
-stand: 2026-11-08 05:30
+status: bereit
+stand: 2026-11-11 05:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 entscheidung: 'Bernd 08.11.: Ja, Kontraste in v1.39 anheben. Start erst nach Release v1.38 (R16, Merge PR #10).'
+freigabe_bernd_2026_11_11: 'Ja, als Draft-PR fuer v1.39. Basis origin/main 8abe213 (PR #10 ist gemergt, Voraussetzung R16 erfuellt). Nur Draft, kein Merge vor Upload v1.38 und R09. Buch-Aenderung beruehrt v1.38 nicht, weil das Upload-Paket 76692313...984C unveraendert bleibt. Spaeter Nachzug auf main wegen #27 (Buchquelle) einplanen.'

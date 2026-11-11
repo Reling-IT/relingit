@@ -1,4 +1,4 @@
-stand: 2026-11-11 05:00
+stand: 2026-11-11 05:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -324,7 +324,7 @@ auftraege:
   titel: Kontraste der Buchquelle anheben (Design-Tokens, Codebox) fuer die naechste Buchfassung
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R31
   - R16
