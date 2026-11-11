@@ -1,0 +1,18 @@
+id: R69
+titel: 'Stimmigkeitspruefung Rest des Buchs: Teil 2 ab Mitte, Anhang, Bildunterschriften, aria-label, Versionshistorie (nur lesen)'
+art: lesen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 15:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Die Stimmigkeitspruefung vom 09.11. hat nur Teil 1 und den Beginn von Teil 2 gelesen (nicht geprueft: Anhang, Bildunterschriften, aria-label, Versionshistorie, PDF). Vor v1.39 soll der Rest belegt gelesen sein, damit keine Muss-Fehler erst nach der Sichtung auffallen.'
+schritte:
+- 'Basis: Buchquelle source/fahrt-zum-kunden.html auf origin/main 8abe213, zusaetzlich der Stand aus dem Trockenlauf R63 (D-Reihenfolge mit #27 und #33), nur lesend in Wegwerf-Ordnern. Ab dem Kapitel, wo die Pruefung vom 09.11. aufhoerte (Teil 2 nach Beginn), alle weiteren Kapitel lesen.'
+- "Regelcheck je Kapitel: Navis liest nur das Sysingboard, schreibt nie, empfiehlt, keine Scores. Lumen liest nur ueber den Hub. Zehn im Haus = 8 Menschen plus Navis und Lumen, Horst extern. Offen bleibt offen. Zeitlinie (Navis und Lumen erst ein Vierteljahr vor der Fahrt), Namen, Kunden, Fahrzeuge, Orte, Wochentage. Orthografie \xDF, Autobahn/A7. Aussagen ueber echte Repos nur belegt (R10 E1 bis E5, U1 bis U5)."
+- 'Eigene Pruefabschnitte: Anhang (Handout-Vorlage, Architekturbilder, ZAVKK-Quelle, Pruef-Standard, Die sieben Standards, Versionshistorie), alle Bildunterschriften, alt-Texte und aria-label, Versionshistorie gegen Deckblatt (Version, Datum, Seitenzahl, Neu in v1.39), Mini-Inhaltsverzeichnis, Personenliste, die drei Deckblatt-Boxen.'
+- 'Bekannte Punkte nicht erneut als Befund melden: R65-Stellen (Backup-Ticket, Navis-Zeitangabe, zweiter Switch, Cockpit, Handout-Datum), C1 bis C7 aus R29 10.11., ADF-Zeile.'
+- 'Befundtabelle: Fundstelle (Zeile), Befund, Beleg (Zitat kurz), Vorschlag, Schweregrad (muss, sollte, kann). Muss-Befunde zusaetzlich oben als Liste.'
+nachweis: Bericht reports/R69-BERICHT.md mit Befundtabelle und Liste der gelesenen Kapitel.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nichts aendern, nichts korrigieren, nur melden. Wegwerf-Ordner danach entfernen. Dauer etwa 60 Minuten.
+status: bereit
