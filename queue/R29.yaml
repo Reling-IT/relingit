@@ -13,9 +13,9 @@ schritte:
 nachweis: 'Bericht reports/R29-JJJJMMTT-BERICHT.md mit Tabellen: Loeschkandidaten, Befunde (Fundstelle, Befund, Beleg, Vorschlag, Schweregrad muss, sollte, kann).'
 grenzen: 'Kein Merge, kein Tag, keine Veroeffentlichung, kein FTP, keine Zugangsdaten, keine Aenderung an .github/workflows, Deployment, Supabase-Konfiguration oder Admin-Konten. Nichts loeschen, nichts aendern, nur lesen und berichten. Einzige Schreibausnahme: das Loeschen dieses einen Branches (freigegeben).'
 wiederkehrend: Die Planer-Session setzt den Status am Sitzungsende auf bereit. Nach dem Lauf setzt sie ihn zurueck auf geplant. Ablauf in der Planer-Doku claude/tagesabschluss.md (Teile A und C).
-status: geplant
-stand: 2026-11-11 04:40
+status: bereit
+stand: 2026-11-11 07:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-hinweis_tagesabschluss: 'Tagesabschluss 10.11.2026 (Planer-Session). Nur lesen. Schwerpunkt: Branches und Drafts #25-#28, #30-#32, Queue gegen Berichte, Pruefung gegen Paket 76692313...984C.'
+hinweis_tagesabschluss: 'Tagesabschluss 11.11.2026 (Planer-Session). Nur lesen. Schwerpunkt: neun Drafts (#25-#28, #30-#34) gegen main 8abe213, Queue gegen Berichte, Befund F2 aus R61, Stand R63/R65/R66.'
 zusatzschritt_branch_loeschen: ERLEDIGT 07.11.2026, gilt nicht mehr. Nicht erneut ausfuehren, es wird kein Branch geloescht.

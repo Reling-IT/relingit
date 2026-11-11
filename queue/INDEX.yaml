@@ -1,4 +1,4 @@
-stand: 2026-11-11 07:40
+stand: 2026-11-11 07:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -302,7 +302,7 @@ auftraege:
   titel: 'Tagesabschluss: Git-Hygiene und Pruefung von Reling IT (wiederkehrend, nur lesen)'
   art: lesen
   gate: nein
-  status: geplant
+  status: bereit
   abhaengig_von: []
 - id: R39
   titel: 'Doku-Bereinigung nach R33: ABLAUF.md, CODEX_PROMPT.md, FTP-Regel, veraltete Dateien'
@@ -484,7 +484,7 @@ auftraege:
   titel: 'Trockenlauf v1.39: Probe-Merge inkl. #33, Lesefassung und PDF in Wegwerf-Ordner (nur lesen)'
   art: lesen
   gate: nein
-  status: bereit
+  status: in_arbeit
   abhaengig_von: []
 - id: R64
   titel: 'G8 v1.38 verbuchen: Vermerk in SICHTUNG-v1.38.md und Freigabebericht (nur ops/reports)'
