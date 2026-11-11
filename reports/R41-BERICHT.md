@@ -3,7 +3,7 @@ id: R41
 titel: Kontraste der Buchquelle anheben (Design-Tokens, Codebox) für v1.39
 status: erledigt (Draft-PR, CI erwartungsgemäß rot, siehe Prüfungen)
 start: 2026-11-11T04:45+01:00
-ende: 2026-11-11T05:10+01:00
+ende: 2026-11-11T05:04+01:00
 branch: auftrag-R41-buchkontraste (Worktree C:/dev/wt-r41, Basis origin/main 8abe213)
 pr: '#33 (Draft)'
 commit: ecfbebb65760fd38aede754f5e56733a67b91726 (signiert)
