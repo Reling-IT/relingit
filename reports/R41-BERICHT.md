@@ -115,3 +115,14 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 11.11.2026: Entscheidungen des Product Owners
+
+| Punkt | Entscheidung |
+|---|---|
+| Codebox (Abhebung 1,16:1 gegen die Seite) | bleibt so, der Rahmen wird nicht verstärkt |
+| „(früher ADF)“ (2,65:1) | jetzt nicht ändern; wird beim Zusammenführen von #27 und #33 nachgezogen (R60) |
+| `#render-stamp` (2,93:1, nur im PDF) | bleibt so |
+| Lesefassung und PDF für #33 | eigener Auftrag R60 „v1.39 rendern“ (wartet auf R09 und R52, Gate ja); zieht auch C1 (anhang.html auf 1.39) und C2 (Meta-Beschreibung anhang.html) nach |
+
+Draft-PR #33 und Worktree C:/dev/wt-r41 bleiben bestehen. Merge nur nach Einzelfreigabe, frühestens nach Upload v1.38 und R09.
