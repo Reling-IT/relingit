@@ -64,8 +64,11 @@ Describe "aufraeumen-pruefen.ps1" {
         G @("branch", "inhalt", "main") | Out-Null
         Commit "d.txt" "d`n"
         G @("checkout", "-q", "inhalt") | Out-Null
-        Commit "d.txt" "d`n"
+        # Eigene Commit-Nachricht: Sonst ergibt ein Commit in derselben Sekunde
+        # denselben Hash wie auf main, und inhalt wäre ein echter Vorfahre.
+        Datei "d.txt" "d`n"; G @("add", "-A") | Out-Null; G @("commit", "-q", "-m", "d.txt auf inhalt") | Out-Null
         G @("checkout", "-q", "main") | Out-Null
+        if ((G @("rev-parse", "inhalt")) -eq (G @("rev-parse", "main"))) { throw "Testaufbau: inhalt und main haben denselben Commit." }
 
         G @("remote", "add", "origin", $script:Origin) | Out-Null
         G @("push", "-q", "origin", "main") | Out-Null
