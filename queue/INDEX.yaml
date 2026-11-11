@@ -1,4 +1,4 @@
-stand: 2026-11-11 05:10
+stand: 2026-11-11 05:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -459,4 +459,12 @@ auftraege:
   gate: nein
   status: bereit
   abhaengig_von: []
+- id: R60
+  titel: 'v1.39 rendern: Lesefassung und PDF nach Merge von #26, #27, #33, dazu C1 und ADF-Zeile'
+  art: code-pr
+  gate: ja
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R09
+  - R52
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

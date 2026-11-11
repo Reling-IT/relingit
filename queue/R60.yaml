@@ -1,0 +1,20 @@
+id: R60
+titel: 'v1.39 rendern: Lesefassung und PDF nach Merge von #26, #27, #33, dazu C1 und ADF-Zeile'
+art: code-pr
+gate: ja
+abhaengig_von:
+- R09
+- R52
+stand: 2026-11-11 05:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+voraussetzung: 'Upload v1.38 und R09 sind abgeschlossen, R52 (Tag v1.38) gesetzt. #25, #28, #26, #27 und #33 sind von Bernd einzeln freigegeben und auf main. Vorher nicht beginnen.'
+ziel: 'Aus der Buchquelle auf main (mit #27 Box Die sieben Standards und #33 Buchkontraste) werden story/current/fahrt-zum-kunden.html und die PDF neu erzeugt, damit die CI gruen ist.'
+schritte:
+- 'Neuer Branch von main. Version und Datum v1.39 in Buchquelle, Deckblatt, Startseite und anhang.html (C1: anhang.html gleich lesen.html, publish-release.ps1 aus #26).'
+- 'Zeile (frueher ADF) auf mindestens 4,5:1 anheben (Bernd 11.11.: beim Zusammenfuehren nachziehen). Meta-Beschreibung anhang.html um Die sieben Standards ergaenzen (C2).'
+- Lesefassung und PDF rendern, Seitenzahl in Deckblatt, PDF, story/current und Startseite abgleichen, ci-check und Pester gruen, Vorher/Nachher-Bilder der Box und der Kontraste.
+- Draft-PR, Bericht reports/R60-BERICHT.md. Paket v1.39 ohne Audio bauen, aber nicht hochladen.
+nachweis: Draft-PR mit gruener CI; Bericht mit Seitenzahl-Tabelle und Hash des Pakets.
+grenzen: 'Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Gate ja: Freigabe G1 bis G8 vor Veroeffentlichung.'
+status: wartet_auf_voraussetzung
