@@ -3,7 +3,7 @@ id: R61
 titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
 status: erledigt
 start: 2026-11-11T05:58+01:00
-ende: 2026-11-11T06:12+01:00
+ende: 2026-11-11T06:10+01:00
 branch: 'keiner (nur ops/reports)'
 quelle_queue: 'origin/ops/queue 25506ea (Planer Claude, Commit nicht signiert)'
 ---
