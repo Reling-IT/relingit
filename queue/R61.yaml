@@ -1,0 +1,16 @@
+id: R61
+titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
+art: lesen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 05:45
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Belegen, welche Freigabetore fuer v1.38 erfuellt sind, damit Bernd G8 entscheiden kann. Offen ist laut R51 der formale Stand von G3 bis G5.
+schritte:
+- 'scripts/freigabe-pruefen.ps1 mit -Paket auf das Paket 76692313...984C (aus main 8abe213) laufen lassen; scripts/vorschau.ps1 nur lesend. G6 gilt ohne Audio als nicht zutreffend (R54 ist Draft #31, auf main noch nicht: Befund notieren).'
+- 'docs/freigabe.yaml gegen reports/R50-SICHTUNG-v1.38.md abgleichen: welche Tore sind belegt, welche formal offen (G3 bis G5).'
+- 'Stand in reports/SICHTUNG-v1.38.md nachtragen (neuer Abschnitt mit Datum), je Tor: erfuellt, offen, nicht zutreffend, Beleg.'
+nachweis: Bericht reports/R61-BERICHT.md mit Tor-Tabelle und Empfehlung fuer G8.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur ops/reports schreiben. Dauer etwa 30 Minuten.
+status: bereit

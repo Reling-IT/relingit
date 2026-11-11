@@ -1,0 +1,17 @@
+id: R62
+titel: 'scripts/pruefe-paket.ps1: ZIP gegen Manifest und Vorgaenger-Paket pruefen (Draft-PR)'
+art: code-pr
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 05:45
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Vorschlag aus R51: Das Upload-Paket wird reproduzierbar geprueft. Ausgabe als Markdown-Tabelle wie in der Upload-Checkliste.'
+schritte:
+- 'Neuer Branch von origin/main. scripts/pruefe-paket.ps1 mit -Zip (Pflicht) und -Vorgaenger (optional): entpackt nur nach temp, prueft alle Dateien gegen UPLOAD-MANIFEST.txt (SHA-256), zaehlt Eintraege, meldet fehlende oder zusaetzliche Dateien und gegenueber dem Vorgaenger geaendert, neu, unveraendert. Mit -ErwartetHash wird der ZIP-Hash verglichen (Exit 1 bei Abweichung).'
+- 'Nur lesend: keine Schreibzugriffe ausser temp, die wieder entfernt wird. Exit-Codes 0, 1, 2 wie scripts/ordner-hash.ps1.'
+- 'Pester-Test mit kleinem Testpaket im TestDrive; docs/ABLAUF.md um einen kurzen Abschnitt ergaenzen (am Ende, wegen Konflikt #30 und #32 getrennt halten); README-Verweis nur wenn noetig.'
+- Probelauf gegen 76692313...984C und das Vorgaenger-Paket v1.37; Ergebnis mit der Checkliste R51 vergleichen (22 geaendert/neu, 13 unveraendert).
+nachweis: Draft-PR mit gruener CI, Bericht reports/R62-BERICHT.md.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 45 Minuten.
+status: bereit

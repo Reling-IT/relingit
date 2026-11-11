@@ -1,4 +1,4 @@
-stand: 2026-11-11 05:35
+stand: 2026-11-11 05:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -467,4 +467,23 @@ auftraege:
   abhaengig_von:
   - R09
   - R52
+- id: R61
+  titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: &id001 []
+- id: R62
+  titel: 'scripts/pruefe-paket.ps1: ZIP gegen Manifest und Vorgaenger-Paket pruefen (Draft-PR)'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: *id001
+- id: R63
+  titel: 'Trockenlauf v1.39: Probe-Merge inkl. #33, Lesefassung und PDF in Wegwerf-Ordner (nur lesen)'
+  art: lesen
+  gate: nein
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R57
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

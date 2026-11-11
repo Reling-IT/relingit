@@ -1,0 +1,18 @@
+id: R63
+titel: 'Trockenlauf v1.39: Probe-Merge inkl. #33, Lesefassung und PDF in Wegwerf-Ordner (nur lesen)'
+art: lesen
+gate: nein
+abhaengig_von:
+- R57
+stand: 2026-11-11 05:45
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Frueh sehen, was R60 spaeter leisten muss: Seitenzahl, Paketbau, CI-Ergebnis des zusammengefuehrten Standes. Es wird nichts veroeffentlicht und nichts gepusht.'
+schritte:
+- 'Nach R57: Wegwerf-Worktree von origin/main 8abe213, Drafts in der Reihenfolge der Empfehlung aus reports/R57-BERICHT.md ohne Commit zusammenfuehren, #33 dazu.'
+- Version und Datum in Buchquelle, Deckblatt, Startseite und anhang.html auf 1.39 setzen (nur im Wegwerf-Ordner, C1 und C2 pruefen), ci-check und Pester ausfuehren.
+- Lesefassung und PDF im Wegwerf-Ordner erzeugen (PDF-Render nur auf Bernds Rechner), Seitenzahl in Deckblatt, PDF, story/current, Startseite abgleichen, Paket v1.39 ohne Audio bauen und Hash notieren.
+- 'Befundtabelle: Fundstelle, Befund, Vorschlag, Schweregrad; Zeitbedarf fuer R60 schaetzen.'
+nachweis: Bericht reports/R63-BERICHT.md. Wegwerf-Worktrees danach entfernen.
+grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nichts aus dem Wegwerf-Ordner uebernehmen. Dauer etwa 45 Minuten.
+status: wartet_auf_voraussetzung
