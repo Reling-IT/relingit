@@ -13,10 +13,10 @@ Freigabe des Product Owners zum Vorschlag: ja, 11.11.2026. Ob daraus ein Auftrag
 - `tests/`: fünf Testdateien (build-upload, ci-check, freigabe-pruefen, publish-release, vorschau). Die zwei PDF-Tests in publish-release.Tests.ps1 überspringen sich selbst ohne `pdftotext` (`-Skip:$ohnePdfToText`).
 - README: `Invoke-Pester -Path tests`, Zielversion Pester 5.
 
-## Vorschlag Auftrag (Entwurf für queue/R61.yaml)
+## Vorschlag Auftrag (Entwurf; Nummer vergibt der Planer, R61 ist inzwischen anders belegt)
 
 ```yaml
-id: R61
+id: R6x
 titel: 'CI: Pester-Tests als eigener Schritt (ohne PDF-Tests oder mit poppler-utils)'
 art: code-pr
 gate: ja        # Workflow-Aenderung, ausdrueckliche Freigabe des Product Owners
