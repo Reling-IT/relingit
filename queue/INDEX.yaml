@@ -1,4 +1,4 @@
-stand: 2026-11-11 05:45
+stand: 2026-11-11 06:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -486,4 +486,11 @@ auftraege:
   status: wartet_auf_voraussetzung
   abhaengig_von:
   - R57
+- id: R64
+  titel: 'G8 v1.38 verbuchen: Vermerk in SICHTUNG-v1.38.md und Freigabebericht (nur ops/reports)'
+  art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von:
+  - R61
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

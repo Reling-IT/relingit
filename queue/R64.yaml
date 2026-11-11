@@ -1,0 +1,18 @@
+id: R64
+titel: 'G8 v1.38 verbuchen: Vermerk in SICHTUNG-v1.38.md und Freigabebericht (nur ops/reports)'
+art: lesen
+gate: nein
+abhaengig_von:
+- R61
+stand: 2026-11-11 06:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Die Freigabe G8 des Product Owners fuer das Paket 76692313...984C wird nachvollziehbar festgehalten, ohne dass Tore umgangen werden.
+schritte:
+- 'Wortlaut Bernd 11.11.2026 06:17: G8 wird erteilt. Die manuelle Sichtung vom 09.11.2026 (G3 bis G5) war positiv und gilt; die 26 Punkte der Liste wurden nicht abgehakt. Bernd hat das am 11.11. ausdruecklich bestaetigt.'
+- 'reports/SICHTUNG-v1.38.md: neuen Abschnitt Entscheidung Product Owner 11.11.2026 anfuegen (Datum, Wortlaut, Paket-Hash 76692313...984C, Basis main 8abe213). Die leeren Checkboxen NICHT nachtraeglich abhaken.'
+- 'Tor-Stand laut R61 uebernehmen: G1, G2, G7 erfuellt (ueber R50, gleicher Baum), G6 nicht zutreffend (Paket ohne Audio), G3 bis G5 durch Sichtung 09.11. bestaetigt, G8 erteilt. Sperrgruende des Skripts auf main als bekannt vermerken (F2 aus R61).'
+- 'Kurzbericht reports/R64-BERICHT.md. Danach Hinweis an Bernd: Upload-Termin offen, Upload nach reports/UPLOAD-CHECKLISTE-v1.38.md, dann R09 auf bereit.'
+nachweis: Commit auf ops/reports mit SICHTUNG-v1.38.md und R64-BERICHT.md.
+grenzen: Nur ops/reports. Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an docs/freigabe.yaml oder Skripten. Dauer etwa 10 Minuten.
+status: bereit
