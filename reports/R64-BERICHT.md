@@ -2,8 +2,8 @@
 id: R64
 titel: 'G8 v1.38 verbuchen: Vermerk in SICHTUNG-v1.38.md und Freigabebericht (nur ops/reports)'
 status: erledigt
-start: 2026-11-11T06:33+01:00
-ende: 2026-11-11T06:36+01:00
+start: 2026-11-11T06:31+01:00
+ende: 2026-11-11T06:32+01:00
 branch: ops/reports
 quelle_queue: 'origin/ops/queue 103c0f6 (Planer Claude, Commit nicht signiert)'
 ---

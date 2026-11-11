@@ -1,4 +1,4 @@
-stand: 2026-11-11T06:36+01:00
+stand: 2026-11-11T06:32+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -378,8 +378,8 @@ auftraege:
     hinweis: 'scripts/pruefe-paket.ps1 hasht ZIP-Eintraege direkt (kein Entpacken, Abweichung begruendet); 9 neue Tests, Pester 3.4 dreimal 30/30, Pester 5 einmal 30/30; Probelauf v1.38 gegen v1.37 wie R51 (22 geaendert/neu, 13 unveraendert), vom Koordinator nachgeprueft; ABLAUF.md-Abschnitt am Ende, mit #30 und #32 je ohne Konflikt; Worktree C:/dev/wt-r62 bleibt'
   - id: R64
     status: erledigt
-    start: 2026-11-11T06:33+01:00
-    ende: 2026-11-11T06:36+01:00
+    start: 2026-11-11T06:31+01:00
+    ende: 2026-11-11T06:32+01:00
     bericht: reports/R64-BERICHT.md
     hinweis: 'G8 v1.38 laut Planer-Auftrag 103c0f6 (Entscheidung Product Owner 11.11. 06:17) in SICHTUNG-v1.38.md verbucht; Liste nicht abgehakt; Upload-Termin offen'
   - id: R41
