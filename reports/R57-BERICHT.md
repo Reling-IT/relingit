@@ -146,6 +146,14 @@ Roadmap:
 | Frage | Entscheidung |
 |---|---|
 | #27, #33 und R60 als ein Schritt mergen, damit main nicht zwischendurch rot ist? | **ja** – ein Block unmittelbar nacheinander |
-| Wer stabilisiert den instabilen Test in #32? | offen |
+| Wer stabilisiert den instabilen Test in #32? | Claude Code (Auftrag des Product Owners); erledigt, siehe unten |
 
 Für den Planer: R60 sollte den Block ausdrücklich enthalten (Reihenfolge #27 → #33 → Nachzug Lesefassung, PDF, anhang.html 1.39, ADF-Zeile, C2), mit ci-check und Pester nach jedem Schritt; Merge jeweils nur nach Einzelfreigabe.
+
+## Nachtrag 11.11.2026: Test in #32 stabilisiert
+
+- Ursache belegt: Auf `main` und `inhalt` entstand je ein Commit `d.txt` mit gleicher Nachricht, gleichem Eltern-Commit, gleichem Baum und gleichem Autor. In derselben Sekunde ergibt das denselben Hash, `inhalt` ist dann Vorfahre (Ergebnis „ja“ statt „Squash-gleich“).
+- Nachgestellt mit festem `GIT_COMMITTER_DATE`/`GIT_AUTHOR_DATE`: vorher 5/6 (genau dieser Test rot), nachher 6/6.
+- Fix auf dem Branch von #32, Commit d6de9ee (signiert): eigene Commit-Nachricht auf `inhalt` und Schutzprüfung im Testaufbau; nur `tests/aufraeumen-pruefen.Tests.ps1` (+4 −1).
+- Prüfungen: 5 normale Läufe ohne Fehler, alle Tests 27/27, ci-check Exit 0, PR-CI grün (Lauf 42960546365). Kommentar im PR #32.
+- Für #32 bleibt nur der Nachzug in `docs/ABLAUF.md` nach #30.
