@@ -1,6 +1,6 @@
-stand: 2026-11-10T07:16+01:00
+stand: 2026-11-11T04:40+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
+quelle_queue: 'origin/ops/queue 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
 hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
 auftraege:
@@ -144,11 +144,11 @@ auftraege:
     ende: 2026-11-07T06:49+01:00
     bericht: reports/R33-BERICHT.md
   - id: R34
-    status: blockiert
+    status: erledigt
     start: 2026-11-07T07:02+01:00
     ende: 2026-11-07T07:06+01:00
     bericht: reports/R34-BERICHT.md
-    hinweis: 'Kern durch R28/PR #13 erledigt; Widerspruch zu R28 (Cover committen, SHA256SUMS.txt) - Rueckfrage Planer'
+    hinweis: 'Kern durch R28/PR #13 erledigt (gemergt, main 44898de); Widerspruch zu R28 (Cover committen, SHA256SUMS.txt) - Rueckfrage Planer. Nachtrag 11.11. (R58): Planer hat R34 am 07.11. als durch R28 erledigt abgeschlossen, Delta nach R36 (ops/queue 185a7c1, queue/R34.yaml abschluss); Status angeglichen'
   - id: R24
     status: erledigt
     start: 2026-11-07T07:04+01:00
@@ -341,6 +341,19 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/32 (Draft, CI gruen, Commit 35c2d44)
     bericht: reports/R56-BERICHT.md
     hinweis: 'scripts/aufraeumen-pruefen.ps1 nur lesend: Worktrees/Branches als Tabelle mit ignorierten Dateien, Squash per patch-id; Pester 27/27; README und ABLAUF.md ergaenzt (moeglicher Textkonflikt mit #30)'
+  - id: R18
+    status: erledigt
+    hinweis: 'Nachtrag 11.11. (R58): kein eigener Lauf und kein eigener Bericht. Laut queue/R18.yaml als Teil von R16 erledigt; Beleg reports/R16-BERICHT.md Abschnitt Icon-Umstellung, Commit 788e882 (zwei Navis-Bloecke in kap-veraltete-daten), ueber PR #10 in main (gemergt 08.11., git merge-base --is-ancestor 788e882 origin/main: ja)'
+  - id: R58
+    status: erledigt
+    start: 2026-11-11T04:32+01:00
+    ende: 2026-11-11T04:40+01:00
+    bericht: reports/R58-BERICHT.md
+    hinweis: 'STATUS.yaml gegen INDEX.yaml: R34 erledigt, R18 nachgetragen; R50/#29 war in STATUS.yaml bereits als gemergt (8abe213) gefuehrt, die Abweichung steht nur in INDEX.yaml (Planer)'
+  - id: R57
+    status: in_arbeit
+    start: 2026-11-11T04:30+01:00
+    hinweis: 'Probe-Merge der sieben Drafts mit ci-check und Pester in Wegwerf-Worktrees (Agent)'
 leerlauf:
   - zeit: 2026-11-10T07:16+01:00
     hinweis: 'Tagesabschluss 10.11.: R29-Pruefung (R29-20261110-BERICHT.md, ein Muss-Befund C1 zur Merge-Reihenfolge 26/27), Tagesbericht TA-01 bis TA-07; 0 Auftraege bereit; Ablage-Worktrees entfernt.'
