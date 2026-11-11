@@ -1,0 +1,16 @@
+id: R59
+titel: Lokalen Branch auftrag-R50-kleines-systemhaus loeschen (git branch -d)
+art: lokal-aufraeumen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-11 05:00
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Der lokale Branch ist in origin/main enthalten, der Remote-Branch ist geloescht. Freigabe Bernd 11.11.2026.
+schritte:
+- git fetch --prune origin; git merge-base --is-ancestor auftrag-R50-kleines-systemhaus origin/main muss wahr sein.
+- git branch -d auftrag-R50-kleines-systemhaus (nicht -D). Bricht git -d ab, nichts erzwingen, sondern melden.
+- git branch --list auftrag-R50-kleines-systemhaus muss leer sein.
+nachweis: Kurzer Eintrag im Tagesprotokoll oder reports/R59-BERICHT.md.
+grenzen: Nur dieser eine lokale Branch. Kein anderer Branch, kein Remote-Loeschen, ops/queue und ops/reports nie. Kein Merge, kein Tag, kein FTP. Dauer etwa 5 Minuten.
+status: bereit

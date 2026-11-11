@@ -1,4 +1,4 @@
-stand: 2026-11-11 04:40
+stand: 2026-11-11 05:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -450,6 +450,12 @@ auftraege:
 - id: R58
   titel: 'STATUS.yaml abgleichen: R34, R18 und Hinweis #29 (nur ops/reports)'
   art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R59
+  titel: Lokalen Branch auftrag-R50-kleines-systemhaus loeschen (git branch -d)
+  art: lokal-aufraeumen
   gate: nein
   status: bereit
   abhaengig_von: []
