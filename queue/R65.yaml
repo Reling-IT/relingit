@@ -1,0 +1,24 @@
+id: R65
+titel: 'Korrekturen v1.39: Backup-Ticket, Navis-Zeitangabe, zweiter Switch, Cockpit, Handout-Datum (Draft-PR)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+stand: 2026-11-11 07:20
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Die vier Textpunkte aus claude/korrekturliste-v1-39.md und Befund C6 (Handout-Datum) werden in der Buchquelle fuer v1.39 umgesetzt. Entscheidungen Bernd 11.11.2026. Nur Quelle, keine Veroeffentlichung.
+entscheidungen:
+  punkt_1_backup_ticket: Kaffeeecke-Satz "heute Abend kuemmert sich jemand anderes" bezieht sich klar auf einen anderen Kunden (Name oder eindeutiger Zusatz im Satz), Baumann bleibt unzugewiesen, Navis-Aussage "niemand ist aktuell zugewiesen" bleibt unveraendert. Offen bleibt offen.
+  punkt_2_navis_zeitangabe: 'Im Kapitel Der Umweg (Noras Bot, Zeile um "Angefangen hat es vor gut einem Jahr"): klarstellen, dass UEBER KI-Assistenten wie Navis und Lumen schon laenger geredet wurde, Noras Bot vor gut einem Jahr entstand, Navis und Lumen im Haus aber erst ein Vierteljahr vor der Fahrt. Minimal aendern, Noras Stimme behalten.'
+  punkt_3_zweiter_switch: 'Kapitel Die veralteten Daten: ein Satz zur Herkunft des Switches im Originalkarton: Mira hat ihn selbst aus dem Lager oder per Express-Lieferung geholt, bevor Reiner tauschte; keiner wusste vom anderen. Passt zum Befund Datenstand, keine Schuldzuweisung.'
+  punkt_4_cockpit: Das Wort Cockpit durch Sysingboard ersetzen (Navis-Rede und Erzaehltext, zwei Stellen laut Befund). Navis liest nur das Sysingboard und schreibt nie. Grammatik und Satzbau pruefen.
+  c6_handout: 'Handout-Datum von September 2026 auf Ende November 2026 angleichen: handout.html Z. 29, story/current/workshop-handout.html Z. 147, dazu das Handout-PDF neu rendern (nur auf Bernds Rechner).'
+schritte:
+- Neuer Branch von origin/main, nur source/fahrt-zum-kunden.html und die Handout-Dateien. Nichts in story/current/fahrt-zum-kunden.html oder an der Buch-PDF aendern (das macht R60).
+- "Fuenf Aenderungen laut entscheidungen minimal umsetzen. Regelcheck: Navis nur lesen und nie schreiben, Lumen nur ueber den Hub, zehn im Haus (8 Menschen plus Navis und Lumen), Offen bleibt offen, \xDF-Orthografie, Autobahn/A7."
+- Vorher/Nachher als Auszug je Stelle (Zeilennummer, alter und neuer Satz). Bei Wortlaut-Unsicherheit den Satz im Bericht zur Pruefung durch Bernd vorlegen, nicht raten.
+- 'ci-check und Pester ausfuehren. Erwartet: CI rot wegen story/current ungleich source (wie #33), Rest gruen. Mit merge-tree gegen #25, #26, #27, #33 auf Konflikte pruefen.'
+- Draft-PR, Bericht reports/R65-BERICHT.md. Danach flieesst die Quelle in den Merge-Block von R60.
+nachweis: Draft-PR, Bericht mit Vorher/Nachher je Stelle und Konfliktcheck.
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. v1.38 bleibt unveraendert. Dauer etwa 45 Minuten.
+status: bereit

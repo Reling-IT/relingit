@@ -1,4 +1,4 @@
-stand: 2026-11-11 07:00
+stand: 2026-11-11 07:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -467,6 +467,7 @@ auftraege:
   abhaengig_von:
   - R09
   - R52
+  - R65
 - id: R61
   titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
   art: lesen
@@ -492,4 +493,10 @@ auftraege:
   status: erledigt
   abhaengig_von:
   - R61
+- id: R65
+  titel: 'Korrekturen v1.39: Backup-Ticket, Navis-Zeitangabe, zweiter Switch, Cockpit, Handout-Datum (Draft-PR)'
+  art: code-pr
+  gate: ja
+  status: bereit
+  abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
