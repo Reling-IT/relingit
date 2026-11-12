@@ -58,6 +58,21 @@ pdfinfo output/Die-Fahrt-zum-Kunden.pdf
 
 Ohne Parameter gelten genau diese Standardpfade.
 
+## Handout rendern
+
+Dasselbe Skript rendert mit `--profil handout` das Workshop-Handout aus `story/current/workshop-handout.html`: gleiche Seitenränder und gleiches Format wie die Geschichte, eigene Fußzeile („Der Reling-IT-Transfer · frei erfunden“) und eigene PDF-Metadaten. Der Renderstand wird in die Fußzeile des Handouts geschrieben.
+
+```powershell
+# nach output/workshop-handout.pdf rendern und kontrollieren (erwartet: 2 Seiten)
+python scripts/pdf/render_story_pdf.py --profil handout
+pdfinfo output/workshop-handout.pdf
+
+# erst nach der Kontrolle als Paar zur HTML-Fassung ablegen
+Copy-Item output/workshop-handout.pdf story/current/workshop-handout.pdf
+```
+
+HTML und PDF des Handouts gehören zusammen: Wer das Datum oder den Text in `workshop-handout.html` ändert, rendert das PDF neu. Der Anlass (Monat und Jahr des Workshops) für die Metadaten beider PDFs steht im Skript in der Konstante `ANLASS`. `verify_layout.py` prüft nur die Geschichte, nicht das Handout.
+
 ## Erwartete Ausgabe
 
 Render-Skript:
