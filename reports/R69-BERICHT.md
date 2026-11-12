@@ -210,3 +210,48 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 12.11.2026, 06:15: Nr. 2 entschieden (Weg A) und auf #35 vorgelegt
+
+Der Product Owner hat für Nr. 2 den ersten Vorschlag gewählt: Bilder unverändert lassen und im Anhangtext einordnen. Umgesetzt als signierter Commit 6a2e7a5 auf PR #35 (bleibt Draft): ein neuer Absatz im Abschnitt `kap-reportfamilie-architektur`, direkt nach dem Einleitungsabsatz und vor dem ersten Bild (+1 Zeile). Bilder, Bildunterschriften und alt-Texte sind nicht geändert. Der Wortlaut ist ein Vorschlag der KI-Sitzung:
+
+> Zur Einordnung: Beide Skizzen sind ältere Arbeitsstände. Die Prozentanzeigen zu Reifegrad und Compliance und das Wort „Bewerten“ sind darin Platzhalter; es gilt, was in „Woher kommen die Infos“ steht: keine Gesamtampel, kein Reifegrad-Score. Und wo das Zielbild Lumen als „integriert“ ausweist, zeigt es ein Ziel, keinen erreichten Stand.
+
+Hinweis zur Belegbarkeit: Dass die Skizzen ältere Arbeitsstände und die Prozentanzeigen Platzhalter sind, stammt aus der Entscheidung des Product Owners; aus dem Repository ist es nicht zu belegen.
+
+### Prüfungen (Stand #35 Head 6a2e7a5, mit Nr. 1 und Nr. 2)
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| `scripts/ci-check.ps1` auf 6a2e7a5 | genau 1 Fehler (story/current weicht von source ab, erwartet bis R60) |
+| `git merge-tree` gegen #27, #33, #26 | je ohne Konflikt |
+| Proberender im Wegwerf-Worktree: main + #25, #28, #26, #27, #33, #35 (ohne Konflikt), `render_story_pdf.py` | **80 Seiten**, Renderstand 12.11.2026, 06:13 Uhr (MEZ) |
+| `verify_layout.py --no-render` auf diesem Stand | Exit 0, „alle Seiten erfuellen den Layout-Check UND den Inhalt-Praesenz-/Positions-Check“ |
+| Pester | nicht wiederholt (nur Buchtext geändert) |
+
+Grenzen des Proberenders: ohne die Nachzüge aus R63 (Datum, ADF-Zeile, Sätze in der Versionshistorie) und mit der vorhandenen Renderumgebung des Rechners (Playwright 1.64.1, nicht 1.64.0). Der Sammeleintrag in der Versionshistorie steht noch aus und kann eine Zeile kosten. Der Wegwerf-Worktree ist entfernt, der Arbeitsklon unverändert (`main` gleich `origin/main`, sauber).
+
+Damit sind die beiden Muss-Empfehlungen aus diesem Bericht als Vorschlag umgesetzt. Offen bleiben die Sichtung des Wortlauts und die Kann- und Sollte-Punkte.
+
+### Vorschläge und Ideen (Claude)
+
+Empfehlungen, keine Fakten:
+
+- Die alt-Texte der beiden Bilder (Nr. 27) im selben Zug ergänzen; das ändert die Seitenzahl nicht.
+- Den Hinweis auf „Woher kommen die Infos“ im neuen Absatz als Sprungmarke auf `#kap-infos` setzen.
+- R63-Befund N4 kann mit diesem Stand schließen, sobald der Wortlaut bestätigt ist.
+
+Hygiene: gemergte Remote-Branches 0; offene PRs 11 (#25 bis #28, #30 bis #36), alle Draft.
+
+```yaml
+Reifegrad: R69 Nr. 1 und Nr. 2 als Vorschlag auf PR 35 (6a2e7a5); Proberender der Buch-PRs 80 Seiten, Layout-Check Exit 0; ci-check nur mit dem erwarteten Fehler
+Projektstatus: Buch-Block fuer v1.39 inhaltlich vollstaendig; wartet auf Sichtung des Wortlauts, Upload v1.38 und Einzelfreigaben, danach R60
+Offene_Fragen:
+  - Wortlaut der Anhang-Aenderungen (Nr. 1 vier Stellen, Nr. 2 ein Absatz) bestaetigen?
+  - Folgesatz zur Reihenfolge der CI-Schritte allgemeiner fassen?
+  - pypdf im Renderlauf ebenfalls pinnen?
+Roadmap:
+  Sprints_bis_BSF: 1
+  Sprints_bis_MVP: 2
+  Hinweis: unbelegte Schaetzung
+```
