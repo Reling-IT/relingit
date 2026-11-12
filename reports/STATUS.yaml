@@ -1,4 +1,4 @@
-stand: 2026-11-12T04:56+01:00
+stand: 2026-11-12T04:58+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -422,6 +422,14 @@ auftraege:
     ende: 2026-11-12T04:54+01:00
     bericht: reports/R66-BERICHT.md
     hinweis: 'reports/SICHTUNG-v1.39.md mit 56 leeren Punkten (G4 28, G3 15, G5 13; 30 neu ggue. v1.38), Kopf mit Platzhaltern bis R60'
+  - id: R73
+    status: erledigt
+    start: 2026-11-12T04:48+01:00
+    ende: 2026-11-12T04:55+01:00
+    branch: auftrag-R73-pilot-steckbrief
+    pr: https://github.com/Reling-IT/relingit/pull/36 (Draft, CI gruen, Commit ef6199e)
+    bericht: reports/R73-BERICHT.md
+    hinweis: 'Agent: docs/PILOT.md nach der Vorlage aus dem Standard-Repository, 16 Angaben belegt, 7 unklar, Aufwand keine Angabe (nichts geschaetzt); Profilfeld steckbrief in CLAUDE.md gesetzt; ci-check Exit 0, Pester 21/21; Gegenprobe Koordinator (Diff, Signatur, merge-tree gegen zehn PR-Branches ohne Konflikt); Worktree C:/dev/wt/relingit/r73 bleibt'
 leerlauf:
   - zeit: 2026-11-10T07:16+01:00
     hinweis: 'Tagesabschluss 10.11.: R29-Pruefung (R29-20261110-BERICHT.md, ein Muss-Befund C1 zur Merge-Reihenfolge 26/27), Tagesbericht TA-01 bis TA-07; 0 Auftraege bereit; Ablage-Worktrees entfernt.'
