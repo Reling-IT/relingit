@@ -13,4 +13,4 @@ schritte:
 - 'Teil 2 erst nach ausdruecklicher Bestaetigung von Bernd (Auftrag R13 mit Papierkorb, nie endgueltig loeschen): genau die bestaetigten Dateien in den Papierkorb, danach Liste im Bericht nachtragen.'
 nachweis: reports/R70-BERICHT.md mit Inventar; nach Teil 2 Nachtrag.
 grenzen: Teil 1 nur lesend. Teil 2 nur mit Bestaetigung, nur Papierkorb. Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an Workflows, Deployment, Supabase oder Admin. Dauer etwa 10 Minuten.
-status: bereit
+status: geplant

@@ -1,4 +1,4 @@
-stand: 2026-11-12 05:30
+stand: 2026-11-12 06:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -503,7 +503,7 @@ auftraege:
   titel: Sichtungsliste v1.39 vorbereiten (nur ops/reports)
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R67
   titel: Upload-Checkliste v1.39 aus dem Paket erzeugen (nur lesen)
@@ -525,13 +525,13 @@ auftraege:
   titel: 'Stimmigkeitspruefung Rest des Buchs: Teil 2 ab Mitte, Anhang, Bildunterschriften, aria-label, Versionshistorie (nur lesen)'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R70
-  titel: Lose Dateien in C:\dev inventarisieren (nur lesen), Papierkorb erst nach Bestaetigung
+  titel: Lose Dateien in C:\dev inventarisieren (nur lesen), Papierkorb erst nach Bestaetigung [Teil 1 erledigt, Teil 2 Papierkorb wartet auf Bestaetigung]
   art: lokal-aufraeumen
   gate: nein
-  status: bereit
+  status: geplant
   abhaengig_von: []
 - id: R71
   titel: Pausen-Check nach Release v1.39 (nur lesen)
@@ -551,20 +551,20 @@ auftraege:
   titel: Pilot-Steckbrief docs/PILOT.md anlegen (Draft-PR, nur belegte Angaben)
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R74
   titel: 'R65 nachbessern: Wortlaut-Entscheidungen Bernd 12.11. in PR #35 einarbeiten (Draft-PR bleibt)'
   art: code-pr
   gate: ja
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R65
 - id: R75
   titel: Handout-Renderweg ins Repository holen und Handout-PDF neu rendern (Draft-PR)
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von:
   - R65
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

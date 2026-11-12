@@ -15,7 +15,7 @@ schritte:
 - 'Befundtabelle: Fundstelle, Befund, Vorschlag, Schweregrad; Zeitbedarf fuer R60 schaetzen.'
 nachweis: Bericht reports/R63-BERICHT.md. Wegwerf-Worktrees danach entfernen.
 grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nichts aus dem Wegwerf-Ordner uebernehmen. Dauer etwa 45 Minuten.
-status: bereit
+status: erledigt
 entscheidungen_bernd_2026_11_12:
   datum_v139: Renderdatum (Datum des tatsaechlichen Release-Renders), nicht 09.11.2026.
   adf_zeile: --ink-soft, Kontrast 5,47:1.
