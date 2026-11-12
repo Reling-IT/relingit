@@ -1,4 +1,4 @@
-stand: 2026-11-12 06:55
+stand: 2026-11-12 07:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -465,8 +465,6 @@ auftraege:
   gate: ja
   status: wartet_auf_voraussetzung
   abhaengig_von:
-  - R09
-  - R52
   - R65
 - id: R61
   titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
