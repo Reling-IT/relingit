@@ -1,4 +1,4 @@
-stand: 2026-11-12 05:25
+stand: 2026-11-12 05:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -547,4 +547,10 @@ auftraege:
   status: geplant
   abhaengig_von:
   - R71
+- id: R73
+  titel: Pilot-Steckbrief docs/PILOT.md anlegen (Draft-PR, nur belegte Angaben)
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

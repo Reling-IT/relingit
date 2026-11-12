@@ -1,0 +1,19 @@
+id: R73
+titel: Pilot-Steckbrief docs/PILOT.md anlegen (Draft-PR, nur belegte Angaben)
+art: code-pr
+gate: nein
+abhaengig_von: []
+stand: 2026-11-12 05:40
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Die ADG-Ergaenzung vom 11.11.2026 (SITZUNGSROUTINE.md TS-04 und TA-09, Vorlage vorlagen/pilot-steckbrief.md in bmarnau-standards/ai-development-governance) verlangt, wo die Repository-Art es empfiehlt, einen Pilot-Steckbrief. Tagesstart 12.11. meldet: docs/PILOT.md fehlt, Profilfeld steckbrief nicht gesetzt. Entscheidung Bernd 12.11.2026: Auftrag anlegen.'
+schritte:
+- 'Neuer Branch von origin/main. Vorlage lesen (nur lesen, nichts im Standard-Repo aendern). docs/PILOT.md nach der Vorlage anlegen: Kurzprofil, Aufwand, Nutzen, Erkenntnisse, Naechster Meilenstein.'
+- 'Nur belegte Angaben, Unbekanntes als "unklar". Belegbar sind u. a.: Zweck (Kurzgeschichten Die Fahrt zum Kunden als Workshop-Vorbereitung), Zielgruppe (Kolleginnen und Kollegen, Workshop-Teilnehmende), Repository Reling-IT/relingit, Technik aus dem Repo (statische Webseite, Supabase-Admin-Bereich fuer Version und Datum, PDF-Rendering, FTP-Hosting), Werkzeuge (Claude, Claude Code), Start aus der Git-Historie (erster Commit), Status laut Plan (v1.37 live, v1.38/v1.39 in Arbeit). Tatsaechliche Nutzer und Nutzen: unklar, wenn nicht belegt.'
+- 'Aufwand: Tabelle leer lassen. Stunden traegt nur Bernd ein oder nennt sie auf Nachfrage im Tagesabschluss (TA-09). Nie selbst schaetzen; Eintrag "keine Angabe".'
+- 'Erkenntnisse: nur mit Beleg (PR, Commit, Bericht), zum Beispiel Gates G1 bis G8, Probe-Merge R57/R63, Befund F2 (R61). Naechster Meilenstein: Release v1.39 (Entscheidung am 16.11.), danach geplante Pause bis Jahresende; Entscheidung weiter/einfrieren/einstellen als Frage an Bernd.'
+- 'Profilfeld steckbrief: dort setzen, wo das Projektprofil liegt (Pfad im Bericht nennen). Findet sich keines, im Bericht melden und nichts erfinden.'
+- ci-check, Draft-PR, Bericht reports/R73-BERICHT.md.
+nachweis: Draft-PR mit gruener CI; Bericht mit Liste belegt/unklar.
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Keine Schaetzung von Stunden. Nichts im Repo ai-development-governance aendern. Dauer etwa 30 Minuten.
+status: bereit
