@@ -81,7 +81,7 @@ Empfehlungen, keine Fakten:
 
 Gemergte Remote-Branches: 0; offene PRs: 11 (#25 bis #28, #30 bis #36), alle Draft; neuer Worktree `C:\dev\wt\relingit\r73` bleibt stehen (Branch `auftrag-R73-pilot-steckbrief`, gleich `origin`); Arbeitsklon `main` gleich `origin/main`, sauber.
 
-## Nachtrag des Koordinators (12.11.2026, 04:58)
+## Nachtrag des Koordinators (12.11.2026, 04:56)
 
 Gegenprobe: Diff von #36 gelesen (zwei Dateien, +55; `docs/PILOT.md` und eine Zeile in `CLAUDE.md`), Commit ef6199e signiert, CI grün, `git merge-tree` gegen die zehn anderen offenen PR-Branches ohne Konflikt. Der Steckbrief enthält keine Stunden, keine Kosten und keine Personennamen. Hinweis: Der Steckbrief nennt „neun“ offene PRs mit Stand Tagesstart; nach dieser Sitzung sind es elf.
 

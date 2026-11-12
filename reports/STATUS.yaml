@@ -430,6 +430,12 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/36 (Draft, CI gruen, Commit ef6199e)
     bericht: reports/R73-BERICHT.md
     hinweis: 'Agent: docs/PILOT.md nach der Vorlage aus dem Standard-Repository, 16 Angaben belegt, 7 unklar, Aufwand keine Angabe (nichts geschaetzt); Profilfeld steckbrief in CLAUDE.md gesetzt; ci-check Exit 0, Pester 21/21; Gegenprobe Koordinator (Diff, Signatur, merge-tree gegen zehn PR-Branches ohne Konflikt); Worktree C:/dev/wt/relingit/r73 bleibt'
+  - id: R29
+    status: erledigt
+    start: 2026-11-12T04:54+01:00
+    ende: 2026-11-12T04:58+01:00
+    bericht: reports/R29-20261112-BERICHT.md
+    hinweis: 'Tagesabschluss-Pruefung 12.11., nur gelesen: 11 Drafts (#33, #35 erwartet rot), 75 YAML-Dateien gueltig, main ci-check Exit 0; neu: zweiter Klon unter reling-it (77 Commits hinter origin/main, sauber, nur gemeldet), Handout HTML/PDF in #35 ungleich, Muss-Empfehlungen aus R69; fuer den 11.11. gab es keinen R29-Lauf'
 leerlauf:
   - zeit: 2026-11-10T07:16+01:00
     hinweis: 'Tagesabschluss 10.11.: R29-Pruefung (R29-20261110-BERICHT.md, ein Muss-Befund C1 zur Merge-Reihenfolge 26/27), Tagesbericht TA-01 bis TA-07; 0 Auftraege bereit; Ablage-Worktrees entfernt.'
@@ -458,6 +464,8 @@ leerlauf:
   - zeit: 2026-11-08T06:52+01:00
     hinweis: 'ops/queue unveraendert 6ce611d; alle bereiten Auftraege bearbeitet (R17, R43 erledigt). Offene PRs #22 (R43) und #23 (Fix Schriften lesen.html, Befund R17). Naechste Pruefung in ca. 30 Minuten.'
 leerlauf_ende:
+  - zeit: 2026-11-12T04:58+01:00
+    hinweis: 'Tagesabschluss 12.11.; R65, R69, R66, R73, R70 (Teil 1), R29 erledigt; offen: Entscheidungen zu Wortlaut R65, R69 Nr. 1 und 2, Handout-PDF, R70 Teil 2, zweiter Klon; 11 Drafts. Tagesbericht reports/TAGESBERICHT-2026-11-12.md'
   - zeit: 2026-11-09T06:36+01:00
     hinweis: 'Tagesabschluss 09.11.; alle Auftraege der Sitzung erledigt; offen PR 29 (Freigabe G8), Drafts 25-28. Tagesbericht reports/TAGESBERICHT-2026-11-09.md'
   - zeit: 2026-11-07T07:17+01:00
