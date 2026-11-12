@@ -23,9 +23,9 @@ Stunden trägt nur der Product Owner ein oder nennt sie auf Nachfrage im Tagesab
 
 | Datum | Stunden (geschätzt) | Wofür (Fachlogik, Oberfläche, Fehlersuche, Infrastruktur, Doku und Standards, Prozess) |
 | --- | --- | --- |
-| keine Angabe | keine Angabe | keine Angabe |
+| 12.11.2026 | 2 | keine Angabe |
 
-Summe bisher: keine Angabe
+Summe bisher: 2 (nur der 12.11.2026; für frühere Tage keine Angabe)
 
 ## Nutzen
 
