@@ -156,3 +156,122 @@ Der Product Owner hat nach dem Tagesabschluss weiterarbeiten lassen; der Planer 
 - **Proberender** auf dem Endstand mit beiden Pins: 80 Seiten, Layout-Check, publish-release und ci-check je Exit 0. Bericht `reports/R63-20261112-BERICHT.md`.
 - **Befund:** Die Chromium-Builds für Playwright fehlten beim Renderversuch (Ursache unklar); Build neu installiert, Rechner wieder renderfähig.
 - Offen: Sichtung des Wortlauts auf #35, Wortlaut des Sammeleintrags, Upload v1.38, Einzelfreigaben, R70 Teil 2, zweiter Klon. Offene PRs: 11, alle Draft.
+
+## Tagesabschluss, zweiter Teil (06:38, Claude Code)
+
+Der Product Owner hat nach dem ersten Tagesabschluss (04:58) weiterarbeiten lassen und um 06:38 den Abschluss ausgelöst. Dieser Abschnitt ergänzt den ersten und die Nachträge; er überschreibt nichts. Rolle: KI-Sitzung (Koordinator). Kein Merge, kein Tag, kein Upload, keine Löschung von Remote-Branches.
+
+### TA-01 Aufgaben
+
+Nichts läuft mehr. Seit 04:58 abgeschlossen, je mit Bericht auf ops/reports:
+
+| Auftrag | Ergebnis | Beleg |
+| --- | --- | --- |
+| R74, R75 | Wortlaut des Product Owners und Handout-Renderweg auf #35 | db2804b, c1efb21; `R74-BERICHT.md`, `R75-BERICHT.md` |
+| R69 Nr. 1 und Nr. 2 | Anhang-Änderungen nach Entscheidung als Vorschlag auf #35 | 73b4b09, 6a2e7a5, 6cf48a8; Nachträge in `R69-BERICHT.md` |
+| R63 | zwei Nachläufe: alle elf Drafts grün (ci-check Exit 0, Pester 54/54); Endstand mit beiden Pins 80 Seiten | `R63-BERICHT.md`, `R63-20261112-BERICHT.md` |
+| R73 | Status Pilot und Stunden des Tages im Steckbrief (Angabe des Product Owners) | 7b1f654, 8129697 auf #36 |
+
+Offen übergeben: nichts aus dieser Sitzung. Warteschlange: ops/queue a4bb92b, kein bereiter Auftrag unbearbeitet.
+
+### TA-02 Fragen
+
+In der Sitzung einzeln gestellt und beantwortet: Kontrast-Satz, Sammeleintrag der Versionshistorie 1.39, R69 Nr. 1 und Nr. 2, Satz zur CI, pypdf-Pin, Stunden (TA-09). Weiter offen:
+
+1. Wortlaut der Anhang-Änderungen auf #35 bei der Sichtung bestätigen, auch den mitgestrichenen Halbsatz zur Reihenfolge der CI-Schritte. Empfehlung: zusammen mit `SICHTUNG-v1.39.md` ansehen.
+2. Ursache der fehlenden Chromium-Builds klären oder nur einen Vorab-Schritt in `docs/PDF-ERZEUGEN.md` aufnehmen? Empfehlung: Vorab-Schritt.
+3. Unverändert aus dem ersten Abschluss: Upload v1.38, R70 Teil 2, zweiter Klon.
+
+### TA-03 Offene PRs (GitHub, 06:38)
+
+Alle elf sind Draft und laut GitHub ohne Konflikt (MERGEABLE). Reihenfolge wie in `queue/R60.yaml` (Merge-Block), jeder Merge nur nach Einzelfreigabe mit Head-SHA.
+
+| PR | Head | CI | Zustand | Reihenfolge |
+| --- | --- | --- | --- | --- |
+| #25 R11 | d1257f7 | grün | CLEAN | 1 |
+| #28 R49 | 81f8e48 | grün | CLEAN | 2 |
+| #26 R07/R46 | 2133502 | grün | CLEAN | 3 |
+| #27 R06 | 8ea4c62 | grün | CLEAN | 4, Block |
+| #33 R41 | ecfbebb | rot (erwartet bis R60) | BLOCKED | 5, Block |
+| #35 R65/R74/R75/R69 | 6cf48a8 | rot (erwartet bis R60) | BLOCKED | 6, Block, danach R60 |
+| #30 R55 | 586404f | grün | CLEAN | 7 |
+| #31 R54 | b2bc305 | grün | CLEAN | 8 |
+| #32 R56 | d6de9ee | grün | CLEAN | 9, Konflikt `docs/ABLAUF.md` mit #30 beim zweiten Merge |
+| #34 R62 | 82ddf15 | grün | CLEAN | 10 |
+| #36 R73 | 8129697 | grün | CLEAN | frei |
+
+Elf offene PRs aus KI-Sitzungen liegen über der Grenze von drei. Bis zu Freigabe oder Ablehnung keine neuen Aufträge in diesem Repository, nur Nacharbeit.
+
+### TA-04 Aufräumen (nach `git fetch --prune`)
+
+| Prüfpunkt | Befund |
+| --- | --- |
+| Gemergte Remote-Branches | 0 |
+| Worktrees zum Entfernen | 0; alle sechs gehören zu offenen PRs oder sind die Ablage (`wt-rep`). Drei ältere liegen direkt unter `C:\dev` (`wt-r06`, `wt-r41`, `wt-r62`), nur gemeldet |
+| Lokale gemergte Branches | 0 |
+| Klon hinter `origin` oder nicht auf Standardbranch | Arbeitsklon `main` gleich `origin/main` (8abe213), sauber. Lokaler Branch `ops/queue` 25 Commits hinter `origin`; gelesen wird immer `origin/ops/queue`, nur gemeldet |
+| Weitere Klone desselben Remotes | `C:\dev\reling-it\relingit` (Stand 6ea5f6d, veraltet, sauber), nur gemeldet |
+| Offene PRs aus KI-Sitzungen | 11, alle Draft |
+| Lose Dateien in `C:\dev` | sechs Dateien `wt-*-pr.md` und `wt-*-review.md`, bekannt aus R70 Teil 1, nicht aus dieser Sitzung, nur gemeldet |
+| Eigene temporäre Dateien | Wegwerf-Worktrees und Wegwerf-Umgebungen entfernt; Hilfsdateien im Scratchpad gelöscht |
+
+### TA-05 Status und Plan
+
+`reports/STATUS.yaml` ist nachgezogen (Stand 06:38). Der Steckbrief `docs/PILOT.md` liegt als Draft auf #36. Eine Ziel- oder Meilensteindatei führt das Repository nicht (Profilfeld `ziel: offen`).
+
+### TA-06 Erreicht und nächste Aufgaben
+
+Erreicht (seit 04:58):
+
+1. Buchtext für v1.39 vollständig als Draft auf #35, mit allen Entscheidungen vom 12.11. (Head 6cf48a8).
+2. v1.39 im Trockenlauf grün: alle elf Drafts mit ci-check Exit 0 und Pester 54/54; Endstand mit Playwright 1.64.0 und pypdf 6.21.0 80 Seiten, Layout-Check Exit 0.
+3. Wortlaut der Versionshistorie 1.39 entschieden (zwei Sätze), festgehalten in den Berichten und in `queue/R60.yaml` (a4bb92b).
+4. Handout als Paar reproduzierbar renderbar (R75).
+5. Steckbrief mit Status und Stunden des Tages (#36).
+
+Nächste Aufgaben, geordnet:
+
+1. Upload v1.38 durch den Product Owner, dann R09 (Live-Prüfung) und R52 (Tag nach Freigabe).
+2. Sichtung des Wortlauts auf #35.
+3. Merge-Block nach Einzelfreigabe, dann R60 und R67.
+4. Werkzeug-PRs #30, #31, #32, #34 und #36 nach Einzelfreigabe.
+5. R70 Teil 2 und zweiter Klon nach Freigabe.
+
+### TA-07 Arbeitspaket nächste Sitzung (ca. 2 Stunden)
+
+- **Ziel:** v1.38 ist live geprüft (R09); der Merge-Block für v1.39 ist vorbereitet oder, bei Freigabe, R60 als Draft-PR gerendert.
+- **Zielbezug:** Abschluss Release v1.38 und Release v1.39.
+- **Schritte:**
+  1. `git fetch`; Warteschlange, Upload-Bestätigung und Freigaben lesen.
+  2. Nach Upload: R09 nur lesend, Bericht.
+  3. Nach Merge des Blocks durch den Product Owner: R60 mit den Nachzügen aus `R63-20261112-BERICHT.md` (Datum, ADF-Farbe, zwei Sätze der Versionshistorie, beide Pins), Render, `publish-release.ps1 -OhneAudio`, ci-check, Pester, `pruefe-paket.ps1`.
+  4. Vor dem Rendern prüfen, ob der Chromium-Build vorhanden ist.
+- **Abnahmekriterium:** R09-Bericht ohne Muss-Befund; R60 als Draft-PR mit grüner CI, Seitenzahl-Tabelle und Paket-Hash.
+- **Vorbedingungen:** Upload v1.38; Einzelfreigaben mit Head-SHA für #25, #28, #26, #27, #33, #35.
+- **Risiken:** Das Renderdatum ändert Paketname und Hashes. Die Chromium-Builds fehlten heute einmal ohne belegte Ursache. Pester läuft nicht in der CI. Elf Drafts erhöhen den Aufwand für Nachzüge.
+
+### TA-09 Stunden
+
+Vom Product Owner für den 12.11. genannt und in `docs/PILOT.md` auf #36 eingetragen (8129697). Nichts geschätzt.
+
+### Vorschläge und Ideen (Claude)
+
+Empfehlungen, keine Fakten:
+
+- Die Werkzeug-PRs zuerst freigeben; sie hängen nicht am Upload und senken die Zahl offener PRs schnell.
+- Die drei älteren Worktrees unter `C:\dev` beim Merge ihrer PRs nach `C:\dev\wt\relingit\` umziehen oder entfernen (Auftrag R13).
+- Den lokalen Branch `ops/queue` nicht mehr führen; gelesen wird ohnehin `origin/ops/queue`.
+- Pester in die CI aufnehmen, sobald #32 gemergt ist; das betrifft `.github/workflows` und braucht einen eigenen Auftrag.
+
+```yaml
+Reifegrad: v1.39 vollstaendig als Draft (PR 35, Head 6cf48a8); Trockenlauf gruen (ci-check Exit 0, Pester 54/54 mit elf Drafts; Endstand mit beiden Pins 80 Seiten, Layout-Check Exit 0)
+Projektstatus: wartet auf Upload v1.38, Sichtung des Wortlauts auf PR 35 und Einzelfreigaben; danach R09, R52, Merge-Block, R60
+Offene_Fragen:
+  - Wortlaut der Anhang-Aenderungen auf PR 35 bestaetigen?
+  - Ursache der fehlenden Chromium-Builds klaeren oder nur Vorab-Schritt dokumentieren?
+  - R70 Teil 2 und zweiter Klon - Freigabe?
+Roadmap:
+  Sprints_bis_BSF: 1
+  Sprints_bis_MVP: 2
+  Hinweis: unbelegte Schaetzung
+```
