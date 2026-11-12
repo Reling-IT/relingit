@@ -1,0 +1,18 @@
+id: R75
+titel: Handout-Renderweg ins Repository holen und Handout-PDF neu rendern (Draft-PR)
+art: code-pr
+gate: nein
+abhaengig_von:
+- R65
+stand: 2026-11-12 05:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Das Workshop-Handout (HTML und PDF) wird als Paar reproduzierbar gerendert, damit das Datum Ende November 2026 auch im PDF steht. Entscheidung Bernd 12.11.2026: neuer Auftrag, #35 erst danach mergen.'
+schritte:
+- Bestehendes story/current/workshop-handout.pdf untersuchen (2 Seiten, Kopfzeile, Metadaten Title/Subject, Raender, Papierformat) und belegen, womit es erzeugt wurde; nichts raten.
+- scripts/pdf/render_story_pdf.py um Parameter fuer Fusszeile und Metadaten erweitern oder ein zweites Skript anlegen; render_story_pdf.py Z. 87 Subject "Workshop September 2026" auf "Ende November 2026" angleichen.
+- Handout-PDF auf Bernds Rechner neu rendern, Seitenzahl 2 und Kopfzeile pruefen; kein PDF als Release markieren.
+- 'Auf Basis des Branches von R65 arbeiten oder als eigener Draft-PR gegen main; konfliktfrei zu #35 pruefen. Bericht reports/R75-BERICHT.md.'
+nachweis: Draft-PR, Bericht mit Vorher/Nachher von Kopfzeile und Metadaten, Renderbefehl.
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Dauer etwa 45 Minuten.
+status: bereit

@@ -1,0 +1,25 @@
+id: R74
+titel: 'R65 nachbessern: Wortlaut-Entscheidungen Bernd 12.11. in PR #35 einarbeiten (Draft-PR bleibt)'
+art: code-pr
+gate: ja
+abhaengig_von:
+- R65
+stand: 2026-11-12 05:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Die Wortlaut-Entscheidungen des Product Owners vom 12.11.2026 zu R65 werden im Branch auftrag-R65-korrekturen-v139 (PR #35) umgesetzt. Nur Quelle, keine Veroeffentlichung.'
+entscheidungen:
+  punkt_1_backup_ticket: 'Alternative ohne Namen. Satz: "... irgendein anderer Kunde, nicht der von Miras Termin morgen, dessen naechtlicher Backup-Job fehlgeschlagen ist. Kilian registriert es, ohne genauer hinzusehen; darum kuemmert sich heute Abend ohnehin jemand anderes." Rehder und "wieder einmal" entfallen. Baumann bleibt unzugewiesen.'
+  punkt_2_navis_zeitangabe: 'Alternative ohne Zahl: "... geredet, auch im Haus - Navis und Lumen selbst gab es dort damals noch nicht -, und Nora wollte unbedingt auch etwas bauen." Kein "Vierteljahr" im Kapitel Der Umweg.'
+  punkt_3_zweiter_switch: 'Alternative: "Den Switch in ihrem Karton hatte sie schon Anfang der Woche aus dem Lager mitgenommen, bevor Reiner seinen einbaute; keiner wusste vom anderen." Kein fester Wochentag.'
+  punkt_4_cockpit: Bleibt wie in R65 (Sysingboard an Zeile 1536 und 1547). Managementcockpit im Sachteil Datenstand (Zeile 1992) bleibt unveraendert.
+  zeile_876: Kilians Satz "bei Navis steht am Anfang immer die Frage ..." bleibt unveraendert (Entscheidung Bernd).
+  handout_datum: Zeilen aus R65 bleiben (Ende November 2026); das Handout-PDF folgt mit R75.
+schritte:
+- Branch auftrag-R65-korrekturen-v139 (Worktree C:\dev\wt\relingit\r65) aktualisieren; nur source/fahrt-zum-kunden.html aendern, drei Stellen laut entscheidungen.
+- 'Regelcheck: Navis nur lesen, Lumen nur ueber den Hub, zehn im Haus, Offen bleibt offen, ss-Orthografie, Autobahn/A7.'
+- 'ci-check und Pester; erwartet CI rot nur wegen story/current ungleich source. merge-tree gegen #25, #26, #27, #33 pruefen.'
+- 'Vorher/Nachher je Stelle im Bericht reports/R74-BERICHT.md; PR #35 bleibt Draft; PR-Beschreibung aktualisieren.'
+nachweis: 'Neuer Commit auf #35, Bericht mit Vorher/Nachher und Konfliktcheck.'
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. v1.38 bleibt unveraendert. Dauer etwa 20 Minuten.
+status: bereit
