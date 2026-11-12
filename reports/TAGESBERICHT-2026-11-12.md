@@ -147,3 +147,12 @@ Der Product Owner hat nach dem Tagesabschluss weiterarbeiten lassen; der Planer 
 - Warteschlange um 05:57: ops/queue 8d37960 unverändert; alle sieben Aufträge mit Status bereit sind heute bearbeitet. Nichts Weiteres ist ohne Entscheidung des Product Owners ausführbar.
 - Neu offen: Wortlaut des Kontrast-Satzes in der Versionshistorie 1.39; Nennung der Textkorrekturen aus #35 in der Versionshistorie; `pypdf` pinnen. Weiter offen: R69 Nr. 1 und Nr. 2, Upload v1.38, Einzelfreigaben, R70 Teil 2, zweiter Klon, Stunden.
 - Offene PRs: 11, alle Draft.
+
+## Nachtrag (06:31): Entscheidungen eingearbeitet, zweiter Proberender
+
+- **#35** (Head 6cf48a8, Draft): R69 Nr. 1 und Nr. 2 nach Entscheidung des Product Owners als Vorschlag umgesetzt (Anhang „Functional is not Done“ auf die echten Apps bezogen, Satz zur CI allgemeiner; Einordnungsabsatz vor den Architekturbildern). Nachträge in `reports/R69-BERICHT.md`.
+- **#36** (Head 8129697, Draft): Status Pilot und Stunden für den 12.11. im Steckbrief eingetragen (Angabe des Product Owners, nichts geschätzt).
+- **Entschieden:** Kontrast-Satz, Sammeleintrag in der Versionshistorie (`queue/R60.yaml`, a4bb92b), pypdf-Pin 6.21.0.
+- **Proberender** auf dem Endstand mit beiden Pins: 80 Seiten, Layout-Check, publish-release und ci-check je Exit 0. Bericht `reports/R63-20261112-BERICHT.md`.
+- **Befund:** Die Chromium-Builds für Playwright fehlten beim Renderversuch (Ursache unklar); Build neu installiert, Rechner wieder renderfähig.
+- Offen: Sichtung des Wortlauts auf #35, Wortlaut des Sammeleintrags, Upload v1.38, Einzelfreigaben, R70 Teil 2, zweiter Klon. Offene PRs: 11, alle Draft.
