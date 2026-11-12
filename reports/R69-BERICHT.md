@@ -255,3 +255,12 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 12.11.2026, 06:17: Satz zur CI allgemeiner gefasst
+
+Der Product Owner hat entschieden, den nicht belegten Satz im Kasten „npm-Skripte & CI“ allgemeiner zu fassen. Signierter Commit 6cf48a8 auf PR #35 (bleibt Draft), eine Zeile (+1 −1):
+
+- vorher: „… stößt automatisch eine feste Kette von npm-Skripten an (Continuous Integration) – Bauen, Prüfen, Testen in dieser Reihenfolge. Bricht ein Schritt rot ab, geht kein einziger nachfolgender Schritt mehr los.“
+- nachher: „… stößt automatisch eine feste Kette von npm-Skripten an (Continuous Integration). Bricht eine Prüfung rot ab, gilt die Änderung nicht als fertig.“
+
+Der zweite Satz ist der bestätigte Wortlaut. Den Halbsatz zur Reihenfolge habe ich mit gestrichen, weil er dieselbe unbelegte Aussage trägt; das bitte bei der Sichtung mit ansehen. Weiter unbelegt bleibt das Wort „npm“ für alle Apps. `scripts/ci-check.ps1`: genau 1 Fehler (story/current, erwartet). Nicht neu gerendert; der Text wird kürzer, der Proberender mit 80 Seiten stammt vom Stand 6a2e7a5.
