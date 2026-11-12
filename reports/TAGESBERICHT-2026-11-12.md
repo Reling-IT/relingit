@@ -129,3 +129,13 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag (05:31): R74 und R75 erledigt
+
+Der Product Owner hat nach dem Tagesabschluss weiterarbeiten lassen; der Planer hatte zwei Aufträge nachgelegt (ops/queue 879ce72).
+
+- **R74:** Wortlaut-Entscheidungen vom 12.11. in #35 eingearbeitet (db2804b): Backup-Ticket ohne Kundennamen, Navis-Zeitangabe ohne Vierteljahr, zweiter Switch ohne Wochentag. Bericht `reports/R74-BERICHT.md`.
+- **R75:** Renderweg für das Handout im Repository (`render_story_pdf.py --profil handout`), Handout-PDF neu gerendert, 2 Seiten, „Ende November 2026“ (c1efb21, ebenfalls auf #35, kein neuer PR). Bericht `reports/R75-BERICHT.md`.
+- #35: Head c1efb21, Draft, CI rot nur wegen story/current (erwartet bis R60); Pester 21/21 auf db2804b; Probe-Merge main + #27 + #33 + #35 mit ci-check ohne weiteren Fehler. Offene PRs weiter 11.
+- Damit erledigt aus TA-02: Fragen 1 (Wortlaut) und 3 (Handout-PDF). Weiter offen: Frage 2 (R69 Nr. 1 und Nr. 2) und die Fragen 4 bis 8.
+- Neu gemeldet, nicht geändert: Das Handout bindet keine Schriften ein (PDF rechnerabhängig); beide PDFs sind nicht getaggt.

@@ -1,4 +1,4 @@
-stand: 2026-11-12T04:58+01:00
+stand: 2026-11-12T05:31+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -436,6 +436,22 @@ auftraege:
     ende: 2026-11-12T04:58+01:00
     bericht: reports/R29-20261112-BERICHT.md
     hinweis: 'Tagesabschluss-Pruefung 12.11., nur gelesen: 11 Drafts (#33, #35 erwartet rot), 75 YAML-Dateien gueltig, main ci-check Exit 0; neu: zweiter Klon unter reling-it (77 Commits hinter origin/main, sauber, nur gemeldet), Handout HTML/PDF in #35 ungleich, Muss-Empfehlungen aus R69; fuer den 11.11. gab es keinen R29-Lauf'
+  - id: R74
+    status: erledigt
+    start: 2026-11-12T05:25+01:00
+    ende: 2026-11-12T05:29+01:00
+    branch: auftrag-R65-korrekturen-v139
+    pr: https://github.com/Reling-IT/relingit/pull/35 (Draft, Commit db2804b)
+    bericht: reports/R74-BERICHT.md
+    hinweis: 'Wortlaut-Entscheidungen des Product Owners vom 12.11. in drei Zeilen der Buchquelle (Z. 832, 873, 1540); Cockpit-Stellen, Z. 877 und Z. 1992 unveraendert; Pester 21/21; merge-tree und Probe-Merge main+#27+#33+#35 mit ci-check: nur der erwartete Fehler; PR-Beschreibung aktualisiert'
+  - id: R75
+    status: erledigt
+    start: 2026-11-12T05:25+01:00
+    ende: 2026-11-12T05:29+01:00
+    branch: auftrag-R65-korrekturen-v139
+    pr: https://github.com/Reling-IT/relingit/pull/35 (Draft, Commit c1efb21, CI rot erwartet)
+    bericht: reports/R75-BERICHT.md
+    hinweis: 'render_story_pdf.py mit --profil handout (Fusszeile, Metadaten), Anlass Ende November 2026 in beiden Profilen; workshop-handout.pdf neu gerendert (2 Seiten, SHA-256 6d574ef8...1846); Herkunft des alten PDFs belegt (Chromium und pypdf, Linux-Schriften, 03.09.); Abschnitt in docs/PDF-ERZEUGEN.md; als Commit auf #35 statt eigenem PR; Schriften rechnerabhaengig, PDFs nicht getaggt (nur gemeldet)'
 leerlauf:
   - zeit: 2026-11-10T07:16+01:00
     hinweis: 'Tagesabschluss 10.11.: R29-Pruefung (R29-20261110-BERICHT.md, ein Muss-Befund C1 zur Merge-Reihenfolge 26/27), Tagesbericht TA-01 bis TA-07; 0 Auftraege bereit; Ablage-Worktrees entfernt.'

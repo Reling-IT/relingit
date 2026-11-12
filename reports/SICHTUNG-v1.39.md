@@ -99,7 +99,7 @@ Adresse: `./scripts/vorschau.ps1 -Pdf` öffnet `story/current/geschichte.pdf` au
 | I02 | G5 | Versionshinweise | Deckblatt und Versionshistorie | Versionshistorie und „Neu in v1.39“ beschreiben die Änderungen zutreffend | |  |
 | I03 | G5 | **neu:** Backup-Ticket (R65) | Kaffeeecke, Alarmkanal-Absatz | der Alarm gehört erkennbar zu einem anderen Kunden als Baumann; Wortlaut wie freigegeben (R65-BERICHT.md, Punkt 1) | |  |
 | I04 | G5 | **neu:** Baumann unzugewiesen (R65) | Navis meldet sich | Navis sagt weiter „niemand ist aktuell zugewiesen“; kein Widerspruch zur Kaffeeecke | |  |
-| I05 | G5 | **neu:** Navis-Zeitangabe (R65) | Der Umweg, „Angefangen hat es vor gut einem Jahr“ | über KI-Assistenten wurde schon länger geredet, Noras Bot vor gut einem Jahr, Navis und Lumen erst ein Vierteljahr im Haus; Noras Ton erhalten | |  |
+| I05 | G5 | **neu:** Navis-Zeitangabe (R65) | Der Umweg, „Angefangen hat es vor gut einem Jahr“ | über KI-Assistenten wurde schon länger geredet, Noras Bot vor gut einem Jahr, Navis und Lumen gab es damals im Haus noch nicht (keine Zahl in diesem Kapitel); Noras Ton erhalten | |  |
 | I06 | G5 | **neu:** Zweiter Switch (R65) | Die veralteten Daten, am Rack | ein Satz zur Herkunft von Miras Switch; keiner wusste vom anderen; keine Schuldzuweisung | |  |
 | I07 | G5 | **neu:** Sysingboard statt Cockpit (R65) | Die veralteten Daten, Navis-Rede und Erzähltext | an beiden Stellen „Sysingboard“; Navis liest nur, schreibt nie | |  |
 | I08 | G5 | **neu:** Handout-Datum (R65) | Handout, HTML und PDF | überall „Ende November 2026“, passend zum Deckblatt des Buchs | |  |

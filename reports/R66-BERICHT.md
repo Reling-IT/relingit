@@ -62,3 +62,8 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 12.11.2026, 05:31 (nach R74 und R75)
+
+- I05 in `SICHTUNG-v1.39.md` ist angepasst: Nach der Entscheidung vom 12.11. steht im Kapitel „Der Umweg“ keine Zahl mehr; geprüft wird „Navis und Lumen gab es damals im Haus noch nicht“.
+- W26 (Handout-PDF) kann mit Ja enden: Das PDF ist mit R75 neu gerendert. Der Hinweis oben ist damit überholt.
