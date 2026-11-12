@@ -17,3 +17,6 @@ schritte:
 nachweis: Draft-PR mit gruener CI; Bericht mit Liste belegt/unklar.
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Keine Schaetzung von Stunden. Nichts im Repo ai-development-governance aendern. Dauer etwa 30 Minuten.
 status: bereit
+entscheidungen_bernd_2026_11_12:
+  status: Pilot
+  stunden: Nur durch Bernd; nicht schaetzen, Feld offen lassen.
