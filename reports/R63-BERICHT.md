@@ -359,3 +359,7 @@ Roadmap:
 ## Nachtrag 12.11.2026, 05:57: Wortlaut des Kontrast-Satzes bestätigt
 
 Der Product Owner hat den Satz für die Versionshistorie 1.39 bestätigt: „Kontraste im Buch angehoben: graue und farbige Schrift ist auf allen Flächen besser lesbar.“ Für den Planer: in `queue/R60.yaml` aufnehmen. Die übrigen offenen Fragen aus dem Nachlauf bleiben offen.
+
+## Nachtrag 12.11.2026, 06:07: Sammeleintrag zu den Textkorrekturen (N1)
+
+Befund N1 ist entschieden und steht in `queue/R60.yaml` (ops/queue a4bb92b, Feld `entscheidungen_bernd_2026_11_12.versionshistorie_1_39`): Die Versionshistorie 1.39 nennt die Textkorrekturen aus #35 als kurzen Sammeleintrag (Stimmigkeit mehrerer Kapitel: Kunden, Zeitangaben, Begriffe), ohne Einzelaufzählung, dazu den Kontrast-Eintrag. Der genaue Wortlaut des Sammeleintrags entsteht in R60 und wird dort vorgelegt. Offen aus dem Nachlauf bleiben N2 (`pypdf` pinnen) und N4 (R69 Nr. 1 und Nr. 2).
