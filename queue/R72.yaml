@@ -16,3 +16,4 @@ schritte:
 nachweis: Draft-PR mit gruener CI.
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 30 Minuten.
 status: geplant
+entscheidung_bernd_2026_11_12: Workshop-Feedback nach dem Workshop sammeln und parken; nur Muss-Fehler sofort korrigieren. In docs/PAUSE.md den Ablauf fuer Muss-Fehler und die Sammelstelle fuer Feedback beschreiben.

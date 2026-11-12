@@ -20,3 +20,4 @@ stand: 2026-11-10 06:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis_planung_2026_11_11: 'Bernd 11.11.: Upload erst, wenn v1.39 fertig ist; Entscheidung am Mo 16.11.2026: nur v1.39 oder v1.38 als Fallback. Dieser Auftrag bezieht sich dann auf die hochgeladene Version. Nicht beginnen, bevor Bernd die Version nennt.'
+entscheidung_bernd_2026_11_12: Zweiter Klon C:\\dev\\reling-it\\relingit (R29 A1, 77 Commits hinter origin/main, sauber) zusammen mit dem OneDrive-Klon entscheiden. Bis dahin nichts anfassen.

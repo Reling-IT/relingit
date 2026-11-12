@@ -21,3 +21,4 @@ merge_block: 'Entscheidung Bernd 11.11.2026 (R57-Nachtrag): #27, #33 und dieser 
 entscheidungen_bernd_2026_11_12:
   versionshistorie_1_39: 'Kurzer Sammeleintrag zu den Textkorrekturen aus PR #35 (Stimmigkeit mehrerer Kapitel: Kunden, Zeitangaben, Begriffe), keine Einzelaufzaehlung der Stellen. Zusaetzlich ein kurzer Eintrag zur Verbesserung der Buchkontraste (R41, Entscheidung R63).'
 hinweis_planung_2026_11_12: 'abhaengig_von bereinigt: R09 und R52 (Upload und Tag v1.38) gehoeren nicht mehr vor R60. Entscheidung Bernd 11.11.2026: erst v1.39 hochladen, v1.38 nur als Fallback (Entscheidung Mo 16.11.). R60 startet nach Einzelfreigabe des Merge-Blocks (#25, #28, #26, #27, #33, #35) ohne vorherigen Upload.'
+vorab_schritt_2026_11_12: 'Chromium-Builds fehlten am 12.11. einmal ohne belegte Ursache: vor dem Rendern Browser-Installation pruefen und im Bericht dokumentieren; keine Ursachenforschung, nur bei erneutem Auftreten.'

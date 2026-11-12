@@ -14,3 +14,4 @@ schritte:
 nachweis: reports/R70-BERICHT.md mit Inventar; nach Teil 2 Nachtrag.
 grenzen: Teil 1 nur lesend. Teil 2 nur mit Bestaetigung, nur Papierkorb. Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an Workflows, Deployment, Supabase oder Admin. Dauer etwa 10 Minuten.
 status: geplant
+entscheidung_bernd_2026_11_12: Teil 2 erst nach Pruefung im anderen Repository durch Bernd (sind A96, P7, P8 dort abgelegt?), dann Papierkorb nur fuer bestaetigte Dateien mit Hash-Vergleich. Bis zur Bestaetigung nichts verschieben.
