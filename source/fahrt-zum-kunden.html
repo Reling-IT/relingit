@@ -2061,12 +2061,12 @@
     <p>Im Systemhaus gilt für die eigene KI-gestützte Entwicklung ein eigener TDF-Standard, der &bdquo;AI-Assisted Engineering Acceptance Standard&ldquo;. Sein Leitsatz passt so genau auf diese Geschichte, dass er hier zitiert werden soll: <b>Functional is not Done.</b> Eine Änderung ist nicht fertig, nur weil sie kompiliert, startet oder auf den ersten Blick löst, was verlangt war &ndash; sie ist erst fertig, wenn sie nachvollziehbar, geprüft, im nötigen Maß sicher, dokumentiert, reproduzierbar und ausdrücklich von einem Menschen freigegeben ist.</p>
     <p>Genau dieses Prinzip lebt die Geschichte längst, nur nicht in Code, sondern in Arbeitspaketen. Ein Vorschlag von Navis ist nie schon deshalb erledigt, weil er plausibel klingt &ndash; er bleibt Entwurf, bis Mira ihn ausdrücklich bestätigt: &bdquo;So anlegen.&ldquo; Erst dieser eine gesprochene Satz macht aus einem Entwurf einen echten Auftrag im Sysingboard, nicht die Qualität des Vorschlags selbst.</p>
     <p>Beim genauen Hinsehen zeigt sich allerdings eine Lücke: Der Standard ist, wie der Name sagt, für <i>Engineering-Artefakte</i> geschrieben &ndash; Code, Konfiguration, Migrationen, Infrastruktur. Was Navis vorschlägt, ist keines davon. Für operative KI-Agenten im Kundengeschäft gibt es das Prinzip bereits gelebt, aber noch nicht formal im Standard verankert.</p>
-    <p style="margin-top:16px;">Für die Engineering-Artefakte selbst &ndash; den Code hinter Navis und Lumen &ndash; ist &bdquo;Functional is not Done&ldquo; keine Absichtserklärung, sondern läuft bei jeder Änderung automatisch mit:</p>
+    <p style="margin-top:16px;">Für die Engineering-Artefakte selbst &ndash; den Code der Apps hinter Navis und Lumen, Sysingboard und Report-Familie &ndash; ist &bdquo;Functional is not Done&ldquo; keine Absichtserklärung, sondern läuft bei jeder Änderung automatisch mit:</p>
     <div class="box-shell"><div class="defbox">
-      <div class="defbox-head">Was in der CI-Pipeline tatsächlich geprüft wird, bevor etwas als Vorschlag beim Kunden landen kann</div>
+      <div class="defbox-head">Was die CI-Pipeline prüft &ndash; und was sie für Navis prüfen soll, bevor etwas als Vorschlag beim Kunden landen kann</div>
       <div class="defitem">
         <span class="term">npm-Skripte &amp; CI</span>
-        <p>Jeder Commit an Navis- oder Lumen-Code stößt automatisch eine feste Kette von npm-Skripten an (Continuous Integration) &ndash; Bauen, Prüfen, Testen in dieser Reihenfolge. Bricht ein Schritt rot ab, geht kein einziger nachfolgender Schritt mehr los.</p>
+        <p>Jeder Commit am Code der Apps hinter Navis und Lumen (Sysingboard, Report-Familie) stößt automatisch eine feste Kette von npm-Skripten an (Continuous Integration) &ndash; Bauen, Prüfen, Testen in dieser Reihenfolge. Bricht ein Schritt rot ab, geht kein einziger nachfolgender Schritt mehr los.</p>
       </div>
       <div class="defitem">
         <span class="term">Unit-Tests</span>
@@ -2074,7 +2074,7 @@
       </div>
       <div class="defitem">
         <span class="term">Integrationstests</span>
-        <p>Prüfen das Zusammenspiel mit echten Schnittstellen: liest Navis wirklich nur aus Sysingboard und legt nur Entwürfe vor, die ein Mensch bestätigt?</p>
+        <p>Prüfen das Zusammenspiel mit echten Schnittstellen. Für Navis ist das Ziel schon festgelegt: Der Test soll prüfen, dass Navis wirklich nur aus Sysingboard liest und nur Entwürfe vorlegt, die ein Mensch bestätigt.</p>
       </div>
       <div class="defitem">
         <span class="term">Kontrakt-Tests</span>
