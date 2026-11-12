@@ -1,0 +1,16 @@
+id: R70
+titel: Lose Dateien in C:\dev inventarisieren (nur lesen), Papierkorb erst nach Bestaetigung
+art: lokal-aufraeumen
+gate: nein
+abhaengig_von: []
+stand: 2026-11-12 05:05
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Sechs lose Dateien im Arbeitsverzeichnis C:\dev (PR- und Review-Texte vom 08. und 09.11., nicht aus relingit) werden inventarisiert. Entscheidung Bernd 12.11.2026: Inventar, dann Papierkorb.'
+schritte:
+- 'Teil 1 (jetzt, nur lesen): fuer jede lose Datei direkt in C:\dev (keine Unterordner, keine Repos, keine wt-* Worktrees) Name, Groesse, Aenderungsdatum und SHA-256 in eine Tabelle; kurze Zweckvermutung aus der Kopfzeile. Pruefen, ob eine Datei noch von einem offenen PR gebraucht wird (Abgleich mit den Beschreibungen von #25 bis #34).'
+- Bericht reports/R70-BERICHT.md mit Tabelle und Empfehlung je Datei (Papierkorb oder behalten). Nichts verschieben, nichts loeschen.
+- 'Teil 2 erst nach ausdruecklicher Bestaetigung von Bernd (Auftrag R13 mit Papierkorb, nie endgueltig loeschen): genau die bestaetigten Dateien in den Papierkorb, danach Liste im Bericht nachtragen.'
+nachweis: reports/R70-BERICHT.md mit Inventar; nach Teil 2 Nachtrag.
+grenzen: Teil 1 nur lesend. Teil 2 nur mit Bestaetigung, nur Papierkorb. Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an Workflows, Deployment, Supabase oder Admin. Dauer etwa 10 Minuten.
+status: bereit

@@ -1,4 +1,4 @@
-stand: 2026-11-12 04:50
+stand: 2026-11-12 05:05
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -524,6 +524,12 @@ auftraege:
 - id: R69
   titel: 'Stimmigkeitspruefung Rest des Buchs: Teil 2 ab Mitte, Anhang, Bildunterschriften, aria-label, Versionshistorie (nur lesen)'
   art: lesen
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R70
+  titel: Lose Dateien in C:\dev inventarisieren (nur lesen), Papierkorb erst nach Bestaetigung
+  art: lokal-aufraeumen
   gate: nein
   status: bereit
   abhaengig_von: []
