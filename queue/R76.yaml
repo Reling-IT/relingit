@@ -1,0 +1,21 @@
+id: R76
+titel: 'Freigegebene Drafts auf Ready for review setzen (#25, #28, #26, #27)'
+art: code
+gate: ja
+abhaengig_von: []
+stand: 2026-11-12 07:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: Draft-PRs lassen sich per REST nicht mergen (HTTP 405), GraphQL ist in der Cloud gesperrt. Claude Code setzt nur die von Bernd einzeln freigegebenen PRs auf Ready for review, damit die Planer-Session sie mergen kann.
+freigaben_bernd_2026_11_12:
+  '25': Head d1257f7
+  '28': Head 81f8e48
+  '26': Head 2133502
+  '27': Head 8ea4c62
+schritte:
+- Fuer jeden der vier PRs den Head-SHA gegen freigaben_bernd_2026_11_12 pruefen; bei Abweichung diesen PR auslassen und melden.
+- 'gh pr ready <Nr> --repo Reling-IT/relingit fuer #25, #28, #26, #27 (nur diese). Kein Merge.'
+- Pro PR Status (isDraft, mergeStateStatus, Check Website pruefen) im Bericht reports/R76-BERICHT.md festhalten.
+nachweis: Bericht mit isDraft=false je PR und unveraendertem Head.
+grenzen: 'Kein Merge, kein Push, kein Tag, kein FTP, kein Upload. #30, #31, #32, #33, #34, #35, #36 nicht anfassen. Dauer etwa 5 Minuten.'
+status: bereit

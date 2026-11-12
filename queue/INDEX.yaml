@@ -1,4 +1,4 @@
-stand: 2026-11-12 07:00
+stand: 2026-11-12 07:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -466,6 +466,7 @@ auftraege:
   status: wartet_auf_voraussetzung
   abhaengig_von:
   - R65
+  - R76
 - id: R61
   titel: Tor-Check G1 bis G7 gegen das Upload-Paket v1.38 (nur lesen)
   art: lesen
@@ -565,4 +566,10 @@ auftraege:
   status: erledigt
   abhaengig_von:
   - R65
+- id: R76
+  titel: 'Freigegebene Drafts auf Ready for review setzen (#25, #28, #26, #27)'
+  art: code
+  gate: ja
+  status: bereit
+  abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
