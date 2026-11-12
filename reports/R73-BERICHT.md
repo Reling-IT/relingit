@@ -103,3 +103,7 @@ Roadmap:
 ## Nachtrag 12.11.2026, 05:47: Status Pilot
 
 Der Product Owner hat den Status entschieden (Beleg: `queue/R73.yaml` auf ops/queue). Auf #36 liegt dazu der signierte Commit 7b1f654: in `docs/PILOT.md` steht der Status jetzt als „Pilot (Entscheidung des Product Owners vom 12.11.2026)“. Sonst ist nichts geändert; die Stunden bleiben „keine Angabe“. `scripts/ci-check.ps1` auf dem Branch: Exit 0. #36 bleibt Draft. Die offene Frage zur Einordnung des Status im YAML-Block oben ist damit erledigt.
+
+## Nachtrag 12.11.2026, 06:24: Stunden eingetragen (TA-09)
+
+Der Product Owner hat die Stunden für den 12.11.2026 genannt; sie stehen in `docs/PILOT.md`, Abschnitt Aufwand (signierter Commit 8129697 auf #36, bleibt Draft). Die Spalte „Wofür“ bleibt „keine Angabe“, für frühere Tage gibt es keine Angabe. Nichts geschätzt. `scripts/ci-check.ps1`: Exit 0.
