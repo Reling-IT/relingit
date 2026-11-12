@@ -157,3 +157,56 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 12.11.2026, 06:11: Nr. 1 entschieden (Weg A) und auf #35 vorgelegt
+
+Der Product Owner hat für Nr. 1 den ersten Vorschlag gewählt: den Abschnitt auf die echten Apps beziehen und die Navis-Prüfung als Ziel formulieren. Umgesetzt als signierter Commit 73b4b09 auf PR #35 (bleibt Draft). Geändert sind vier Stellen im Abschnitt `kap-standard` von `source/fahrt-zum-kunden.html` (+4 −4). Der Wortlaut ist ein Vorschlag der KI-Sitzung und liegt hier zur Prüfung vor.
+
+| Stelle | vorher | nachher (Vorschlag) |
+| --- | --- | --- |
+| Überleitung vor dem Kasten | „… – den Code hinter Navis und Lumen – ist …“ | „… – den Code der Apps hinter Navis und Lumen, Sysingboard und Report-Familie – ist …“ |
+| Kastentitel | „Was in der CI-Pipeline tatsächlich geprüft wird, bevor etwas als Vorschlag beim Kunden landen kann“ | „Was die CI-Pipeline prüft – und was sie für Navis prüfen soll, bevor etwas als Vorschlag beim Kunden landen kann“ |
+| npm-Skripte & CI | „Jeder Commit an Navis- oder Lumen-Code stößt automatisch …“ | „Jeder Commit am Code der Apps hinter Navis und Lumen (Sysingboard, Report-Familie) stößt automatisch …“ |
+| Integrationstests | „Prüfen das Zusammenspiel mit echten Schnittstellen: liest Navis wirklich nur aus Sysingboard und legt nur Entwürfe vor, die ein Mensch bestätigt?“ | „Prüfen das Zusammenspiel mit echten Schnittstellen. Für Navis ist das Ziel schon festgelegt: Der Test soll prüfen, dass Navis wirklich nur aus Sysingboard liest und nur Entwürfe vorlegt, die ein Mensch bestätigt.“ |
+
+Unverändert: die Beispiele unter „Unit-Tests“ und „Kontrakt-Tests“ und die Schlussnotiz des Kastens.
+
+### Belege und Grenzen
+
+- Nur gelesen, in den lokalen Klonen der Apps auf diesem Rechner (Stand `origin/main` vom 11. und 12.11.2026, ohne erneuten Abruf): Im Klon des Sysingboards und in drei geprüften Klonen der Report-Familie gibt es je einen CI-Workflow und Testskripte in der `package.json`; darunter sind Unit- und Integrationstests sowie eine Kontrakt-Prüfung. Die allgemeine Aussage „Commits stoßen eine CI an“ ist damit für diese Klone belegt.
+- **Nicht belegt (unklar):** die Einzelheiten des unveränderten Folgesatzes („Bauen, Prüfen, Testen in dieser Reihenfolge“; „bricht ein Schritt rot ab, geht kein nachfolgender Schritt mehr los“) und das Wort „npm“ für alle Apps. Die Workflows habe ich nicht Schritt für Schritt gelesen. Bitte bei der Sichtung prüfen oder den Satz allgemeiner fassen.
+- Die Unit- und Kontrakt-Beispiele nennen weiter Abläufe aus der Geschichte (Ticket-Einordnung, Arbeitspaket-Vorschlag an Mira). Sie sind als Beispiele mit „etwa“ lesbar, aber nicht als Ziel markiert.
+
+### Prüfungen
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| `scripts/ci-check.ps1` auf 73b4b09 | genau 1 Fehler (story/current weicht von source ab, erwartet bis R60) |
+| `git merge-tree` gegen #27, #33, #26 | je ohne Konflikt |
+| Pester | nicht wiederholt (nur Buchtext geändert) |
+| Seitenzahl | nicht neu gerendert; der Trockenlauf R63 (80 Seiten) enthält diese Änderung nicht |
+
+Nr. 2 (Architekturbilder und „keine Scores“) ist weiter offen.
+
+### Vorschläge und Ideen (Claude)
+
+Empfehlungen, keine Fakten:
+
+- Den Folgesatz zur Reihenfolge der Schritte allgemeiner fassen, zum Beispiel „Bricht eine Prüfung rot ab, gilt die Änderung nicht als fertig.“ Dann hängt der Satz nicht an Einzelheiten der Workflows.
+- Nach der Entscheidung zu Nr. 2 den Trockenlauf einmal kurz wiederholen (nur Render und Seitenzahl), damit R60 die Seitenzahl kennt.
+- `SICHTUNG-v1.39.md` um einen Punkt zum Anhang „Functional is not Done“ ergänzen, sobald auch Nr. 2 vorliegt.
+
+Hygiene: gemergte Remote-Branches 0; offene PRs 11 (#25 bis #28, #30 bis #36), alle Draft.
+
+```yaml
+Reifegrad: R69 Nr. 1 als Vorschlag auf PR 35 (73b4b09), ci-check nur mit dem erwarteten Fehler; Seitenzahl mit dieser Aenderung noch nicht gerendert
+Projektstatus: PR 35 wartet auf Sichtung des Wortlauts; R69 Nr. 2 offen; danach Merge-Block und R60
+Offene_Fragen:
+  - Wortlaut der vier Stellen im Anhang bestaetigen?
+  - Folgesatz zur Reihenfolge der CI-Schritte allgemeiner fassen?
+  - R69 Nr. 2 - Bilder im Text einordnen oder Bild ersetzen?
+Roadmap:
+  Sprints_bis_BSF: 1
+  Sprints_bis_MVP: 2
+  Hinweis: unbelegte Schaetzung
+```
