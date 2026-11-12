@@ -236,3 +236,122 @@ Roadmap:
 ## Nachtrag 11.11.2026: Entscheidung des Product Owners zum Datum v1.39
 
 v1.39 erhält beim Rendern in R60 das **aktuelle Datum** (Renderdatum), nicht den 09.11.2026 aus #27. Das Datum wird an allen Stellen gleich gesetzt (Buchquelle/Deckblatt, Startseite, lesen.html, anhang.html, Versionshistorie). Für den Planer: in queue/R60.yaml aufnehmen.
+
+---
+
+# Nachlauf 12.11.2026: Trockenlauf v1.39 mit den Entscheidungen vom 12.11.
+
+- Start 12.11.2026, 05:43 Uhr, Ende 05:52 Uhr (`date`). Rolle: KI-Sitzung (Claude Code, Koordinator) auf dem Rechner des Product Owners.
+- Quelle: `queue/R63.yaml` auf ops/queue 8d37960, Feld `entscheidungen_bernd_2026_11_12`.
+- Es wurde nur gelesen. Alles lief in einem Wegwerf-Worktree (detached) im Scratchpad, ohne Commit, ohne Push. Nichts aus dem Wegwerf-Ordner wurde übernommen. Worktree und Wegwerf-Umgebung sind entfernt.
+
+## Ergebnis
+
+- Der zusammengeführte Stand aller **elf** Drafts mit den vier Entscheidungen ist am Ende grün: **ci-check Exit 0, Pester 54 bestanden, 0 fehlgeschlagen**.
+- `publish-release.ps1 -OhneAudio` endete mit Exit 0: „Version 1.39 vom 12. November 2026 mit 80 Seiten veröffentlicht und paketiert“.
+- Seitenzahl **80**, gleich in PDF (`pdfinfo`), story/current, `app.js` und Startseite. Die neue ADF-Farbe, der Zusatz in der Versionshistorie und die Textkorrekturen aus #35 ändern die Seitenzahl nicht.
+- `verify_layout.py --no-render`: Exit 0, „alle Seiten erfuellen den Layout-Check UND den Inhalt-Praesenz-/Positions-Check“.
+- Paket `relingit-upload-v1.39-2026-11-12-ohne-audio.zip`: 4 724 295 Byte, 39 Einträge, SHA-256 `2B80971490E5B2BFD064C36B7E7B4CAF6741697F789C7A7A7270DCA4A0E22ECD` (nicht reproduzierbar, Zeitstempel und Renderstand). `pruefe-paket.ps1` gegen v1.38: Exit 0, „OK, Paket gleich Manifest“.
+- Der Arbeitsklon ist unverändert: Prüfsummen von `output/` und `archive/` vorher und nachher gleich (178 Dateien, `sha256sum -c` ohne Abweichung), `git status` sauber auf main 8abe213.
+
+## Die vier Entscheidungen im Lauf
+
+| Entscheidung | Umsetzung im Wegwerf-Ordner | Ergebnis |
+| --- | --- | --- |
+| Datum v1.39 = Renderdatum | In der Buchquelle zwei Stellen von Hand: Deckblatt `cover-meta` und Historienzeile 1.39, je 09.11.2026 → 12.11.2026. Die übrigen Stellen setzt `publish-release.ps1` | `lesen.html` und `anhang.html`: „Version 1.39 · 12. November 2026“; `app.js`: 1.39 / „12. November 2026“ / 80; PDF-Deckblatt 12.11.2026, Renderstand 12.11.2026, 05:45 Uhr (MEZ); Paketname mit 2026-11-12 |
+| ADF-Zeile in `--ink-soft` | `style="opacity:.6"` → `style="color:var(--ink-soft)"` (v1.39-Stand Z. 1753) | Kontrast nachgerechnet 5,47:1 (`#c3cbdc` auf `--surface` `#1b4f66`, Tokens aus #33) |
+| Versionshistorie 1.39 nennt die Buchkontraste | Ein Satz am Ende der Zeile 1.39 (Wortlaut unten, zur Prüfung) | ci-check und publish-release ohne Meldung; Seitenzahl bleibt 80 |
+| Playwright 1.64.0 im Renderlauf | Eigene Wegwerf-Umgebung mit `playwright==1.64.0`; im Wegwerf-Ordner `scripts/pdf/requirements.txt` auf `playwright==1.64.0` | Render mit Chromium-Build 1248 (war bereits installiert, kein Download); 80 Seiten |
+
+### Wortlaut zur Prüfung: Zusatz in der Versionshistorie 1.39
+
+Im Lauf eingesetzt, angehängt an den bestehenden Eintrag aus #27:
+
+> Kontraste im Buch angehoben: graue und farbige Schrift ist auf allen Flächen besser lesbar.
+
+Der Satz ist ein Vorschlag der KI-Sitzung. Für R60 bitte bestätigen oder ersetzen. Kürzere Alternative: „Kontraste der grauen und farbigen Schrift angehoben.“
+
+## Heads und Merge-Schritte
+
+Verfahren wie im Lauf vom 11.11.: kumulativ `git merge-tree --write-tree --merge-base=8abe213`, dann `git read-tree -u --reset`. Keine Commits.
+
+| Schritt | PR | Head | Baum | Konflikte |
+| --- | --- | --- | --- | --- |
+| 1 | #25 R11 | d1257f7 | c2fa03a | keine |
+| 2 | #28 R49 | 81f8e48 | bc607c9 | keine |
+| 3 | #26 R07/R46 | 2133502 | ff98fee | keine |
+| 4 | #27 R06 | 8ea4c62 | eb78625 | keine (C1 offen bis publish-release) |
+| 5 | #33 R41 | ecfbebb | 841c7af | keine |
+| 6 | #35 R65/R74/R75 | c1efb21 | 918ee02 | keine |
+| 7 | #30 R55 | 586404f | b362817 | keine |
+| 8 | #31 R54 | b2bc305 | 25f1025 | keine |
+| 9 | #32 R56 | d6de9ee | 898f4d7 (mit Konfliktmarken) | **docs/ABLAUF.md**; aufgelöst: beide Abschnitte behalten, R55 vor R56, eine Leerzeile dazwischen |
+| 10 | #34 R62 | 82ddf15 | 7173c65 | keine |
+| 11 | #36 R73 | ef6199e | b4d76cb | keine |
+
+Die Bäume der Schritte 1 bis 5 sind hash-gleich mit dem Lauf vom 11.11. (D1 bis D5 roh). Neu gegenüber dem 11.11.: #35 und #36. #36 hat seit dem Lauf einen weiteren Commit (7b1f654, nur `docs/PILOT.md`, Status Pilot); er ändert an diesem Ergebnis nichts Geprüftes. Zwischenschritte wurden nicht einzeln mit ci-check und Pester geprüft, nur der Endstand.
+
+## Nachzüge für R60 (im Lauf von Hand gesetzt)
+
+| Nr | Stelle | Nachzug | Schweregrad |
+| --- | --- | --- | --- |
+| 1 | `source/fahrt-zum-kunden.html`, Deckblatt und Historienzeile 1.39 | Datum auf den Tag des Renderns (zwei Stellen von Hand, Rest über publish-release) | muss |
+| 2 | Begriffsliste, „(früher ADF)“ | `color:var(--ink-soft)` statt `opacity:.6` | muss (Entscheidung 12.11.) |
+| 3 | Versionshistorie 1.39 | Satz zu den Kontrasten, Wortlaut bestätigen | muss (Entscheidung 12.11.) |
+| 4 | `scripts/pdf/requirements.txt` | `playwright==1.64.0` | muss (Entscheidung 12.11.) |
+| 5 | `docs/ABLAUF.md` | Konflikt #30/#32 auflösen (beide Abschnitte) | muss, beim zweiten der beiden Merges |
+| 6 | `anhang.html`, meta description (C2) | „Die sieben Standards“ ergänzen | kann |
+| 7 | PDF rendern, `publish-release.ps1 -OhneAudio` | setzt story/current, `lesen.html`, `anhang.html` (C1), `app.js`, `index.html` und baut das Paket | muss |
+
+## Paket v1.39 (Probe)
+
+| Feld | Wert |
+| --- | --- |
+| Name | relingit-upload-v1.39-2026-11-12-ohne-audio.zip |
+| Größe, Einträge | 4 724 295 Byte, 39 (38 Nutzdateien und UPLOAD-MANIFEST.txt) |
+| SHA-256 | 2B80971490E5B2BFD064C36B7E7B4CAF6741697F789C7A7A7270DCA4A0E22ECD |
+| Manifest | 38 gleich, 0 abweichend, 0 fehlend, 0 zusätzlich |
+| gegenüber v1.38 | 10 geändert: handout.html, index.html, lesen.html, assets/css/styles.css, assets/js/app.js, assets/js/story-viewer.js, story/current/fahrt-zum-kunden.html, story/current/geschichte.pdf, story/current/workshop-handout.html, story/current/workshop-handout.pdf; 3 neu: anhang.html, navis.svg, lumen.svg; 25 unverändert; 0 entfallen |
+| PDF der Geschichte | 80 Seiten, 2 074 774 Byte, SHA-256 D039FFA31D0D7EAD2C0FDC80C5314699E8C75393698E7CF39D768E37BADB58E0; Subject mit „Ende November 2026“ (aus R75) |
+
+Neu gegenüber dem Lauf vom 11.11.: `publish-release.ps1` meldet „Handout geändert: ja“. Im Admin-Bereich sind damit beim Release v1.39 auch `workshop-handout.html` und `workshop-handout.pdf` als Paar auszuwählen. Unter „weitere öffentliche Dateien geändert“ steht jetzt zusätzlich `handout.html` (FTP).
+
+## Befunde
+
+| Nr | Fundstelle | Befund | Vorschlag | Schweregrad |
+| --- | --- | --- | --- | --- |
+| N1 | Versionshistorie 1.39, „Neu in v1.39“ | Die Textkorrekturen aus #35 (Backup-Ticket, Navis-Zeitangabe, zweiter Switch, Sysingboard statt Cockpit) und das Handout-Datum stehen weder in der Historienzeile noch im Deckblatt-Hinweis. Entschieden ist nur der Kontrast-Eintrag | Product Owner entscheidet, ob ein Halbsatz dazukommt | sollte |
+| N2 | Renderumgebung | Gepinnt ist nach der Entscheidung nur Playwright. `pypdf` war in der Wegwerf-Umgebung 7.0.1, in der vorhandenen Umgebung des Rechners 6.21.0; dort ist Playwright 1.64.1, nicht 1.64.0 | Für R60 die vorhandene Umgebung auf 1.64.0 setzen oder eine neue anlegen; `pypdf` ebenfalls pinnen | sollte |
+| N3 | Datum v1.39 | Das Renderdatum steht erst am Tag von R60 fest. Jeder Probelauf an einem anderen Tag erzeugt einen anderen Paketnamen und andere Hashes | Datum in R60 als ersten Schritt setzen; diesen Probe-Hash nicht als Soll verwenden | kann |
+| N4 | R69 Nr. 1 und Nr. 2 | Die zwei Anhang-Stellen sind in diesem Stand nicht gelöst. Ein zusätzlicher Satz kann die Seitenzahl ändern | vor R60 entscheiden | muss (Empfehlung aus R69) |
+
+Nicht erneut gewertet: C1 (durch publish-release erledigt), ABLAUF.md (Nachzug 5), Befund F2 (R68).
+
+## Zeitbedarf für R60 (Schätzung der KI-Sitzung, nicht belegt)
+
+Dieser Lauf brauchte vom Zusammenführen bis zum geprüften Paket etwa neun Minuten, davon knapp fünf Minuten Pester (292 s). Für den echten R60 kommen Branch, Commits, PR und CI dazu. Die Schätzung vom 11.11. (30 bis 40 Minuten) halte ich weiter für passend.
+
+## Vorschläge und Ideen (Claude)
+
+Empfehlungen, keine Fakten:
+
+- R60 als Skriptfolge in den Auftrag schreiben: die Nachzüge 1 bis 7 in dieser Reihenfolge, dann ci-check, Pester, `pruefe-paket.ps1`. Der Lauf heute zeigt, dass das ohne Überraschung durchgeht.
+- `requirements.txt` vollständig pinnen (Playwright, pypdf, numpy, pillow), damit zwei Renderläufe am selben Tag dieselbe Werkzeugkette haben.
+- Das Datum der Fassung aus einer Quelle ableiten: Deckblatt und Historienzeile sind die einzigen Handstellen; ein Parameter `-Datum` an `publish-release.ps1` könnte beide setzen.
+- N1 zusammen mit dem Wortlaut des Kontrast-Satzes entscheiden; beides sind Sätze in derselben Zeile.
+
+Hygiene: gemergte Remote-Branches 0; offene PRs 11 (#25 bis #28, #30 bis #36), alle Draft; Wegwerf-Worktree und Wegwerf-Umgebung entfernt.
+
+```yaml
+Reifegrad: v1.39 mit allen elf Drafts und den Entscheidungen vom 12.11. im Trockenlauf gruen (ci-check Exit 0, Pester 54/54, 80 Seiten, Paket geprueft)
+Projektstatus: R60 kann nach Upload v1.38, Merge-Block und Entscheidung zu R69 Nr. 1 und 2 laufen; Wortlaut des Kontrast-Eintrags zu bestaetigen
+Offene_Fragen:
+  - Wortlaut des Kontrast-Satzes in der Versionshistorie 1.39 bestaetigen?
+  - Textkorrekturen aus PR 35 in Versionshistorie oder Neu-Hinweis nennen?
+  - pypdf im Renderlauf ebenfalls pinnen?
+  - R69 Nr. 1 und Nr. 2 vor R60 loesen?
+Roadmap:
+  Sprints_bis_BSF: 1
+  Sprints_bis_MVP: 2
+  Hinweis: unbelegte Schaetzung
+```

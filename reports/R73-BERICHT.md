@@ -99,3 +99,7 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung, aus dem Tagesbericht 11.11. uebernommen
 ```
+
+## Nachtrag 12.11.2026, 05:47: Status Pilot
+
+Der Product Owner hat den Status entschieden (Beleg: `queue/R73.yaml` auf ops/queue). Auf #36 liegt dazu der signierte Commit 7b1f654: in `docs/PILOT.md` steht der Status jetzt als „Pilot (Entscheidung des Product Owners vom 12.11.2026)“. Sonst ist nichts geändert; die Stunden bleiben „keine Angabe“. `scripts/ci-check.ps1` auf dem Branch: Exit 0. #36 bleibt Draft. Die offene Frage zur Einordnung des Status im YAML-Block oben ist damit erledigt.
