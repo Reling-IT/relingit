@@ -1,0 +1,20 @@
+id: R71
+titel: Pausen-Check nach Release v1.39 (nur lesen)
+art: lesen
+abhaengig_von:
+- R53
+stand: 2026-11-12 05:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+gate: nein
+voraussetzung: 'Release (v1.39 oder Fallback v1.38) ist live geprueft (R09), Tag gesetzt (R52), Aufraeumen R53 erledigt. Entscheidung Bernd 12.11.: laengere Pause bis Jahresende.'
+ziel: Belegen, dass der Stand fuer die Pause (ca. 4 bis 6 Wochen) sauber eingefroren ist.
+schritte:
+- 'Git: main = Tag, keine offenen Drafts ausser bewusst geparkten (je PR Begruendung), keine gemergten Branches, ops/queue und ops/reports unberuehrt. Worktrees entfernt oder bewusst gelistet.'
+- 'Lokal: Arbeitsklon sauber, lose Dateien erledigt (R70), Papierkorb geleert (nach R09), OneDrive-Klon geprueft (R53), Bundle und Patches im OneDrive.'
+- 'Live: Version, Datum, Seitenzahl, PDF und Podcast auf berndmarnau.de/relingit gegen main (nur lesen). Hinweis auf alles, was in 4 bis 6 Wochen ablaufen kann (Zertifikat, Domain, Abhaengigkeiten wie Playwright und Chromium, GitHub Actions Versionen), soweit aus dem Repo ersichtlich.'
+- 'Queue: INDEX bereinigt, R29 und andere wiederkehrende Auftraege auf geplant, geplante Tasks (send_later) beendet.'
+- Bericht reports/R71-BERICHT.md mit Ampel je Punkt und Liste der bewusst geparkten Dinge.
+nachweis: reports/R71-BERICHT.md.
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur lesen. Dauer etwa 30 Minuten.
+status: geplant

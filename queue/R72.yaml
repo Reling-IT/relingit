@@ -1,0 +1,18 @@
+id: R72
+titel: Wiederaufnahme-Checkliste docs/PAUSE.md (Draft-PR)
+art: code-pr
+abhaengig_von:
+- R71
+stand: 2026-11-12 05:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+gate: nein
+voraussetzung: R71 erledigt; Bernd hat den Pausenbeginn bestaetigt.
+ziel: 'Nach der Pause startet jede Sitzung ohne Suchen: ein Dokument im Repo beschreibt Stand, geparkte Arbeit und Wiederaufnahme.'
+schritte:
+- 'Neuer Branch von main. docs/PAUSE.md: Stand beim Pausenbeginn (Version, Tag, main-SHA, Paket-Hash), geparkte Arbeit (Szenen S4 bis S6, R12, R42, R05), offene Entscheidungen (aus der Plan-Seite), Wiederaufnahme in 7 Schritten (Tagesstart, Live-Pruefung, Abhaengigkeiten aktualisieren, Queue sichten, Plan anpassen, erste 2-Stunden-Pakete, Freigabe G1 bis G8 erinnern).'
+- Verweis auf claude/uebergabeprompt-reling-it.md, docs/FREIGABE.md, docs/ABLAUF.md. Keine Zugangsdaten.
+- ci-check, Draft-PR, Bericht R72-BERICHT.md. Merge nur durch Bernd.
+nachweis: Draft-PR mit gruener CI.
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 30 Minuten.
+status: geplant
