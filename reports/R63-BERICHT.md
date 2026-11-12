@@ -363,3 +363,8 @@ Der Product Owner hat den Satz für die Versionshistorie 1.39 bestätigt: „Kon
 ## Nachtrag 12.11.2026, 06:07: Sammeleintrag zu den Textkorrekturen (N1)
 
 Befund N1 ist entschieden und steht in `queue/R60.yaml` (ops/queue a4bb92b, Feld `entscheidungen_bernd_2026_11_12.versionshistorie_1_39`): Die Versionshistorie 1.39 nennt die Textkorrekturen aus #35 als kurzen Sammeleintrag (Stimmigkeit mehrerer Kapitel: Kunden, Zeitangaben, Begriffe), ohne Einzelaufzählung, dazu den Kontrast-Eintrag. Der genaue Wortlaut des Sammeleintrags entsteht in R60 und wird dort vorgelegt. Offen aus dem Nachlauf bleiben N2 (`pypdf` pinnen) und N4 (R69 Nr. 1 und Nr. 2).
+
+## Nachtrag 12.11.2026, 06:22: pypdf pinnen (N2) und Stand N4
+
+- **N2 entschieden:** Der Product Owner hat bestätigt, `pypdf` im Renderlauf ebenfalls zu pinnen, auf 6.21.0 (die Version der vorhandenen Renderumgebung des Rechners, mit der das Handout-PDF in R75 entstand). Umsetzung in R60 zusammen mit `playwright==1.64.0` in `scripts/pdf/requirements.txt`. Für den Planer: in `queue/R60.yaml` aufnehmen. Hinweis: Der Trockenlauf oben lief mit pypdf 7.0.1; mit 6.21.0 und Playwright 1.64.0 zusammen ist das Buch noch nicht gerendert.
+- **N4:** R69 Nr. 1 und Nr. 2 liegen als Vorschlag auf #35 (Head 6cf48a8), siehe Nachträge in `reports/R69-BERICHT.md`. Proberender der Buch-PRs auf dem Stand 6a2e7a5: 80 Seiten.

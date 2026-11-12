@@ -1,4 +1,4 @@
-stand: 2026-11-12T06:17+01:00
+stand: 2026-11-12T06:22+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
