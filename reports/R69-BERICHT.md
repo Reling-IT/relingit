@@ -137,7 +137,7 @@ Alles in diesem Abschnitt ist eine Empfehlung der KI-Sitzung, keine Tatsache.
 
 Arbeitsklon unverändert (`git status -sb`: `## main...origin/main`, HEAD 8abe213, kein Stash); Wegwerf-Worktree `<scratchpad>/r69/wt` mit `git worktree remove --force` entfernt und in `git worktree list` nicht mehr vorhanden. Hinweis: Mein anschließendes `git worktree prune` lief zu einem Zeitpunkt, als der Ordner eines fremden Probe-Worktrees (`<scratchpad>/r65-probe`, vorher in der Liste) nicht mehr existierte; dessen Eintrag steht seitdem nicht mehr in der Liste. Ob der Eintrag durch mein `prune` oder durch die andere Sitzung verschwand, ist unklar. Verbliebene Einträge: Arbeitsklon, r65, r73, wt-r06, wt-r41, wt-r62, wt-rep.
 
-## Nachtrag des Koordinators (12.11.2026, 04:55)
+## Nachtrag des Koordinators (12.11.2026, 04:54)
 
 - Gegenprobe am Text von main 8abe213: Nr. 1 bestätigt (Z. 2064 „den Code hinter Navis und Lumen … läuft bei jeder Änderung automatisch mit“ gegen Z. 1993 „Navis ist im realen Repo (Stand 06.11.2026) noch nicht als Code vorhanden“). Nr. 3 bestätigt (aria-label Z. 1700 „von unten nach oben“). Der Text zu Nr. 2 (Z. 1937 „keinen Reifegrad-Score“) ist bestätigt; die Bildinhalte zu Nr. 2, 8 und 9 habe ich nicht selbst angesehen.
 - Zum Hinweis in der Hygiene-Zeile: Den Probe-Worktree `r65-probe` hat der Koordinator selbst mit `git worktree remove --force` entfernt (R65, Probe-Merge). Das `prune` des Agenten hat nichts Fremdes gelöscht.

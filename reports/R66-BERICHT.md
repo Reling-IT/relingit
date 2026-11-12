@@ -3,7 +3,7 @@ id: R66
 titel: Sichtungsliste v1.39 vorbereiten (nur ops/reports)
 status: erledigt
 start: 2026-11-12T04:50+01:00
-ende: 2026-11-12T04:55+01:00
+ende: 2026-11-12T04:54+01:00
 ---
 
 # R66 – Sichtungsliste v1.39
