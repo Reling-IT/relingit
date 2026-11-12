@@ -139,3 +139,11 @@ Der Product Owner hat nach dem Tagesabschluss weiterarbeiten lassen; der Planer 
 - #35: Head c1efb21, Draft, CI rot nur wegen story/current (erwartet bis R60); Pester 21/21 auf db2804b; Probe-Merge main + #27 + #33 + #35 mit ci-check ohne weiteren Fehler. Offene PRs weiter 11.
 - Damit erledigt aus TA-02: Fragen 1 (Wortlaut) und 3 (Handout-PDF). Weiter offen: Frage 2 (R69 Nr. 1 und Nr. 2) und die Fragen 4 bis 8.
 - Neu gemeldet, nicht geändert: Das Handout bindet keine Schriften ein (PDF rechnerabhängig); beide PDFs sind nicht getaggt.
+
+## Nachtrag (05:57): R63-Nachlauf und R73-Status
+
+- **R63:** Trockenlauf v1.39 mit den Entscheidungen vom 12.11. wiederholt, jetzt mit allen elf Drafts: ci-check Exit 0, Pester 54/54, 80 Seiten, `verify_layout` Exit 0, Probe-Paket gegen v1.38 geprüft (Exit 0). Einziger Konflikt `docs/ABLAUF.md` (#30/#32). Bericht `reports/R63-BERICHT.md`, Abschnitt „Nachlauf 12.11.2026“. Wegwerf-Worktree und Wegwerf-Umgebung entfernt, Arbeitsklon unverändert.
+- **R73:** Status „Pilot“ in `docs/PILOT.md` auf #36 eingetragen (7b1f654); Stunden weiter „keine Angabe“.
+- Warteschlange um 05:57: ops/queue 8d37960 unverändert; alle sieben Aufträge mit Status bereit sind heute bearbeitet. Nichts Weiteres ist ohne Entscheidung des Product Owners ausführbar.
+- Neu offen: Wortlaut des Kontrast-Satzes in der Versionshistorie 1.39; Nennung der Textkorrekturen aus #35 in der Versionshistorie; `pypdf` pinnen. Weiter offen: R69 Nr. 1 und Nr. 2, Upload v1.38, Einzelfreigaben, R70 Teil 2, zweiter Klon, Stunden.
+- Offene PRs: 11, alle Draft.
