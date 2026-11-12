@@ -355,3 +355,7 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag 12.11.2026, 05:57: Wortlaut des Kontrast-Satzes bestätigt
+
+Der Product Owner hat den Satz für die Versionshistorie 1.39 bestätigt: „Kontraste im Buch angehoben: graue und farbige Schrift ist auf allen Flächen besser lesbar.“ Für den Planer: in `queue/R60.yaml` aufnehmen. Die übrigen offenen Fragen aus dem Nachlauf bleiben offen.
