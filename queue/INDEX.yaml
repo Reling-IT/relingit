@@ -1,4 +1,4 @@
-stand: 2026-11-11 15:10
+stand: 2026-11-12 04:50
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -393,7 +393,7 @@ auftraege:
   art: code-pr
   gate: nein
   status: erledigt
-  pr: Reling-IT/relingit#29 (offen, kein Draft, CI gruen, nicht gemergt)
+  pr: Reling-IT/relingit#29 (gemergt seit 09.11.2026, main 8abe213)
   abhaengig_von:
   - R38
 - id: R51
