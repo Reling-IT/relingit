@@ -154,6 +154,86 @@ Set-Content -LiteralPath $landingPath -Value $landing -Encoding utf8 -NoNewline
 
 & "$PSScriptRoot/ci-check.ps1"
 
+# Aufbewahrungsregel für archive/ftp-packages (R49, docs/ABLAUF.md):
+# Die drei neuesten Pakete bleiben, ältere werden nur GEMELDET. Pakete mit der
+# Markierungsdatei GESCHUETZT.txt werden nie gemeldet. Die Funktion löscht,
+# verschiebt und ändert nichts. Sie liest nur Verzeichnisnamen und prüft nur,
+# ob die Markierungsdatei existiert (Dateisystem-Metadaten, kein Dateiinhalt),
+# damit OneDrive-Platzhalter nicht heruntergeladen werden.
+# Sortiert wird nach dem Zeitstempel im Ordnernamen (yyyyMMdd-HHmmss-fff),
+# nicht nach dem Änderungsdatum. Andere Namen zählen nicht als Paket.
+function Get-FtpPaketAufbewahrung {
+    param(
+        [Parameter(Mandatory)][string]$ArchivOrdner,
+        [ValidateRange(0, 999)][int]$Behalten = 3,
+        [string]$Markierung = "GESCHUETZT.txt"
+    )
+    $ergebnis = [pscustomobject]@{
+        ArchivOrdner = $ArchivOrdner
+        Regel        = $Behalten
+        OrdnerFehlt  = $false
+        Pakete       = @()
+        Behalten     = @()
+        Geschuetzt   = @()
+        Melden       = @()
+        Unbekannt    = @()
+    }
+    if (-not [System.IO.Directory]::Exists($ArchivOrdner)) {
+        $ergebnis.OrdnerFehlt = $true
+        return $ergebnis
+    }
+    $invariant = [System.Globalization.CultureInfo]::InvariantCulture
+    $pakete = @()
+    $unbekannt = @()
+    # Nur die direkte Ebene, nur Verzeichnisnamen; keine Rekursion, keine Größen.
+    foreach ($ordner in [System.IO.Directory]::EnumerateDirectories($ArchivOrdner)) {
+        $name = [System.IO.Path]::GetFileName($ordner)
+        $zeit = [datetime]::MinValue
+        if ($name -match '^\d{8}-\d{6}-\d{3}$' -and
+            [datetime]::TryParseExact($name, 'yyyyMMdd-HHmmss-fff', $invariant,
+                [System.Globalization.DateTimeStyles]::None, [ref]$zeit)) {
+            $pakete += [pscustomobject]@{
+                Name        = $name
+                Zeitstempel = $zeit
+                Geschuetzt  = [System.IO.File]::Exists((Join-Path $ordner $Markierung))
+            }
+        } else {
+            $unbekannt += $name
+        }
+    }
+    $sortiert = @($pakete | Sort-Object -Property Zeitstempel -Descending)
+    $aelter = @($sortiert | Select-Object -Skip $Behalten)
+    $ergebnis.Pakete = $sortiert
+    $ergebnis.Behalten = @($sortiert | Select-Object -First $Behalten)
+    $ergebnis.Geschuetzt = @($aelter | Where-Object { $_.Geschuetzt })
+    $ergebnis.Melden = @($aelter | Where-Object { -not $_.Geschuetzt })
+    $ergebnis.Unbekannt = @($unbekannt | Sort-Object)
+    return $ergebnis
+}
+
+# Gibt das Ergebnis von Get-FtpPaketAufbewahrung als Meldung aus (nur Anzeige).
+function Write-FtpPaketAufbewahrung($Aufbewahrung) {
+    if ($Aufbewahrung.OrdnerFehlt) {
+        Write-Host "Aufbewahrung archive/ftp-packages: Ordner fehlt, nichts zu melden."
+        return
+    }
+    $regel = $Aufbewahrung.Regel
+    Write-Host "Aufbewahrung archive/ftp-packages: $(@($Aufbewahrung.Pakete).Count) Pakete; die letzten $regel bleiben (docs/ABLAUF.md)."
+    if (@($Aufbewahrung.Melden).Count -gt 0) {
+        Write-Host "Älter als die letzten $regel und nicht geschützt (nur Meldung, nichts gelöscht oder verschoben):"
+        foreach ($paket in $Aufbewahrung.Melden) { Write-Host "  $($paket.Name)" }
+        Write-Host "Löschen nur nach Freigabe durch Bernd."
+    } else {
+        Write-Host "Keine Pakete älter als die letzten $regel zu melden."
+    }
+    if (@($Aufbewahrung.Geschuetzt).Count -gt 0) {
+        Write-Host "Geschützt, nicht gemeldet: $(@($Aufbewahrung.Geschuetzt | ForEach-Object Name) -join ', ')"
+    }
+    if (@($Aufbewahrung.Unbekannt).Count -gt 0) {
+        Write-Host "Hinweis: Ordner ohne Zeitstempel-Namen, nicht bewertet: $($Aufbewahrung.Unbekannt -join ', ')"
+    }
+}
+
 # Alte FTP-Pakete bleiben wiederherstellbar, werden aber aus dem Upload-Ordner
 # entfernt. So kann nicht versehentlich eine frühere ZIP-Datei gewählt werden.
 $ftpOutput = Join-Path $projectRoot "output/ftp"
@@ -167,6 +247,8 @@ if ($oldPackages.Count -gt 0) {
         Move-Item -LiteralPath $oldPackage.FullName -Destination $packageArchive
     }
 }
+# Nur melden (R49): nichts löschen, nichts verschieben.
+Write-FtpPaketAufbewahrung (Get-FtpPaketAufbewahrung -ArchivOrdner (Join-Path $projectRoot "archive/ftp-packages"))
 
 & "$PSScriptRoot/build-upload.ps1" -Suffix $Suffix -OhneAudio:$OhneAudio
 
