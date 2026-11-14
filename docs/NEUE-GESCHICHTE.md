@@ -78,7 +78,7 @@ Der Vergleich für Handout und FTP läuft standardmäßig gegen den letzten Comm
 
 ```powershell
 git switch -c geschichte-vX.YY
-git add source story/current assets/js/app.js lesen.html index.html
+git add source story/current assets/js/app.js lesen.html anhang.html index.html
 git commit -m "Geschichte vX.YY"
 git push -u origin geschichte-vX.YY
 gh pr create --repo Reling-IT/relingit --base main
@@ -99,7 +99,7 @@ Erwartetes Ergebnis: Die öffentliche Landingpage zeigt in einem privaten Browse
 
 ### FTP-Fall
 
-Über den Admin-Bereich gehen nur die Buchfassung (HTML und PDF), das Handout und die Versionsangaben. Alle anderen geänderten öffentlichen Dateien kommen nur per FTP live: `index.html`, `assets/js`, `assets/css`, `assets/fonts` (sobald vorhanden), `impressum.html`, `datenschutz.html` und weitere Seiten und Dateien, die nicht über den Admin-Bereich gehen (`lesen.html`, `pdf.html`, `handout.html`, `handout-pdf.html`, `admin.html`, `.htaccess`, `assets/img`, `assets/audio`).
+Über den Admin-Bereich gehen nur die Buchfassung (HTML und PDF), das Handout und die Versionsangaben. Alle anderen geänderten öffentlichen Dateien kommen nur per FTP live: `index.html`, `assets/js`, `assets/css`, `assets/fonts` (sobald vorhanden), `impressum.html`, `datenschutz.html` und weitere Seiten und Dateien, die nicht über den Admin-Bereich gehen (`lesen.html`, `anhang.html`, `pdf.html`, `handout.html`, `handout-pdf.html`, `admin.html`, `.htaccess`, `assets/img`, `assets/audio`).
 
 Schritt 3 meldet Änderungen an `index.html`, `assets/js`, `impressum.html` und `datenschutz.html` als „FTP-Upload nötig: ja“, die übrigen als „Hinweis: weitere öffentliche Dateien geändert“. In beiden Fällen zusätzlich das Paket aus `output/ftp` nach [docs/DOMAINFACTORY-DEPLOYMENT.md](DOMAINFACTORY-DEPLOYMENT.md#ftp-paket-hochladen) hochladen.
 

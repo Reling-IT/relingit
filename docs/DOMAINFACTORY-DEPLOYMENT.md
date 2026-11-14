@@ -11,6 +11,7 @@ Folgende Dateien und Ordner in das Zielverzeichnis der Domain kopieren:
 - `index.html`
 - `.htaccess`
 - `lesen.html`
+- `anhang.html`
 - `handout.html`
 - `handout-pdf.html`
 - den vollständigen Ordner `assets`

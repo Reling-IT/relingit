@@ -21,7 +21,7 @@ Describe "freigabe-pruefen.ps1" {
             foreach ($js in @("pdf-viewer.js", "story-viewer.js", "handout-viewer.js", "supabase-config.js")) {
                 Write-Utf8Datei (Join-Path $projekt "assets/js/$js") "// Platzhalter für Tests`n"
             }
-            Write-Utf8Datei (Join-Path $projekt ".gitignore") "reports/`n"
+            Write-Utf8Datei (Join-Path $projekt ".gitignore") "reports/`noutput/`n"
             $origin = "$Ziel-origin.git"
             $vorher = $ErrorActionPreference
             $ErrorActionPreference = "Continue"
@@ -57,6 +57,24 @@ Describe "freigabe-pruefen.ps1" {
             foreach ($tor in @("G3", "G4", "G5", "G8")) {
                 if ($Bericht -match "(?m)^\| $tor \|[^\n]*\| bestanden \|") { throw "$tor wurde als bestanden ausgegeben:`n$Bericht" }
             }
+        }
+
+        # Legt unter output/ftp ein kleines Upload-Paket wie aus build-upload.ps1 an
+        # (UPLOAD-MANIFEST.txt, index.html, optional die vier Ersatz-MP3).
+        function New-TestPaket([string]$Projekt, [string]$Name, [switch]$MitMp3, [switch]$OhneAudioZeile) {
+            $ordner = Join-Path $TestDrive "paket-$Name"
+            $manifest = @("RelingIT FTP-Upload-Paket", "Version: 1.02")
+            if ($OhneAudioZeile) { $manifest += "Ohne Audio: Die Podcast-MP3 sind nicht enthalten, die Live-Dateien unter assets/audio bleiben unverändert." }
+            Write-Utf8Datei (Join-Path $ordner "UPLOAD-MANIFEST.txt") (($manifest -join "`n") + "`n")
+            Write-Utf8Datei (Join-Path $ordner "index.html") "Platzhalter für Tests`n"
+            if ($MitMp3) {
+                foreach ($mp3 in $script:PodcastMp3) { Write-Utf8Datei (Join-Path $ordner "assets/audio/$mp3") "ID3 Ersatz-MP3 für Tests: $mp3`n" }
+            }
+            $ziel = Join-Path $Projekt "output/ftp"
+            New-Item -ItemType Directory -Path $ziel -Force | Out-Null
+            $zip = Join-Path $ziel "$Name.zip"
+            Compress-Archive -Path (Join-Path $ordner "*") -DestinationPath $zip
+            return $zip
         }
 
         function Set-SichtungErgebnis([string]$Projekt, [string]$Wert, [string]$NurNr = "") {
@@ -144,6 +162,59 @@ Describe "freigabe-pruefen.ps1" {
         if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 17 Ja, 1 Nein, 0 leer von 18 \(Nein: W01\)') { throw "Nein-Punkt nicht ausgewertet:`n$bericht" }
         if ($bericht -notmatch '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G4 Sichtung unvollständig \(1 Nein, 0 leer\)') { throw "G8 nicht wegen Nein gesperrt:`n$bericht" }
         Assert-NieBestanden $bericht
+    }
+
+    It "wertet die MP3-Prüfung bei einem Paket ohne Audio als nicht zutreffend, ohne G8 zu sperren" {
+        $projekt = New-FreigabeProjekt "$script:Basis-ohneaudio"
+        [void](New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-ohne-audio" -OhneAudioZeile)
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh")
+        Assert-Erfolg $ergebnis "Ergebnis: keine automatische Prüfung nicht bestanden"
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Podcast-MP3 gegen SHA256SUMS\.txt \| nicht zutreffend \| Paket relingit-upload-v1\.02-2026-11-07-ohne-audio\.zip enthält keine Podcast-MP3 \(ohne Audio\)') { throw "G6 nicht als nicht zutreffend gemeldet:`n$bericht" }
+        if ($bericht -match '0 von 4 passend') { throw "MP3-Prüfung trotz Paket ohne Audio ausgeführt:`n$bericht" }
+        if ($bericht -match '(?m)^\| G8 \| Freigabe durch Bernd \|[^
+]*G6 nicht zutreffend') { throw "G8 wegen nicht zutreffend gesperrt:`n$bericht" }
+        if ($bericht -match '\| G6 \| Lokale Vorschau möglich \| bestanden \|') {
+            # Mit Python ist G6 insgesamt bestanden und kein Sperrgrund für G8.
+            if ($bericht -notmatch '\| G6 \| Lokal \| bestanden \|') { throw "G6 insgesamt nicht bestanden:`n$bericht" }
+            if ($bericht -match '(?m)^\| G8 \| Freigabe durch Bernd \|[^
+]*G6 ') { throw "G6 sperrt G8:`n$bericht" }
+        }
+        Assert-NieBestanden $bericht
+        if (git -C $projekt status --porcelain) { throw "output/ verändert git status." }
+    }
+
+    It "erkennt ein Paket ohne Audio auch am Manifest, wenn es mit -Paket übergeben wird" {
+        $projekt = New-FreigabeProjekt "$script:Basis-manifest"
+        $zip = New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-probe" -OhneAudioZeile
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh", "-Paket", $zip))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Podcast-MP3 gegen SHA256SUMS\.txt \| nicht zutreffend \| Paket relingit-upload-v1\.02-2026-11-07-probe\.zip') { throw "Manifest-Zeile Ohne Audio nicht erkannt:`n$bericht" }
+    }
+
+    It "prüft bei einem Paket mit Audio die MP3 weiter gegen SHA256SUMS.txt" {
+        $projekt = New-FreigabeProjekt "$script:Basis-mitaudio"
+        [void](New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07" -MitMp3)
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Podcast-MP3 gegen SHA256SUMS\.txt \| offen \| Paket relingit-upload-v1\.02-2026-11-07\.zip mit Audio; 0 von 4 passend; nicht vorhanden in ') { throw "MP3 ohne lokale Dateien nicht als offen gemeldet:`n$bericht" }
+        if ($bericht -notmatch '(?m)^\| G8 \| Freigabe durch Bernd \| gesperrt \|[^
+]*G6 offen') { throw "G8 nicht wegen G6 gesperrt:`n$bericht" }
+
+        # Mit passenden lokalen MP3 bestanden (Verhalten wie vor R54; G7 ist hier wegen der neuen Dateien egal).
+        New-PodcastMp3 -Projekt $projekt -PruefsummenAnpassen
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Podcast-MP3 gegen SHA256SUMS\.txt \| bestanden \| Paket relingit-upload-v1\.02-2026-11-07\.zip mit Audio; 4 von 4 passend \|') { throw "Passende MP3 nicht als bestanden gemeldet:`n$bericht" }
+    }
+
+    It "meldet ein als ohne Audio gekennzeichnetes Paket mit MP3 als nicht bestanden" {
+        $projekt = New-FreigabeProjekt "$script:Basis-widerspruch"
+        [void](New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-ohne-audio" -MitMp3)
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh")
+        Assert-Fehlschlag $ergebnis "automatische Prüfung\(en\) nicht bestanden"
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Podcast-MP3 gegen SHA256SUMS\.txt \| nicht bestanden \| Paket relingit-upload-v1\.02-2026-11-07-ohne-audio\.zip ist als ohne Audio gekennzeichnet, enthält aber 4 MP3') { throw "Widerspruch nicht gemeldet:`n$bericht" }
     }
 }
 
