@@ -8,7 +8,7 @@ Quelle der Tore: Auftrag R43. Ein Entwurf `freigabe.yaml` bzw. der Reiter „Fre
 
 - Solange ein Tor **nicht bestanden**, **offen** oder **gesperrt** ist, gibt es keinen Merge nach `main`, keinen Tag und keinen Upload (weder Admin-Bereich noch FTP).
 - G3, G4, G5 und G8 haben keine Automatik. `scripts/freigabe-pruefen.ps1` gibt sie nie als bestanden aus.
-- G8 erteilt ausschließlich Bernd. G8 bleibt gesperrt, solange eine automatische Prüfung nicht bestanden oder offen ist oder die Sichtungsliste einen Nein-Punkt oder einen leeren Punkt enthält.
+- G8 erteilt ausschließlich Bernd. G8 bleibt gesperrt, solange eine automatische Prüfung nicht bestanden oder offen ist (eine Prüfung mit „nicht zutreffend“ sperrt nicht) oder die Sichtungsliste einen Nein-Punkt oder einen leeren Punkt enthält.
 - „Bestanden“ gilt nur mit Beleg (Befehl und Ergebnis im Freigabebericht, PR, CI-Lauf).
 
 ## Tore
@@ -20,11 +20,11 @@ Quelle der Tore: Auftrag R43. Ein Entwurf `freigabe.yaml` bzw. der Reiter „Fre
 | G3 | Layout | nein | PDF: Deckblatt, neue Szene, Codebox, SVG-Seite, Mini-TOC, Seitenzahl | Sichtungsliste, Abschnitt PDF |
 | G4 | UI | nein | Startseite, Lesefassung, Handout, Datenschutz, Impressum, Podcast-Player je in 390, 768 und 1280 px | Sichtungsliste, Abschnitt Webseiten |
 | G5 | Inhalt | nein | Neue Szene gelesen; Versionshistorie und „Neu in vX.YY“ zutreffend | Sichtungsliste, Abschnitt Inhalt |
-| G6 | Lokal | ja | Podcast-MP3 gegen `assets/audio/SHA256SUMS.txt`; lokale Vorschau möglich (`scripts/vorschau.ps1`, Python) | Freigabebericht |
+| G6 | Lokal | ja | Podcast-MP3 gegen `assets/audio/SHA256SUMS.txt` (bei einem Upload-Paket ohne Audio nicht zutreffend); lokale Vorschau möglich (`scripts/vorschau.ps1`, Python) | Freigabebericht |
 | G7 | Git | ja | `git status` sauber; Feature-Branch gleich `origin`; offener PR gegen `main`, kein Draft, alle Checks grün (per `gh`) | Freigabebericht |
 | G8 | Freigabe Bernd | nein | Ausdrückliche Freigabe, z. B. PR-Kommentar „Freigabe G8 vX.YY: ja“ | PR-Kommentar |
 
-Ergebniswerte: **bestanden**, **nicht bestanden**, **offen** (keine Automatik oder Prüfung nicht ausführbar, z. B. ohne lokale MP3 oder ohne `gh`), **gesperrt** (nur G8).
+Ergebniswerte: **bestanden**, **nicht bestanden**, **offen** (keine Automatik oder Prüfung nicht ausführbar, z. B. ohne lokale MP3 oder ohne `gh`), **nicht zutreffend** (Prüfung gilt für diesen Stand nicht, mit Begründung; zählt nicht gegen das Tor), **gesperrt** (nur G8).
 
 ## Rollen
 
@@ -65,6 +65,7 @@ Wichtige Schalter:
 
 - `-Projekt <Pfad>`: prüft einen anderen Worktree, z. B. einen Release-Zweig, ohne dort etwas zu ändern (dann zusätzlich `-AusgabeOrdner` außerhalb dieses Worktrees angeben).
 - `-AudioOrdner <Pfad>`: Ordner mit den lokalen Podcast-MP3, falls sie nicht unter `assets/audio` liegen.
+- `-Paket <Pfad>`: Upload-Paket aus `scripts/build-upload.ps1` (ZIP oder Ordner). Ohne Angabe nimmt das Skript das jüngste `output/ftp/relingit-upload-vX.YY-*.zip` der geprüften Version. Ist das Paket ohne Audio gebaut (Name endet auf `-ohne-audio` oder `UPLOAD-MANIFEST.txt` enthält „Ohne Audio:“), ist die MP3-Prüfung in G6 **nicht zutreffend** (Entscheidung Bernd, 10.11.2026): Die Live-MP3 bleiben beim Upload unverändert. Enthält ein so gekennzeichnetes Paket doch MP3, ist die Prüfung nicht bestanden. Bei einem Paket mit Audio oder ohne Paket werden die lokalen MP3 wie bisher gegen `SHA256SUMS.txt` geprüft.
 - `-OhnePester`, `-OhneGh`: Teilprüfungen auslassen; das betroffene Tor ist dann offen, nie bestanden.
 
 ### 2. Lokale Vorschau
