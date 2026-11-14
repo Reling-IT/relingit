@@ -6,7 +6,7 @@
  */
 const fallbackRelease = {
   version: "1.39",
-  date: "9. November 2026",
+  date: "14. November 2026",
   pageCount: 80,
 };
 

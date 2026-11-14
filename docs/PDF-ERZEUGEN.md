@@ -40,6 +40,8 @@ Get-ChildItem "$env:LOCALAPPDATA\ms-playwright"
 
 ## Rendern und prüfen
 
+Vor jedem Rendern prüfen, ob der Chromium-Build zur installierten Playwright-Version vorhanden ist: `python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); b=p.chromium.launch(); print(b.version); b.close(); p.stop()"` muss eine Versionsnummer ausgeben, sonst zuerst `python -m playwright install chromium` (am 12.11.2026 fehlte der Build einmal ohne belegte Ursache). Die Versionen von playwright und pypdf sind in `requirements.txt` gepinnt (1.64.0 passt zu Chromium-Build 1248).
+
 Die Ausgabe landet in `output/`. Der Ordner ist in `.gitignore` eingetragen, die erzeugte PDF wird nicht committet.
 
 ```powershell
