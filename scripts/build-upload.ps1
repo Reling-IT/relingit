@@ -44,6 +44,8 @@ if ((Test-Path -LiteralPath $packageDirectory) -or (Test-Path -LiteralPath $zipP
 $publicFiles = @(
     ".htaccess", "admin.html", "datenschutz.html", "handout-pdf.html",
     "handout.html", "impressum.html", "index.html", "lesen.html", "pdf.html",
+    # Anhang-Seite (R07, R46): Viewer, der den Anhang aus der Buchfassung herausschneidet.
+    "anhang.html",
     "assets/css/legal.css", "assets/css/styles.css",
     # Webschriften der Geschichte (R27); lesen.html und story/current laden sie von hier.
     "assets/fonts/Fraunces-Variable.woff2", "assets/fonts/WorkSans-Regular.woff2",
@@ -58,6 +60,8 @@ $publicFiles = @(
     "assets/audio/roman-als-ki-blaupause.mp3",
     "assets/img/favicon.png", "assets/img/reling-it-logo.svg",
     "assets/img/reling-it-podcast-cover.png",
+    # Bildmarken von Navis und Lumen auf der Startseite (R11); Ancora bleibt draußen.
+    "assets/img/avatare/navis.svg", "assets/img/avatare/lumen.svg",
     "assets/js/admin.js", "assets/js/app.js", "assets/js/handout-viewer.js",
     "assets/js/pdf-viewer.js", "assets/js/story-viewer.js",
     "assets/js/supabase-config.js",
