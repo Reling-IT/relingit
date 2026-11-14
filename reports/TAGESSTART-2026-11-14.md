@@ -85,3 +85,7 @@ Roadmap:
 - Freigabe des Product Owners zum Merge, je mit Head: #30 586404f, #31 b2bc305, #34 82ddf15, #36 8129697. Head je PR verglichen, dann `gh pr ready`; alle vier isDraft=false, CLEAN, Website prüfen SUCCESS. Kein Merge durch diese Sitzung.
 - #32 (d6de9ee) nicht freigegeben: nach Merge von #30 Konflikt `docs/ABLAUF.md` nachziehen, danach neuer Head zur Freigabe.
 - Nach Merge der acht Ready-PRs bleiben drei Agenten-PRs offen (#32, #33, #35), Grenze dann eingehalten.
+
+## Nachtrag (09:06): Chromium-Vorab-Schritt
+
+- Entscheidung des Product Owners: Vorab-Schritt „Chromium für Playwright vorhanden?“ mit Prüfbefehl als ein Satz in `docs/PDF-ERZEUGEN.md`, umgesetzt im Draft-PR von R60 (kein eigener PR). Für den Planer: in `queue/R60.yaml` aufnehmen.
