@@ -134,3 +134,7 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+### Nachtrag (16:34): lokale Aufräumung
+
+Freigabe des Product Owners in der Sitzung. Beide Worktrees vorher sauber, ohne ignorierte Dateien. Entfernt: Worktrees `wt/relingit/r73` und `wt-r62` (`git worktree remove`, ohne --force). Gelöscht mit `git branch -d`: R07 (2133502), R11 (d1257f7), R49 (81f8e48), R54 (b2bc305), R55 (586404f), R62 (82ddf15), R73 (8129697), alle in origin/main enthalten. Lokal gemergte Branches danach: 0. Remote nichts gelöscht.
