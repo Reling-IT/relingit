@@ -30,7 +30,9 @@ $script:Platzhalter = @(
     "assets/fonts/IBMPlexMono-Regular.woff2", "assets/fonts/IBMPlexMono-Italic.woff2",
     "assets/fonts/IBMPlexMono-Medium.woff2",
     "assets/fonts/Fraunces-OFL.txt", "assets/fonts/WorkSans-OFL.txt",
-    "assets/fonts/IBMPlexMono-OFL.txt", "assets/fonts/HERKUNFT.txt"
+    "assets/fonts/IBMPlexMono-OFL.txt", "assets/fonts/HERKUNFT.txt",
+    # Bildmarken der Startseite (seit R11 in $publicFiles von build-upload.ps1).
+    "assets/img/avatare/navis.svg", "assets/img/avatare/lumen.svg"
 )
 
 function Get-PwshPfad {

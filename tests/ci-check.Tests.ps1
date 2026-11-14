@@ -39,6 +39,23 @@ Describe "ci-check.ps1" {
         Assert-Fehlschlag $ergebnis "Deckblatt-Datum stimmt nicht mit letztem Historieneintrag überein"
     }
 
+    It "meldet einen Anhang-Block ohne ID" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-id" -Geschichte "anhang-ohne-id.html.fixture"
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
+        Assert-Fehlschlag $ergebnis "Anhang: source/fahrt-zum-kunden\.html: Anhang-Block in Zeile \d+ \('Ohne Anker'\) ohne ID an section\.appendix oder an der ersten h2"
+    }
+
+    It "meldet eine Anhang-ID, die nicht dem Muster kap-<name> entspricht" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-anhang-muster" -Geschichte "anhang-ohne-id.html.fixture"
+        foreach ($relativ in @("source/fahrt-zum-kunden.html", "story/current/fahrt-zum-kunden.html")) {
+            $pfad = Join-Path $projekt $relativ
+            $text = [System.IO.File]::ReadAllText($pfad)
+            Write-Utf8Datei $pfad ($text.Replace('<section class="appendix">', '<section class="appendix" id="Anhang_1">'))
+        }
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
+        Assert-Fehlschlag $ergebnis "Anhang: source/fahrt-zum-kunden\.html: Anhang-Block in Zeile \d+ \('Ohne Anker'\): ID 'Anhang_1' entspricht nicht dem Muster"
+    }
+
     It "meldet eine Versionshistorien-Zeile ohne lesbares Datum" {
         $projekt = New-MiniProjekt -Ziel "$script:Basis-unlesbar" -Geschichte "historie-zeile-unlesbar.html.fixture"
         $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"

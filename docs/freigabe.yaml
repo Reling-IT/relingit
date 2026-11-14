@@ -1,7 +1,7 @@
 # Freigabetore für jede neue Version (maschinenlesbar). Prozessbeschreibung: docs/FREIGABE.md
 # Auswertung: scripts/freigabe-pruefen.ps1 schreibt reports/FREIGABE-vX.YY.md und reports/SICHTUNG-vX.YY.md.
 schema: 1
-stand: "2026-11-08"
+stand: "2026-11-10"
 entscheidung: "Bernd, 08.11.2026: Jede neue Version durchläuft vor der Freigabe die Tore G1 bis G8 und wird vorher lokal gesichtet."
 quelle: "Auftrag R43. Ein Entwurf freigabe.yaml bzw. der Reiter Freigabe der Abstimmungsseite lag im Repository nicht vor; die Tore sind aus dem Auftrag abgeleitet."
 regel: "Kein Merge, kein Tag und kein Upload (Admin-Bereich oder FTP), solange ein Tor nicht bestanden, offen oder gesperrt ist. Nur Bernd setzt G8."
@@ -9,6 +9,7 @@ ergebniswerte:
   bestanden: "Automatische Prüfung mit Beleg erfolgreich."
   nicht_bestanden: "Automatische Prüfung mit Beleg fehlgeschlagen."
   offen: "Keine Automatik oder Prüfung nicht ausführbar; Nachweis durch einen Menschen nötig."
+  nicht_zutreffend: "Prüfung gilt für diesen Stand nicht (mit Begründung); zählt nicht gegen das Tor und sperrt G8 nicht."
   gesperrt: "G8 kann nicht erteilt werden, weil ein anderes Tor nicht bestanden ist oder die Sichtung Nein-Punkte oder leere Punkte enthält."
 ausgabe:
   bericht: "reports/FREIGABE-v{version}.md"
@@ -67,9 +68,11 @@ tore:
     automatisch: true
     verantwortlich: Skript
     pruefungen:
-      - "Podcast-MP3 entsprechen assets/audio/SHA256SUMS.txt (ohne lokale MP3: offen)"
+      - "Podcast-MP3 entsprechen assets/audio/SHA256SUMS.txt (ohne lokale MP3: offen; bei einem Upload-Paket ohne Audio: nicht zutreffend)"
       - "Lokale Vorschau möglich: scripts/vorschau.ps1 vorhanden, Python gefunden"
-    nachweis: "Prüfsummenvergleich je Datei, gefundener Python-Pfad"
+    nachweis: "Prüfsummenvergleich je Datei bzw. Paketname mit Begründung nicht zutreffend, gefundener Python-Pfad"
+    paket: "-Paket <ZIP oder Ordner>, sonst das jüngste output/ftp/relingit-upload-v{version}-*.zip. Ohne Audio: Name endet auf -ohne-audio oder UPLOAD-MANIFEST.txt enthält die Zeile 'Ohne Audio:'. Ein so gekennzeichnetes Paket mit MP3 ist nicht bestanden."
+    entscheidung: "Bernd, 10.11.2026 (Auftrag R54): Bei einem Paket ohne Audio gilt die MP3-Prüfung als nicht zutreffend."
   - id: G7
     name: Git
     automatisch: true
@@ -85,5 +88,5 @@ tore:
     verantwortlich: Bernd
     pruefungen:
       - "Bernd erteilt die Freigabe ausdrücklich, z. B. als PR-Kommentar 'Freigabe G8 vX.YY: ja'"
-    voraussetzung: "G1, G2, G6, G7 bestanden; G3, G4, G5 durch Sichtungsliste ohne Nein- und ohne leere Punkte belegt"
+    voraussetzung: "G1, G2, G6, G7 bestanden (Einzelprüfungen bestanden oder nicht zutreffend); G3, G4, G5 durch Sichtungsliste ohne Nein- und ohne leere Punkte belegt"
     nachweis: "PR-Kommentar oder Eintrag von Bernd"

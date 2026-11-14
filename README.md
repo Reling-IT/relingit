@@ -44,7 +44,7 @@ Das Repository liegt kanonisch unter `Reling-IT/relingit`. Unter dem persönlich
 
 Das Skript übernimmt Version und Datum aus der HTML-Datei, verlangt den gleichen
 Stand im letzten Eintrag der Versionshistorie, liest die Seitenzahl automatisch
-aus der PDF, aktualisiert die lokale LP (Rückfallwert in `app.js`, `lesen.html` und die Seitenzahl in `index.html`) und
+aus der PDF, aktualisiert die lokale LP (Rückfallwert in `app.js`, `lesen.html`, `anhang.html` und die Seitenzahl in `index.html`) und
 erstellt anschließend das geprüfte FTP-Paket. `source` und `story/current`
 müssen danach für HTML und PDF bytegenau übereinstimmen. Bei einer Abweichung
 wird die Veröffentlichung abgebrochen. Bereits vorhandene FTP-Pakete werden
@@ -105,6 +105,10 @@ laufen ausschließlich über eine Supabase Edge Function mit Plausibilitäts- un
 Rate-Limit-Prüfung. Leser können vorhandene Einträge weder lesen noch ändern
 oder löschen. Das Formular fragt keine Kontaktdaten ab. Einrichtung und
 Restrisiken stehen in [docs/SICHERHEIT.md](docs/SICHERHEIT.md).
+
+## Anhang-Seite
+
+`anhang.html` zeigt nur den Anhang des Buches (alle Blöcke `section.appendix`) mit eigenem Inhaltsverzeichnis. Sie lädt dieselbe Buchfassung wie `lesen.html` (Supabase, sonst `story/current`) und schneidet den Anhang im Browser heraus (`assets/js/story-viewer.js`, `data-extract="anhang"`; ohne Skriptausführung, iframe ohne `allow-scripts`). Es gibt keine zweite Datei und keinen zweiten Upload: Eine neue Buchfassung über den Admin-Bereich aktualisiert auch den Anhang. `ci-check.ps1` verlangt für jeden Anhang-Block eine Überschrift und eine eindeutige, stabile ID (an der `section` oder an ihrer ersten `h2`, Form `kap-<name>`).
 
 ## Lokale Vorschau
 
