@@ -313,6 +313,9 @@
     font-style:italic;
     color:var(--ink-faint);
   }
+  a.inref{color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent);}
+  .fnref{font-size:9.5px; line-height:0; vertical-align:super; margin-left:2px;}
+  .fn, aside.real p.fn, .appendix p.fn{margin:10px 0 0; max-width:none; font-size:12px; color:var(--ink-faint);}
 
   aside.real{
     margin-top:60px;
@@ -676,15 +679,15 @@
 
     <div class="cover-meta">
       <span><b>Bernd Marnau</b></span>
-      <span>07.11.2026</span>
+      <span>09.11.2026</span>
       <span>Vorbereitung Workshop Ende November 2026</span>
-      <span>Version 1.38</span>
+      <span>Version 1.39</span>
     </div>
     <p id="render-stamp" style="text-align:center; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.03em; color:var(--ink-faint); opacity:0.55; margin:10px 0 0;"></p>
   </section>
 
   <div class="box-shell"><div class="cover-frontmatter">
-    <p class="cover-whatsnew"><span class="tag">Neu in v1.38</span>Neue Geschichte &bdquo;<a href="#kap-veraltete-daten">Die veralteten Daten</a>&ldquo; mit Anhang-Box &bdquo;<a href="#kap-datenstand">Datenstand</a>&ldquo; sowie drei sachliche Klarstellungen zu Hub, areport, Lumen und Sysingboard &ndash; siehe <a href="#kap-versionen">Versionshistorie</a> am Ende.</p>
+    <p class="cover-whatsnew"><span class="tag">Neu in v1.39</span>Neue Anhang-Box &bdquo;<a href="#kap-sieben-standards">Die sieben Standards</a>&ldquo; mit je einem Satz pro Standard und eine Fußnote zu ADR und ADG im Architektur-Exkurs &ndash; siehe <a href="#kap-versionen">Versionshistorie</a> am Ende.</p>
 
     <nav class="cover-toc" aria-label="Inhaltsverzeichnis">
       <div class="cover-toc-title">Inhalt</div>
@@ -698,7 +701,7 @@
       </div>
       <div class="cover-toc-group">
         <span class="cover-toc-label">Anhang</span><br>
-        <a href="#kap-handout">Handout-Vorlage</a><span class="sep">&middot;</span><a href="#kap-sysingboard-architektur">Sysingboard-Architektur</a><span class="sep">&middot;</span><a href="#kap-reportfamilie-architektur">Report-Familie-Architektur</a><span class="sep">&middot;</span><a href="#kap-avkk-quelle">ZAVKK-Quelle</a><span class="sep">&middot;</span><a href="#kap-standard">Der Prüf-Standard</a><span class="sep">&middot;</span><a href="#kap-versionen">Versionshistorie</a>
+        <a href="#kap-handout">Handout-Vorlage</a><span class="sep">&middot;</span><a href="#kap-sysingboard-architektur">Sysingboard-Architektur</a><span class="sep">&middot;</span><a href="#kap-reportfamilie-architektur">Report-Familie-Architektur</a><span class="sep">&middot;</span><a href="#kap-avkk-quelle">ZAVKK-Quelle</a><span class="sep">&middot;</span><a href="#kap-standard">Der Prüf-Standard</a><span class="sep">&middot;</span><a href="#kap-sieben-standards">Die sieben Standards</a><span class="sep">&middot;</span><a href="#kap-versionen">Versionshistorie</a>
       </div>
     </nav>
   </div></div>
@@ -1745,10 +1748,11 @@
         <p>Der übergeordnete Rahmen: wie Dokumentation überhaupt entsteht, aussieht und geprüft wird &ndash; einheitliche Struktur, wiederverwendbare Vorlagen, Qualitäts-Gates, Quellenpflicht, dieselbe Methodik über Markdown, Word, PDF oder Wiki hinweg. TDF legt fest, <i>wie</i> dokumentiert wird &ndash; nicht, was im Einzelfall drinsteht.</p>
       </div>
       <div class="defitem">
-        <span class="term">ADR <i>&ndash; Architecture Decision Record</i> <span style="opacity:.6">(früher ADF)</span></span>
+        <span class="term">ADR <i>&ndash; Architecture Decision Record</i> <span style="opacity:.6">(früher ADF)</span><a class="inref fnref" href="#fn-adr" id="fnref-adr" aria-label="Fußnote 1">1</a></span>
         <p>Ein konkreter Dokumenttyp innerhalb von TDF: hält eine einzelne, architektonisch bedeutsame Entscheidung fest &ndash; mit Kontext, verworfenen Alternativen und Konsequenzen. Anders als ein gewöhnlicher TDF-Eintrag wird ein ADR nach Verabschiedung nicht mehr verändert, sondern bei Bedarf durch einen neuen, verweisenden Eintrag abgelöst. Ein ADR beantwortet &bdquo;Warum wurde so entschieden, und was haben wir stattdessen verworfen?&ldquo;</p>
       </div>
       <div class="defitem-note">Beide leben im selben Repository wie der Code: kurze, strukturierte YAML- oder Markdown-Dateien, die mit jeder Änderung mitversioniert werden &ndash; im Grunde Kilians Notizheft aus &bdquo;Der Umweg&ldquo;, nur mit einem festen Format und für mehr als eine Person lesbar. Enno nutzt denselben TDF-Rahmen für einen ganz anderen Zweck: nicht für Architekturbeschreibungen, sondern für Schulungsunterlagen &ndash; Struktur, Vorlagen und Qualitätsprüfung übernimmt er nahezu unverändert aus seiner eigenen Trainingsbibliothek, nur die Inhalte sind andere. Derselbe Rahmen, zweimal angewendet.</div>
+      <p class="fn" id="fn-adr"><sup>1</sup> Hier ist ADR der Dokumenttyp Architecture Decision Record. Davon zu unterscheiden ist der Standard ADG (AI Development Governance): ADR ist dessen früherer Kurzname und gilt als Alias noch bis 30.06.2027. <a class="inref" href="#fnref-adr" aria-label="Zurück zum Text">&uarr;</a></p>
     </div></div>
     <p style="margin-top:16px;">Damit stellt sich die Frage, die Nora in &bdquo;Der Umweg&ldquo; an Kilian gerichtet hat &ndash; &bdquo;Ihr schreibt doch auch sowas auf, oder? Bevor ihr baut?&ldquo; &ndash; auch für Navis und Lumen selbst. Die kurze Antwort: ja, nur eben nicht in einer einzelnen YAML-Datei wie Noras Ticket-Bot, sondern verteilt auf vier Bausteine.</p>
     <div class="box-shell"><div class="defbox">
@@ -2092,6 +2096,45 @@
       <div class="draftitem"><span class="n">6</span><span>Welche Metrik oder Retro zeigt, ob der Standard in der Praxis wirkt &ndash; und nicht nur auf dem Papier vollständig aussieht?</span></div>
     </div></div>
     <p style="margin-top:16px;">Keine dieser sechs Fragen widerlegt den Standard &ndash; im Gegenteil, sie zeigen, wie ernst er das eigene Prinzip nimmt: Auch ein Standard, der Reproduzierbarkeit und Nachvollziehbarkeit einfordert, muss sich diesen Maßstab irgendwann selbst gefallen lassen.</p>
+    <p>Neben diesem Prüf-Standard gibt es sieben Standards, nach denen die KI-Seite des Systemhauses gebaut wird. Wofür jeder steht und wo er schon angewendet wird, auch in den beiden Bibliotheken (TDF-Bibliothek und HI-Bibliothek), zeigt die Anhang-Box <a class="inref" href="#kap-sieben-standards">Die sieben Standards</a>.</p>
+  </section></div>
+
+  <div class="box-shell"><section class="appendix" id="kap-sieben-standards">
+    <span class="eyebrow">Anhang</span>
+    <h2>Die sieben Standards hinter Navis und Lumen</h2>
+    <p>Diese Standards regeln, wie die KI-Seite des Systemhauses gebaut wird, nicht den Betrieb bei den Kunden. Je ein kurzer Eintrag sagt, wofür ein Standard steht und wo er bisher angewendet wird (Stand der Repositorys: 06.11.2026).</p>
+    <div class="box-shell-flow"><div class="defbox">
+      <div class="defbox-head">Standard &middot; wofür &middot; wo schon angewendet</div>
+      <div class="defitem">
+        <span class="term">ADG <i>&ndash; AI Development Governance</i></span>
+        <p>Wer bei der Entwicklung von Navis und Lumen was entscheiden darf, Mensch oder KI, regelt die AI Development Governance. Bisher wird sie im Projekt eher als Haltung gelebt als als festes Prüftor.</p>
+      </div>
+      <div class="defitem">
+        <span class="term">AQGS <i>&ndash; Application Quality Gate Standard</i></span>
+        <p>Ob eine Funktion fertig ist, misst der Application Quality Gate Standard. Das Sysingboard war seine erste Referenzumsetzung, alle Report-Apps führen ein eigenes Profil, ohne damit schon ein &sbquo;bestanden&lsquo; zu behaupten.</p>
+      </div>
+      <div class="defitem">
+        <span class="term">TDF <i>&ndash; Technical Documentation Framework</i></span>
+        <p>Das Technical Documentation Framework gibt Dokumenten und Nachweisen ihre Ordnung, im Sysingboard etwa im Artefakt- und Nachweisregister.</p>
+      </div>
+      <div class="defitem">
+        <span class="term">SEC <i>&ndash; Security Standard</i></span>
+        <p>Der Sicherheitsstandard liefert die Basisanforderungen. In den Apps hinter Navis und Lumen ist er bisher noch nicht ausdrücklich verankert.</p>
+      </div>
+      <div class="defitem">
+        <span class="term">DSG <i>&ndash; DSGVO-Compliance</i></span>
+        <p>Die DSGVO-Anforderungen liegen als eigener Standard vor. Ein ausdrücklicher Bezug in den Apps fehlt noch.</p>
+      </div>
+      <div class="defitem">
+        <span class="term">AI <i>&ndash; AI-Act-Compliance</i></span>
+        <p>Was die EU-KI-Verordnung von Navis und Lumen verlangt, ist als Standard beschrieben. Angewendet wird er bisher nur in den Bibliotheken, als Leitlinie.</p>
+      </div>
+      <div class="defitem">
+        <span class="term">LIB <i>&ndash; Bibliothek</i></span>
+        <p>Wie eine Bibliothek Wissen prüft und freigibt, legt der Bibliothek-Standard fest. Ennos TDF-Bibliothek ist danach abgeglichen, die HI-Bibliothek führt einen eigenen Abgleich und steht damit noch am Anfang; keiner der beiden Abgleiche behauptet, dass der Standard erfüllt ist.</p>
+      </div>
+      <div class="defitem-note">Bei SEC, DSG und AI beschreibt die Box eine Lücke, keine Erfüllung. Den Prüf-Standard &bdquo;Functional is not Done&ldquo; erklärt der <a class="inref" href="#kap-standard">vorige Anhang</a>.</div>
+    </div></div>
   </section></div>
 
   <div class="box-shell"><section class="appendix" id="kap-versionen">
@@ -2305,6 +2348,11 @@
           <td>1.38</td>
           <td>07.11.2026</td>
           <td>Neue Geschichte &bdquo;Die veralteten Daten&ldquo; (Mira, Dornbach Fensterbau, Reiner Voss: Navis liest einen korrekt genannten, aber veralteten Stand) vor &bdquo;Ankunft, noch einmal&ldquo;, dazu in Teil&nbsp;2 die Anhang-Box &bdquo;Datenstand&ldquo; mit der Fehlerklasse &bdquo;schlechter Kontext&ldquo; und einem Video-Hinweis. Außerdem drei sachliche Klarstellungen nach Abgleich mit den realen Repos: (1) &bdquo;Aggregation&ldquo; getrennt in technisches Zusammenführen (Areport, erlaubt) und Bewerten oder Verdichten zu Scores (nicht erlaubt) &ndash; in &bdquo;Woher kommen die Infos&ldquo; und in Petras Regel in &bdquo;Warum Navis und Lumen&ldquo;. (2) Das Sysingboard läuft nicht mehr rein im Browser: Anmeldung und Rollenprüfung laufen bereits über den Server, einige Module speichern noch im Browser, die Anbindung ist im Aufbau &ndash; in &bdquo;Kaffeeecke&ldquo; und &bdquo;Woher kommen die Infos&ldquo;. (3) Lumen ist für alle Reports der Report-Familie zuständig, liest sie aber nur über den Hub; der Hub liest nur Areport. Nach dem Lektorat R19 elf Korrekturen (R26): Rechnung bei Lumen (fünf statt sechs), Wochentag in &bdquo;Die veralteten Daten&ldquo; auf Freitag passend zu Reiners Arbeitszeiten, Workshop-Termin Ende November auch in &bdquo;So ist es gedacht&ldquo; und in der Fußzeile, &bdquo;morgen Vormittag&ldquo; in &bdquo;Navis meldet sich&ldquo;, sechs Arbeitspaket-Entwürfe statt vier, die Verfügbarkeit der Kernsysteme am Konferenztisch jetzt bei Lumen statt bei Navis, dazu Grammatik und Umlaute im Anhang. Danach weitere Lektoratspunkte (R38): einheitliche Rechtschreibung mit ß, Report-Namen klein wie die Repo-Namen, A7 statt Landstraße, Teil&nbsp;2 als &bdquo;anderer Morgen&ldquo;, Kleinkorrekturen an Zeitlinie, Wortwahl und Zuständigkeiten von Navis und Lumen.</td>
+        </tr>
+        <tr>
+          <td>1.39</td>
+          <td>09.11.2026</td>
+          <td>Neue Anhang-Box &bdquo;Die sieben Standards&ldquo; hinter dem Prüf-Standard mit je einem kurzen Eintrag zu ADG, AQGS, TDF, SEC, DSG, AI und LIB, nur mit belegten Aussagen aus dem Abgleich mit den realen Repositorys (Stand 06.11.2026); &bdquo;Functional is not Done&ldquo; verweist darauf. Fußnote im Wissensblock zu TDF und ADR: ADR ist dort der Dokumenttyp, nicht der Standard ADG, dessen früherer Kurzname ADR als Alias bis 30.06.2027 gilt.</td>
         </tr>
       </tbody>
     </table>
