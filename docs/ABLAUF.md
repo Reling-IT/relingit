@@ -192,3 +192,16 @@ Solange die Datei fehlt, gilt das Paket für das Skript als ungeschützt und kan
 ## Offene Punkte
 
 - Keine offenen Punkte zum Ablauf. Die Belege dieser Seite werden nicht automatisch geprüft; nach größeren Änderungen an README, NEUE-GESCHICHTE oder den Skripten die Suchbegriffe stichprobenartig mit `git grep` kontrollieren.
+
+## Upload-Paket prüfen (scripts/pruefe-paket.ps1, Auftrag R62)
+
+Vor einem FTP-Upload prüft `scripts/pruefe-paket.ps1` das ZIP aus `build-upload.ps1` reproduzierbar. Die Ausgabe ist eine Markdown-Tabelle wie in der Upload-Checkliste (R51) und kann direkt in einen Bericht übernommen werden. Das Skript liest nur: Die Einträge werden direkt aus dem ZIP gehasht, es wird nichts auf die Platte entpackt.
+
+```powershell
+./scripts/pruefe-paket.ps1 -Zip "output/ftp/<Paket>.zip" -Vorgaenger "archive/ftp-packages/<Zeitstempel>/<Vorgänger>.zip" -ErwartetHash <SHA-256 des ZIP>
+```
+
+- Manifest: Jede Datei im ZIP wird per SHA-256 mit `UPLOAD-MANIFEST.txt` verglichen. Gemeldet werden Abweichungen, im Manifest genannte, aber fehlende Dateien und zusätzliche Dateien ohne Manifestzeile; dazu die Anzahl der Einträge.
+- Vorgänger (optional, ZIP oder entpackter Ordner): je Nutzdatei geändert, neu oder unverändert, dazu Dateien, die nur im Vorgänger stehen (entfallen).
+- Exit-Code: 0 Paket gleich Manifest (und ZIP-Hash gleich `-ErwartetHash`), 1 Abweichung (Prüfsumme, fehlende oder zusätzliche Datei, Manifest fehlt, ZIP-Hash ungleich `-ErwartetHash`), 2 Abbruch ohne Prüfung (ZIP oder Vorgänger fehlt oder ist nicht lesbar).
+- Tests: `tests/pruefe-paket.Tests.ps1` (kleine Testpakete im TestDrive).
