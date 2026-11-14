@@ -28,6 +28,7 @@ sitzungsroutine:
     - ops/reports, reports/STATUS.yaml
     - ops/reports, letzter reports/TAGESBERICHT-JJJJ-MM-TT.md
   ziel: offen            # keine Ziel- oder Meilensteindatei im Repository; Hinweis: YAML-Felder Projektstatus und Roadmap im letzten Tagesbericht
+  steckbrief: docs/PILOT.md
   geschuetzt: [main, ops/queue, ops/reports]
   protokoll:
     repo: Reling-IT/relingit
