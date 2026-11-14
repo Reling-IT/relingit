@@ -114,3 +114,10 @@ Weil `main` aktuelle Branches verlangt (strict), wurde jeder PR vor dem Merge pe
 ## Nachtrag (09:35): Entscheidung zu #27
 
 - Entscheidung des Product Owners (Weg A): #27 wird wie #33 und #35 in R60 aufgenommen. R60 baut auf main 057f9f0 plus #27, #33, #35, zieht `anhang.html` auf 1.39 nach und öffnet einen Draft-PR mit grüner CI; #27, #33, #35 gelten mit dessen Merge als mitgemergt. Für den Planer: `queue/R60.yaml` (Aufbau, abhaengig_von) entsprechend anpassen.
+
+## Nachtrag (10:00): #32 gemergt, R60 als Draft-PR #37
+
+- #32 nach Nachzug `docs/ABLAUF.md` (f5115b9) mit Freigabe des Product Owners gemergt (69cae23). Eigener Worktree `wt/relingit/r56` und lokaler Branch entfernt.
+- R60: Draft-PR #37 (Head e31c893), main plus #27, #33, #35, 80 Seiten, CI grün. Bericht `reports/R60-BERICHT.md`. Paket nicht hochgeladen.
+- Renderumgebung `C:\dev\venv-pdf`: Playwright 1.64.1 → 1.64.0 (Pin). Chromium-Builds unverändert.
+- Offen: #27, #33, #35 (in #37 aufgenommen), #37 (Draft). Nach Merge von #37 und Schließen der drei: ein offener PR weniger als die Grenze.
