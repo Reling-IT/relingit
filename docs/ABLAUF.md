@@ -44,7 +44,7 @@ flowchart TD
     D["Skript<br/>prüft Version, Datum, Historie, PDF-Kennung,<br/>liest Seitenzahl mit pdfinfo,<br/>prüft PDF-Version mit pdftotext"]
     E["Skript<br/>kopiert source nach story/current,<br/>setzt Rückfallwerte in app.js,<br/>lesen.html und index.html"]
     F["Skript<br/>ruft ci-check.ps1 auf"]
-    G["Skript<br/>verschiebt alte Pakete nach archive,<br/>build-upload.ps1 prüft erneut und baut<br/>ZIP mit Manifest in output/ftp"]
+    G["Skript<br/>verschiebt alte Pakete nach archive,<br/>meldet Pakete älter als die letzten drei,<br/>build-upload.ps1 prüft erneut und baut<br/>ZIP mit Manifest in output/ftp"]
     H["Skript<br/>gibt Übergabe an den Admin-Bereich aus:<br/>Version, Datum, Seitenzahl, Dateien,<br/>Handout geändert, FTP-Upload nötig"]
     I["Bernd/Owner<br/>Branch und Pull Request auf main"]
     J["CI<br/>Website prüfen: ci-check.ps1,<br/>JavaScript-Syntax, Git-Historie,<br/>Whitespace"]
@@ -77,6 +77,20 @@ flowchart TD
 Legende: blau Bernd/Owner, grün Skript, gelb CI. Supabase (M) ist kein Verantwortlicher, sondern das Zielsystem des Admin-Bereichs.
 
 Reihenfolge: Erst Pull Request und Merge, dann Upload über den Admin-Bereich (`docs/NEUE-GESCHICHTE.md`, Schritte 4 und 5).
+
+## Ordner-Hash für Archivpakete (scripts/ordner-hash.ps1, Auftrag R55)
+
+Vor dem Löschen eines Pakets aus `archive/ftp-packages` wird geprüft, ob es noch genau dem inventarisierten Stand entspricht. Dafür berechnet `scripts/ordner-hash.ps1` den Ordner-Hash nach der Methode aus R45/R48. Das Skript liest nur; es schreibt, verschiebt und löscht nichts.
+
+```powershell
+./scripts/ordner-hash.ps1 -Pfad "archive/ftp-packages/<Zeitstempel>" -Erwartet <Hash aus dem Inventurbericht>
+```
+
+- Methode: alle Dateien (auch versteckte), Zeile `<SHA-256 groß>  <relativer Pfad mit \>`, Zeilen mit LF verbunden ohne Schluss-LF, UTF-8 ohne BOM, davon SHA-256.
+- Sortierung: **kulturabhängig**, `Sort-Object FullName -Culture de-DE` (ohne Groß-/Kleinschreibung), wie bei der Inventur R45. Ordinal sortiert steht z. B. `UPLOAD-MANIFEST.txt` vor `admin.html`, und der Hash weicht ab (Fehlstart R48). `-Sortierung Ordinal` gibt es nur zum Vergleich.
+- Cloud-Platzhalter: Vor dem ersten Lesen prüft das Skript nur die Attribute (Offline, RecallOnOpen, RecallOnDataAccess; Maske wie R45). Bei einem Treffer listet es die Einträge und bricht ohne Hash ab. Es wird nichts hydriert.
+- Exit-Code: 0 Hash berechnet (und gleich `-Erwartet`), 1 Abweichung von `-Erwartet`, 2 Abbruch ohne Hash (Ordner fehlt, leer, Platzhalter). `-Zeilen` gibt die gehashten Zeilen zum Vergleich aus.
+- Tests: `tests/ordner-hash.Tests.ps1` (kleiner Testordner im TestDrive).
 
 ## Belegtabelle
 
@@ -142,6 +156,38 @@ Reihenfolge: Erst Pull Request und Merge, dann Upload über den Admin-Bereich (`
 | O: Paket liegt in `output/ftp`, Upload von Hand | docs/DOMAINFACTORY-DEPLOYMENT.md › FTP-Paket hochladen; scripts/publish-release.ps1 „Upload erfolgt von Hand“ |
 | P: Nach dem Veröffentlichen die öffentliche Landingpage prüfen, im privaten Browserfenster | docs/NEUE-GESCHICHTE.md › 5. Über den Admin-Bereich hochladen; docs/DOMAINFACTORY-DEPLOYMENT.md › Vor dem FTP-Upload |
 | R/S: Podcast nur bei geändertem Erzähltext neu erzeugen | docs/NEUE-GESCHICHTE.md › 6. Podcast |
+
+## 3. Aufbewahrung alter FTP-Pakete (archive/ftp-packages)
+
+Seit R49 (Entscheidung Bernd vom 09.11.2026). `publish-release.ps1` verschiebt alte Pakete aus `output/ftp` nach `archive/ftp-packages/<Zeitstempel>` (Schritt G) und meldet danach, welche Pakete aufgeräumt werden könnten.
+
+Regel:
+
+1. Die **letzten drei Pakete** bleiben immer. „Letzte“ richtet sich nach dem Zeitstempel im Ordnernamen (`yyyyMMdd-HHmmss-fff`, z. B. `20260905-193924-327`), nicht nach dem Änderungsdatum. Geschützte Pakete zählen bei den drei mit (Entscheidung Bernd vom 10.11.2026).
+2. Ältere Pakete werden **nur gemeldet**. Das Skript löscht, verschiebt und ändert im Archiv nichts. Gelöscht wird nur nach Freigabe durch Bernd, je Paket, als eigener Aufräumauftrag (Verfahren wie R45/R48: Ordner-Hash, Papierkorb).
+3. **Geschützte Pakete werden nie gemeldet**, egal wie alt.
+4. Ordner, deren Name kein solcher Zeitstempel ist, gelten nicht als Paket; das Skript nennt sie nur als Hinweis.
+5. Fehlt `archive/ftp-packages`, meldet das Skript „Ordner fehlt, nichts zu melden“ und läuft weiter.
+
+**Geschützt** ist ein Paket, wenn in seinem Ordner eine Datei `GESCHUETZT.txt` liegt. Das Skript prüft nur, ob diese Datei existiert; der Inhalt wird nie gelesen und darf frei einen Grund nennen (Datum, wer, warum). Gründe für diesen Weg:
+
+- Die Markierung liegt beim Paket. Wird ein Ordner verschoben oder aus dem Papierkorb wiederhergestellt, bleibt der Schutz erhalten; eine getrennte Liste könnte veralten.
+- Die Prüfung braucht keinen Dateiinhalt. OneDrive-Platzhalter (nur online verfügbare Dateien) werden dadurch nicht heruntergeladen; das Skript liest nur Verzeichnisnamen und Dateisystem-Metadaten, berechnet keine Größen und geht nicht rekursiv in die Pakete.
+- Schutz setzen und aufheben ist ohne Skript nachvollziehbar: Datei anlegen bzw. entfernen.
+
+Beispiel: Das Paket `20260905-193924-327` ist geschützt (R13, R45, R48). Bernd markiert es einmalig, z. B. in PowerShell im Projektordner:
+
+```powershell
+Set-Content -LiteralPath "archive/ftp-packages/20260905-193924-327/GESCHUETZT.txt" -Value "Geschützt laut R45/R48, 09.11.2026, Bernd"
+```
+
+Solange die Datei fehlt, gilt das Paket für das Skript als ungeschützt und kann gemeldet werden; gelöscht wird es dadurch trotzdem nicht.
+
+| Aussage | Quelle (Datei › Abschnitt oder „Suchbegriff“) |
+|---|---|
+| Meldung nach dem Verschieben, nur Anzeige | scripts/publish-release.ps1 „Nur melden (R49)“ |
+| Sortierung nach Zeitstempel im Namen, Markierung `GESCHUETZT.txt`, keine Dateiinhalte | scripts/publish-release.ps1 „Get-FtpPaketAufbewahrung“ |
+| Tests mit mehreren Paketen, geschütztem, leerem und fehlendem Ordner | tests/publish-release.Tests.ps1 „Aufbewahrung archive/ftp-packages“ |
 
 ## Offene Punkte
 

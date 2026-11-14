@@ -17,6 +17,12 @@ Eingabe:
                     .gitignore eingetragen).
     -AudioOrdner    Ordner mit den lokalen Podcast-MP3 (Standard:
                     <Projekt>/assets/audio).
+    -Paket          Upload-Paket aus scripts/build-upload.ps1 (ZIP oder
+                    Ordner). Standard: das jüngste
+                    <Projekt>/output/ftp/relingit-upload-v<Version>-*.zip.
+                    Ein Paket ohne Audio (Name endet auf -ohne-audio oder
+                    Manifest mit Zeile "Ohne Audio:") macht die MP3-Prüfung
+                    in G6 nicht zutreffend.
     -OhnePester     Pester-Tests nicht ausführen (G1 dann offen).
     -OhneGh         Pull-Request-Stand nicht mit gh abfragen (Teile von G2
                     und G7 dann offen).
@@ -38,6 +44,7 @@ param(
     [string]$Version = "",
     [string]$AusgabeOrdner = "",
     [string]$AudioOrdner = "",
+    [string]$Paket = "",
     [switch]$OhnePester,
     [switch]$OhneGh
 )
@@ -50,7 +57,9 @@ if (-not $AudioOrdner) { $AudioOrdner = Join-Path $Projekt "assets/audio" }
 $pwshPfad = (Get-Process -Id $PID).Path
 
 # Ergebniswerte laut docs/freigabe.yaml. Rangfolge für die Zusammenfassung je Tor.
-$rang = @{ "bestanden" = 0; "offen" = 1; "gesperrt" = 2; "nicht bestanden" = 3 }
+# "nicht zutreffend" zählt nicht gegen das Tor (z. B. MP3-Prüfung bei einem Paket ohne Audio).
+$rang = @{ "nicht zutreffend" = -1; "bestanden" = 0; "offen" = 1; "gesperrt" = 2; "nicht bestanden" = 3 }
+$nichtBlockierend = @("bestanden", "nicht zutreffend")
 $pruefungen = [System.Collections.Generic.List[object]]::new()
 function Add-Pruefung([string]$Tor, [string]$Name, [string]$Ergebnis, [string]$Nachweis) {
     $pruefungen.Add([pscustomobject]@{ Tor = $Tor; Pruefung = $Name; Ergebnis = $Ergebnis; Nachweis = $Nachweis })
@@ -237,8 +246,51 @@ if ($skripte.Count -eq 0) {
 }
 
 # --- G6 Lokal ----------------------------------------------------------------
+# Upload-Paket ermitteln: -Paket oder das jüngste Paket dieser Version unter output/ftp.
+$paketPfad = ""
+if ($Paket) {
+    if (-not (Test-Path -LiteralPath $Paket)) { throw "Paket nicht gefunden: $Paket" }
+    $paketPfad = (Resolve-Path -LiteralPath $Paket).Path
+} else {
+    $kandidat = Get-ChildItem -LiteralPath (Join-Path $Projekt "output/ftp") -Filter "relingit-upload-v$Version-*.zip" -File -ErrorAction SilentlyContinue |
+        Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    if ($kandidat) { $paketPfad = $kandidat.FullName }
+}
+$paketName = if ($paketPfad) { Split-Path -Leaf $paketPfad } else { "" }
+$paketOhneAudio = $false
+$paketMp3 = @()
+if ($paketPfad) {
+    # Inhalt lesen: Dateiliste und UPLOAD-MANIFEST.txt, aus ZIP oder Ordner.
+    $manifest = ""
+    if (Test-Path -LiteralPath $paketPfad -PathType Container) {
+        $paketDateien = @(Get-ChildItem -LiteralPath $paketPfad -Recurse -File | ForEach-Object { $_.FullName.Substring($paketPfad.Length + 1).Replace('\', '/') })
+        $manifestPfad = Join-Path $paketPfad "UPLOAD-MANIFEST.txt"
+        if (Test-Path -LiteralPath $manifestPfad) { $manifest = Get-Content -Raw -Encoding utf8 -LiteralPath $manifestPfad }
+    } else {
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $archiv = [System.IO.Compression.ZipFile]::OpenRead($paketPfad)
+        try {
+            $paketDateien = @($archiv.Entries | Where-Object { -not $_.FullName.EndsWith('/') } | ForEach-Object { $_.FullName.Replace('\', '/') })
+            $eintrag = $archiv.Entries | Where-Object { $_.FullName -eq "UPLOAD-MANIFEST.txt" } | Select-Object -First 1
+            if ($eintrag) {
+                $leser = New-Object System.IO.StreamReader($eintrag.Open(), [System.Text.Encoding]::UTF8)
+                try { $manifest = $leser.ReadToEnd() } finally { $leser.Dispose() }
+            }
+        } finally {
+            $archiv.Dispose()
+        }
+    }
+    $paketMp3 = @($paketDateien | Where-Object { $_ -like "assets/audio/*.mp3" })
+    $paketOhneAudio = ($paketName -match '-ohne-audio(\.zip)?$') -or ($manifest -match '(?m)^Ohne Audio:')
+}
+
 $summenDatei = Join-Path $Projekt "assets/audio/SHA256SUMS.txt"
-if (-not (Test-Path -LiteralPath $summenDatei)) {
+if ($paketOhneAudio -and $paketMp3.Count -gt 0) {
+    Add-Pruefung "G6" "Podcast-MP3 gegen SHA256SUMS.txt" "nicht bestanden" "Paket $paketName ist als ohne Audio gekennzeichnet, enthält aber $($paketMp3.Count) MP3: $($paketMp3 -join ', ')"
+} elseif ($paketOhneAudio) {
+    # Entscheidung Bernd, 10.11.2026 (Auftrag R54): Bei einem Paket ohne Audio gilt die MP3-Prüfung nicht.
+    Add-Pruefung "G6" "Podcast-MP3 gegen SHA256SUMS.txt" "nicht zutreffend" "Paket $paketName enthält keine Podcast-MP3 (ohne Audio); die Live-MP3 bleiben beim Upload unverändert, darum entfällt der Prüfsummenvergleich"
+} elseif (-not (Test-Path -LiteralPath $summenDatei)) {
     Add-Pruefung "G6" "Podcast-MP3 gegen SHA256SUMS.txt" "nicht bestanden" "assets/audio/SHA256SUMS.txt fehlt"
 } else {
     $erwartet = [ordered]@{}
@@ -253,6 +305,7 @@ if (-not (Test-Path -LiteralPath $summenDatei)) {
         if ((Get-FileHash -Algorithm SHA256 -LiteralPath $pfad).Hash -eq $erwartet[$name]) { $passend += $name } else { $abweichend += $name }
     }
     $text = "$($passend.Count) von $($erwartet.Count) passend"
+    $text = if ($paketName) { "Paket ${paketName} mit Audio; $text" } else { "kein Upload-Paket gefunden; $text" }
     if ($abweichend.Count -gt 0) { $text += "; abweichend: $($abweichend -join ', ')" }
     if ($fehlend.Count -gt 0) { $text += "; nicht vorhanden in ${AudioOrdner}: $($fehlend -join ', ')" }
     $ergebnis = if ($erwartet.Count -eq 0 -or $abweichend.Count -gt 0) { "nicht bestanden" } elseif ($fehlend.Count -gt 0) { "offen" } else { "bestanden" }
@@ -380,7 +433,7 @@ foreach ($tor in @("G3", "G4", "G5")) {
 # --- G8 Freigabe Bernd: nie automatisch, gesperrt solange etwas fehlt. -----------
 $sperrgruende = @()
 foreach ($tor in @("G1", "G2", "G6", "G7")) {
-    $schlecht = @($pruefungen | Where-Object { $_.Tor -eq $tor -and $_.Ergebnis -ne "bestanden" })
+    $schlecht = @($pruefungen | Where-Object { $_.Tor -eq $tor -and $_.Ergebnis -notin $nichtBlockierend })
     if ($schlecht.Count -gt 0) { $sperrgruende += "$tor $(($schlecht | ForEach-Object Ergebnis | Sort-Object { $rang[$_] } -Descending | Select-Object -First 1))" }
 }
 foreach ($tor in @("G3", "G4", "G5")) {

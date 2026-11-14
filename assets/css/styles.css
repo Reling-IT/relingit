@@ -253,16 +253,17 @@ h2 {
   top: 57%;
   font: 600 0.75rem ui-monospace, monospace;
   letter-spacing: 0.08em;
+  text-align: center;
 }
 
-.signal::before {
+/* Bildmarke der Figur (assets/img/avatare, R11); feste Größe ohne Layoutsprung. */
+.signal img {
   display: block;
-  width: 8px;
-  height: 8px;
-  margin: auto auto 7px;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 8px;
   border-radius: 50%;
-  box-shadow: 0 0 0 6px currentColor;
-  content: "";
+  box-shadow: 0 0 0 3px currentColor;
 }
 
 .navis { left: 18%; color: var(--cyan); }
@@ -289,6 +290,15 @@ h2 {
 .story-copy {
   color: var(--muted);
   font-size: 1.15rem;
+}
+
+/* Kleine Bildmarke direkt vor dem Namen der Figur im Fließtext (R11). */
+.figure-mark {
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: 0.3em;
+  border-radius: 50%;
+  vertical-align: -0.3em;
 }
 
 /* ---------- Podcast feature ---------- */
@@ -566,6 +576,10 @@ footer nav { text-align: right; }
   gap: 12px;
 }
 
+.viewer-brand .button {
+  white-space: nowrap;
+}
+
 .viewer-brand img {
   display: block;
   width: 46px;
@@ -713,6 +727,7 @@ footer nav { text-align: right; }
   .audio-card { padding: 18px; }
   .audio-links { align-items: flex-start; flex-direction: column; gap: 4px; }
   .viewer-header { align-items: stretch; flex-direction: column; }
+  .viewer-brand { flex-wrap: wrap; }
   .viewer-header .button { width: 100%; }
   .reader-navigation { grid-template-columns: 1fr; }
   .reader-navigation label,
