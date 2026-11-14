@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Anhang der Geschichte Die Fahrt zum Kunden: Handout-Vorlage, Architekturbilder, ZAVKK-Quelle, Prüf-Standard und Versionshistorie.">
+  <title>Anhang | Die Fahrt zum Kunden</title>
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/story-viewer.js?v=20261109-1" defer></script>
+</head>
+<body class="viewer-page">
+  <header class="viewer-header">
+    <div class="viewer-brand">
+      <a href="index.html" aria-label="Zurück zur Landingpage"><img src="assets/img/reling-it-logo.svg" alt="Reling IT"></a>
+      <a class="button secondary" href="index.html">← Zurück</a>
+      <a class="button secondary" href="lesen.html">Zur Geschichte</a>
+    </div>
+    <div class="reader-navigation">
+      <label for="chapter-select">Inhaltsverzeichnis</label>
+      <select id="chapter-select" disabled>
+        <option value="">Anhang wird geladen …</option>
+      </select>
+      <span id="current-section" aria-live="polite">Anfang</span>
+    </div>
+    <div class="zoom-controls" aria-label="Textgröße des Anhangs">
+      <button id="zoom-out" type="button" aria-label="Ansicht verkleinern">−</button>
+      <button id="zoom-reset" type="button" aria-label="100 % – Originalgröße wiederherstellen">100 %</button>
+      <button id="zoom-in" type="button" aria-label="Ansicht vergrößern">+</button>
+    </div>
+    <div class="viewer-meta">
+      <span id="story-status" role="status">Anhang wird geladen …</span>
+      <strong id="story-release">Version 1.38 · 7. November 2026</strong>
+    </div>
+  </header>
+  <main class="viewer-main">
+    <!-- Inhalt: die Anhang-Bloecke der Buchfassung (Supabase, sonst lokal), im Browser herausgeschnitten (R46). -->
+    <iframe
+      id="story-frame"
+      title="Anhang zu Die Fahrt zum Kunden"
+      sandbox="allow-same-origin"
+      referrerpolicy="no-referrer"
+      data-extract="anhang"
+      data-top-label="Anfang des Anhangs"
+      data-outside-target="lesen.html"
+      data-status-text="Anhang aus der Buchfassung"
+    ></iframe>
+    <p class="viewer-fallback" id="story-error" hidden>
+      Der Anhang konnte nicht geladen werden. Bitte versuchen Sie es später erneut.
+    </p>
+  </main>
+</body>
+</html>
