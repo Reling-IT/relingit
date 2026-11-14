@@ -89,3 +89,24 @@ Roadmap:
 ## Nachtrag (09:06): Chromium-Vorab-Schritt
 
 - Entscheidung des Product Owners: Vorab-Schritt „Chromium für Playwright vorhanden?“ mit Prüfbefehl als ein Satz in `docs/PDF-ERZEUGEN.md`, umgesetzt im Draft-PR von R60 (kein eigener PR). Für den Planer: in `queue/R60.yaml` aufnehmen.
+
+## Nachtrag (09:30): Merge auf Anweisung des Product Owners
+
+Anweisung des Product Owners: „alle mergen“ (die acht freigegebenen PRs). Abweichung von `CLAUDE.md` („Gemergt wird nicht von einer KI-Sitzung“) auf ausdrückliche Anweisung, hier vermerkt.
+
+Weil `main` aktuelle Branches verlangt (strict), wurde jeder PR vor dem Merge per `gh pr update-branch` auf main gebracht. Vor jedem Merge geprüft: die geänderten Zeilen des PRs gleich denen des freigegebenen Heads; CI grün; Merge mit `--match-head-commit`.
+
+| PR | freigegeben | gemergter Head | Merge |
+| --- | --- | --- | --- |
+| #25 | d1257f7 | d1257f7 | 657079e |
+| #28 | 81f8e48 | 97bf8d8 | eae78f1 |
+| #26 | 2133502 | 2151cfe | 6b31a02 |
+| #30 | 586404f | 2a6c500 | 96b4633 |
+| #31 | b2bc305 | 43cc604 | 80ae442 |
+| #34 | 82ddf15 | 99b6a84 | bf3559b |
+| #36 | 8129697 | 4cc32f6 | 057f9f0 |
+
+- **#27 nicht gemergt:** nach Update (Head fb83613, Änderungszeilen gleich) CI rot: „Versionsangabe in anhang.html weicht von lesen.html ab“. Ursache: #26 bringt `anhang.html` mit 1.38, #27 hebt `lesen.html` auf 1.39. Der Nachzug „anhang.html 1.39“ steht in `queue/R60.yaml`.
+- main 057f9f0: CI grün, `ci-check.ps1` lokal Exit 0. Arbeitsklon per Fast-Forward nachgezogen.
+- Offen: #27 (Ready, rot), #32, #33, #35 (Draft). Vier Agenten-PRs, Grenze 3.
+- #32 braucht jetzt den Nachzug `docs/ABLAUF.md` (Konflikt mit #30).
