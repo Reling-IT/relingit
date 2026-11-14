@@ -92,6 +92,20 @@ Vor dem Löschen eines Pakets aus `archive/ftp-packages` wird geprüft, ob es no
 - Exit-Code: 0 Hash berechnet (und gleich `-Erwartet`), 1 Abweichung von `-Erwartet`, 2 Abbruch ohne Hash (Ordner fehlt, leer, Platzhalter). `-Zeilen` gibt die gehashten Zeilen zum Vergleich aus.
 - Tests: `tests/ordner-hash.Tests.ps1` (kleiner Testordner im TestDrive).
 
+## Aufräumen prüfen: Worktrees und Branches (scripts/aufraeumen-pruefen.ps1)
+
+Nach einem Merge zeigt `./scripts/aufraeumen-pruefen.ps1` nur lesend als Tabelle, was sich aufräumen lässt. Das Skript löscht nichts, pusht nichts und ändert keine Refs; Löschen bleibt Handarbeit. Git läuft mit `GIT_OPTIONAL_LOCKS=0` und `--no-optional-locks`. Ein `git fetch --prune origin` erfolgt nur mit dem Schalter `-Fetch`, sonst gilt der zuletzt geholte Stand von `origin/main`.
+
+| Spalte | Prüfung |
+|---|---|
+| sauber | `git status --porcelain` je Worktree ohne Ausgabe |
+| ignorierte Dateien | `git status --porcelain --ignored`, Zeilen mit `!!` (zum Beispiel `output/`, `reports/`). `git worktree remove` löscht sie mit, deshalb vorher sichern. |
+| in origin/main | ja: `git merge-base --is-ancestor`; Squash-gleich: `git diff --quiet` gegen die Basis oder Patch-ID des Gesamtdiffs (`git patch-id --stable`) in einem Commit der Basis; nein: mit Anzahl eigener Commits und `git diff --shortstat` |
+| Remote | Upstream und Abstand, „gelöscht“ bei entferntem Remote-Branch |
+| Empfehlung | reiner Text, zum Beispiel `git branch -d` (Vorfahre) oder `git branch -D` (Squash); belassen werden `main`, `ops/queue`, `ops/reports`, der Arbeitsklon und Worktrees mit Änderungen |
+
+Aufruf: `./scripts/aufraeumen-pruefen.ps1` (Tabelle) oder `./scripts/aufraeumen-pruefen.ps1 -Markdown` (für Berichte); `-Basis` wählt einen anderen Vergleichsstand. Grundlage sind die Prüfungen aus dem Aufräumbericht R44 (`ops/reports`, `reports/R44-BERICHT.md`). Tests: `tests/aufraeumen-pruefen.Tests.ps1`.
+
 ## Belegtabelle
 
 ### Verzeichniskarte

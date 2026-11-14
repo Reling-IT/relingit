@@ -14,11 +14,11 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
 - `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md); Tagesstart für KI-Sitzungen in [docs/TAGESSTART.md](docs/TAGESSTART.md)
 - `docs/vorlagen`: Kapitel-Vorlage und Einbau-Checkliste für neue Geschichten
-- `scripts`: lokale und CI-Prüfungen, Freigabeprüfung (`freigabe-pruefen.ps1`) und lokale Vorschau (`vorschau.ps1`), siehe [docs/FREIGABE.md](docs/FREIGABE.md)
+- `scripts`: lokale und CI-Prüfungen, Freigabeprüfung (`freigabe-pruefen.ps1`) und lokale Vorschau (`vorschau.ps1`), siehe [docs/FREIGABE.md](docs/FREIGABE.md); Aufräumprüfung für Worktrees und Branches (`aufraeumen-pruefen.ps1`, nur lesend, siehe [docs/ABLAUF.md](docs/ABLAUF.md#aufräumen-prüfen-worktrees-und-branches-scriptsaufraeumen-pruefenps1))
 - `scripts/pdf`: freiwillige Werkzeuge zum Erzeugen und Prüfen der PDF (siehe [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md))
 - `source`: ursprüngliche Quelldateien, die nicht veröffentlicht werden
 - `supabase`: Datenbank, RLS, Edge Function und Sicherheitsprüfungen
-- `tests`: Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1` und `vorschau.ps1`
+- `tests`: Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1`, `vorschau.ps1` und `aufraeumen-pruefen.ps1`
 - Projektstamm: öffentlich aufrufbare Seiten mit `.htaccess`, README, Lizenz, Wartungsskript, `CLAUDE.md` (Hinweise und Sitzungsroutine für KI-Sitzungen) sowie `.gitignore` und `.gitattributes`
 
 Inhalte unter `archive/` werden nicht zu GitHub übertragen und dürfen nicht auf den DomainFactory-Webspace kopiert werden. Die genaue Ablageregel steht in `archive/README.md`.
@@ -60,7 +60,7 @@ Diese Werkzeuge sind freiwillig und keine Voraussetzung für `ci-check.ps1`.
 `publish-release.ps1` braucht dagegen `pdfinfo` und `pdftotext` aus Poppler
 (Einrichtung: [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md), Schritt 4).
 
-Die Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1` und `vorschau.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
+Die Pester-Tests für `ci-check.ps1`, `publish-release.ps1`, `build-upload.ps1`, `freigabe-pruefen.ps1`, `vorschau.ps1` und `aufraeumen-pruefen.ps1` laufen im Projektordner mit `Invoke-Pester -Path tests` (Zielversion Pester 5, läuft auch mit dem in Windows mitgelieferten Pester 3.4; die PDF-Tests brauchen `pdftotext`). Sie nutzen nur kleine Fixtures unter `tests/fixtures` in einem temporären Mini-Projekt.
 
 ### Veröffentlichung über Supabase
 
