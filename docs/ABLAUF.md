@@ -78,6 +78,20 @@ Legende: blau Bernd/Owner, grün Skript, gelb CI. Supabase (M) ist kein Verantwo
 
 Reihenfolge: Erst Pull Request und Merge, dann Upload über den Admin-Bereich (`docs/NEUE-GESCHICHTE.md`, Schritte 4 und 5).
 
+## Ordner-Hash für Archivpakete (scripts/ordner-hash.ps1, Auftrag R55)
+
+Vor dem Löschen eines Pakets aus `archive/ftp-packages` wird geprüft, ob es noch genau dem inventarisierten Stand entspricht. Dafür berechnet `scripts/ordner-hash.ps1` den Ordner-Hash nach der Methode aus R45/R48. Das Skript liest nur; es schreibt, verschiebt und löscht nichts.
+
+```powershell
+./scripts/ordner-hash.ps1 -Pfad "archive/ftp-packages/<Zeitstempel>" -Erwartet <Hash aus dem Inventurbericht>
+```
+
+- Methode: alle Dateien (auch versteckte), Zeile `<SHA-256 groß>  <relativer Pfad mit \>`, Zeilen mit LF verbunden ohne Schluss-LF, UTF-8 ohne BOM, davon SHA-256.
+- Sortierung: **kulturabhängig**, `Sort-Object FullName -Culture de-DE` (ohne Groß-/Kleinschreibung), wie bei der Inventur R45. Ordinal sortiert steht z. B. `UPLOAD-MANIFEST.txt` vor `admin.html`, und der Hash weicht ab (Fehlstart R48). `-Sortierung Ordinal` gibt es nur zum Vergleich.
+- Cloud-Platzhalter: Vor dem ersten Lesen prüft das Skript nur die Attribute (Offline, RecallOnOpen, RecallOnDataAccess; Maske wie R45). Bei einem Treffer listet es die Einträge und bricht ohne Hash ab. Es wird nichts hydriert.
+- Exit-Code: 0 Hash berechnet (und gleich `-Erwartet`), 1 Abweichung von `-Erwartet`, 2 Abbruch ohne Hash (Ordner fehlt, leer, Platzhalter). `-Zeilen` gibt die gehashten Zeilen zum Vergleich aus.
+- Tests: `tests/ordner-hash.Tests.ps1` (kleiner Testordner im TestDrive).
+
 ## Belegtabelle
 
 ### Verzeichniskarte
