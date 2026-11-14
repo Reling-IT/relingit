@@ -6,7 +6,7 @@ $failures = [System.Collections.Generic.List[string]]::new()
 
 # Diese Dateien bilden die minimale veröffentlichungsfähige Website.
 $requiredFiles = @(
-    ".htaccess", "index.html", "lesen.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "impressum.html", "datenschutz.html",
+    ".htaccess", "index.html", "lesen.html", "anhang.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "impressum.html", "datenschutz.html",
     "story/current/fahrt-zum-kunden.html", "story/current/geschichte.pdf", "story/current/workshop-handout.html", "story/current/workshop-handout.pdf",
     "assets/img/reling-it-logo.svg", "assets/img/favicon.png",
     "assets/css/styles.css", "assets/css/legal.css",
@@ -32,6 +32,7 @@ $supabaseConfigText = Get-Content -Raw -LiteralPath "supabase/config.toml"
 $viewerTexts = @(
     Get-Content -Raw -LiteralPath "lesen.html"
     Get-Content -Raw -LiteralPath "handout.html"
+    if (Test-Path -LiteralPath "anhang.html") { Get-Content -Raw -LiteralPath "anhang.html" }
 )
 if ($adminText -notmatch '/factors/.+/challenge' -or $adminText -notmatch '/factors/.+/verify') {
     $failures.Add("Adminbereich enthält keinen vollständigen MFA-Challenge-/Verify-Ablauf")
@@ -103,6 +104,42 @@ if ($storyInternalLinks.Count -eq 0) {
     $failures.Add("Geschichte enthält keine prüfbaren internen Inhaltsverzeichnis-Links")
 }
 
+# Anhang-Seite (R07, R46): anhang.html schneidet die Blöcke section.appendix im
+# Browser aus der Buchfassung heraus und baut daraus ihr Inhaltsverzeichnis.
+# Dafür braucht jeder Block eine Überschrift (h2) und eine eindeutige, stabile
+# ID: an der section oder, falls dort keine steht, an ihrer ersten h2. Die ID
+# hat die Form kap-<name> und kommt im ganzen Buch genau einmal vor. Geprüft
+# wird nur die Buchquelle; eine erzeugte Datei gibt es nicht.
+function Test-AppendixAnchors([string]$text, [string]$label) {
+    $found = [System.Collections.Generic.List[string]]::new()
+    $blocks = [regex]::Matches($text, '<section\s+class="appendix"(?<attr>[^>]*)>(?<inhalt>[\s\S]*?)</section>')
+    if ($blocks.Count -eq 0) { $found.Add("${label}: keine Anhang-Blöcke (section.appendix)") }
+    $seen = @{}
+    foreach ($block in $blocks) {
+        $line = ([regex]::Matches($text.Substring(0, $block.Index), "`n")).Count + 1
+        $heading = [regex]::Match($block.Groups['inhalt'].Value, '<h2(?<attr>[^>]*)>(?<titel>[\s\S]*?)</h2>')
+        $title = if ($heading.Success) {
+            ([System.Net.WebUtility]::HtmlDecode([regex]::Replace($heading.Groups['titel'].Value, '<[^>]+>', '')) -replace '\s+', ' ').Trim()
+        } else { "" }
+        if (-not $title) { $found.Add("${label}: Anhang-Block in Zeile ${line} ohne Überschrift (h2) für das Inhaltsverzeichnis") }
+        $sectionId = [regex]::Match($block.Groups['attr'].Value, '\sid="(?<id>[^"]*)"')
+        $headingId = if ($heading.Success) { [regex]::Match($heading.Groups['attr'].Value, '\sid="(?<id>[^"]*)"') } else { [System.Text.RegularExpressions.Match]::Empty }
+        $id = if ($sectionId.Success) { $sectionId.Groups['id'].Value } elseif ($headingId.Success) { $headingId.Groups['id'].Value } else { "" }
+        if (-not $id) {
+            $found.Add("${label}: Anhang-Block in Zeile $line ('$title') ohne ID an section.appendix oder an der ersten h2")
+        } elseif ($id -notmatch '^kap-[a-z0-9]+(?:-[a-z0-9]+)*$') {
+            $found.Add("${label}: Anhang-Block in Zeile $line ('$title'): ID '$id' entspricht nicht dem Muster kap-<name>")
+        } elseif ($seen.ContainsKey($id)) {
+            $found.Add("${label}: Anhang-Block in Zeile $line ('$title'): ID '$id' schon in Zeile $($seen[$id]) vergeben")
+        } else {
+            $seen[$id] = $line
+            $count = [regex]::Matches($text, '\sid="' + [regex]::Escape($id) + '"').Count
+            if ($count -ne 1) { $found.Add("${label}: Anhang-Block in Zeile $line ('$title'): ID '$id' kommt im Buch $count-mal vor") }
+        }
+    }
+    return $found
+}
+
 # Versionsnummer und Veröffentlichungsdatum müssen in Landingpage-Logik,
 # Leseansicht und eigentlicher Geschichte denselben Stand ausweisen.
 $appText = Get-Content -Raw -LiteralPath "assets/js/app.js"
@@ -131,6 +168,21 @@ $storyVersionMatch = if ($storyMeta.Success) {
 
 if (-not $appRelease.Success) { $failures.Add("Versionsangabe in assets/js/app.js nicht lesbar") }
 if (-not $readerRelease.Success) { $failures.Add("Versionsangabe in lesen.html nicht lesbar") }
+# Die Anhang-Seite trägt denselben Rückfallstand wie lesen.html; publish-release.ps1 setzt beide.
+if (Test-Path -LiteralPath "anhang.html") {
+    $anhangViewerText = Get-Content -Raw -LiteralPath "anhang.html"
+    $anhangRelease = [regex]::Match(
+        $anhangViewerText,
+        'id="story-release"[^>]*>\s*Version\s+(?<version>[^<·]+?)\s*·\s*(?<date>[^<]+?)\s*</strong>'
+    )
+    if (-not $anhangRelease.Success) {
+        $failures.Add("Versionsangabe in anhang.html nicht lesbar")
+    } elseif ($readerRelease.Success -and (
+        $anhangRelease.Groups['version'].Value.Trim() -ne $readerRelease.Groups['version'].Value.Trim() -or
+        $anhangRelease.Groups['date'].Value.Trim() -ne $readerRelease.Groups['date'].Value.Trim())) {
+        $failures.Add("Versionsangabe in anhang.html weicht von lesen.html ab")
+    }
+}
 if (-not $storyDateMatch.Success -or -not $storyVersionMatch.Success) {
     $failures.Add("Version oder Datum in der HTML-Geschichte nicht lesbar")
 }
@@ -289,6 +341,9 @@ function Test-StoryCompleteness([string]$text, [string]$label) {
 }
 foreach ($finding in (Test-StoryCompleteness $sourceStoryText "source/fahrt-zum-kunden.html")) {
     $failures.Add($finding)
+}
+foreach ($finding in (Test-AppendixAnchors $sourceStoryText "source/fahrt-zum-kunden.html")) {
+    $failures.Add("Anhang: $finding")
 }
 
 # Die freigegebene Rückfallfassung darf niemals hinter dem eindeutigen Eingang

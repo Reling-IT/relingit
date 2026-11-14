@@ -134,10 +134,12 @@ $app = Get-Content -Raw -LiteralPath $appPath
 $app = [regex]::Replace($app, '(fallbackRelease\s*=\s*\{[\s\S]*?version:\s*")[^"]+("[\s\S]*?date:\s*")[^"]+("[\s\S]*?pageCount:\s*)\d+', "`${1}$version`${2}$displayDate`${3}$PageCount", 1)
 Set-Content -LiteralPath $appPath -Value $app -Encoding utf8 -NoNewline
 
-$readerPath = "lesen.html"
-$reader = Get-Content -Raw -LiteralPath $readerPath
-$reader = [regex]::Replace($reader, '(<strong\s+id="story-release">)Version\s+[^<]+(</strong>)', "`${1}Version $version · $displayDate`${2}", 1)
-Set-Content -LiteralPath $readerPath -Value $reader -Encoding utf8 -NoNewline
+# Leseansicht und Anhang-Seite (R07) tragen denselben Rückfallstand.
+foreach ($readerPath in @("lesen.html", "anhang.html")) {
+    $reader = Get-Content -Raw -LiteralPath $readerPath
+    $reader = [regex]::Replace($reader, '(<strong\s+id="story-release">)Version\s+[^<]+(</strong>)', "`${1}Version $version · $displayDate`${2}", 1)
+    Set-Content -LiteralPath $readerPath -Value $reader -Encoding utf8 -NoNewline
+}
 
 # Die statische Seitenzahl der LP gilt ohne JavaScript und bis Supabase antwortet.
 # Sie muss deshalb denselben Wert wie fallbackRelease erhalten.
@@ -321,7 +323,7 @@ if (-not $gitCommand -or -not $baselineLabel) {
     # FTP-relevant laut Entscheidung q15.
     $ftpPaths = @("index.html", "assets/js", "impressum.html", "datenschutz.html")
     # Weitere öffentliche Dateien, die ebenfalls nur per FTP auf den Webspace kommen.
-    $otherPublicPaths = @(".htaccess", "lesen.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "assets/css", "assets/img")
+    $otherPublicPaths = @(".htaccess", "lesen.html", "anhang.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "assets/css", "assets/img")
 
     $ftpReasons = @()
     $fallbackOnly = @()
