@@ -7,11 +7,11 @@ Vorbereitet am 12.11.2026 (R66). Vorlage: `reports/SICHTUNG-v1.38.md` (26 Punkte
 | Feld | Inhalt |
 | --- | --- |
 | Version | 1.39 |
-| Datum der Fassung | _nach R60 eintragen_ (Entscheidung 11.11.: Renderdatum von R60, an allen Stellen gleich) |
-| Seitenzahl | _nach R60 eintragen_ (Trockenlauf R63: 80) |
-| Paket | _Dateiname nach R60 eintragen_ |
-| Paket-Hash (SHA-256) | _nach R60 eintragen_ |
-| Basis-Commit | _nach R60 eintragen_ |
+| Datum der Fassung | 14.11.2026 (Renderdatum R60) |
+| Seitenzahl | 80 (`pdfinfo`) |
+| Paket | `relingit-upload-v1.39-2026-11-14-ohne-audio.zip` (Worktree `C:\dev\wtelingit60\outputtp`) |
+| Paket-Hash (SHA-256) | `67E30FE4CE7590E40717E816A95401679B1A91CCFABA5283B1062B8C91FEE00E` |
+| Basis-Commit | PR #37, Head e31c893 (main 69cae23 plus #27, #33, #35) |
 | Gesichtet am / von | _Datum_ / Product Owner |
 
 ## So wird gesichtet
@@ -35,6 +35,30 @@ Die Vorschau zeigt die lokale Rückfallfassung des Zweigs und ruft Supabase nich
 | G6 Lokal |  |  |
 | G7 Git |  |  |
 | G8 Freigabe | gesperrt | erteilt nur der Product Owner, nach vollständiger Liste |
+
+## Seitenverweise im PDF (R60, 14.11.2026)
+
+Ermittelt mit `pdftotext` je Seite aus `story/current/geschichte.pdf` auf #37 (80 Seiten). Hilfe zum Auffinden, keine Prüfung.
+
+| Punkt | Stelle | Seite |
+| --- | --- | --- |
+| P01, P05, P08, I02 | Deckblatt, „Neu in v1.39“, Mini-TOC mit „Die sieben Standards“ | 1–2 |
+| P09 | Personenliste | 4 |
+| I03 | Kaffeeecke, Alarmkanal-Absatz (Backup-Ticket) | 6 |
+| I05 | Der Umweg, „Angefangen hat es vor gut einem Jahr“ | 7 |
+| I04 | Navis meldet sich, „niemand ist aktuell zugewiesen“ | 14 |
+| – | Kapitel Warum Navis und Lumen, „kleines Systemhaus“ (R50) | 28 |
+| I07 | Die veralteten Daten, Navis-Rede (Sysingboard) | 33 |
+| I06 | Die veralteten Daten, am Rack (zweiter Switch) | 34 |
+| P15, P14, I11 | Begriffsliste „(früher ADF)“ und Fußnote ADR/ADG | 43 |
+| P03, P07 | Codebox „Noras eckige Klammern“ | 44 |
+| – | Einordnungsabsatz vor den Architekturbildern (R69 Nr. 2, aus #35) | 57 |
+| – | „Functional is not Done“ auf die echten Apps bezogen, CI-Abschnitt (R69 Nr. 1, aus #35) | 60–61 |
+| P13, I10 | Verweis auf die Box (62), Box „Die sieben Standards“ | 62–64 |
+| P10 | „Realer Bezug“ (Teil 2) | 65 |
+| P12, I09 | Versionshistorie, Zeile 1.39 | 79 |
+
+Nicht einzeln zugeordnet: P04 (Seiten mit Schemagrafiken, ab Seite 57) und P11 (beliebige Szene mit Navis- und Lumen-Box, z. B. Seite 14).
 
 ## Webseiten (G4 UI)
 
