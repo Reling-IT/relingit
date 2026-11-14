@@ -110,3 +110,7 @@ Weil `main` aktuelle Branches verlangt (strict), wurde jeder PR vor dem Merge pe
 - main 057f9f0: CI grün, `ci-check.ps1` lokal Exit 0. Arbeitsklon per Fast-Forward nachgezogen.
 - Offen: #27 (Ready, rot), #32, #33, #35 (Draft). Vier Agenten-PRs, Grenze 3.
 - #32 braucht jetzt den Nachzug `docs/ABLAUF.md` (Konflikt mit #30).
+
+## Nachtrag (09:35): Entscheidung zu #27
+
+- Entscheidung des Product Owners (Weg A): #27 wird wie #33 und #35 in R60 aufgenommen. R60 baut auf main 057f9f0 plus #27, #33, #35, zieht `anhang.html` auf 1.39 nach und öffnet einen Draft-PR mit grüner CI; #27, #33, #35 gelten mit dessen Merge als mitgemergt. Für den Planer: `queue/R60.yaml` (Aufbau, abhaengig_von) entsprechend anpassen.
