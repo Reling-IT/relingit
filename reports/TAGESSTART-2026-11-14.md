@@ -78,3 +78,10 @@ Roadmap:
 - R76 erledigt: #25, #28, #26, #27 Ready for review, Head unverändert (`reports/R76-BERICHT.md`, 4529ff4). `queue/INDEX.yaml` führt R76 noch als bereit (pflegt der Planer).
 - Entscheidung des Product Owners: Auftrag für den Planer, `docs/TAGESSTART.md` als Draft-PR nachzuziehen (Worktree-Ablage `C:\dev\wt\relingit\` statt `C:\dev\wt-*`; Klonprüfung auf zwei Ordnerebenen). Erst nach dem Merge von #25, #28, #26, #27, wegen der PR-Grenze.
 - Doku auf main zuletzt geändert am 08.11.; neuere Stände nur in offenen PRs (#35 `docs/PDF-ERZEUGEN.md`, #30/#32 `docs/ABLAUF.md`, #36 `docs/PILOT.md`). Chromium-Vorab-Schritt steht nur in `queue/R60.yaml`.
+
+## Nachtrag (09:03): Freigabe Werkzeug-PRs, Sichtung #35
+
+- Entscheidung des Product Owners: Wortlaut der Anhang-Änderungen auf #35 wird bei der Sichtung im R60-PR geprüft (`SICHTUNG-v1.39.md`), nicht vorab.
+- Freigabe des Product Owners zum Merge, je mit Head: #30 586404f, #31 b2bc305, #34 82ddf15, #36 8129697. Head je PR verglichen, dann `gh pr ready`; alle vier isDraft=false, CLEAN, Website prüfen SUCCESS. Kein Merge durch diese Sitzung.
+- #32 (d6de9ee) nicht freigegeben: nach Merge von #30 Konflikt `docs/ABLAUF.md` nachziehen, danach neuer Head zur Freigabe.
+- Nach Merge der acht Ready-PRs bleiben drei Agenten-PRs offen (#32, #33, #35), Grenze dann eingehalten.
