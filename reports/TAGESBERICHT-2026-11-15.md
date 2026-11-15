@@ -164,11 +164,11 @@ Reifegrad: v1.39 auf main (a1b11a8), freigegeben (6E48827B...1B98); Trailer (#38
 Projektstatus: Paketbau mit Trailer am 16.11.; Upload v1.39 in rund einer Woche
 Offene_Fragen:
   - Trailer nach der Nacharbeit abnehmen?
-  - Stunden 15.11. abends (zusaetzlich zu den genannten 3)?
+
 Roadmap:
   Sprints_bis_BSF: 1
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
 
-**TA-09 Stunden (Nachtrag):** Auf die Frage nach den zusätzlichen Stunden am Abend des 15.11. hat der Product Owner „4“ genannt. Eintrag in `docs/PILOT.md` mit dem Doku-PR (Auftrag a); dort vorher bestätigen lassen, ob 4 zusätzlich (zusammen 7) gemeint ist.
+**TA-09 Stunden (Nachtrag):** Auf die Frage nach den zusätzlichen Stunden am Abend des 15.11. hat der Product Owner „4“ genannt. Vom Product Owner bestätigt: 4 zusätzlich, zusammen 7 Stunden am 15.11. Eintrag in `docs/PILOT.md` mit dem Doku-PR (Auftrag a).
