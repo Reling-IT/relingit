@@ -34,7 +34,7 @@ Die Vorschau zeigt die lokale Rückfallfassung des Zweigs und ruft Supabase nich
 | G5 Inhalt | vollständig, Bestätigung mit G8 | Liste unten: 13 von 13 Ja (`freigabe-pruefen.ps1`: 0 Nein, 0 leer) |
 | G6 Lokal | bestanden | Podcast-MP3: nicht zutreffend (Paket ohne Audio); Vorschau möglich |
 | G7 Git | bestanden | `freigabe-pruefen.ps1` 15.11.2026: sauber, Branch gleich origin, PR #37 Ready (Freigabe des Product Owners), Head a470a41, CI grün, CLEAN |
-| G8 Freigabe | offen | erteilt nur der Product Owner; alle Voraussetzungen erfüllt (G1 bis G7) |
+| G8 Freigabe | erteilt | Product Owner 15.11.2026, PR-Kommentar auf #37 (Head a470a41) |
 
 ## Seitenverweise im PDF (R60, 14.11.2026)
 
@@ -150,7 +150,7 @@ Webseiten-Tabelle: Spalten „Bereich“ und „Adresse“ zusammengelegt, weil 
 
 | Feld | Inhalt |
 | --- | --- |
-| Datum |  |
-| Wortlaut |  |
-| Paket und Hash |  |
-| Basis |  |
+| Datum | 15.11.2026 |
+| Wortlaut | „G8 Ja“ (Product Owner in der Sitzung); als PR-Kommentar festgehalten: https://github.com/Reling-IT/relingit/pull/37#issuecomment-6898191366 |
+| Paket und Hash | `relingit-upload-v1.39-2026-11-15-ohne-audio.zip`, SHA-256 `6E48827B3C69CC57C7CF20531327EAC7645E0A62587F16C469189205C75C1B98` |
+| Basis | PR #37, Head a470a41 |
