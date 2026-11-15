@@ -60,6 +60,8 @@ $publicFiles = @(
     "assets/audio/roman-als-ki-blaupause.mp3",
     "assets/img/favicon.png", "assets/img/reling-it-logo.svg",
     "assets/img/reling-it-podcast-cover.png",
+    # Trailer im Hero der Startseite mit Standbild (docs/TRAILER.md).
+    "assets/img/trailer-poster.jpg", "assets/video/fahrt-zum-kunden-trailer.mp4",
     # Bildmarken von Navis und Lumen auf der Startseite (R11); Ancora bleibt draußen.
     "assets/img/avatare/navis.svg", "assets/img/avatare/lumen.svg",
     "assets/js/admin.js", "assets/js/app.js", "assets/js/handout-viewer.js",

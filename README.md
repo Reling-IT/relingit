@@ -8,7 +8,8 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 
 - `assets/css`: gemeinsame Gestaltung und Rechtseiten-Stile
 - `assets/audio`: lokal ausgelieferter, KI-generierter Podcast (MP3 nicht im Repository, versioniert ist nur `SHA256SUMS.txt`, siehe `docs/PODCAST.md`)
-- `assets/img`: RelingIT-Logo, Browser-Symbol und Podcast-Cover
+- `assets/img`: RelingIT-Logo, Browser-Symbol, Podcast-Cover und Standbild des Trailers
+- `assets/video`: stummer Trailer im Hero der Startseite; Herkunft und Neuerzeugung in [docs/TRAILER.md](docs/TRAILER.md), Blender-Skript unter `scripts/trailer`
 - `assets/js`: öffentliche Logik, PDF-Ansicht, Administration und Supabase-Konfiguration
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`

@@ -32,7 +32,9 @@ $script:Platzhalter = @(
     "assets/fonts/Fraunces-OFL.txt", "assets/fonts/WorkSans-OFL.txt",
     "assets/fonts/IBMPlexMono-OFL.txt", "assets/fonts/HERKUNFT.txt",
     # Bildmarken der Startseite (seit R11 in $publicFiles von build-upload.ps1).
-    "assets/img/avatare/navis.svg", "assets/img/avatare/lumen.svg"
+    "assets/img/avatare/navis.svg", "assets/img/avatare/lumen.svg",
+    # Trailer im Hero mit Standbild (in $publicFiles von build-upload.ps1).
+    "assets/img/trailer-poster.jpg", "assets/video/fahrt-zum-kunden-trailer.mp4"
 )
 
 function Get-PwshPfad {
