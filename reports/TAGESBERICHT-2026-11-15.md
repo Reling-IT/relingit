@@ -111,3 +111,62 @@ Roadmap:
 ### Nachtrag (18:55): Upload-Checkliste v1.39
 
 Auf Wunsch des Product Owners: `reports/UPLOAD-CHECKLISTE-v1.39.md` (nur gelesen, kein Upload, keine Live-Abfrage). Paket `6E48827B…1B98` gleich main a1b11a8; je Datei SHA-256 und Änderung gegenüber v1.37 und v1.38. Wichtig: Handout im Admin-Bereich als Paar auswählen (gegenüber v1.37 und v1.38 geändert); `publish-release.ps1` meldete zuletzt „Handout geändert: nein“, weil es nur gegen den vorigen Commit vergleicht.
+### Nachtrag (21:45): Trailer, Startseiten-Link, Paket mit Trailer, Tagesabschluss
+
+**Erreicht**
+
+1. PR #38 (Trailer im Hero, Branch `trailer-hero`) geprüft. Doku und `publish-release.ps1` nachgezogen (f0b062f): `docs/TRAILER.md` Abschnitt „Hochladen“, `assets/video` in `NEUE-GESCHICHTE.md` (FTP-Fall), `ABLAUF.md` und in den von `publish-release.ps1` gemeldeten Pfaden. CI-Prüfung OK, Pester 54/54.
+2. Paket v1.39 mit Trailer gebaut: `relingit-upload-v1.39-2026-11-15-trailer-ohne-audio.zip` (`EE872316…1F48`), gegenüber dem freigegebenen `6E48827B…1B98` nur die fünf Trailer-Dateien anders. Nachtrag in `UPLOAD-CHECKLISTE-v1.39.md`. Wird morgen nach der Trailer-Nacharbeit ersetzt.
+3. Trailer-Nacharbeit läuft im Hintergrund: Schatten im Morgenlicht (Ursache eingegrenzt: flache Morgensonne, Weg-Quader), Standbild, quadratischer Hero auf dem Handy, `aria-hidden`. Ergebnis folgt als PR-Kommentar auf #38.
+4. Neuer Draft-PR #39: Link „direkt zum Kapitel ‚Aufbruch‘“ auf der Startseite (die Fahrt beginnt erst mit Kapitel 6, PDF S. 13); `ci-check.ps1` prüft Sprungmarken von `index.html` in die Lesefassung, Test dazu (9/9).
+
+**Entscheidungen des Product Owners**
+
+- Upload v1.39 in rund einer Woche, dann mit Trailer und Link.
+- Paket morgen ab 08:00 autonom bauen (Kreuzprüfung #38 + #39 auf main). Merge macht der Product Owner mit Head-SHA nach Sichtung des Trailers; KI-Sitzungen mergen nicht (`CLAUDE.md`).
+
+**TA-04 Git-Hygiene**
+
+| Prüfung | Ergebnis |
+|---|---|
+| `git fetch --prune` | erledigt |
+| Worktrees | `r60` (Branch auf GitHub gelöscht, gemergt; trägt das freigegebene Paket `6E48827B…`, erst nach dem Upload entfernen), `rep`, `trailer` (#38), `link-fahrt` (#39) |
+| gemergte lokale Branches | `auftrag-R60-v139` (an `r60` gebunden) |
+| Arbeitsklon | `main`, gleich `origin/main` (a1b11a8); lokaler Branch `ops/queue` 29 Commits hinter origin (nur Lesestand, nicht ausgecheckt) |
+| weitere Klone desselben Remotes | `C:\dev\reling-it\relingit` (bekannt, R70) |
+| offene PRs aus KI-Sitzungen | 2 (#38, #39), Grenze 3 |
+
+**Teil C Prüfung (nur melden)**
+
+| Fundstelle | Befund | Beleg | Vorschlag | Schweregrad |
+|---|---|---|---|---|
+| main a1b11a8 | ci-check ohne Befund | `scripts/ci-check.ps1` OK | – | – |
+| `index.html` | Repo-Link nur `Reling-IT/relingit`, keine Platzhalter | Suche | – | – |
+| `ops/queue` | nur 2 Aufträge bereit (R29, R76), Ziel mindestens 3; R60 steht noch auf „wartet_auf_voraussetzung“, ist aber gemergt | `queue/INDEX.yaml` | Planer: R60 erledigt, Aufträge a und b (Bericht oben) anlegen | Soll |
+
+**Nächste Aufgaben, geordnet**
+
+1. 16.11. ab 08:00 (autonom): Kreuzprüfung #38 + #39, Paket bauen, Checkliste aktualisieren, Head-SHAs zur Merge-Freigabe vorlegen.
+2. Product Owner: Trailer sichten (Vorschau, Kontrollbilder), #38 und #39 mergen, G8 mit Paket-Hash.
+3. Paket nach dem Merge gegen main abgleichen; Upload in rund einer Woche, danach R09 und Tag v1.39.
+4. Für v1.40: Wegweiser im Buch (Satz im Kasten „Aufbau“, Gliederung von Teil 1).
+
+### Vorschläge und Ideen (Claude)
+
+Empfehlungen, keine Fakten:
+
+- Upload-Pakete künftig immer aus `main` nach dem Merge bauen und nur zur Vorabprüfung aus einer Kreuzprüfung; dann gibt es je Version genau ein gültiges Paket.
+- Den Trailer in einer zweiten, kleineren Fassung (`--res 720`) für Handys prüfen, falls 1,9 MB zu viel sind.
+- Weitere Sprungmarken von der Startseite (z. B. auf den Anhang „Die neun Standards“) sind jetzt durch `ci-check.ps1` abgesichert und kosten wenig.
+
+```yaml
+Reifegrad: v1.39 auf main (a1b11a8), freigegeben (6E48827B...1B98); Trailer (#38) und Link (#39) in Arbeit
+Projektstatus: Paketbau mit Trailer am 16.11.; Upload v1.39 in rund einer Woche
+Offene_Fragen:
+  - Trailer nach der Nacharbeit abnehmen?
+  - Stunden 15.11. abends (zusaetzlich zu den genannten 3)?
+Roadmap:
+  Sprints_bis_BSF: 1
+  Sprints_bis_MVP: 2
+  Hinweis: unbelegte Schaetzung
+```
