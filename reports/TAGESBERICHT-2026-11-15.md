@@ -107,3 +107,7 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+### Nachtrag (18:55): Upload-Checkliste v1.39
+
+Auf Wunsch des Product Owners: `reports/UPLOAD-CHECKLISTE-v1.39.md` (nur gelesen, kein Upload, keine Live-Abfrage). Paket `6E48827B…1B98` gleich main a1b11a8; je Datei SHA-256 und Änderung gegenüber v1.37 und v1.38. Wichtig: Handout im Admin-Bereich als Paar auswählen (gegenüber v1.37 und v1.38 geändert); `publish-release.ps1` meldete zuletzt „Handout geändert: nein“, weil es nur gegen den vorigen Commit vergleicht.
