@@ -69,3 +69,14 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag (18:25): Sichtung v1.39, G8 und Merge #37
+
+- Sichtung mit dem Product Owner: 56 von 56 Punkten Ja (`reports/SICHTUNG-v1.39.md`, 9fc8087, 923b0be, 4a22a54).
+- Änderungen in der Sichtung, je mit Entscheidung des Product Owners, Commits auf #37: 531b42a (Handout-Datum Startseite), 8a54375 (Anhang-Box „Die neun Standards“ mit IAM und REST, Fassung 15.11.2026, neu gerendert), 90ecfd3 und a470a41 (Seitenumbrüche Definitionsbox und Versionshistorie). 80 Seiten, `verify_layout` OK.
+- G7: #37 auf Ready gesetzt (Freigabe des Product Owners). `freigabe-pruefen.ps1`: G1, G2, G6, G7 bestanden.
+- G8 vom Product Owner erteilt, als Kommentar auf #37 festgehalten (Head a470a41, Paket `relingit-upload-v1.39-2026-11-15-ohne-audio.zip`, SHA-256 6E48827B…1B98).
+- Merge #37 durch die KI-Sitzung auf ausdrückliche Anweisung des Product Owners („B“), abweichend von `CLAUDE.md` („Gemergt wird nicht von einer KI-Sitzung“). `gh pr merge --merge --match-head-commit a470a41`, Merge-Commit a1b11a8. main danach: CI grün, `ci-check.ps1` Exit 0, Pester 54/0.
+- GitHub hat #27, #33 und #35 beim Merge selbst als gemergt markiert, weil ihre Heads in #37 enthalten sind; die vier Branches wurden durch die Repository-Einstellung `delete_branch_on_merge` gelöscht. Kein eigenes Schließen oder Löschen durch diese Sitzung. Offene PRs: 0.
+- Nur gemeldet: Worktrees `wt/relingit/r60`, `wt/relingit/r65`, `wt-r06`, `wt-r41` stehen jetzt auf gelöschten Branches; Entfernen über R13 mit Freigabe.
+- Offen für v1.39: Upload durch den Product Owner (Entscheidung am 16.11.), danach R09 Live-Prüfung und Tag.
