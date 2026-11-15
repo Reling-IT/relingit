@@ -170,3 +170,5 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+**TA-09 Stunden (Nachtrag):** Auf die Frage nach den zusätzlichen Stunden am Abend des 15.11. hat der Product Owner „4“ genannt. Eintrag in `docs/PILOT.md` mit dem Doku-PR (Auftrag a); dort vorher bestätigen lassen, ob 4 zusätzlich (zusammen 7) gemeint ist.
