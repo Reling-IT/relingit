@@ -18,6 +18,22 @@ Erzeugt am 15.11.2026 mit Blender 5.3.0 (EEVEE) in einer KI-Sitzung. Die Szene i
 - `assets/js/app.js`: startet das Video, außer das System meldet `prefers-reduced-motion: reduce`. Ohne JavaScript bleibt das Standbild stehen.
 - `scripts/build-upload.ps1`: Video und Standbild stehen in `$publicFiles` und gehen mit dem FTP-Paket auf den Webspace.
 - Die Content-Security-Policy in `.htaccess` braucht keine Änderung (`default-src 'self'` gilt auch für Medien).
+- `scripts/vorschau.ps1` liest die Dateiliste aus `build-upload.ps1`; die lokale Vorschau zeigt den Trailer also mit.
+- `scripts/publish-release.ps1` meldet Änderungen unter `assets/video` als „Hinweis: weitere öffentliche Dateien geändert“.
+
+## Hochladen
+
+Der Trailer geht nur per FTP live, nicht über den Admin-Bereich ([FTP-Fall in docs/NEUE-GESCHICHTE.md](NEUE-GESCHICHTE.md#ftp-fall)). Mit dem Trailer gehören fünf Dateien zusammen und werden in einem Durchgang übertragen:
+
+| Datei | Änderung |
+|---|---|
+| `assets/video/fahrt-zum-kunden-trailer.mp4` | neu, neuer Ordner auf dem Webspace |
+| `assets/img/trailer-poster.jpg` | neu |
+| `index.html` | `<video>` im Hero |
+| `assets/css/styles.css` | Regel `.hero-video` |
+| `assets/js/app.js` | Start des Videos |
+
+Das Paket wird wie jedes andere mit `scripts/build-upload.ps1` gebaut. Für v1.39 mit Trailer: `./scripts/build-upload.ps1 -OhneAudio -Suffix trailer`, damit es sich im Namen vom freigegebenen Paket ohne Trailer unterscheidet. Ohne Trailer zurück: diese fünf Dateien aus dem Vorgängerpaket zurückspielen; Video und Standbild dürfen auf dem Webspace stehen bleiben, die alte `index.html` verweist nicht darauf.
 
 ## Neu erzeugen
 

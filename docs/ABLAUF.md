@@ -18,7 +18,7 @@ flowchart LR
     root --> scripts["scripts<br/>publish-release.ps1, ci-check.ps1,<br/>build-upload.ps1, freigabe-pruefen.ps1,<br/>vorschau.ps1<br/>lokale und CI-Prüfungen"]
     scripts --> pdfwerkzeug["scripts/pdf<br/>render_story_pdf.py, verify_layout.py<br/>PDF erzeugen und Layout prüfen<br/>freiwillig, siehe docs/PDF-ERZEUGEN.md"]
     root --> tests["tests<br/>Pester-Tests für ci-check.ps1<br/>und publish-release.ps1"]
-    root --> assets["assets<br/>css: Gestaltung<br/>img: Logo und Browser-Symbol<br/>js: öffentliche Logik, PDF-Ansicht,<br/>Administration, Supabase-Konfiguration"]
+    root --> assets["assets<br/>css: Gestaltung<br/>img: Logo, Browser-Symbol, Trailer-Standbild<br/>video: Trailer der Startseite<br/>js: öffentliche Logik, PDF-Ansicht,<br/>Administration, Supabase-Konfiguration"]
     assets --> audio["assets/audio und Podcast-Cover<br/>nur lokal, nicht in Git,<br/>siehe docs/PODCAST.md"]
     root --> docs["docs<br/>redaktionelle, Supabase-<br/>und FTP-Anleitungen,<br/>PDF-ERZEUGEN, PODCAST"]
     docs --> vorlagen["docs/vorlagen<br/>Kapitel-Vorlage und<br/>Einbau-Checkliste"]
