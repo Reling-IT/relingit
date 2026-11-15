@@ -33,8 +33,8 @@ Die Vorschau zeigt die lokale Rückfallfassung des Zweigs und ruft Supabase nich
 | G4 UI | vollständig, Bestätigung mit G8 | Liste unten: 28 von 28 Ja (`freigabe-pruefen.ps1`: 0 Nein, 0 leer) |
 | G5 Inhalt | vollständig, Bestätigung mit G8 | Liste unten: 13 von 13 Ja (`freigabe-pruefen.ps1`: 0 Nein, 0 leer) |
 | G6 Lokal | bestanden | Podcast-MP3: nicht zutreffend (Paket ohne Audio); Vorschau möglich |
-| G7 Git | offen | sauber, Branch gleich origin, CI grün; PR #37 ist noch Draft |
-| G8 Freigabe | gesperrt | erteilt nur der Product Owner, nach vollständiger Liste |
+| G7 Git | bestanden | `freigabe-pruefen.ps1` 15.11.2026: sauber, Branch gleich origin, PR #37 Ready (Freigabe des Product Owners), Head a470a41, CI grün, CLEAN |
+| G8 Freigabe | offen | erteilt nur der Product Owner; alle Voraussetzungen erfüllt (G1 bis G7) |
 
 ## Seitenverweise im PDF (R60, 14.11.2026)
 
