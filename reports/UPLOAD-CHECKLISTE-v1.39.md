@@ -147,3 +147,33 @@ Empfehlungen, keine Fakten:
 - `publish-release.ps1` „Handout geändert“ und „FTP-Upload nötig“ gegen den letzten veröffentlichten Stand (Tag oder Paket) vergleichen lassen statt gegen den vorigen Commit (wie in R60 vorgeschlagen, Schalter `-VergleichMit`).
 - Nach dem Upload den Paket-Hash im R09-Bericht festhalten; dann ist der Live-Stand künftig belegt.
 - Die Tabelle dieser Checkliste per Skript aus ZIP und Vergleichspaketen erzeugen (heute so entstanden), damit sie bei jedem Release gleich aussieht.
+
+## Nachtrag 15.11.2026, 21:20: Paket mit Trailer (PR #38)
+
+Auf Wunsch des Product Owners: v1.39 zusätzlich mit dem stummen Trailer im Hero der Startseite (PR #38, Branch `trailer-hero`). Buchfassung, Version, Datum, Seitenzahl und Handout bleiben gleich; Abschnitt 3 (Admin-Bereich) gilt unverändert.
+
+| | Wert |
+|---|---|
+| Datei | `C:\dev\wt\relingit\trailer\output\ftp\relingit-upload-v1.39-2026-11-15-trailer-ohne-audio.zip` |
+| SHA-256 | **`EE872316445B13968A6166A372D9F911FF6233A7734F37CE1198A875F2AA1F48`** |
+| Größe / Einträge | 6 752 355 Byte, **41 Einträge** (40 Nutzdateien + `UPLOAD-MANIFEST.txt`) |
+| Gebaut aus | Worktree `trailer-hero`, `./scripts/build-upload.ps1 -OhneAudio -Suffix trailer`; `pruefe-paket.ps1` Exit 0 |
+
+Gegenüber dem freigegebenen Paket `6E48827B…1B98` (`pruefe-paket.ps1 -Vorgaenger`): 3 geändert, 2 neu, 35 unverändert, 0 entfallen.
+
+| Datei | SHA-256 | Byte | ggü. `6E48827B…` |
+|---|---|---|---|
+| `index.html` | `CC8B1B5926A4651C3DCE8BF38C704098B8CE14FD4FA276A4BB5ECCC3F6739B73` | 12 855 | **geändert** |
+| `assets/css/styles.css` | `AC749FE38566C733BB45CF01C0078FA9BAF2C151835212A9510539FC2F300E82` | 14 833 | **geändert** |
+| `assets/js/app.js` | `C8EE58A9A6808568E272A273C28AA79872783635E7C2BE0ADE5AAC5C3811ACD3` | 4 511 | **geändert** |
+| `assets/img/trailer-poster.jpg` | `517B3E974E5D86EA6F2FE63FCF6C8950483B5B4B66001750719A455B616931B5` | 50 760 | **neu** |
+| `assets/video/fahrt-zum-kunden-trailer.mp4` | `AF2029CB187CF36A6974C5DE3D02A8D24E71FFCDE5F1A68D6F0DAD5F9F84EC86` | 1 985 177 | **neu** (neuer Ordner) |
+
+Änderungen an der Reihenfolge (Abschnitt 2), nur wenn dieses Paket hochgeladen wird:
+
+- Block 1 zusätzlich: `assets/video/` (ganzer Ordner, neu) und `assets/img/trailer-poster.jpg`, jeweils **vor** `index.html`.
+- Block 2 unverändert: `index.html` mit `assets/js/app.js` in einem Durchgang; `styles.css` liegt schon in Block 1.
+- Kurzabnahme zusätzlich: Startseite zeigt im Hero den Trailer (stumm, Schleife); bei „Bewegung reduzieren“ nur das Standbild; `/relingit/assets/video/fahrt-zum-kunden-trailer.mp4` liefert HTTP 200.
+- Rückfall auf das Paket ohne Trailer: `index.html`, `styles.css`, `app.js` aus `6E48827B…` zurückspielen; Video und Standbild können stehen bleiben.
+
+**Freigabe offen:** G8 vom 15.11.2026 gilt für `6E48827B…1B98` (Head a470a41). Für das Paket mit Trailer braucht es die Tore nach `docs/FREIGABE.md` für PR #38 und eine eigene Freigabe durch den Product Owner; bis dahin bleibt `6E48827B…1B98` das freigegebene Paket. Nicht live geprüft: Desktop-Breite, Safari/iOS.
