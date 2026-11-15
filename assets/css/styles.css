@@ -715,7 +715,8 @@ footer nav { text-align: right; }
   .site-header nav { display: none; }
   .hero { grid-template-columns: 1fr; padding-top: 52px; }
   .hero h1 { font-size: clamp(4rem, 20vw, 6rem); }
-  .hero-art { height: 380px; }
+  /* Quadratisch wie der Trailer (1080 × 1080), damit er auf dem Handy nicht beschnitten wird. */
+  .hero-art { height: auto; aspect-ratio: 1; }
   .story,
   .podcast,
   .podcast-faq,
@@ -734,6 +735,8 @@ footer nav { text-align: right; }
 
 @media (max-width: 520px) {
   .podcast { padding-top: 64px; }
+  /* Im kleinen quadratischen Hero die Signale höher setzen, sonst überdecken sie das Auto. */
+  .signal { top: 40%; }
   .audio-card { padding: 18px; }
   .audio-links { align-items: flex-start; flex-direction: column; gap: 4px; }
   .viewer-header { align-items: stretch; flex-direction: column; }

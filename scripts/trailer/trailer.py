@@ -114,6 +114,7 @@ M_HOUSE = material("Haus", "#f3efe6")
 M_ROOF = material("Dach", "#9a5a44")
 M_WINDOW = material("Fenster", "#ffc76a", emit=9)
 M_DOOR = material("Tuer", "#1b4f66")
+M_PATH = material("Weg", "#60768a")
 
 # ---------- Landschaft ----------
 random.seed(7)
@@ -146,7 +147,13 @@ add("cube", "FensterL", M_WINDOW, loc=(HX - 4.02, HY - 1.6, 2.6), scale=(0.05, 0
 add("cube", "FensterR", M_WINDOW, loc=(HX - 4.02, HY + 1.6, 2.6), scale=(0.05, 0.8, 0.8), size=2)
 add("cube", "FensterS", M_WINDOW, loc=(HX - 1.5, HY - 3.52, 2.6), scale=(0.8, 0.05, 0.8), size=2)
 add("cube", "Tuer", M_DOOR, loc=(HX + 1.6, HY - 3.52, 1.3), scale=(0.7, 0.05, 1.3), size=2)
-add("cube", "Weg", M_ROAD, loc=(HX / 2 + 1, HY - 9, 0.02), scale=(HX / 2 + 1, 1.6, 0.01), size=2)
+# Weg von der Strasse zur Tuer: flache Flaechen knapp ueber dem Boden, ohne Schattenwurf
+# (frueher ein Quader im Strassenmaterial, der als dunkles Rechteck vor dem Haus schwebte)
+WEG_Y = HY - 5.0
+for name, loc, scale in (("Weg", ((3.5 + HX + 1.6) / 2, WEG_Y, 0.012), ((HX + 1.6 - 3.5) / 2 + 0.6, 0.6, 1)),
+                         ("WegTuer", (HX + 1.6, (WEG_Y + HY - 3.5) / 2, 0.013), (0.6, (HY - 3.5 - WEG_Y) / 2, 1))):
+    w = add("plane", name, M_PATH, loc=loc, scale=scale, size=2)
+    w.visible_shadow = False
 light("Hauslicht", 'POINT', 700, "#ffc76a", loc=(HX - 6.5, HY - 4, 3))
 light("Hauslicht2", 'POINT', 500, "#ffc76a", loc=(HX - 1, HY - 7, 2.5))
 
@@ -190,9 +197,17 @@ navis = add("ico_sphere", "Navis", M_NAVIS, subdivisions=3, smooth_shade=True, p
 lumen = add("ico_sphere", "Lumen", M_LUMEN, subdivisions=3, smooth_shade=True, parent=rig)
 light("NavisLicht", 'POINT', 500, "#55d6c2", parent=navis)
 light("LumenLicht", 'POINT', 500, "#f1b854", parent=lumen)
+# Navis und Lumen sind selbst Lichter und werfen keinen Schatten (sonst dunkler Fleck am Boden)
+for o in (navis, lumen):
+    o.visible_shadow = False
 
 moonlight = light("Mondlicht", 'SUN', 0.5, "#9fc4d6", rot=(math.radians(35), 0, math.radians(-30)))
-sun = light("Morgenlicht", 'SUN', 0.0, "#ffcf8a", rot=(math.radians(-78), 0, math.radians(-25)))
+# Morgensonne von links hinten (rund 25 Grad ueber dem Horizont), damit die Schatten von
+# Haus und Auto kurz bleiben und von der Kamera weg fallen. Frueher stand sie mit 12 Grad
+# gegenueber der Kamera; das Haus warf dann einen rund 30 m langen, hart begrenzten Schatten
+# ueber den Vordergrund.
+sun = light("Morgenlicht", 'SUN', 0.0, "#ffcf8a", rot=(math.radians(65), 0, math.radians(-30)))
+sun.data.angle = math.radians(4)
 
 # ---------- Himmel mit Verlauf ----------
 world = bpy.data.worlds.new("Himmel")
