@@ -139,3 +139,37 @@ elingit` (Stand 27.10.), nur gemeldet |
 - Aufgeräumt: Vorschau beendet; Worktree `r86` und Branch `auftrag-R86-v140` entfernt (Sichtung und Freigabebericht vorher nach `ops/reports` kopiert, Prüfpaket D6396E99 überholt).
 - Nächste Sitzung: Upload v1.39 → R09 → Tag v1.39 (907ca58) → Upload v1.40 → R09 → Tag v1.40 (84ae342) → R53.
 
+## Abschließender Tagesabschluss, 08:55
+
+### Ergebnis des Tages
+
+| Bereich | Stand | Beleg |
+|---|---|---|
+| v1.39 | vollständig auf `main` (907ca58, mit Trailer und Link), Paket 476622E7…8AA1, nicht hochgeladen, kein Tag | UPLOAD-CHECKLISTE-v1.39.md |
+| v1.40 | gesichtet (32/32), G8 erteilt, gemergt (84ae342), Paket C4107586…7537, nicht hochgeladen, kein Tag | UPLOAD-CHECKLISTE-v1.40.md, PR #41 |
+| Lokale Vorschau | v1.40 aus `main` gestartet (127.0.0.1:8043), auf Wunsch des Product Owners | – |
+| Queue | R84, R85, R86, R77 erledigt; R52 mit Hinweis Tag auf 907ca58 | `ops/queue` 177c72e |
+| Stunden | 2 (Product Owner, TA-09), in PILOT.md | 6e68c6a |
+
+### TA-04 Git-Hygiene (Endstand)
+
+| Prüfung | Ergebnis |
+|---|---|
+| `git fetch --prune` | ausgeführt |
+| Remote-Branches | nur `main`, `ops/queue`, `ops/reports` |
+| Offene PRs | 0 |
+| Arbeitsklon | `main` = `origin/main` 84ae342, sauber |
+| `ops/reports`, `ops/queue` (Worktrees `rep`, `queue`) | gleich `origin` |
+| Worktrees auf gemergten Branches, gemeldet | `r60` (auftrag-R60-v139), `trailer` (trailer-hero): enthalten ignorierte Paketarchive; Entfernen über R53 nach Bestätigung |
+| Worktree `paket-v139` | Vorgängerpaket CDF23C5F, überholt durch 476622E7; Entfernen über R53 |
+| Weitere Klone | `C:\develing-itelingit` (Stand 27.10.), über R53 klären |
+| Lose Dateien in `C:\dev` | keine neuen |
+
+### Arbeitspaket nächste Sitzung (ca. 2 Stunden)
+
+- **Ziel:** v1.39 und v1.40 veröffentlichen und taggen.
+- **Schritte:** Upload v1.39 (PO) → R09 (inkl. Safari/iOS Trailer) → R52 Tag v1.39 auf 907ca58 → Upload v1.40 (PO, 7 Dateien) → R09 v1.40 → Tag v1.40 auf 84ae342 → R53 (Worktrees r60, trailer, paket-v139; zweiter Klon; Pakete).
+- **Abnahme:** beide Fassungen live geprüft, Tags v1.39 und v1.40 gesetzt, keine Worktrees auf gemergten Branches.
+- **Vorbedingungen:** Upload durch den Product Owner; Freigabe je Tag.
+- **Risiken:** Trailer in Safari/iOS ungeprüft; Live-MP3 beim Upload nicht löschen.
+
