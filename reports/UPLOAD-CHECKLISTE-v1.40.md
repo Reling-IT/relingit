@@ -16,6 +16,7 @@ datum: 2026-11-16
 | Prüfung | `pruefe-paket.ps1` Exit 0. Gegen das Prüfpaket D6396E99 (Worktree r86) 4 Dateien „geändert“: lesen.html, anhang.html, story/current/fahrt-zum-kunden.html, story/current/workshop-handout.html; Ursache nur Zeilenenden (Prüfpaket LF, `main`-Checkout CRLF), Inhalt ohne CR gleich (sha256 verglichen) |
 | Freigabe | Sichtung 32/32 Ja, G8 v1.40 als Kommentar an PR #41 (Product Owner, 16.11.2026) |
 
-- Gegenüber v1.39 geändert: Buch-HTML und -PDF, Handout-HTML und -PDF, lesen.html, anhang.html, assets/js/app.js.
+- Gegenüber v1.39 geändert (geprüft 16.11.2026 mit `pruefe-paket.ps1 -Vorgaenger <Paket 476622E7> -ErwartetHash C4107586…`, Exit 0): genau 7 Nutzdateien – `story/current/fahrt-zum-kunden.html`, `story/current/geschichte.pdf`, `story/current/workshop-handout.html`, `story/current/workshop-handout.pdf`, `lesen.html`, `anhang.html`, `assets/js/app.js`; 33 unverändert, 0 entfallen. `ci-check` auf `main` 84ae342 Exit 0.
+- Wer nur die Änderungen hochladen will: diese 7 Dateien genügen, wenn v1.39 (476622E7) vorher vollständig live ist.
 - Beim Upload die Live-MP3 nicht löschen (Paket ohne Audio).
 - Nach dem Upload: R09 für v1.40, Tag v1.40 auf 84ae342.
