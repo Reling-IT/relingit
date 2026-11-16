@@ -18,7 +18,7 @@ art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue 
 - „Der klare Auftrag“: „Reiner Voss ist der Einzige bei Reling IT, dessen Arbeitswoche …“
 - „Die Freigabegrenze“: „Insa Brookmann ist, außer Petra selbst, die Einzige bei Reling IT, die sich noch erinnert, wie das Büro aussah, als es noch keins war …“
 
-**Entscheidung:** Reiners Einstieg bleibt (dort trägt „der Einzige“ den Kern des Kapitels). Insas Einstieg wird umgestellt, **Vorschlag 1** (vom Product Owner gewählt, 16.11.2026):
+**Entscheidung (Product Owner, 16.11.2026):** Beide Einstiege werden in v1.40 korrigiert. Wortlaut für Reiner („der Einzige“, Kapitel 3) ist noch offen. Insas Einstieg wird umgestellt, **Vorschlag 1**:
 
 > Als Reling IT noch Petra allein war, gab es ein Büro, das keins war: ein Schreibtisch im Flur, eine Kladde für Rechnungen, ein Anrufbeantworter, der öfter blinkte, als er sollte. Außer Petra erinnert sich daran nur noch Insa Brookmann.
 
