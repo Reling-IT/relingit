@@ -149,4 +149,14 @@ feedbackForm?.addEventListener("submit", async (event) => {
   await submitFeedback(feedbackForm, feedbackStatus);
 });
 
+// Hero-Trailer: läuft stumm in Schleife. Wer im System "Bewegung reduzieren"
+// eingestellt hat, sieht nur das Standbild (poster).
+const heroVideo = document.querySelector(".hero-video");
+if (
+  heroVideo &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  heroVideo.play().catch(() => {});
+}
+
 loadRelease();
