@@ -26,8 +26,9 @@ Stunden trägt nur der Product Owner ein oder nennt sie auf Nachfrage im Tagesab
 | 12.11.2026 | 2 | keine Angabe |
 | 14.11.2026 | 3 | keine Angabe |
 | 15.11.2026 | 7 | keine Angabe |
+| 16.11.2026 | 2 | keine Angabe |
 
-Summe bisher: 12 (12., 14. und 15.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md und TAGESBERICHT-2026-11-15.md (TA-09); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
+Summe bisher: 14 (12., 14., 15. und 16.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md, TAGESBERICHT-2026-11-15.md und TAGESBERICHT-2026-11-16.md (TA-09); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
 
 ## Nutzen
 
