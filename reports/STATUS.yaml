@@ -1,4 +1,4 @@
-stand: 2026-11-16T05:50+01:00
+stand: 2026-11-16T06:00+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 71cfb3d (Stand 16.11. 06:10, Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert), vorher e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -518,6 +518,14 @@ auftraege:
     branch: 'paket-v139 (lokal, Worktree C:/dev/wt/relingit/paket-v139; main a1b11a8 mit #38 10fb65f und #39 ba7c909 nachgestellt gemergt, a39d2a1)'
     bericht: reports/UPLOAD-CHECKLISTE-v1.39.md (Nachtrag 16.11.2026)
     hinweis: 'Auf Wunsch des Product Owners vorgezogen (statt 08:03). ci-check OK, Pester 55/55; Paket relingit-upload-v1.39-2026-11-15-trailer-ohne-audio.zip SHA-256 CDF23C5F...9218, 41 Eintraege; pruefe-paket gegen 6E48827B...1B98 Exit 0: 3 geaendert, 2 neu, 35 unveraendert. Zwischenpaket EE872316...1F48 ins Archiv des Worktrees trailer verschoben. Offen: Sichtung, Merge #38/#39 durch den Product Owner, G8 mit Paket-Hash, Abgleich mit main nach dem Merge; Upload in rund einer Woche.'
+  - id: R77
+    status: erledigt
+    start: 2026-11-16T05:52+01:00
+    ende: 2026-11-16T05:56+01:00
+    branch: auftrag-R77-doku
+    pr: https://github.com/Reling-IT/relingit/pull/40 (Draft, Head 2c6a93f)
+    bericht: reports/R77-BERICHT.md
+    hinweis: 'TAGESSTART (Worktree-Ablage, Klonpruefung zwei Ebenen), PDF-ERZEUGEN (venv-pdf), PILOT (v1.39, Stunden 14.11. = 3, 15.11. = 7, Summe 12); ci-check Exit 0, Pester 54/54; Abweichung vom Auftragstext (3 statt 7) nach Entscheidung des Product Owners. Offen: Merge durch den Product Owner.'
 leerlauf:
   - zeit: 2026-11-10T07:16+01:00
     hinweis: 'Tagesabschluss 10.11.: R29-Pruefung (R29-20261110-BERICHT.md, ein Muss-Befund C1 zur Merge-Reihenfolge 26/27), Tagesbericht TA-01 bis TA-07; 0 Auftraege bereit; Ablage-Worktrees entfernt.'
@@ -564,9 +572,10 @@ planung_v140:
   queue_bereit:
     stand: 'ops/queue 71cfb3d'
     auftraege: [R77, R78, R68, R29]
-    hinweis: 'Offene PRs aus KI-Sitzungen: 2 (#38, #39). Grenze 3 je Repo: vor dem Merge von #38/#39 passt nur ein weiterer PR (Vorschlag: R77). R79 und R80 haengen an R77; R81 bis R83 geplant.'
+    hinweis: 'Stand 06:00: R77 ausgefuehrt (#40). Offene PRs aus KI-Sitzungen: 3 (#38, #39, #40), Grenze erreicht; R78, R68, R79, R80 erst nach Merge oder Schliessen eines PRs. R81 bis R83 geplant.'
   abweichung: 'R77 nennt fuer den 15.11. 3 Stunden; laut TAGESBERICHT-2026-11-15.md (TA-09, Commit faf9338) vom Product Owner bestaetigt: 7 Stunden. Entscheidung Product Owner 16.11.2026: 7 Stunden am 15.11. eintragen (R77 entsprechend ausfuehren; Korrektur des Auftragstexts durch den Planer).'
   standbericht: reports/STANDBERICHT-2026-11-16.md
+  lage_fuer_planer: reports/LAGE-FUER-PLANER-2026-11-16.md
 leerlauf_ende:
   - zeit: 2026-11-15T18:35+01:00
     hinweis: 'Tagesabschluss 15.11.; Sichtung v1.39 56/56 Ja, G1 bis G8, #37 gemergt (a1b11a8), offene PRs 0; offen: Upload v1.39 durch den Product Owner, R09, Tag; neue Auftraege a und b fuer den Planer. Tagesbericht reports/TAGESBERICHT-2026-11-15.md'
