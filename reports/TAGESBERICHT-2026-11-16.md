@@ -90,3 +90,41 @@ Roadmap:
   Sprints_bis_MVP: 2
   Hinweis: unbelegte Schaetzung
 ```
+
+## Nachtrag Tagesabschluss, 08:20
+
+Auftrag Product Owner nach dem ersten Abschluss: „warte nicht auf das Upload, setze alle Aufgaben bis zur Fertigstellung von 1.40 selbständig um“, danach Dokus und Planung aktualisieren und aufräumen.
+
+### Erreicht seit 07:50
+
+1. **v1.40 bis zur Sichtung:** PR #41 Ready (Head 1eaabbf, CI grün). Version 1.40 / 16.11.2026, gerendert 80 Seiten (verify_layout OK), Handout 2 Seiten; ci-check Exit 0, Pester 55/55. Bericht R86-BERICHT.md.
+2. **Festlegungen nach Empfehlung Claude** (zur Prüfung in der Sichtung): Teil 1 „Vor der Fahrt / Unterwegs / Am Ziel / Danach“ (V03); Handout H2 neu, H6 mit Fassung (V05).
+3. **Freigabeprüfung v1.40:** G1, G2, G6, G7 bestanden; G3 bis G5 offen; G8 gesperrt. SICHTUNG-v1.40.md (mit V01 bis V06) und FREIGABE-v1.40.md auf `ops/reports`. Vorschau für die Sichtung gestartet (127.0.0.1:8043).
+4. **Paket v1.40** lokal (Worktree r86, D6396E99…4A03); nicht hochladen vor Upload, R09 und Tag v1.39.
+5. **Doku und Planung:** PILOT.md (Stand, Stunden), VORMERKUNG (umgesetzt), STATUS.yaml, Queue R86 `wartet_auf_owner` (4a8e02a), Kommentar an #41.
+
+### TA-03 Offene PRs (aktualisiert)
+
+| PR | Head | CI | Zustand | Wartet auf |
+|---|---|---|---|---|
+| #41 v1.40 | 1eaabbf | grün | Ready | Sichtung, G8 durch den Product Owner, Merge |
+
+### TA-04 Git-Hygiene (aktualisiert)
+
+| Prüfung | Ergebnis |
+|---|---|
+| Entfernt | Worktrees `link-fahrt`, `r77` und Branches `startseite-link-fahrt`, `auftrag-R77-doku` (gemergt, ohne lokale Dateien) |
+| Bleiben, gemeldet | Worktrees `r60`, `trailer` (gemergt, enthalten aber ignorierte Paketarchive unter `archive/ftp-packages/` und `output/`; Löschung nur über R13/R53 mit Bestätigung) |
+| Bleiben, in Gebrauch | `paket-v139` (Vorgängerpaket CDF23C5F bis zum Upload), `r86` (#41), `rep`, `queue` |
+| Remote-Branches | `main`, `ops/queue`, `ops/reports`, `auftrag-R86-v140` |
+| Arbeitsklon | `main` = `origin/main` 907ca58, sauber |
+| Zweiter Klon | `C:\develing-itelingit` (Stand 27.10.), nur gemeldet |
+| Offene PRs aus KI-Sitzungen | 1 |
+
+### Arbeitspaket nächste Sitzung (ersetzt das obige)
+
+- **Ziel:** v1.39 veröffentlichen und taggen, v1.40 freigeben.
+- **Schritte:** Upload v1.39 (PO) → R09 Live-Prüfung (inkl. Safari/iOS Trailer) → R52 Tag v1.39 → Sichtung v1.40 und G8 (PO) → Merge #41 → Paket v1.40 aus `main` bauen und gegen D6396E99 abgleichen → Upload v1.40 (PO) → R09 für v1.40 → Tag v1.40 → R53 Aufräumen.
+- **Abnahme:** beide Fassungen live geprüft und getaggt.
+- **Risiken:** V03/V05 sind Vorschläge von Claude und können in der Sichtung abgelehnt werden (dann neu rendern).
+

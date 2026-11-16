@@ -7,6 +7,8 @@ quellen: 'main a1b11a8, ops/queue ea666f2, ops/reports b1a91d6'
 
 # Bericht für den Planer, 16.11.2026
 
+> **Nachtrag 08:20 (gilt vor allem anderen in diesem Bericht):** #40, #39, #38 sind gemergt (`main` 907ca58). Upload-Paket v1.39 aus `main`: 476622E7…8AA1 (Inhalt gleich CDF23C5F). v1.40 ist in PR #41 fertig gerendert (80 Seiten) und Ready; es fehlen nur Sichtung und G8 durch den Product Owner. Offene PRs: 1. Queue: R84/R85 erledigt, R86 `wartet_auf_owner`. Reihenfolge: Upload v1.39 → R09 → Tag v1.39 → Merge #41 → Upload v1.40 → R09 → Tag v1.40. Details: TAGESBERICHT-2026-11-16.md (Nachtrag 08:20), R86-BERICHT.md.
+
 Dieser Bericht ersetzt für die Planungsseite die Lage von 06:00 und ihren Nachtrag (`LAGE-FUER-PLANER-2026-11-16.md`). Er ist ohne weitere Quellen lesbar. Rollen: Product Owner, Planer (Claude Chat), Ausführung (Claude Code).
 
 ## 1. Kurzfassung
