@@ -9,7 +9,7 @@ art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue 
 
 Änderungen am Buchtext, die nicht mehr in v1.39 (freigegeben, Paket `6E48827B…1B98`) gehen. Wortlaut legt der Product Owner fest.
 
-**Rahmen (Entscheidung Product Owner, 16.11.2026):** v1.40 bleibt eine kleine Korrekturfassung mit den Punkten unten. Ergänzung Product Owner 16.11.2026: Punkt 3 (Handout). Beginn erst nach Upload und Live-Prüfung (R09) von v1.39. Kein neuer Erzählstoff (z. B. aus R05) in v1.40.
+**Rahmen (Entscheidung Product Owner, 16.11.2026):** v1.40 bleibt eine kleine Korrekturfassung mit den Punkten unten. Ergänzung Product Owner 16.11.2026: Punkt 3 (Handout). Nachtrag Product Owner 16.11. früh (STATUS.yaml, Commit f1a0fe7): Die Arbeit an v1.40 beginnt als Draft-PR nach dem Paketbau v1.39 (erledigt); nur der Upload von v1.40 kommt erst nach Upload, R09 und Tag v1.39. Kein neuer Erzählstoff (z. B. aus R05) in v1.40.
 
 ## 1. Einstieg „Die Freigabegrenze“ (Kapitel 4): Wiederholung auflösen
 
@@ -47,10 +47,24 @@ Ergänzt den Startseiten-Link aus PR #39 (die Fahrt beginnt erst mit Kapitel 6 �
 - Stand auf `main` (a1b11a8): Kopfzeile „Workshop-Vorbereitungsmaterial · Ende November 2026“, zuletzt in v1.39 gerendert.
 - Was „aktueller Stand“ inhaltlich umfasst (z. B. Bezug auf v1.40, Termin, Übungen), ist unklar und wird vom Product Owner festgelegt. Wortlaut legt der Product Owner fest.
 
+**Vorgehen (Entscheidung Product Owner, 16.11.2026):** Erst die Stellenliste unten, dann legt der Product Owner den Umfang fest, danach Einbau im Draft-PR von R86.
+
+Stellenliste (Stand `main` a1b11a8, Abgleich mit `source/fahrt-zum-kunden.html` per Textsuche):
+
+| Nr. | Stelle im Handout | Befund | Festzulegen |
+|---|---|---|---|
+| H1 | Kopfzeile „Workshop-Vorbereitungsmaterial · Ende November 2026“ | allgemeine Zeitangabe, kein konkreter Termin | konkretes Datum oder Anlass des Workshops nennen? |
+| H2 | Einleitung „In der Geschichte: Ein automatisiertes Vorhersage-Modell übernimmt Routineberechnungen …“ | „Vorhersage“ kommt im Buchtext nicht vor (0 Treffer); der Satz passt vermutlich zu einer älteren Geschichte | Einleitung auf die heutige Geschichte (Navis, Lumen, Sysingboard) umschreiben? |
+| H3 | Kasten Navis (Wochendurchlauf, Teamrunde, Sysingboard) | Begriffe kommen im Buch vor (Navis 184, Sysingboard 67, Wochendurchlauf 2 Treffer) | Inhalt gegen v1.39/v1.40 nur gegenlesen |
+| H4 | Kasten Lumen (Management-Report, Kundensicht) | Begriffe kommen im Buch vor (Lumen 157, Management-Report 1 Treffer) | wie H3 |
+| H5 | Übung „Manöverkritik“ (3 × 5 Minuten) | ohne Bezug auf eine Buchfassung | für den Workshop November ändern oder lassen? |
+| H6 | Fußzeile „Begleitmaterial zu ‚Die Fahrt zum Kunden‘ · frei erfunden“ | keine Fassungsangabe | Fassung (v1.40) oder Hinweis auf den Einstieg „Aufbruch“ ergänzen? |
+| H7 | „Renderstand“ | wird beim Rendern gesetzt (`render_story_pdf.py`) | nichts, nur neu rendern |
+
 ## Vorschläge und Ideen (Claude)
 
 Empfehlungen, keine Fakten:
 
 - Beim Einbau von v1.40 die Kapitelanfänge von Teil 1 einmal nebeneinander lesen (erste Sätze je Kapitel); so fallen weitere wiederkehrende Formeln auf.
 - Nach Punkt 2 prüfen, ob `ci-check.ps1` die neue Gliederung des Inhaltsverzeichnisses noch als vollständig erkennt (Prüfung der TOC-Ziele).
-- Für Punkt 3 vorab eine kurze Liste der Stellen im Handout vorlegen, die sich auf Fassung, Datum oder Buchinhalt beziehen; dann kann der Product Owner den Umfang festlegen, bevor der Draft-PR entsteht.
+- Zu Punkt 3: H2 ist aus Sicht von Claude der wichtigste Punkt, weil das Handout dort eine Geschichte beschreibt, die das Buch so nicht (mehr) erzählt.

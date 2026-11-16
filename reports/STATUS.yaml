@@ -564,18 +564,21 @@ planung_v140:
     - id: V140-2
       titel: 'Wegweiser zur Fahrt im Buch: Satz im Kasten Aufbau, Gliederung von Teil 1 im Inhaltsverzeichnis'
       stand: 'Einteilung ab Ankunft legt der Product Owner fest'
+    - id: V140-3
+      titel: 'Workshop-Handout auf den aktuellen Stand und den Workshop November bringen (Ergaenzung Product Owner 16.11.2026)'
+      stand: 'Stellenliste H1 bis H7 liegt in VORMERKUNG-v1.40.md Punkt 3; Umfang legt der Product Owner fest (Entscheidung 16.11.: erst Liste, dann Umfang)'
   reihenfolge:
     - 'erledigt 16.11. 05:20: Paket v1.39 mit Trailer und Link (CDF23C5F...9218)'
     - 'Sichtung und Merge #38 (R84) und #39 (R85) durch den Product Owner, Merge mit Head-SHA (#38 10fb65f, #39 ba7c909); danach Paket mit main abgleichen'
     - 'Upload v1.39 durch den Product Owner (in rund einer Woche), dann R09 (Live-Pruefung), R52 (Tag v1.39), R53 (Aufraeumen)'
-    - 'v1.40: Auftrag durch den Planer in ops/queue (noch nicht angelegt), Umsetzung als Draft-PR, Rendern, Sichtung, G1 bis G8; Upload v1.40 erst nach Upload, R09 und Tag v1.39'
+    - 'v1.40: Auftrag R86 in ops/queue (V140-1 bis V140-3, Stand 0db4198), Umsetzung als Draft-PR sobald ein PR-Platz frei ist, Rendern, Sichtung, G1 bis G8; Upload v1.40 erst nach Upload, R09 und Tag v1.39'
   queue_bereit:
     stand: 'ops/queue 71cfb3d'
     auftraege: [R77, R78, R68, R29]
     hinweis: 'Stand 06:00: R77 ausgefuehrt (#40). Offene PRs aus KI-Sitzungen: 3 (#38, #39, #40), Grenze erreicht; R78, R68, R79, R80 erst nach Merge oder Schliessen eines PRs. R81 bis R83 geplant.'
   abweichung: 'R77 nennt fuer den 15.11. 3 Stunden; laut TAGESBERICHT-2026-11-15.md (TA-09, Commit faf9338) vom Product Owner bestaetigt: 7 Stunden. Entscheidung Product Owner 16.11.2026: 7 Stunden am 15.11. eintragen (R77 entsprechend ausfuehren; Korrektur des Auftragstexts durch den Planer).'
   standbericht: reports/STANDBERICHT-2026-11-16.md
-  lage_fuer_planer: reports/LAGE-FUER-PLANER-2026-11-16.md
+  lage_fuer_planer: 'reports/LAGE-FUER-PLANER-2026-11-16.md (Nachtrag 07:15 oben: Kurzfassung)'
 leerlauf_ende:
   - zeit: 2026-11-15T18:35+01:00
     hinweis: 'Tagesabschluss 15.11.; Sichtung v1.39 56/56 Ja, G1 bis G8, #37 gemergt (a1b11a8), offene PRs 0; offen: Upload v1.39 durch den Product Owner, R09, Tag; neue Auftraege a und b fuer den Planer. Tagesbericht reports/TAGESBERICHT-2026-11-15.md'

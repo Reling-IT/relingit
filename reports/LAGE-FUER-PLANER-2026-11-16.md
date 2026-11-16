@@ -1,5 +1,38 @@
 # Lage für den Planer, 16.11.2026, 06:00
 
+## Nachtrag 07:15: Kurzfassung – wo wir stehen und was als Nächstes kommt
+
+Belegt mit `git fetch` und `gh pr list` am 16.11.2026 um 07:15. Seit 06:00 hat sich am Code nichts geändert, nur die Planung für v1.40.
+
+**Wo wir stehen**
+
+- v1.39 ist fertig und auf `main` (a1b11a8), aber **noch nicht veröffentlicht** und ohne Tag. Das Upload-Paket liegt bereit (CDF23C5F…9218, enthält auch #38 und #39).
+- Offene PRs: #38 Trailer (Ready), #39 Link zur Fahrt (Draft), #40 Doku R77 (Draft, CI grün). Das sind 3, die **Grenze ist erreicht**. Alle drei warten auf Sichtung und Merge durch den Product Owner.
+- Die Queue (`ops/queue` 0db4198) ist auf diesem Stand: R77 erledigt, R84/R85 `wartet_auf_owner`, R86 (v1.40) angelegt.
+
+**Was wir vorhaben: zwei Stränge, die nicht aufeinander warten**
+
+| Strang | Nächster Schritt | Wer | Blockiert durch |
+|---|---|---|---|
+| A. Veröffentlichung v1.39 | Sichtung und Merge #38, #39, #40 → Paket mit `main` abgleichen → Upload v1.39 (in rund einer Woche) → R09 Live-Prüfung → R52 Tag → R53 Aufräumen | Product Owner, danach Ausführung | Product Owner |
+| B. Vorbereitung v1.40 (R86) | Draft-PR mit V140-1, V140-2, V140-3 → Rendern, Sichtung, G1 bis G8 | Ausführung, Wortlaut Product Owner | freier PR-Platz (also Merge in Strang A) |
+
+Strang B darf **vor** dem Upload v1.39 beginnen (Nachtrag Product Owner, Commit f1a0fe7). Nur der **Upload von v1.40** wartet auf Upload, R09 und Tag v1.39. Die ältere Formulierung „Beginn erst nach Upload und R09“ in der Vormerkung ist jetzt angeglichen; in R86 steht sie im Feld `hinweis_lage_2026_11_16` noch und sollte dort berichtigt werden.
+
+**Neu seit 06:00: V140-3 Handout**
+
+- Der Product Owner hat v1.40 um ein drittes Thema ergänzt: das Workshop-Handout (`story/current/workshop-handout.html` und `.pdf`) auf den aktuellen Stand und den Workshop November bringen.
+- Vorgehen (Entscheidung Product Owner): erst eine Stellenliste, dann legt der Product Owner den Umfang fest, dann Einbau im Draft-PR von R86. Die Liste H1 bis H7 steht in `VORMERKUNG-v1.40.md`, Punkt 3.
+- Auffällig ist H2: Die Einleitung des Handouts spricht von einem „Vorhersage-Modell“, das im Buchtext nicht vorkommt.
+
+**Bitte an den Planer**
+
+1. Planungsseite mit den zwei Strängen A und B führen, nicht als eine Kette.
+2. In R86 den Hinweis zum Beginn berichtigen (siehe oben) und V140-3 als „wartet auf Umfang durch den Product Owner“ kennzeichnen.
+3. Die Entscheidung „weiter / einfrieren / einstellen“ (PILOT.md, Termin 16.11.) ist weiter nicht dokumentiert. Die Arbeit an v1.40 spricht für „weiter“; das sollte der Product Owner bestätigen und die Queue festhalten.
+
+---
+
 Dieser Bericht richtet sich an den Planer (Claude Chat, `ops/queue`). Er beschreibt den Stand seit `ops/queue` 71cfb3d und ist ohne weitere Quellen lesbar. Rollen: Product Owner, Planer, Ausführung (Claude Code). Belegt mit `git fetch` und `gh pr list` am 16.11.2026 gegen 06:00.
 
 ## 1. Versionen in einem Satz je Ort
