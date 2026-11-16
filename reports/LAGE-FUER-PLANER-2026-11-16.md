@@ -1,5 +1,7 @@
 # Lage für den Planer, 16.11.2026, 06:00
 
+> Ersetzt durch `BERICHT-FUER-PLANER-2026-11-16.md` (07:20).
+
 ## Nachtrag 07:15: Kurzfassung – wo wir stehen und was als Nächstes kommt
 
 Belegt mit `git fetch` und `gh pr list` am 16.11.2026 um 07:15. Seit 06:00 hat sich am Code nichts geändert, nur die Planung für v1.40.

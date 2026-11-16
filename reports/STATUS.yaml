@@ -579,7 +579,8 @@ planung_v140:
     hinweis: 'Stand 06:00: R77 ausgefuehrt (#40). Offene PRs aus KI-Sitzungen: 3 (#38, #39, #40), Grenze erreicht; R78, R68, R79, R80 erst nach Merge oder Schliessen eines PRs. R81 bis R83 geplant.'
   abweichung: 'R77 nennt fuer den 15.11. 3 Stunden; laut TAGESBERICHT-2026-11-15.md (TA-09, Commit faf9338) vom Product Owner bestaetigt: 7 Stunden. Entscheidung Product Owner 16.11.2026: 7 Stunden am 15.11. eintragen (R77 entsprechend ausfuehren; Korrektur des Auftragstexts durch den Planer).'
   standbericht: reports/STANDBERICHT-2026-11-16.md
-  lage_fuer_planer: 'reports/LAGE-FUER-PLANER-2026-11-16.md (Nachtrag 07:15 oben: Kurzfassung)'
+  lage_fuer_planer: 'reports/BERICHT-FUER-PLANER-2026-11-16.md (07:20, ersetzt LAGE-FUER-PLANER-2026-11-16.md)'
+  pilot_nachtrag: 'Entscheidung Product Owner 16.11.: Zeile Entscheidung in docs/PILOT.md als Commit in #40, erst nach Sichtung von #40'
 leerlauf_ende:
   - zeit: 2026-11-15T18:35+01:00
     hinweis: 'Tagesabschluss 15.11.; Sichtung v1.39 56/56 Ja, G1 bis G8, #37 gemergt (a1b11a8), offene PRs 0; offen: Upload v1.39 durch den Product Owner, R09, Tag; neue Auftraege a und b fuer den Planer. Tagesbericht reports/TAGESBERICHT-2026-11-15.md'
