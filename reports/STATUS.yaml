@@ -570,6 +570,7 @@ planung_v140:
       stand: 'umgesetzt in PR #41: H2 neu, H6 Fassung 1.40 (Auftrag PO: selbstaendig umsetzen); Sichtung V05'
   reihenfolge:
     - 'erledigt 16.11. 05:20: Paket v1.39 mit Trailer und Link (CDF23C5F...9218)'
+    - 'erledigt 16.11. 08:35: Sichtung v1.40 32/32 Ja, G8 v1.40 (PO), Merge #41 (84ae342); Paket v1.40 aus main C4107586...7537; Reihenfolge: Upload v1.39 -> R09 -> Tag v1.39 auf 907ca58 -> Upload v1.40 -> R09 -> Tag v1.40 auf 84ae342'
     - 'erledigt 16.11. 08:10: v1.40 in PR #41 gerendert (80 Seiten, verify_layout OK, Handout 2 Seiten), Version 1.40 / 16.11.2026, freigabe-pruefen G1 G2 G6 G7 bestanden, G3 bis G5 offen (Sichtung PO), G8 gesperrt; Paket v1.40 D6396E99 lokal (nicht hochladen vor Tag v1.39); Vorschau fuer die Sichtung gestartet'
     - 'erledigt 16.11. 07:20-07:45: Merge #40 (6ebfbea), #39 (8126e41), #38 (907ca58); Paket v1.39 aus main 907ca58 neu gebaut (476622E7...8AA1, Nutzdateien gleich CDF23C5F); R86 als Draft-PR #41'
     - 'Sichtung und Merge #38 (R84) und #39 (R85) durch den Product Owner, Merge mit Head-SHA (#38 10fb65f, #39 ba7c909); danach Paket mit main abgleichen'

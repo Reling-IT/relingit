@@ -118,7 +118,9 @@ Auftrag Product Owner nach dem ersten Abschluss: „warte nicht auf das Upload, 
 | Bleiben, in Gebrauch | `paket-v139` (Vorgängerpaket CDF23C5F bis zum Upload), `r86` (#41), `rep`, `queue` |
 | Remote-Branches | `main`, `ops/queue`, `ops/reports`, `auftrag-R86-v140` |
 | Arbeitsklon | `main` = `origin/main` 907ca58, sauber |
-| Zweiter Klon | `C:\develing-itelingit` (Stand 27.10.), nur gemeldet |
+| Zweiter Klon | `C:\dev
+eling-it
+elingit` (Stand 27.10.), nur gemeldet |
 | Offene PRs aus KI-Sitzungen | 1 |
 
 ### Arbeitspaket nächste Sitzung (ersetzt das obige)
@@ -127,4 +129,13 @@ Auftrag Product Owner nach dem ersten Abschluss: „warte nicht auf das Upload, 
 - **Schritte:** Upload v1.39 (PO) → R09 Live-Prüfung (inkl. Safari/iOS Trailer) → R52 Tag v1.39 → Sichtung v1.40 und G8 (PO) → Merge #41 → Paket v1.40 aus `main` bauen und gegen D6396E99 abgleichen → Upload v1.40 (PO) → R09 für v1.40 → Tag v1.40 → R53 Aufräumen.
 - **Abnahme:** beide Fassungen live geprüft und getaggt.
 - **Risiken:** V03/V05 sind Vorschläge von Claude und können in der Sichtung abgelehnt werden (dann neu rendern).
+
+## Nachtrag 08:35: v1.40 freigegeben und gemergt
+
+- Sichtung v1.40 durch den Product Owner: „Sichtung positiv - passt“; SICHTUNG-v1.40.md 32/32 Ja. G8: „Freigabe erteilt - Mergen freigegeben“, als Kommentar an #41.
+- Merge #41 mit Head 1eaabbf: 84ae342. Offene PRs: 0.
+- Paket v1.40 aus `main`: C4107586…7537 (UPLOAD-CHECKLISTE-v1.40.md).
+- Wichtig für R52: Tag v1.39 auf 907ca58 setzen, nicht auf `main`.
+- Aufgeräumt: Vorschau beendet; Worktree `r86` und Branch `auftrag-R86-v140` entfernt (Sichtung und Freigabebericht vorher nach `ops/reports` kopiert, Prüfpaket D6396E99 überholt).
+- Nächste Sitzung: Upload v1.39 → R09 → Tag v1.39 (907ca58) → Upload v1.40 → R09 → Tag v1.40 (84ae342) → R53.
 

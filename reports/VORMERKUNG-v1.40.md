@@ -1,6 +1,6 @@
 ---
 titel: 'Vormerkungen für v1.40 (Buchtext)'
-status: umgesetzt in PR #41 (Sichtung offen)
+status: erledigt, gemergt (PR #41, 84ae342, Sichtung 32/32 Ja, G8 erteilt)
 datum: 2026-11-16
 art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue durch den Planer
 ---
