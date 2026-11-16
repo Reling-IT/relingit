@@ -1,0 +1,16 @@
+id: R86
+titel: 'v1.40 vorbereiten: Expose Geschichte Horst und Mira (Idee 14) und Einbauplan (Planung)'
+art: planung
+gate: ja
+abhaengig_von: []
+stand: 2026-11-16 06:25
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: "Bernd hat am 16.11.2026 gesagt: v1.39 ist heute fertig, v1.40 wird begonnen. Inhalt und Umfang von v1.40 sind noch nicht bestaetigt. Plan (Stand 06.11.): Geschichte Horst und Mira (Idee 14, Kaffeeecke), Anhang-Box HI-Bibliothek, dazu Trailer (#38) und Link zur Fahrt (#39) als Web-Anteil. Dieser Auftrag wird vom Planer bearbeitet (Expos\xE9 im Projekt), nicht von Claude Code."
+schritte:
+- Bernd bestaetigt den Inhalt von v1.40 (Geschichte ja/nein, Trailer und Link ja/nein).
+- "Expos\xE9 zur Geschichte (nur belegte Aussagen, Regeln: Navis liest nur, zehn im Haus, Offen bleibt offen); Bernd gibt frei."
+- Danach Einbau-Auftrag fuer Claude Code (Quelle, verify_layout, ci-check), Draft-PR; Version 1.40 erst beim Release setzen.
+nachweis: "Expos\xE9 im Projekt, Einbau-Auftrag in der Warteschlange"
+grenzen: "Kein Einbau ohne freigegebenes Expos\xE9. Kein Merge, kein Tag, kein FTP, kein Upload."
+status: wartet_auf_voraussetzung

@@ -3,15 +3,15 @@ titel: 'Doku-PR: TAGESSTART.md, PDF-ERZEUGEN.md (venv-pdf) und Stunden 14.11./15
 art: code-pr
 gate: nein
 abhaengig_von: []
-ziel: Drei Doku-Nachzuege aus den Entscheidungen des Product Owners vom 15.11.2026 in einem Draft-PR.
+ziel: 'Drei Doku-Nachzuege aus den Entscheidungen des Product Owners vom 15.11.2026 in einem Draft-PR. Korrektur 16.11.2026: fuer den 15.11. gelten 7 Stunden, nicht 3 (Bernd). docs/PILOT.md ist ausserdem veraltet (Stand 12.11., nennt v1.38): auf v1.39 und den Stand 16.11. bringen; die Entscheidung weiter/einfrieren/einstellen traegt nur Bernd ein.'
 schritte:
 - 'docs/TAGESSTART.md: Worktree-Ablage C:\dev\wt\<repo>\<kurzname> und Klonpruefung auf zwei Ebenen (auch C:\dev\reling-it\relingit) beschreiben.'
 - 'docs/PDF-ERZEUGEN.md: Renderumgebung C:\dev\venv-pdf (Playwright 1.64.0, pypdf) und Ort nennen.'
-- 'docs/PILOT.md: Stunden 14.11.2026 = 3 und 15.11.2026 = 3, gemeldet vom Product Owner; nichts schaetzen.'
+- 'docs/PILOT.md: Stunden 14.11.2026 = 3 und 15.11.2026 = 7, vom Product Owner bestaetigt (15.11. im Tagesabschluss 7, am 16.11. nochmals mit 7 bestaetigt); nichts schaetzen.'
 - ci-check und Pester; Draft-PR; Bericht reports/R77-BERICHT.md.
 nachweis: Draft-PR mit gruener CI, Bericht
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Dauer etwa 30 Minuten.
 status: bereit
-stand: 2026-11-16 06:10
+stand: 2026-11-16 06:25
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
