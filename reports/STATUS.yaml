@@ -543,7 +543,7 @@ leerlauf:
     hinweis: 'ops/queue unveraendert 6ce611d; alle bereiten Auftraege bearbeitet (R17, R43 erledigt). Offene PRs #22 (R43) und #23 (Fix Schriften lesen.html, Befund R17). Naechste Pruefung in ca. 30 Minuten.'
 planung_v140:
   stand: 2026-11-16
-  rahmen: 'Kleine Korrekturfassung, kein neuer Erzaehlstoff (auch nicht aus R05). Beginn erst nach Upload und Live-Pruefung (R09) von v1.39. Entscheidung Product Owner 16.11.2026.'
+  rahmen: 'Kleine Korrekturfassung, kein neuer Erzaehlstoff (auch nicht aus R05). Entscheidung Product Owner 16.11.2026. Nachtrag 16.11. frueh: Arbeit an v1.40 beginnt am 16.11. nach dem Paketbau v1.39 als Draft-PR; Upload v1.40 erst nach Upload, R09 und Tag v1.39.'
   vormerkung: reports/VORMERKUNG-v1.40.md
   themen:
     - id: V140-1
