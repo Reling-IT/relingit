@@ -18,7 +18,13 @@ art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue 
 - „Der klare Auftrag“: „Reiner Voss ist der Einzige bei Reling IT, dessen Arbeitswoche …“
 - „Die Freigabegrenze“: „Insa Brookmann ist, außer Petra selbst, die Einzige bei Reling IT, die sich noch erinnert, wie das Büro aussah, als es noch keins war …“
 
-**Entscheidung (Product Owner, 16.11.2026):** Beide Einstiege werden in v1.40 korrigiert. Wortlaut für Reiner („der Einzige“, Kapitel 3) ist noch offen. Insas Einstieg wird umgestellt, **Vorschlag 1**:
+**Entscheidung (Product Owner, 16.11.2026):** Beide Einstiege werden in v1.40 korrigiert. Für Reiner („der Einzige“, Kapitel 3) gilt der folgende **Entwurf** (vom Product Owner als Entwurf aufgenommen, 16.11.2026; Wortlaut beim Einbau endgültig festlegen):
+
+> Bei Reling IT endet fast jede Arbeitswoche mit dem letzten Ticket. Die von Reiner Voss endet mit einer festen Uhrzeit: seit einer Herzsache vor ein paar Jahren nur noch vormittags, montags bis donnerstags, keine Ausnahmen, auch wenn er selbst gern welche machen würde.
+
+Danach weiter mit „Petra hat ihm das damals nicht angeboten, sondern durchgesetzt …“; beim Einbau prüfen, ob der Anschluss trägt. Quelle: `source/fahrt-zum-kunden.html`, Kapitel `kap-reiner-voss`.
+
+Insas Einstieg (Kapitel 4) wird umgestellt, **Vorschlag 1**:
 
 > Als Reling IT noch Petra allein war, gab es ein Büro, das keins war: ein Schreibtisch im Flur, eine Kladde für Rechnungen, ein Anrufbeantworter, der öfter blinkte, als er sollte. Außer Petra erinnert sich daran nur noch Insa Brookmann.
 

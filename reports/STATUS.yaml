@@ -548,7 +548,7 @@ planung_v140:
   themen:
     - id: V140-1
       titel: 'Wiederholung "der/die Einzige bei Reling IT" aufloesen (Kapitel 3 Reiner, Kapitel 4 Insa)'
-      stand: 'Insa: Vorschlag 1 vom Product Owner gewaehlt; Reiner: Wortlaut offen'
+      stand: 'Insa: Vorschlag 1 vom Product Owner gewaehlt; Reiner: Entwurf aufgenommen, Wortlaut beim Einbau festlegen'
     - id: V140-2
       titel: 'Wegweiser zur Fahrt im Buch: Satz im Kasten Aufbau, Gliederung von Teil 1 im Inhaltsverzeichnis'
       stand: 'Einteilung ab Ankunft legt der Product Owner fest'
