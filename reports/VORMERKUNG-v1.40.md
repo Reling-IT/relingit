@@ -1,6 +1,6 @@
 ---
 titel: 'Vormerkungen für v1.40 (Buchtext)'
-status: vorgemerkt
+status: umgesetzt in PR #41 (Sichtung offen)
 datum: 2026-11-16
 art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue durch den Planer
 ---
@@ -68,3 +68,12 @@ Empfehlungen, keine Fakten:
 - Beim Einbau von v1.40 die Kapitelanfänge von Teil 1 einmal nebeneinander lesen (erste Sätze je Kapitel); so fallen weitere wiederkehrende Formeln auf.
 - Nach Punkt 2 prüfen, ob `ci-check.ps1` die neue Gliederung des Inhaltsverzeichnisses noch als vollständig erkennt (Prüfung der TOC-Ziele).
 - Zu Punkt 3: H2 ist aus Sicht von Claude der wichtigste Punkt, weil das Handout dort eine Geschichte beschreibt, die das Buch so nicht (mehr) erzählt.
+
+## Umsetzung (16.11.2026, PR #41)
+
+- Punkt 1: beide Einstiege wie vorgemerkt (Reiner: Entwurf, Insa: Vorschlag 1); Anschlüsse tragen ohne Anpassung.
+- Punkt 2: Satz mit Link statt Seitenzahl („Die Fahrt beginnt mit dem Kapitel ‚Aufbruch‘.“, Ziel PDF S. 13). Inhaltsverzeichnis Teil 1: „Vor der Fahrt“, „Unterwegs“, „Am Ziel“ (Ankunft, Am Konferenztisch, Warum Navis und Lumen), „Danach“ (Kurz vor neun bis Ankunft, noch einmal). Die Einteilung ab „Ankunft“ ist ein Vorschlag von Claude nach Lektüre der Kapitelanfänge (Auftrag PO: selbständig umsetzen); Prüfung in Sichtungspunkt V03.
+- Punkt 3: H2 neu, H6 mit „(Fassung 1.40)“; H1 unverändert, weil kein konkreter Workshop-Termin belegt ist; H3 bis H5 unverändert.
+- Gerendert: Buch 80 Seiten, verify_layout OK; Handout 2 Seiten. Sichtungsliste: SICHTUNG-v1.40.md (V01 bis V06 ergänzt).
+- Kapitelanfänge von Teil 1 nebeneinander gelesen: „Der erste Knoten“ (Finn Reimers ist seit vier Wochen … bei Reling IT) und „Was hängen bleibt“ (Enno Feddersen ist seit ein paar Wochen bei Reling IT) folgen einem ähnlichen Muster; laut Befund PO geringe Ähnlichkeit, nicht geändert.
+
