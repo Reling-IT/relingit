@@ -627,7 +627,7 @@ auftraege:
   status: wartet_auf_owner
   abhaengig_von: []
 - id: R86
-  titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt (Draft-PR)'
+  titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt, V140-3 Handout aktualisieren (Draft-PR)'
   art: code-pr
   gate: ja
   status: wartet_auf_voraussetzung

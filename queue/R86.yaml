@@ -1,15 +1,16 @@
 id: R86
-titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt (Draft-PR)'
+titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt, V140-3 Handout aktualisieren (Draft-PR)'
 art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-16 06:40
+stand: 2026-11-16
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-ziel: 'Rahmen Bernd 16.11.2026: v1.40 bleibt eine kleine Korrekturfassung, kein neuer Erzaehlstoff (z. B. aus R05). V140-1: Einstiege "der/die Einzige bei Reling IT" in Kapitel 3 (Reiner, Entwurf von Bernd) und Kapitel 4 (Insa, Vorschlag 1) aufloesen. V140-2: Wegweiser zur Fahrt im Buch (Satz im Kasten "Aufbau in zwei Teilen", Gliederung des Inhaltsverzeichnisses "Vor der Fahrt" / "Unterwegs", Einteilung ab "Ankunft" legt Bernd fest). Quelle: reports/VORMERKUNG-v1.40.md auf ops/reports. Korrektur: die fruehere Annahme "v1.40 = Geschichte Horst und Mira" in diesem Auftrag war falsch.'
+ziel: 'Rahmen Bernd 16.11.2026: v1.40 bleibt eine kleine Korrekturfassung, kein neuer Erzaehlstoff (z. B. aus R05). V140-1: Einstiege "der/die Einzige bei Reling IT" in Kapitel 3 (Reiner, Entwurf von Bernd) und Kapitel 4 (Insa, Vorschlag 1) aufloesen. V140-2: Wegweiser zur Fahrt im Buch (Satz im Kasten "Aufbau in zwei Teilen", Gliederung des Inhaltsverzeichnisses "Vor der Fahrt" / "Unterwegs", Einteilung ab "Ankunft" legt Bernd fest). V140-3 (Ergaenzung Bernd 16.11.2026): Workshop-Handout (story/current/workshop-handout.html und .pdf) auf den aktuellen Stand und den Workshop November bringen; Umfang und Wortlaut legt Bernd fest. Quelle: reports/VORMERKUNG-v1.40.md auf ops/reports. Korrektur: die fruehere Annahme "v1.40 = Geschichte Horst und Mira" in diesem Auftrag war falsch.'
 schritte:
 - 'VORMERKUNG-v1.40.md lesen; Wortlaut legt Bernd fest (Reiner: Entwurf, Insa: Vorschlag 1).'
 - Draft-PR auf source/fahrt-zum-kunden.html (kap-reiner-voss, kap-freigabegrenze, Kasten Aufbau in zwei Teilen, Inhaltsverzeichnis); Anschluss der folgenden Saetze pruefen; ci-check pruefen, ob die neue Gliederung als vollstaendig erkannt wird; Kapitelanfaenge von Teil 1 nebeneinander lesen.
+- 'V140-3: Stellen im Handout mit Bezug auf Fassung, Datum oder Buchinhalt auflisten und Bernd vorlegen; nach Festlegung im selben Draft-PR anpassen und workshop-handout.pdf mit Profil handout neu rendern.'
 - Rendern, Sichtung, G1 bis G8, Seitenzahl nach dem Rendern pruefen (S. 13 nur Beispiel).
 nachweis: Draft-PR mit Vorher/Nachher je Stelle, Bericht
 grenzen: "Kein Einbau ohne freigegebenes Expos\xE9. Kein Merge, kein Tag, kein FTP, kein Upload."
