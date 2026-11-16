@@ -51,6 +51,4 @@ Was dieser Pilot über den Aufwand zeigt. Je Eintrag Datum und Beleg (PR, Commit
 
 - Ziel: Upload und Tag v1.39, danach v1.40 als kleine Korrekturfassung (Rahmen vom Product Owner, 16.11.2026). Beleg: Auftrag R73, Schritt 4; PR #37; Vormerkung VORMERKUNG-v1.40.md und `reports/STATUS.yaml` (Feld `planung_v140`).
 - Abnahmekriterium: unklar (für diesen Meilenstein nicht festgelegt). Allgemein gilt: Tore G1 bis G8 bestanden beziehungsweise erteilt, siehe [FREIGABE.md](FREIGABE.md).
-- Entscheidung „weiter / einfrieren / einstellen“ bis: offen. Laut Auftrag R73 fällt am 16.11.2026 die Entscheidung zum Release v1.39; danach ist eine Pause bis zum Jahresende geplant.
-
-Offene Frage an den Product Owner: Wird das Projekt nach dem Release v1.39 weitergeführt, eingefroren oder eingestellt, und bis wann fällt diese Entscheidung?
+- Entscheidung „weiter / einfrieren / einstellen“: **weiter** (Product Owner, 16.11.2026). Die bisher geplante Pause bis zum Jahresende ist verschoben, ein neuer Termin ist offen. Beleg: `ops/queue` ea666f2 (`hinweis_owner`), `reports/STATUS.yaml` (Feld `entscheidung_weiter`).
