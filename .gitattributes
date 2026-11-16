@@ -3,6 +3,9 @@
 # Webschriften und ihre Lizenztexte bleiben bytegenau wie aus der Quelle geladen
 # (SHA-256 in assets/fonts/HERKUNFT.txt); keine Zeilenende-Umwandlung, keine Leerraumprüfung.
 *.woff2 binary
+# Trailer und Standbild der Startseite (docs/TRAILER.md).
+*.mp4 binary
+*.jpg binary
 assets/fonts/*-OFL.txt -text -whitespace
 
 # Prüfsummendatei für sha256sum -c: immer LF.

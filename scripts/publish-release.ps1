@@ -323,7 +323,7 @@ if (-not $gitCommand -or -not $baselineLabel) {
     # FTP-relevant laut Entscheidung q15.
     $ftpPaths = @("index.html", "assets/js", "impressum.html", "datenschutz.html")
     # Weitere öffentliche Dateien, die ebenfalls nur per FTP auf den Webspace kommen.
-    $otherPublicPaths = @(".htaccess", "lesen.html", "anhang.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "assets/css", "assets/img")
+    $otherPublicPaths = @(".htaccess", "lesen.html", "anhang.html", "pdf.html", "handout.html", "handout-pdf.html", "admin.html", "assets/css", "assets/img", "assets/video")
 
     $ftpReasons = @()
     $fallbackOnly = @()
