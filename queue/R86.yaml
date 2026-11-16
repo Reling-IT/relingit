@@ -14,5 +14,6 @@ schritte:
 - Rendern, Sichtung, G1 bis G8, Seitenzahl nach dem Rendern pruefen (S. 13 nur Beispiel).
 nachweis: Draft-PR mit Vorher/Nachher je Stelle, Bericht
 grenzen: "Kein Einbau ohne freigegebenes Expos\xE9. Kein Merge, kein Tag, kein FTP, kein Upload."
-status: wartet_auf_voraussetzung
+status: in_arbeit
 hinweis_lage_2026_11_16: 'Arbeit als Draft-PR ist erlaubt; startet erst, wenn ein PR-Platz frei ist (3 offene: #38, #39, #40). Rendern, Sichtung und Upload von v1.40 erst nach Upload, R09 und Tag v1.39. Beginn laut Rahmen erst nach Upload und Live-Pruefung von v1.39.'
+hinweis_lage_2026_11_16_0745: 'Draft-PR #41 (V140-1, V140-2). Beginn als Draft-PR gilt (Nachtrag PO f1a0fe7); offen: V140-3 Umfang (H1-H7), Einteilung ab Ankunft, Versionsanhebung, Rendern, Sichtung, G1-G8. Upload v1.40 erst nach Upload, R09 und Tag v1.39.'

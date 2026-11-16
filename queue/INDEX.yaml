@@ -1,4 +1,4 @@
-stand: 2026-11-16 06:40
+stand: 2026-11-16 07:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -618,18 +618,18 @@ auftraege:
   titel: 'Trailer im Hero (PR #38) pruefen, Nacharbeit pruefen, Freigabetore'
   art: lesen
   gate: ja
-  status: wartet_auf_owner
+  status: erledigt
   abhaengig_von: []
 - id: R85
   titel: 'Startseite: Link direkt zur Fahrt (PR #39) fertigstellen und pruefen'
   art: code-pr
   gate: ja
-  status: wartet_auf_owner
+  status: erledigt
   abhaengig_von: []
 - id: R86
   titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt, V140-3 Handout aktualisieren (Draft-PR)'
   art: code-pr
   gate: ja
-  status: wartet_auf_voraussetzung
+  status: in_arbeit
   abhaengig_von: []
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
