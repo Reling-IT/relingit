@@ -26,6 +26,16 @@ Describe "ci-check.ps1" {
         Assert-Enthaelt $ergebnis "Doppelte ID 'kap-eins' in source[\\/]fahrt-zum-kunden\.html"
     }
 
+    It "meldet eine Sprungmarke der Startseite ohne Ziel in der Buchfassung" {
+        $projekt = New-MiniProjekt -Ziel "$script:Basis-sprung"
+        $indexPfad = Join-Path $projekt "index.html"
+        $text = [System.IO.File]::ReadAllText($indexPfad)
+        $text = $text.Replace("</body>", "<p><a href=`"lesen.html#kap-gibt-es-nicht`">Sprung</a></p></body>")
+        [System.IO.File]::WriteAllText($indexPfad, $text, (New-Object System.Text.UTF8Encoding($false)))
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
+        Assert-Fehlschlag $ergebnis "Sprungmarke in index\.html ohne Ziel in story/current/fahrt-zum-kunden\.html: lesen\.html#kap-gibt-es-nicht"
+    }
+
     It "meldet eine fehlende Versionshistorien-Zeile zur Deckblatt-Version" {
         $projekt = New-MiniProjekt -Ziel "$script:Basis-zeile" -Geschichte "historie-zeile-fehlt.html.fixture"
         $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "ci-check.ps1"
