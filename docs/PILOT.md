@@ -2,7 +2,7 @@
 
 Vorlage nach `REPOSITORY_BASISHYGIENE.md` („Mindestausstattung je Art“) und `SITZUNGSROUTINE.md` (TA-09) aus `bmarnau-standards/ai-development-governance`, Datei `vorlagen/pilot-steckbrief.md`. Ablage im Repository als `docs/PILOT.md`, Pfad im Projektprofil (`steckbrief` in [CLAUDE.md](../CLAUDE.md)). Nur belegte Angaben; Unbekanntes als `unklar`.
 
-Stand: 12.11.2026, angelegt mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
+Stand: 16.11.2026 (Auftrag R77), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
 
 ## Kurzprofil
 
@@ -11,7 +11,7 @@ Stand: 12.11.2026, angelegt mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `op
 | Zweck (ein Satz) | Landingpage, Online-Lesefassung und Workshop-Handout zur fortlaufenden Kurzgeschichte „Die Fahrt zum Kunden“; laut Auftrag dienen die Kurzgeschichten der Workshop-Vorbereitung. | [README.md](../README.md), erster Absatz; Auftrag R73, Schritt 2 |
 | Zielgruppe | Kolleginnen und Kollegen sowie Workshop-Teilnehmende. Im Repository selbst steht dazu nur das Workshop-Handout; eine Beschreibung der Zielgruppe fehlt dort. | Auftrag R73, Schritt 2; [README.md](../README.md) |
 | Tatsächliche Nutzer | unklar (keine Anzahl und keine Nutzungsdaten im Repository) | – |
-| Status | Pilot (Entscheidung des Product Owners vom 12.11.2026). Belegter Stand: Auf `main` liegt Version 1.38 (7. November 2026, 77 Seiten), Freigabe G8 ist verbucht, der Upload steht aus. Welche Version öffentlich ausgeliefert wird, ist im Repository nicht belegt (laut Auftrag R73: v1.37). v1.39 liegt als Entwurf in Draft-PRs vor. | `queue/R73.yaml` (Feld `entscheidungen_bernd_2026_11_12`); `assets/js/app.js` (Rückfallwert); Commit ba5a23c; PR #29 (Merge 8abe213); TAGESBERICHT-2026-11-11.md; TAGESSTART-2026-11-12.md; PR #27 und #33 |
+| Status | Pilot (Entscheidung des Product Owners vom 12.11.2026). Belegter Stand: Auf `main` liegt Version 1.39 (14. November 2026, 80 Seiten); Sichtung 56/56, G1 bis G8 erteilt, gemergt am 15.11.2026. Der Upload steht aus. Welche Version öffentlich ausgeliefert wird, ist im Repository nicht belegt. | `queue/R73.yaml` (Feld `entscheidungen_bernd_2026_11_12`); PR #37 (Merge a1b11a8); SICHTUNG-v1.39.md; TAGESBERICHT-2026-11-15.md |
 | Start | 2026-08-30 (erster Commit auf `main`) | Commit f426a21 |
 | Werkzeuge | Claude als Planer (Warteschlange) und Claude Code als ausführende KI-Sitzung; GitHub mit GitHub Actions, GitHub-CLI, PowerShell 7 mit Pester, Python und Poppler für die PDF. Ein früherer Codex-Prompt ist als veraltet gekennzeichnet. | [CLAUDE.md](../CLAUDE.md); [TAGESSTART.md](TAGESSTART.md); `queue/INDEX.yaml` (Feld `planer`); [PDF-ERZEUGEN.md](PDF-ERZEUGEN.md); [CODEX_PROMPT.md](CODEX_PROMPT.md) |
 | Technik | Frontend: statische Webseite (HTML, CSS, JavaScript ohne Framework). Backend und Datenbank: Supabase für Leserfeedback, Versionsmetadaten sowie die aktuelle HTML- und PDF-Fassung; geschützter Admin-Bereich für Version, Datum und Seitenzahl. PDF: lokal aus der HTML-Quelle erzeugt und geprüft. Hosting: manuell per FTP bei einem Webhoster; GitHub führt kein Deployment aus. Prüfung: `scripts/ci-check.ps1` lokal und in der CI, Pester-Tests unter `tests/`. | [README.md](../README.md); [SICHERHEIT.md](SICHERHEIT.md); `scripts/pdf/`; `.github/workflows/ci.yml` |
@@ -24,8 +24,10 @@ Stunden trägt nur der Product Owner ein oder nennt sie auf Nachfrage im Tagesab
 | Datum | Stunden (geschätzt) | Wofür (Fachlogik, Oberfläche, Fehlersuche, Infrastruktur, Doku und Standards, Prozess) |
 | --- | --- | --- |
 | 12.11.2026 | 2 | keine Angabe |
+| 14.11.2026 | 3 | keine Angabe |
+| 15.11.2026 | 7 | keine Angabe |
 
-Summe bisher: 2 (nur der 12.11.2026; für frühere Tage keine Angabe)
+Summe bisher: 12 (12., 14. und 15.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md und TAGESBERICHT-2026-11-15.md (TA-09); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
 
 ## Nutzen
 
@@ -47,8 +49,6 @@ Was dieser Pilot über den Aufwand zeigt. Je Eintrag Datum und Beleg (PR, Commit
 
 ## Nächster Meilenstein
 
-- Ziel: Release v1.39. Beleg: Auftrag R73, Schritt 4; Vorarbeiten in PR #27, PR #33 und R63-BERICHT.md.
+- Ziel: Upload und Tag v1.39, danach v1.40 als kleine Korrekturfassung (Rahmen vom Product Owner, 16.11.2026). Beleg: Auftrag R73, Schritt 4; PR #37; Vormerkung VORMERKUNG-v1.40.md und `reports/STATUS.yaml` (Feld `planung_v140`).
 - Abnahmekriterium: unklar (für diesen Meilenstein nicht festgelegt). Allgemein gilt: Tore G1 bis G8 bestanden beziehungsweise erteilt, siehe [FREIGABE.md](FREIGABE.md).
-- Entscheidung „weiter / einfrieren / einstellen“ bis: offen. Laut Auftrag R73 fällt am 16.11.2026 die Entscheidung zum Release v1.39; danach ist eine Pause bis zum Jahresende geplant.
-
-Offene Frage an den Product Owner: Wird das Projekt nach dem Release v1.39 weitergeführt, eingefroren oder eingestellt, und bis wann fällt diese Entscheidung?
+- Entscheidung „weiter / einfrieren / einstellen“: **weiter** (Product Owner, 16.11.2026). Die bisher geplante Pause bis zum Jahresende ist verschoben, ein neuer Termin ist offen. Beleg: `ops/queue` ea666f2 (`hinweis_owner`), `reports/STATUS.yaml` (Feld `entscheidung_weiter`).
