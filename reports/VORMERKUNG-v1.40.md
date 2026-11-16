@@ -9,6 +9,8 @@ art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue 
 
 Änderungen am Buchtext, die nicht mehr in v1.39 (freigegeben, Paket `6E48827B…1B98`) gehen. Wortlaut legt der Product Owner fest.
 
+**Rahmen (Entscheidung Product Owner, 16.11.2026):** v1.40 bleibt eine kleine Korrekturfassung mit den Punkten unten. Beginn erst nach Upload und Live-Prüfung (R09) von v1.39. Kein neuer Erzählstoff (z. B. aus R05) in v1.40.
+
 ## 1. Einstieg „Die Freigabegrenze“ (Kapitel 4): Wiederholung auflösen
 
 **Befund (Product Owner, 16.11.2026):** Kapitel 3 und 4 beginnen nach demselben Muster:
