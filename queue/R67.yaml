@@ -16,4 +16,4 @@ schritte:
 - 'Hinweis: Rueckfall auf v1.38 nennt das Paket 76692313...984C; Seitenzahl 69/64-Frage fuer v1.37 notieren.'
 nachweis: reports/UPLOAD-CHECKLISTE-v1.39.md, Bericht R67-BERICHT.md.
 grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur ops/reports. Dauer etwa 40 Minuten.
-status: wartet_auf_voraussetzung
+status: erledigt

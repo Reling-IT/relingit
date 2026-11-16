@@ -1,0 +1,14 @@
+id: R82
+titel: 'Lesefassung: Anzeige unter dem Inhaltsverzeichnis zeigt nach einem Sprung kurz den Abschnitt davor'
+art: planung
+gate: nein
+abhaengig_von: []
+ziel: Befund f aus dem Tagesabschluss 15.11.2026 (story-viewer.js). Vorgemerkt, nach Release.
+schritte:
+- Ursache eingrenzen, Vorschlag beschreiben.
+nachweis: Kurzplan
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin.
+status: geplant
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

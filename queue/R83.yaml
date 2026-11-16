@@ -1,0 +1,14 @@
+id: R83
+titel: 'Hinweis an bmarnau-standards/uebersicht: dort noch sieben Standards (Buch nennt neun)'
+art: hinweis
+gate: nein
+abhaengig_von: []
+ziel: Das Buch nennt seit 15.11.2026 neun Standards (IAM, REST), die Landingpage uebersicht noch sieben. Bernd entscheidet, ob und wie er den Hinweis gibt.
+schritte:
+- Textvorschlag fuer einen Hinweis (Issue oder Kommentar) bereitstellen; nichts in fremden Repos aendern.
+nachweis: Textvorschlag
+grenzen: Keine Aenderung in anderen Repositories.
+status: geplant
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

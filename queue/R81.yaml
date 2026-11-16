@@ -1,0 +1,14 @@
+id: R81
+titel: Menue fuer Handys unter 800 px (Planung)
+art: planung
+gate: nein
+abhaengig_von: []
+ziel: Navigation unter 800 px Breite annehmen, vorgemerkt aus der Sichtung 15.11.2026. Erst nach Release und Pause planen.
+schritte:
+- Befund aus SICHTUNG-v1.39.md lesen, Aufwand und Wirkung beschreiben.
+nachweis: Kurzplan
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin.
+status: geplant
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

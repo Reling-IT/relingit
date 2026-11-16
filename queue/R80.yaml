@@ -1,0 +1,16 @@
+id: R80
+titel: Pester in die CI aufnehmen (Vorschlag reports/VORSCHLAG-PESTER-CI.md)
+art: code-pr
+gate: ja
+abhaengig_von:
+- R77
+ziel: Die Pester-Tests laufen in der GitHub-CI. Das beruehrt .github/workflows und braucht deshalb die ausdrueckliche Freigabe des Product Owners vorab.
+schritte:
+- Vorschlag reports/VORSCHLAG-PESTER-CI.md lesen und dem Product Owner den Workflow-Diff vorlegen, nicht anwenden.
+- 'Nach Freigabe: Draft-PR; Bericht.'
+nachweis: Draft-PR nach Freigabe
+grenzen: Workflows nur nach ausdruecklicher Freigabe von Bernd. Kein Merge, kein Tag, kein FTP, kein Upload.
+status: geplant
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

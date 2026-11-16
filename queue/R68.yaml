@@ -16,4 +16,4 @@ schritte:
 - Pester-Tests ergaenzen, docs/FREIGABE.md anpassen. Draft-PR, Bericht R68-BERICHT.md.
 nachweis: Draft-PR mit gruener CI.
 grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 45 Minuten.
-status: wartet_auf_voraussetzung
+status: bereit

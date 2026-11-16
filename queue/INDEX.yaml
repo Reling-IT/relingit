@@ -1,4 +1,4 @@
-stand: 2026-11-12 07:30
+stand: 2026-11-16 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -90,7 +90,7 @@ auftraege:
   - R03
   - R04
 - id: R09
-  titel: Live-Pruefung nach dem Upload (nur lesend)
+  titel: Live-Pruefung v1.39 nach dem Upload (nur lesend)
   art: lesen
   gate: nein
   status: wartet_auf_voraussetzung
@@ -405,7 +405,7 @@ auftraege:
   - R17
   - R50
 - id: R52
-  titel: Tag v1.38 setzen (nach Upload und Live-Pruefung)
+  titel: Tag v1.39 setzen (nach Upload und Live-Pruefung)
   art: lokal
   gate: ja
   status: wartet_auf_voraussetzung
@@ -413,7 +413,7 @@ auftraege:
   - R09
   - R51
 - id: R53
-  titel: 'Nach dem Release v1.38: Aufraeumen und Merge-Kette vorbereiten'
+  titel: 'Nach dem Release v1.39: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb)'
   art: lokal
   gate: ja
   status: wartet_auf_voraussetzung
@@ -463,7 +463,7 @@ auftraege:
   titel: 'v1.39 rendern: Lesefassung und PDF nach Merge von #26, #27, #33, dazu C1 und ADF-Zeile'
   art: code-pr
   gate: ja
-  status: wartet_auf_voraussetzung
+  status: erledigt
   abhaengig_von:
   - R65
   - R76
@@ -508,7 +508,7 @@ auftraege:
   titel: Upload-Checkliste v1.39 aus dem Paket erzeugen (nur lesen)
   art: lesen
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: erledigt
   abhaengig_von:
   - R60
   - R62
@@ -516,10 +516,8 @@ auftraege:
   titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden (Draft-PR)'
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
-  abhaengig_von:
-  - R54
-  - R62
+  status: bereit
+  abhaengig_von: []
 - id: R69
   titel: 'Stimmigkeitspruefung Rest des Buchs: Teil 2 ab Mitte, Anhang, Bildunterschriften, aria-label, Versionshistorie (nur lesen)'
   art: lesen
@@ -570,6 +568,62 @@ auftraege:
   titel: 'Freigegebene Drafts auf Ready for review setzen (#25, #28, #26, #27)'
   art: code
   gate: ja
+  status: erledigt
+  abhaengig_von: []
+- id: R77
+  titel: 'Doku-PR: TAGESSTART.md, PDF-ERZEUGEN.md (venv-pdf) und Stunden 14.11./15.11. in PILOT.md'
+  art: code-pr
+  gate: nein
   status: bereit
+  abhaengig_von: []
+- id: R78
+  titel: Sichtungsliste und freigabe-pruefen.ps1 angleichen; Pruefpunkte W07 bis W09 richtigstellen (Draft-PR)
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R79
+  titel: Merge-Pruefung als Skript (Aenderungszeilen, CI, --match-head-commit)
+  art: code-pr
+  gate: nein
+  status: geplant
+  abhaengig_von:
+  - R77
+- id: R80
+  titel: Pester in die CI aufnehmen (Vorschlag reports/VORSCHLAG-PESTER-CI.md)
+  art: code-pr
+  gate: ja
+  status: geplant
+  abhaengig_von:
+  - R77
+- id: R81
+  titel: Menue fuer Handys unter 800 px (Planung)
+  art: planung
+  gate: nein
+  status: geplant
+  abhaengig_von: []
+- id: R82
+  titel: 'Lesefassung: Anzeige unter dem Inhaltsverzeichnis zeigt nach einem Sprung kurz den Abschnitt davor'
+  art: planung
+  gate: nein
+  status: geplant
+  abhaengig_von: []
+- id: R83
+  titel: 'Hinweis an bmarnau-standards/uebersicht: dort noch sieben Standards (Buch nennt neun)'
+  art: hinweis
+  gate: nein
+  status: geplant
+  abhaengig_von: []
+- id: R84
+  titel: 'Trailer im Hero (PR #38) pruefen, Nacharbeit pruefen, Freigabetore'
+  art: lesen
+  gate: ja
+  status: wartet_auf_voraussetzung
+  abhaengig_von: []
+- id: R85
+  titel: 'Startseite: Link direkt zur Fahrt (PR #39) fertigstellen und pruefen'
+  art: code-pr
+  gate: ja
+  status: wartet_auf_voraussetzung
   abhaengig_von: []
 hinweis_owner: 'Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

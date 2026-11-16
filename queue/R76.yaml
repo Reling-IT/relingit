@@ -18,4 +18,4 @@ schritte:
 - Pro PR Status (isDraft, mergeStateStatus, Check Website pruefen) im Bericht reports/R76-BERICHT.md festhalten.
 nachweis: Bericht mit isDraft=false je PR und unveraendertem Head.
 grenzen: 'Kein Merge, kein Push, kein Tag, kein FTP, kein Upload. #30, #31, #32, #33, #34, #35, #36 nicht anfassen. Dauer etwa 5 Minuten.'
-status: bereit
+status: erledigt

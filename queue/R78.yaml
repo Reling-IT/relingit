@@ -1,0 +1,17 @@
+id: R78
+titel: Sichtungsliste und freigabe-pruefen.ps1 angleichen; Pruefpunkte W07 bis W09 richtigstellen (Draft-PR)
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: Sichtungsliste und Auswertung passen zusammen (Ergebnis fest aus Spalte 6, die v1.39-Liste hatte eine Spalte mehr); der Download-Link-Pruefpunkt W07 bis W09 liegt auf Startseite und handout-pdf.html.
+schritte:
+- Spaltenaufbau der Liste und die Auswertung in scripts/freigabe-pruefen.ps1 vergleichen und angleichen; Test dazu.
+- Pruefpunkte W07 bis W09 gegen die tatsaechliche Fundstelle richtigstellen.
+- Zusammen mit R68 pruefen (G2/G7 auf main nicht zutreffend, -Paket einbinden); R68 darin aufnehmen, wenn sinnvoll.
+- Draft-PR, Bericht reports/R78-BERICHT.md.
+nachweis: Draft-PR mit gruener CI und Beispielauswertung der v1.39-Liste
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Dauer etwa 45 Minuten.
+status: bereit
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

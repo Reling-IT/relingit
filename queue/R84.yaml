@@ -1,0 +1,16 @@
+id: R84
+titel: 'Trailer im Hero (PR #38) pruefen, Nacharbeit pruefen, Freigabetore'
+art: lesen
+gate: ja
+abhaengig_von: []
+ziel: 'PR #38 (stummer Trailer, Auftrag direkt vom Product Owner am 15.11.2026, ohne Queue-Eintrag) wird nach der Trailer-Nacharbeit (Schatten, Standbild, quadratischer Hero auf dem Handy, aria-hidden) geprueft. Offen laut PR: Desktop-Breite, Safari/iOS, Bewegung reduzieren.'
+schritte:
+- 'Nacharbeit-Kommentar auf #38 lesen, CI und Dateiliste pruefen.'
+- Vorschau-Pruefung (Desktop, Handy, prefers-reduced-motion) im Bericht festhalten.
+- Freigabetore nach docs/FREIGABE.md fuer den Trailer-Anteil; Merge nur nach Einzelfreigabe durch Bernd.
+nachweis: Bericht, Freigabestand
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. FTP-Upload der Trailer-Dateien nur durch Bernd.
+status: wartet_auf_voraussetzung
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

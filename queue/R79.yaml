@@ -1,0 +1,16 @@
+id: R79
+titel: Merge-Pruefung als Skript (Aenderungszeilen, CI, --match-head-commit)
+art: code-pr
+gate: nein
+abhaengig_von:
+- R77
+ziel: Die manuelle Merge-Pruefung (gleiche Aenderungszeilen nach update-branch, gruene CI, Bindung an den freigegebenen Head) wird ein lesendes Skript.
+schritte:
+- 'scripts/merge-pruefen.ps1 (nur lesen): Head, Aenderungszeilen gegen die Freigabe, Check Website pruefen, mergeable_state; Ausgabe als Tabelle.'
+- Pester-Test; docs/ABLAUF.md ergaenzen; Draft-PR; Bericht.
+nachweis: Draft-PR, Bericht
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Das Skript fuehrt keinen Merge aus. Dauer etwa 45 Minuten.
+status: geplant
+stand: 2026-11-16 06:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
