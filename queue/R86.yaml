@@ -1,16 +1,17 @@
 id: R86
-titel: 'v1.40 vorbereiten: Expose Geschichte Horst und Mira (Idee 14) und Einbauplan (Planung)'
-art: planung
+titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt (Draft-PR)'
+art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-16 06:25
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-ziel: "Bernd hat am 16.11.2026 gesagt: v1.39 ist heute fertig, v1.40 wird begonnen. Inhalt und Umfang von v1.40 sind noch nicht bestaetigt. Plan (Stand 06.11.): Geschichte Horst und Mira (Idee 14, Kaffeeecke), Anhang-Box HI-Bibliothek, dazu Trailer (#38) und Link zur Fahrt (#39) als Web-Anteil. Dieser Auftrag wird vom Planer bearbeitet (Expos\xE9 im Projekt), nicht von Claude Code."
+ziel: 'Rahmen Bernd 16.11.2026: v1.40 bleibt eine kleine Korrekturfassung, kein neuer Erzaehlstoff (z. B. aus R05). V140-1: Einstiege "der/die Einzige bei Reling IT" in Kapitel 3 (Reiner, Entwurf von Bernd) und Kapitel 4 (Insa, Vorschlag 1) aufloesen. V140-2: Wegweiser zur Fahrt im Buch (Satz im Kasten "Aufbau in zwei Teilen", Gliederung des Inhaltsverzeichnisses "Vor der Fahrt" / "Unterwegs", Einteilung ab "Ankunft" legt Bernd fest). Quelle: reports/VORMERKUNG-v1.40.md auf ops/reports. Korrektur: die fruehere Annahme "v1.40 = Geschichte Horst und Mira" in diesem Auftrag war falsch.'
 schritte:
-- Bernd bestaetigt den Inhalt von v1.40 (Geschichte ja/nein, Trailer und Link ja/nein).
-- "Expos\xE9 zur Geschichte (nur belegte Aussagen, Regeln: Navis liest nur, zehn im Haus, Offen bleibt offen); Bernd gibt frei."
-- Danach Einbau-Auftrag fuer Claude Code (Quelle, verify_layout, ci-check), Draft-PR; Version 1.40 erst beim Release setzen.
-nachweis: "Expos\xE9 im Projekt, Einbau-Auftrag in der Warteschlange"
+- 'VORMERKUNG-v1.40.md lesen; Wortlaut legt Bernd fest (Reiner: Entwurf, Insa: Vorschlag 1).'
+- Draft-PR auf source/fahrt-zum-kunden.html (kap-reiner-voss, kap-freigabegrenze, Kasten Aufbau in zwei Teilen, Inhaltsverzeichnis); Anschluss der folgenden Saetze pruefen; ci-check pruefen, ob die neue Gliederung als vollstaendig erkannt wird; Kapitelanfaenge von Teil 1 nebeneinander lesen.
+- Rendern, Sichtung, G1 bis G8, Seitenzahl nach dem Rendern pruefen (S. 13 nur Beispiel).
+nachweis: Draft-PR mit Vorher/Nachher je Stelle, Bericht
 grenzen: "Kein Einbau ohne freigegebenes Expos\xE9. Kein Merge, kein Tag, kein FTP, kein Upload."
 status: wartet_auf_voraussetzung
+hinweis_lage_2026_11_16: 'Arbeit als Draft-PR ist erlaubt; startet erst, wenn ein PR-Platz frei ist (3 offene: #38, #39, #40). Rendern, Sichtung und Upload von v1.40 erst nach Upload, R09 und Tag v1.39. Beginn laut Rahmen erst nach Upload und Live-Pruefung von v1.39.'

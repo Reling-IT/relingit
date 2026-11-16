@@ -11,6 +11,7 @@ schritte:
 nachweis: Draft-PR nach Freigabe
 grenzen: Workflows nur nach ausdruecklicher Freigabe von Bernd. Kein Merge, kein Tag, kein FTP, kein Upload.
 status: geplant
-stand: 2026-11-16 06:10
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_lage_2026_11_16: Erst bei freiem PR-Platz und nach ausdruecklicher Freigabe von Bernd (beruehrt .github/workflows).

@@ -10,7 +10,8 @@ schritte:
 - Freigabetore nach docs/FREIGABE.md fuer den Trailer-Anteil; Merge nur nach Einzelfreigabe durch Bernd.
 nachweis: Bericht, Freigabestand
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. FTP-Upload der Trailer-Dateien nur durch Bernd.
-status: wartet_auf_voraussetzung
-stand: 2026-11-16 06:10
+status: wartet_auf_owner
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_lage_2026_11_16: 'Nacharbeit fertig (Head 10fb65f). Wartet nur auf die Sichtung durch Bernd: Video, Safari/iOS, Bewegung reduzieren. Danach Tore und Einzelfreigabe mit Head-SHA. Entspricht PO-TRAILER in STATUS.yaml.'

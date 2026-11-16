@@ -3,9 +3,8 @@ titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden 
 art: code-pr
 gate: nein
 abhaengig_von:
-- R54
-- R62
-stand: 2026-11-11 07:40
+- R78
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 voraussetzung: 'Draft #31 (R54) und #34 (R62) sind auf main gemergt, damit das Skript nicht doppelt veraendert wird (Konflikt mit #31).'
@@ -16,4 +15,5 @@ schritte:
 - Pester-Tests ergaenzen, docs/FREIGABE.md anpassen. Draft-PR, Bericht R68-BERICHT.md.
 nachweis: Draft-PR mit gruener CI.
 grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 45 Minuten.
-status: bereit
+status: wartet_auf_voraussetzung
+hinweis_lage_2026_11_16: Zusammen mit R78 in einem PR (beide betreffen scripts/freigabe-pruefen.ps1); wartet auf freien PR-Platz.

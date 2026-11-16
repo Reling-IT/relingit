@@ -11,7 +11,8 @@ schritte:
 - ci-check und Pester; Draft-PR; Bericht reports/R77-BERICHT.md.
 nachweis: Draft-PR mit gruener CI, Bericht
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Dauer etwa 30 Minuten.
-status: bereit
-stand: 2026-11-16 06:25
+status: erledigt
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_lage_2026_11_16: 'Ausgefuehrt: Draft-PR #40 (Head 2c6a93f, CI gruen). Stunden 15.11. = 7 (3 am Tag und 4 am Abend, von Bernd am 16.11. bestaetigt), 14.11. = 3, Summe 12 in docs/PILOT.md. Bericht reports/R77-BERICHT.md. Merge nur nach Einzelfreigabe durch Bernd.'

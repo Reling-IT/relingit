@@ -11,6 +11,7 @@ schritte:
 nachweis: Draft-PR, Bericht
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Das Skript fuehrt keinen Merge aus. Dauer etwa 45 Minuten.
 status: geplant
-stand: 2026-11-16 06:10
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_lage_2026_11_16: Erst bei freiem PR-Platz.

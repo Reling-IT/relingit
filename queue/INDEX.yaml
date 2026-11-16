@@ -1,4 +1,4 @@
-stand: 2026-11-16 06:25
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -11,6 +11,7 @@ statuswerte:
 - geplant
 - wartet_auf_entscheidung
 - wartet_auf_voraussetzung
+- wartet_auf_owner
 regel: Claude Code fuehrt nur Auftraege mit status bereit aus, in der Reihenfolge dieser Liste, einen zur Zeit.
 gemeinsame_regeln:
 - Sprache Deutsch, sachlich, Anforderungen mit muss/sollte. Daten als JSON oder YAML, Diagramme als Mermaid.
@@ -95,7 +96,7 @@ auftraege:
   gate: nein
   status: wartet_auf_voraussetzung
   abhaengig_von:
-  - R01
+  - Upload v1.39 (Bernd)
   offen: Bernd setzt den Status auf bereit, sobald die neue Version hochgeladen ist (erst mit der ersten neuen Geschichte).
 - id: R11
   titel: Avatare von Navis und Lumen auf der Webseite zeigen
@@ -411,14 +412,12 @@ auftraege:
   status: wartet_auf_voraussetzung
   abhaengig_von:
   - R09
-  - R51
 - id: R53
   titel: 'Nach dem Release v1.39: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb)'
   art: lokal
   gate: ja
   status: wartet_auf_voraussetzung
   abhaengig_von:
-  - R09
   - R52
 - id: R54
   titel: 'freigabe-pruefen.ps1: G6 bei Paketen ohne Audio als nicht zutreffend werten'
@@ -516,8 +515,9 @@ auftraege:
   titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden (Draft-PR)'
   art: code-pr
   gate: nein
-  status: bereit
-  abhaengig_von: []
+  status: wartet_auf_voraussetzung
+  abhaengig_von:
+  - R78
 - id: R69
   titel: 'Stimmigkeitspruefung Rest des Buchs: Teil 2 ab Mitte, Anhang, Bildunterschriften, aria-label, Versionshistorie (nur lesen)'
   art: lesen
@@ -574,13 +574,13 @@ auftraege:
   titel: 'Doku-PR: TAGESSTART.md, PDF-ERZEUGEN.md (venv-pdf) und Stunden 14.11./15.11. in PILOT.md'
   art: code-pr
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R78
   titel: Sichtungsliste und freigabe-pruefen.ps1 angleichen; Pruefpunkte W07 bis W09 richtigstellen (Draft-PR)
   art: code-pr
   gate: nein
-  status: bereit
+  status: wartet_auf_voraussetzung
   abhaengig_von: []
 - id: R79
   titel: Merge-Pruefung als Skript (Aenderungszeilen, CI, --match-head-commit)
@@ -618,17 +618,17 @@ auftraege:
   titel: 'Trailer im Hero (PR #38) pruefen, Nacharbeit pruefen, Freigabetore'
   art: lesen
   gate: ja
-  status: wartet_auf_voraussetzung
+  status: wartet_auf_owner
   abhaengig_von: []
 - id: R85
   titel: 'Startseite: Link direkt zur Fahrt (PR #39) fertigstellen und pruefen'
   art: code-pr
   gate: ja
-  status: wartet_auf_voraussetzung
+  status: wartet_auf_owner
   abhaengig_von: []
 - id: R86
-  titel: 'v1.40 vorbereiten: Expose Geschichte Horst und Mira (Idee 14) und Einbauplan (Planung)'
-  art: planung
+  titel: 'v1.40 (Korrekturfassung): V140-1 Einstiege Kap. 3 und 4, V140-2 Wegweiser zur Fahrt (Draft-PR)'
+  art: code-pr
   gate: ja
   status: wartet_auf_voraussetzung
   abhaengig_von: []

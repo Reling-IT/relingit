@@ -3,7 +3,7 @@ titel: Live-Pruefung v1.39 nach dem Upload (nur lesend)
 art: lesen
 gate: nein
 abhaengig_von:
-- R01
+- Upload v1.39 (Bernd)
 voraussetzung: Bernd hat v1.38 hochgeladen (Paket 76692313...984C bzw. A906DDF4...205A, nicht 7118198F...) und setzt den Status auf bereit. Vorher nicht beginnen.
 ziel: Belegen, dass die Live-Seite berndmarnau.de/relingit dem Stand von main und story/current entspricht.
 schritte:
@@ -14,6 +14,7 @@ schritte:
 nachweis: Bericht reports/R09-BERICHT.md mit Abrufzeit, HTTP-Status je Datei und Soll-Ist-Tabelle.
 grenzen: Nur lesende Abrufe. Keine Anmeldung, kein Admin-Konto, kein Supabase-Zugriff, kein FTP, keine Aenderung im Repo ausser dem Bericht auf ops/reports. Keine Zugangsdaten.
 status: wartet_auf_voraussetzung
-stand: 2026-11-10 06:00
+stand: 2026-11-16 06:40
 hinweis_planung_2026_11_11: 'Bernd 11.11.: Upload erst, wenn v1.39 fertig ist; Entscheidung am Mo 16.11.2026: nur v1.39 oder v1.38 als Fallback. Dieser Auftrag bezieht sich dann auf die hochgeladene Version. Nicht beginnen, bevor Bernd die Version nennt.'
 hinweis_planung_2026_11_16: 'Prueft v1.39: Version 1.39, Datum 15. November 2026, 80 Seiten, Anhang mit neun Standards, Handout-Datum Ende November 2026, Anhang-Seite, Startseite. Nach dem Upload (Zeitpunkt Bernd: jetzt oder mit Trailer).'
+hinweis_lage_2026_11_16: 'Haengt am Upload v1.39 durch Bernd, geplant in rund einer Woche (Paket mit Trailer und Link CDF23C5F...9218 nach Merge von #38 und #39). Erst danach R09, dann R52, dann R53.'

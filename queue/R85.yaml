@@ -6,11 +6,12 @@ abhaengig_von: []
 ziel: 'PR #39 (Link auf lesen.html#kap-aufbruch, neue ci-check-Pruefung fuer Sprungmarken) ist Draft; Sprung im Browser noch nicht geprueft. Beruehrt index.html wie #38.'
 schritte:
 - Sprung im Browser pruefen (Desktop und Handy), Bericht.
-- 'Reihenfolge mit #38 festlegen; nach dem Merge beider das Upload-Paket aus main neu bauen.'
+- 'Reihenfolge mit #38 festlegen; nach dem Merge beider das vorhandene Upload-Paket CDF23C5F...9218 (enthaelt #38 und #39, nur lokal) mit main abgleichen; ein Neubau ist nur noetig, wenn sich ein Head aendert.'
 - Ready erst nach Pruefung; Merge nur nach Einzelfreigabe von Bernd.
 nachweis: Bericht, Ready-Status nach Freigabe
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin.
-status: wartet_auf_voraussetzung
-stand: 2026-11-16 06:10
+status: wartet_auf_owner
+stand: 2026-11-16 06:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis_lage_2026_11_16: 'PR fertig (Head ba7c909, Draft). Offen: Pruefung des Sprungs im Browser durch Bernd, danach Ready und Einzelfreigabe. Entspricht PO-LINK-FAHRT in STATUS.yaml.'
