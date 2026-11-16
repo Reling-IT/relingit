@@ -501,6 +501,18 @@ foreach ($htmlFile in $htmlFiles) {
     }
 }
 
+# Sprungmarken von der Startseite in die Lesefassung (z. B. lesen.html#kap-aufbruch)
+# müssen als ID in der Buchfassung existieren. Die allgemeine Prüfung oben
+# schneidet den Anker ab und würde einen umbenannten Abschnitt nicht bemerken.
+$storyIds = @([regex]::Matches($storyHtmlText, '\bid\s*=\s*["'']([^"'']+)["'']') | ForEach-Object { $_.Groups[1].Value })
+$indexText = Get-Content -Raw -LiteralPath "index.html"
+foreach ($jump in [regex]::Matches($indexText, 'href\s*=\s*["'']lesen\.html#([^"'']+)["'']')) {
+    $jumpTarget = $jump.Groups[1].Value
+    if ($jumpTarget -notin $storyIds) {
+        $failures.Add("Sprungmarke in index.html ohne Ziel in story/current/fahrt-zum-kunden.html: lesen.html#$jumpTarget")
+    }
+}
+
 # Eine schnelle Signaturprüfung erkennt beschädigte oder falsch benannte PDFs.
 foreach ($pdfName in @("story/current/geschichte.pdf", "story/current/workshop-handout.pdf", "source/Die-Fahrt-zum-Kunden.pdf")) {
     if (-not (Test-Path -LiteralPath $pdfName)) { continue }
