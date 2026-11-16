@@ -1,6 +1,6 @@
-stand: 2026-11-16T05:20+01:00
+stand: 2026-11-16T05:50+01:00
 repo: Reling-IT/relingit
-quelle_queue: 'origin/ops/queue e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
+quelle_queue: 'origin/ops/queue 71cfb3d (Stand 16.11. 06:10, Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert), vorher e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
 hinweis_arbeitsweise: 'Owner-Anweisung 07.11.2026: Agenten nutzen, nicht auf Merge warten. R14 bis R25 laufen deshalb parallel statt einer zur Zeit.'
 auftraege:
@@ -498,6 +498,7 @@ auftraege:
     nachtrag: '15.11.2026: Sichtung 56/56 Ja (SICHTUNG-v1.39.md); in der Sichtung 531b42a (Handout-Datum Startseite), 8a54375 (neun Standards, IAM und REST, Fassung 15.11.2026), 90ecfd3 und a470a41 (Seitenumbrueche); G1 bis G8 erteilt (G8 PR-Kommentar); Merge durch KI-Sitzung auf Anweisung des Product Owners; #27, #33, #35 von GitHub als gemergt markiert; Paket relingit-upload-v1.39-2026-11-15-ohne-audio.zip SHA-256 6E48827B...1B98 nicht hochgeladen'
   - id: PO-TRAILER
     status: in_arbeit
+    queue: 'R84 (wartet_auf_voraussetzung, seit ops/queue 71cfb3d)'
     start: 2026-11-15T20:10+01:00
     branch: trailer-hero
     pr: https://github.com/Reling-IT/relingit/pull/38 (Head 10fb65f)
@@ -505,6 +506,7 @@ auftraege:
     hinweis: 'Auftrag direkt vom Product Owner, ohne ops/queue. Stummer Trailer im Hero; Doku und publish-release (f0b062f); Schattenfehler behoben, Hero auf dem Handy quadratisch, aria-hidden (10fb65f); ci-check OK, Pester 54/54. Offen: Sichtung (Video laufend, Safari/iOS, Bewegung reduzieren), Merge durch den Product Owner mit Head-SHA, G8 mit Paket-Hash.'
   - id: PO-LINK-FAHRT
     status: in_arbeit
+    queue: 'R85 (wartet_auf_voraussetzung, seit ops/queue 71cfb3d)'
     start: 2026-11-15T21:25+01:00
     branch: startseite-link-fahrt
     pr: https://github.com/Reling-IT/relingit/pull/39 (Draft, Head ba7c909)
@@ -555,9 +557,16 @@ planung_v140:
       titel: 'Wegweiser zur Fahrt im Buch: Satz im Kasten Aufbau, Gliederung von Teil 1 im Inhaltsverzeichnis'
       stand: 'Einteilung ab Ankunft legt der Product Owner fest'
   reihenfolge:
-    - 'Paket v1.39 mit Trailer und Link (16.11.), Sichtung und Merge #38/#39 durch den Product Owner'
-    - 'Upload v1.39 (in rund einer Woche), R09, Tag v1.39'
-    - 'v1.40: Auftrag durch den Planer in ops/queue, Umsetzung, Rendern, Sichtung, G1 bis G8'
+    - 'erledigt 16.11. 05:20: Paket v1.39 mit Trailer und Link (CDF23C5F...9218)'
+    - 'Sichtung und Merge #38 (R84) und #39 (R85) durch den Product Owner, Merge mit Head-SHA (#38 10fb65f, #39 ba7c909); danach Paket mit main abgleichen'
+    - 'Upload v1.39 durch den Product Owner (in rund einer Woche), dann R09 (Live-Pruefung), R52 (Tag v1.39), R53 (Aufraeumen)'
+    - 'v1.40: Auftrag durch den Planer in ops/queue (noch nicht angelegt), Umsetzung als Draft-PR, Rendern, Sichtung, G1 bis G8; Upload v1.40 erst nach Upload, R09 und Tag v1.39'
+  queue_bereit:
+    stand: 'ops/queue 71cfb3d'
+    auftraege: [R77, R78, R68, R29]
+    hinweis: 'Offene PRs aus KI-Sitzungen: 2 (#38, #39). Grenze 3 je Repo: vor dem Merge von #38/#39 passt nur ein weiterer PR (Vorschlag: R77). R79 und R80 haengen an R77; R81 bis R83 geplant.'
+  abweichung: 'R77 nennt fuer den 15.11. 3 Stunden; laut TAGESBERICHT-2026-11-15.md (TA-09, Commit faf9338) vom Product Owner bestaetigt: 7 Stunden. Vor dem Eintrag in PILOT.md klaeren.'
+  standbericht: reports/STANDBERICHT-2026-11-16.md
 leerlauf_ende:
   - zeit: 2026-11-15T18:35+01:00
     hinweis: 'Tagesabschluss 15.11.; Sichtung v1.39 56/56 Ja, G1 bis G8, #37 gemergt (a1b11a8), offene PRs 0; offen: Upload v1.39 durch den Product Owner, R09, Tag; neue Auftraege a und b fuer den Planer. Tagesbericht reports/TAGESBERICHT-2026-11-15.md'
