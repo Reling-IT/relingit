@@ -47,3 +47,5 @@ Rollen: Product Owner, Planer (Claude, ops/queue), Ausführung (Claude Code). Qu
 ## Fragen an den Product Owner
 
 Die erste Frage: Sollen für den 15.11. 7 Stunden in `docs/PILOT.md` eingetragen werden statt der 3 aus R77? Meine Empfehlung: ja, 7, wie im Tagesabschluss bestätigt.
+
+**Antwort des Product Owners (16.11.2026):** 7 Stunden am 15.11. R77 trägt 7 ein, nicht 3. Den Auftragstext in `ops/queue` korrigiert der Planer.

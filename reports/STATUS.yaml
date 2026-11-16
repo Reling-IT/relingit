@@ -565,7 +565,7 @@ planung_v140:
     stand: 'ops/queue 71cfb3d'
     auftraege: [R77, R78, R68, R29]
     hinweis: 'Offene PRs aus KI-Sitzungen: 2 (#38, #39). Grenze 3 je Repo: vor dem Merge von #38/#39 passt nur ein weiterer PR (Vorschlag: R77). R79 und R80 haengen an R77; R81 bis R83 geplant.'
-  abweichung: 'R77 nennt fuer den 15.11. 3 Stunden; laut TAGESBERICHT-2026-11-15.md (TA-09, Commit faf9338) vom Product Owner bestaetigt: 7 Stunden. Vor dem Eintrag in PILOT.md klaeren.'
+  abweichung: 'R77 nennt fuer den 15.11. 3 Stunden; laut TAGESBERICHT-2026-11-15.md (TA-09, Commit faf9338) vom Product Owner bestaetigt: 7 Stunden. Entscheidung Product Owner 16.11.2026: 7 Stunden am 15.11. eintragen (R77 entsprechend ausfuehren; Korrektur des Auftragstexts durch den Planer).'
   standbericht: reports/STANDBERICHT-2026-11-16.md
 leerlauf_ende:
   - zeit: 2026-11-15T18:35+01:00
