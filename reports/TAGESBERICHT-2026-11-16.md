@@ -32,7 +32,7 @@ Kein eigenes Protokoll `TAGESSTART-2026-11-16.md` vorhanden. Die Lage am Morgen 
 
 1. V140-3: Welche Stellen H1 bis H7 sollen geändert werden? Empfehlung: H2 (Einleitung „Vorhersage-Modell“) umschreiben, H1 konkreten Termin nennen, H6 Fassung ergänzen.
 2. V140-2: Einteilung ab „Ankunft“ im Inhaltsverzeichnis? Vorläufig steht alles unter „Unterwegs“. Empfehlung: dritte Gruppe „Am Ziel“ ab „Ankunft“ prüfen, nach Lektüre der Kapitelfolge.
-3. TA-09: geschätzte Stunden 16.11. für PILOT.md.
+3. TA-09: beantwortet (2 Stunden).
 
 ### TA-03 Offene PRs
 
@@ -71,7 +71,7 @@ STATUS.yaml (`planung_v140`) nachgezogen; Queue `ops/queue` 78eb904.
 
 ### TA-09 Stunden
 
-Frage an den Product Owner gestellt; Eintrag folgt nach Antwort (bis dahin: keine Angabe).
+Product Owner: **2 Stunden** am 16.11.2026. Eingetragen in `docs/PILOT.md` über PR #41 (Summe 14).
 
 ## Vorschläge und Ideen (Claude)
 
@@ -85,7 +85,6 @@ Projektstatus: weiter (Entscheidung PO 16.11.); wartet auf Upload v1.39 durch de
 Offene_Fragen:
   - V140-3 Umfang (H1 bis H7)?
   - Einteilung ab Ankunft im Inhaltsverzeichnis?
-  - Stunden 16.11.?
 Roadmap:
   Sprints_bis_BSF: 1
   Sprints_bis_MVP: 2
