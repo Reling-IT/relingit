@@ -7,6 +7,17 @@ Zwei Skripte unter `scripts/pdf/` erzeugen aus `source/fahrt-zum-kunden.html` di
 
 Die Werkzeuge sind freiwillig. `scripts/ci-check.ps1` und die GitHub-CI brauchen sie nicht.
 
+## Renderumgebung auf dem Arbeitsrechner
+
+Auf dem Arbeitsrechner liegt die feste Renderumgebung `C:\devenv-pdf`, ein Python-venv mit Playwright 1.64.0 (Chromium-Build 1248), pypdf 6.21.0, numpy, pillow und tzdata (Stand 16.11.2026). Das System-Python hat kein Playwright. Die Skripte deshalb mit dem Python dieser Umgebung aufrufen, im Repo-Stamm:
+
+```powershell
+C:\devenv-pdf\Scripts\python.exe scripts/pdf/render_story_pdf.py
+C:\devenv-pdf\Scripts\python.exe scripts/pdf/verify_layout.py
+```
+
+Die Umgebung gehört zum Arbeitsplatz und ist keine lose Datei in `C:\dev`. Die Einrichtung unten beschreibt, wie sie auf einem anderen Rechner entsteht.
+
 ## Einmal-Einrichtung unter Windows
 
 Alle Befehle in PowerShell, im Repo-Stamm.
