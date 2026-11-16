@@ -9,7 +9,7 @@ art: Merkliste – kein Auftrag, keine Änderung an main; Aufnahme in ops/queue 
 
 Änderungen am Buchtext, die nicht mehr in v1.39 (freigegeben, Paket `6E48827B…1B98`) gehen. Wortlaut legt der Product Owner fest.
 
-**Rahmen (Entscheidung Product Owner, 16.11.2026):** v1.40 bleibt eine kleine Korrekturfassung mit den Punkten unten. Beginn erst nach Upload und Live-Prüfung (R09) von v1.39. Kein neuer Erzählstoff (z. B. aus R05) in v1.40.
+**Rahmen (Entscheidung Product Owner, 16.11.2026):** v1.40 bleibt eine kleine Korrekturfassung mit den Punkten unten. Ergänzung Product Owner 16.11.2026: Punkt 3 (Handout). Beginn erst nach Upload und Live-Prüfung (R09) von v1.39. Kein neuer Erzählstoff (z. B. aus R05) in v1.40.
 
 ## 1. Einstieg „Die Freigabegrenze“ (Kapitel 4): Wiederholung auflösen
 
@@ -39,9 +39,18 @@ Ergänzt den Startseiten-Link aus PR #39 (die Fahrt beginnt erst mit Kapitel 6 �
 - Kasten „Aufbau in zwei Teilen“: Satz wie „Die Fahrt beginnt mit dem Kapitel ‚Aufbruch‘ (S. 13).“ Seitenzahl nach dem Rendern von v1.40 prüfen.
 - Deckblatt-Inhaltsverzeichnis: Teil 1 gliedern, z. B. „Vor der Fahrt“ (Kaffeeecke bis Vor Reling IT) und „Unterwegs“ ab „Aufbruch“. Einteilung ab „Ankunft“ (Rückblenden, zweite Zeitlinie) legt der Product Owner fest.
 
+## 3. Handout: aktueller Stand und Workshop November
+
+**Ergänzung (Product Owner, 16.11.2026):** In v1.40 wird das Workshop-Handout auf den aktuellen Stand und auf den Workshop im November gebracht.
+
+- Betroffen: `story/current/workshop-handout.html` und das daraus gerenderte `story/current/workshop-handout.pdf` (Profil `handout`, siehe `docs/PDF-ERZEUGEN.md`).
+- Stand auf `main` (a1b11a8): Kopfzeile „Workshop-Vorbereitungsmaterial · Ende November 2026“, zuletzt in v1.39 gerendert.
+- Was „aktueller Stand“ inhaltlich umfasst (z. B. Bezug auf v1.40, Termin, Übungen), ist unklar und wird vom Product Owner festgelegt. Wortlaut legt der Product Owner fest.
+
 ## Vorschläge und Ideen (Claude)
 
 Empfehlungen, keine Fakten:
 
 - Beim Einbau von v1.40 die Kapitelanfänge von Teil 1 einmal nebeneinander lesen (erste Sätze je Kapitel); so fallen weitere wiederkehrende Formeln auf.
 - Nach Punkt 2 prüfen, ob `ci-check.ps1` die neue Gliederung des Inhaltsverzeichnisses noch als vollständig erkennt (Prüfung der TOC-Ziele).
+- Für Punkt 3 vorab eine kurze Liste der Stellen im Handout vorlegen, die sich auf Fassung, Datum oder Buchinhalt beziehen; dann kann der Product Owner den Umfang festlegen, bevor der Draft-PR entsteht.
