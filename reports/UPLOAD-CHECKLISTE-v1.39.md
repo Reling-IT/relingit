@@ -181,3 +181,18 @@ Gegenüber dem freigegebenen Paket `6E48827B…1B98`: 3 geändert, 2 neu, 35 unv
 **Nach dem Merge:** #38 und #39 durch den Product Owner mergen (Head-SHAs oben). Danach `main` gegen dieses Paket abgleichen: gleicher Inhalt erwartet (40 Nutzdateien gleich); neu gebaut ändert sich nur der ZIP-Hash (Zeitstempel im Manifest).
 
 **Freigabe offen:** G8 vom 15.11.2026 gilt für `6E48827B…1B98`. Für dieses Paket: Sichtung Trailer und Link (G3 bis G5) und G8 mit Hash `CDF23C5F…9218` durch den Product Owner. Nicht geprüft: Safari/iOS, „Bewegung reduzieren“ auf echten Geräten.
+
+## Nachtrag 16.11.2026, 07:45: endgültiges Paket aus `main`
+
+| Feld | Wert |
+|---|---|
+| Datei | `output/ftp/relingit-upload-v1.39-2026-11-15-ohne-audio.zip` im Arbeitsklon `C:\dev\relingit` (nicht in Git) |
+| SHA-256 | `476622E71422AB8101AD266509B9C0CA171EF4A8BB990D08AAB2A47B0E6E8AA1` |
+| Größe | 6 876 486 Byte, 41 Einträge (40 Nutzdateien + Manifest) |
+| Gebaut aus | `main` 907ca58 (nach Merge #40 6ebfbea, #39 8126e41, #38 907ca58); `./scripts/build-upload.ps1 -OhneAudio`, Exit 0 |
+| Prüfung | `pruefe-paket.ps1 -Vorgaenger <CDF23C5F-Paket> -ErwartetHash 476622E7…` Exit 0: 40 Nutzdateien unverändert gegenüber CDF23C5F, nur Manifest geändert |
+
+- Dieses Paket **ersetzt** CDF23C5F für den Upload; der Inhalt ist gleich, die Herkunft ist jetzt `main` statt einer nachgestellten Zusammenführung.
+- Freigabe: Product Owner im Chat 16.11.2026 („Alle Merge in dieser Sitzung gebe ich hiermit frei“, „Baue auch selbständig das fertige v1.39 Upload Paket“). Dokumentiert als Kommentar an PR #38.
+- Restrisiko: Safari/iOS und „Bewegung reduzieren“ auf echten Geräten nicht geprüft; in R09 nachholen.
+- Beim Upload die Live-MP3 nicht löschen (Paket ohne Audio).
