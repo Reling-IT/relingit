@@ -557,6 +557,7 @@ planung_v140:
   stand: 2026-11-16
   rahmen: 'Kleine Korrekturfassung, kein neuer Erzaehlstoff (auch nicht aus R05). Entscheidung Product Owner 16.11.2026. Nachtrag 16.11. frueh: Arbeit an v1.40 beginnt am 16.11. nach dem Paketbau v1.39 als Draft-PR; Upload v1.40 erst nach Upload, R09 und Tag v1.39.'
   vormerkung: reports/VORMERKUNG-v1.40.md
+  entscheidung_weiter: 'Product Owner 16.11.2026: weiter, Pause bis Jahresende verschoben (neuer Termin offen). In ops/queue (hinweis_owner) eingetragen; docs/PILOT.md Zeile Entscheidung noch nachziehen.'
   themen:
     - id: V140-1
       titel: 'Wiederholung "der/die Einzige bei Reling IT" aufloesen (Kapitel 3 Reiner, Kapitel 4 Insa)'

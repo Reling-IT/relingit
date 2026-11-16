@@ -29,7 +29,7 @@ Strang B darf **vor** dem Upload v1.39 beginnen (Nachtrag Product Owner, Commit 
 
 1. Planungsseite mit den zwei Strängen A und B führen, nicht als eine Kette.
 2. In R86 den Hinweis zum Beginn berichtigen (siehe oben) und V140-3 als „wartet auf Umfang durch den Product Owner“ kennzeichnen.
-3. Die Entscheidung „weiter / einfrieren / einstellen“ (PILOT.md, Termin 16.11.) ist weiter nicht dokumentiert. Die Arbeit an v1.40 spricht für „weiter“; das sollte der Product Owner bestätigen und die Queue festhalten.
+3. Erledigt 07:20: Der Product Owner hat „weiter“ entschieden, die Pause bis Jahresende ist verschoben (neuer Termin offen). Eingetragen in `ops/queue` (`hinweis_owner`) und STATUS.yaml. R71 und R72 bitte entsprechend einordnen.
 
 ---
 
