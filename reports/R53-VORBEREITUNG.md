@@ -74,3 +74,15 @@ Danach sind r60 und trailer ohne Verlust entfernbar (nur die gesicherten Dateien
 - Gesamtsicherung `C:\dev\relingit\archive\_gesichert-2026-11-23\`: 163 Dateien, 155,5 MB, 163 Zeilen in `SHA256SUMS.txt`.
 - Gegenprobe `git status --porcelain --ignored` im OneDrive-Klon: alle ignorierten Einträge sind gesichert oder entbehrlich. `supabase/.temp/` enthält nur `cli-latest` (8 Byte, Versionsmerker der Supabase-CLI), nicht gesichert.
 - Damit ist im OneDrive-Klon, in `r60` und in `trailer` nichts Ungesichertes mehr bekannt. Entfernen erst nach erneuter Freigabe.
+
+## Ausführung 2 (23.11.2026, Freigabe Product Owner im Chat)
+
+Unmittelbar vorher erneut geprüft; Zustand je Objekt wie zuvor gemessen.
+
+| Objekt | Prüfung direkt vorher | Ausgeführt |
+|---|---|---|
+| Worktree `r60` | Branch `auftrag-R60-v139`, Head a470a41, sauber, 0 Commits außerhalb `origin/main` | `git worktree remove`, Branch mit `git branch -d` gelöscht (war a470a41) |
+| Worktree `trailer` | Branch `trailer-hero`, Head 10fb65f, sauber, 0 Commits außerhalb `origin/main` | `git worktree remove`, Branch mit `git branch -d` gelöscht (war 10fb65f) |
+| OneDrive-Klon `C:\Users\bmarn\OneDrive\HTML\reling it` | Head b671d7c, 8 geänderte oder neue Einträge, 8 ignorierte Einträge, 7 eigene Commits; alles in `C:\dev\relingit\archive\_gesichert-2026-11-23\` gesichert (Bundle enthält die 7 Commits) | entfernt (`Remove-Item -Recurse`); liegt danach nur noch im OneDrive-Papierkorb |
+
+Bleibt: Worktree `paket-v139` (bis R52), Papierkorb (Entscheidung Product Owner), leerer Ordner `C:\dev\reling-it`.
