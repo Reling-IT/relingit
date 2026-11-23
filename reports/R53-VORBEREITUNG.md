@@ -67,3 +67,10 @@ Danach sind r60 und trailer ohne Verlust entfernbar (nur die gesicherten Dateien
 - Gesichert (Freigabe im Chat): `output/ftp/relingit-upload-v1.37-2026-09-05-podcast.zip` (`07ef3f8d…`), `output/ftp/relingit-upload-v1.37-2026-09-05-viewer-upload-schutz.zip` (`e183cfb0…`), `output/pdf/flyer-die-fahrt-zum-kunden.pdf` (`43c9589d…`), SHA-256 je Kopie gleich, in `SHA256SUMS.txt`.
 - Die entpackten Ordner entsprechen den ZIP genau (29 bzw. 24 Einträge, 0 Abweichungen, keine zusätzlichen Dateien); sie wurden deshalb nicht kopiert.
 - Noch nicht gesichert und nur im OneDrive-Klon: `archive/ftp-packages/` (zwei Pakete vom 05.09.2026, 50 Dateien, 12,5 MB) und `archive/_aufgeraeumt-2026-11-06/tmp/` (10 Dateien, 1,2 MB). Die Aussage „danach ohne Verlust entfernbar“ gilt erst, wenn auch diese gesichert oder als entbehrlich entschieden sind.
+
+## Nachtrag: Archivordner gesichert, Gegenprobe (23.11.2026)
+
+- Gesichert (Freigabe im Chat): `archive/ftp-packages/` und `archive/_aufgeraeumt-2026-11-06/` aus dem OneDrive-Klon, 61 Dateien, SHA-256 je Kopie gleich.
+- Gesamtsicherung `C:\dev\relingit\archive\_gesichert-2026-11-23\`: 163 Dateien, 155,5 MB, 163 Zeilen in `SHA256SUMS.txt`.
+- Gegenprobe `git status --porcelain --ignored` im OneDrive-Klon: alle ignorierten Einträge sind gesichert oder entbehrlich. `supabase/.temp/` enthält nur `cli-latest` (8 Byte, Versionsmerker der Supabase-CLI), nicht gesichert.
+- Damit ist im OneDrive-Klon, in `r60` und in `trailer` nichts Ungesichertes mehr bekannt. Entfernen erst nach erneuter Freigabe.
