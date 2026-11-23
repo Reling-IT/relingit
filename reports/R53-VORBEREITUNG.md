@@ -24,3 +24,16 @@ Befehle: `git worktree list`, `git -C <pfad> status --porcelain [--ignored]`, `g
 ## Nachtrag 23.11.2026: `datenschutz.html` im OneDrive-Klon
 
 Auf Wunsch des Product Owners nur lesend verglichen. Die Datei im Klon (geändert am 20.10.2026) ist ohne Zeilenenden-Unterschied gleich `origin/main` f7c59da: `git diff --no-index --quiet --ignore-cr-at-eol` ohne Unterschied, SHA-256 nach CRLF zu LF bei beiden `a451aac17faf35a3…`. Gegenüber dem Klon-Stand b671d7c enthält sie den Abschnitt „4. Lokal bereitgestellter Podcast“, die Ergänzung zur KI-Transparenz und den Stand 20. Oktober 2026. Das kam mit R28 (4df31e8, 07.11.2026) nach `main`. Damit ist im OneDrive-Klon nichts Ungesichertes mehr bekannt. Nicht versioniert sind dort noch `assets/audio/` und das Podcast-Cover; das Cover liegt auf `main` (`assets/img/reling-it-podcast-cover.png`), die MP3 liegen im Arbeitsklon unter `C:\dev\relingit\assets\audio` (laut R29, ci-check „4 Podcast-MP3 lokal vorhanden“).
+
+## Ausführung 23.11.2026 (Freigabe Product Owner im Chat: r60, trailer, zweiter Klon, OneDrive-Klon)
+
+Unmittelbar vor dem Löschen erneut geprüft, diesmal auch die von Git ignorierten Dateien (`git status --porcelain --ignored`, ZIP-Hashes gegen `C:\dev\relingit\archive`, `C:\dev\relingit\output` und `paket-v139/output`).
+
+| Objekt | Ergebnis der Prüfung | Ausgeführt |
+|---|---|---|
+| Zweiter Klon `C:\dev\reling-it\relingit` | wie vorgelegt: keine Änderungen, kein Stash, keine eigenen Commits, keine ignorierten Dateien | **entfernt**. Der Ordner `C:\dev\reling-it` ist jetzt leer und steht noch. |
+| Worktree `r60` | **Abweichung:** ignoriert liegen 5 ZIP-Pakete v1.39 (u. a. Sichtung 1), die es nur hier gibt, dazu `output/Die-Fahrt-zum-Kunden.pdf` und `reports/FREIGABE-v1.39.md`, `reports/SICHTUNG-v1.39.md` (lokale Fassungen) | nicht entfernt |
+| Worktree `trailer` | **Abweichung:** ignoriert liegen ein ZIP-Paket v1.39 mit Trailer (nur hier) und die Render-Ausgaben `output/trailer/` (MP4, Kontrollbilder, render.log) | nicht entfernt |
+| OneDrive-Klon | **Abweichung:** 7 Commits auf keinem Remote; die Sicherungen (Bundle, zwei Patches) liegen selbst im ignorierten `archive/` des Klons; dazu `ideen/`, `output/`, `archive/ftp-packages/`, `archive/_aufgeraeumt-2026-11-06/` | nicht entfernt |
+
+Die erste Fassung dieser Liste hatte die ignorierten Dateien nur aufgezählt, nicht bewertet. Vorschlag: vor dem Entfernen festlegen, welche dieser Dateien außerhalb gesichert werden (z. B. Bundle und Patches, Pakete v1.39), dann erneut vorlegen.
