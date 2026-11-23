@@ -87,7 +87,7 @@ Nächste Aufgaben: #43 neu prüfen und zur Freigabe vorlegen; Entscheidung R52; 
 
 ### TA-09 Stunden
 
-Frage an den Product Owner gestellt; Eintrag folgt nach Antwort, sonst „keine Angabe“.
+2 Stunden (Angabe des Product Owners im Chat). Eintrag in `docs/PILOT.md` per PR #45 (nicht gemergt), Summe dann 16.
 
 ### TA-10 Ziel-Stand
 
