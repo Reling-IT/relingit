@@ -11,7 +11,8 @@ schritte:
 - Bericht reports/R88-BERICHT.md mit Commit, Tag und Pruefausgabe.
 nachweis: Tag v1.40 auf 84ae342, Bericht
 grenzen: Ausnahme von der Regel kein Tag, nur fuer diesen Auftrag und nach ausdruecklicher Freigabe von Bernd. Kein Merge, kein FTP, keine Zugangsdaten, kein Force-Push.
-status: wartet_auf_owner
-stand: 2026-11-23 16:30
+status: bereit
+stand: 2026-11-23 16:40
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+freigabe_2026_11_23: Bernd hat den Tag v1.40 auf 84ae342 am 23.11.2026 ausdruecklich freigegeben (G8 fuer den Tag). Nur dieser Tag; kein Tag v1.39 ohne gesonderte Freigabe.
