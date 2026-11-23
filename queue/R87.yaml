@@ -1,0 +1,21 @@
+id: R87
+titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, geprueft Schritt (Checkliste, publish-release.ps1, R09)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+stand: '2026-11-23'
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+ziel: 'Anlass 23.11.2026: Nach dem FTP-Upload von v1.40 zeigte die Startseite weiter Version 1.37, 64 Seiten und 5. September 2026. Ursache: Die Zeile Version/Seiten/aktualisiert am kommt aus Supabase (Tabelle story_release, id=current), die Links zu PDF, Handout und Lesefassung zeigen auf den Supabase-Speicher story/current. Beides aendert der FTP-Upload nicht. Der Ablauf behandelt diesen Schritt bisher nur als Handschritt im Admin-Bereich ohne Sollwerte und ohne Pruefung. Ziel: Der Upload-Ablauf nennt den Schritt ausdruecklich, kennt die Sollwerte und prueft vor und nach dem Schreiben nur lesend.'
+schritte:
+- 'Ist-Ablauf lesen: scripts/publish-release.ps1, scripts/build-upload.ps1, scripts/pruefe-paket.ps1, docs-Dateien zum Upload, UPLOAD-CHECKLISTE-v1.39.md und v1.40.md. Meldung "FTP-Upload noetig: nein" (Vergleich nur mit dem letzten Commit) beheben oder klar kennzeichnen.'
+- 'Sollwerte automatisch ableiten und in jede Upload-Checkliste schreiben: Version, Datum (Renderdatum) und Seitenzahl aus Buchquelle und PDF; dazu Hash und Groesse der vier Dateien in story/current (geschichte.pdf, fahrt-zum-kunden.html, workshop-handout.pdf, workshop-handout.html).'
+- 'Eigener Abschnitt "Supabase und Speicher" in der Checkliste (Reihenfolge: 1 FTP, 2 Admin-Eintrag story_release, 3 Speicher story/current, 4 Live-Pruefung). Hinweis aufnehmen: FTP aendert die Startseitenzeile nicht; bei Abweichung zuerst privates Fenster oder harter Neuladen, dann Supabase pruefen.'
+- 'Neuer lesender Modus (z. B. publish-release.ps1 -NurPruefen): liest story_release (id=current) mit dem oeffentlichen Schluessel aus assets/js/supabase-config.js, vergleicht mit den Sollwerten, liest die Speicherdateien und deren Hashes, vergleicht index.html und assets auf dem Server mit main (Hash nach Normalisierung der Zeilenenden CRLF zu LF). Ausgabe als Tabelle Soll, Ist, Ergebnis; Exit-Code ungleich 0 bei Abweichung.'
+- 'Schreibmodus nur mit ausdruecklicher Freigabe von Bernd im Auftrag (Umfang: story_release id=current, Dateien in story/current; nichts loeschen, Live-MP3 nie). Vor dem Schreiben Tabelle alt/neu zeigen; nach dem Schreiben automatisch -NurPruefen.'
+- 'R09 (Live-Pruefung) um denselben lesenden Abgleich ergaenzen: Zeile Version/Seiten/Datum, PDF- und Handout-Link, Deckblatt, Fallback in assets/js/app.js.'
+- Pester-Tests fuer Sollwert-Ableitung und Abgleich (mit Testdaten, ohne Netz), ci-check unveraendert gruen; docs/FREIGABE.md und die Upload-Checkliste verlinken.
+nachweis: Draft-PR mit Vorher/Nachher, Pester gruen, ci-check Exit 0, Probelauf -NurPruefen gegen den Live-Stand (Bericht mit Tabelle Soll, Ist, Ergebnis)
+grenzen: Kein Merge, kein Tag, kein FTP, kein Upload ohne Freigabe von Bernd. Kein Schreiben in Supabase im Probelauf (nur lesen). Keine Aenderung an .github/workflows, Deployment, Admin-Konten oder Schutzregeln. Keine Zugangsdaten in Dateien oder Berichten.
+status: bereit
+hinweis: Beruehrt scripts/publish-release.ps1 und freigabe-pruefen.ps1 nicht gleichzeitig mit R78/R68 aendern; Reihenfolge mit R78 und R68 im selben PR klaeren, wenn beide Auftraege offen sind.
