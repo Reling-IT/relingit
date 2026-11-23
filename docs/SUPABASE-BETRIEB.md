@@ -21,9 +21,13 @@ Ein FTP-Upload ändert weder `story_release` noch den Speicher. Die Rückfallwer
 
 Zeigt die Seite Altes, zuerst privates Fenster und hartes Neuladen, dann Supabase prüfen.
 
+## Tarif
+
+Seit dem 23.11.2026 liegt das Projekt in einer Organisation mit Pro-Tarif (Angabe des Owners). Der Tarif hängt an der Organisation, nicht am Konto: Nach einem Wechsel oder einer Neuanlage zuerst prüfen, in welcher Organisation das Projekt liegt (Dashboard, Organisation, Billing). Leistungen und Fristen des Tarifs (Pausierung, Backups, Aufbewahrung) stehen in der aktuellen Supabase-Dokumentation und im Dashboard; diese Anleitung nennt sie nicht verbindlich.
+
 ## Projekt pausiert oder nicht erreichbar
 
-Kostenlose Supabase-Projekte werden nach etwa sieben Tagen ohne Aktivität pausiert (Stand November 2026; Bedingungen im Supabase-Dashboard prüfen). Im Dashboard steht dann „Project paused“ mit der Schaltfläche **Restore**. Eine Wiederherstellung ist für einen begrenzten Zeitraum möglich (etwa 90 Tage laut Dashboard-Hinweis); danach nicht mehr.
+Projekte im kostenlosen Tarif werden nach etwa sieben Tagen ohne Aktivität pausiert (Stand November 2026; Bedingungen im Dashboard prüfen); im Pro-Tarif ist das laut Supabase nicht der Fall. Ist die Seite trotzdem nicht erreichbar, im Dashboard den Status lesen: Bei „Project paused“ steht die Schaltfläche **Restore** bereit. Eine Wiederherstellung ist für einen begrenzten Zeitraum möglich (etwa 90 Tage laut Dashboard-Hinweis); danach nicht mehr.
 
 1. Dashboard öffnen und den Status lesen (aktiv, pausiert, gelöscht, Anmeldeproblem).
 2. Pausiert: **Restore** und warten, bis das Projekt wieder „Active“ zeigt. Daten und Speicherdateien bleiben erhalten.
@@ -42,6 +46,7 @@ Verloren gehen bei einer Neuanlage: der Eintrag `story_release` (neu setzen), di
 
 ## Sicherung
 
+- Im Pro-Tarif legt Supabase tägliche Backups der Datenbank an (Umfang und Aufbewahrung im Dashboard unter Database, Backups prüfen). Sie ersetzen keinen eigenen Export: Dateien im Speicher gehören nicht ohne Weiteres zum Datenbank-Backup.
 - Buchfassungen liegen im Repository (`story/current`, `source/`) und sind dort wiederherstellbar.
 - Leser-Feedback (`reader_feedback`) liegt nur in Supabase. Bei Bedarf im Table Editor als CSV exportieren und außerhalb des Repositorys ablegen (enthält Texte von Lesenden).
 - Den Stand von `story_release` (Version, Datum, Seitenzahl) nennt jede Upload-Checkliste.
