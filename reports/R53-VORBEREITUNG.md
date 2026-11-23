@@ -37,3 +37,17 @@ Unmittelbar vor dem Löschen erneut geprüft, diesmal auch die von Git ignoriert
 | OneDrive-Klon | **Abweichung:** 7 Commits auf keinem Remote; die Sicherungen (Bundle, zwei Patches) liegen selbst im ignorierten `archive/` des Klons; dazu `ideen/`, `output/`, `archive/ftp-packages/`, `archive/_aufgeraeumt-2026-11-06/` | nicht entfernt |
 
 Die erste Fassung dieser Liste hatte die ignorierten Dateien nur aufgezählt, nicht bewertet. Vorschlag: vor dem Entfernen festlegen, welche dieser Dateien außerhalb gesichert werden (z. B. Bundle und Patches, Pakete v1.39), dann erneut vorlegen.
+
+## Sicherung 23.11.2026 (Freigabe Product Owner im Chat)
+
+Nur kopiert, nichts gelöscht. Ziel: `C:\dev\relingit\archive\_gesichert-2026-11-23\` (von Git ignoriert, nicht im Repository), mit `SHA256SUMS.txt`. 78 Dateien, 61,9 MB; jede Kopie per SHA-256 gegen die Quelle geprüft, alle gleich.
+
+| Herkunft | Gesichert | Beleg |
+|---|---|---|
+| OneDrive-Klon `archive/` | Bundle `codex-fix-admin-password-recovery-b671d7c-2026-11-09.bundle` und zwei Patches | `git bundle verify`: okay; Bundle-Head b671d7c enthält alle 7 Commits, die auf keinem Remote liegen (a900924 bis b671d7c); Hashes `39340105…9b64`, `07a7786b…f0ce`, `4749dd34…fd7b` wie in STATUS.yaml |
+| Worktree r60 | 5 ZIP-Pakete v1.39, `reports/FREIGABE-v1.39.md`, `reports/SICHTUNG-v1.39.md` | SHA-256 je Datei |
+| Worktree trailer | ZIP-Paket v1.39 mit Trailer, `output/trailer/` (MP4, render.log, 62 Diagnosebilder) | SHA-256 je Datei |
+
+Danach sind r60 und trailer ohne Verlust entfernbar (nur die gesicherten Dateien und reproduzierbare Paketentpackungen lagen dort).
+
+**Noch nicht gesichert und im OneDrive-Klon nur dort:** `ideen/` (21 Dateien, 7,4 MB), `output/` (56 Dateien, 151,1 MB), `archive/ftp-packages/` und `archive/_aufgeraeumt-2026-11-06/`. Diese waren nicht Teil der Freigabe. Der OneDrive-Klon bleibt bis zur Entscheidung stehen.
