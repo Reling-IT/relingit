@@ -61,3 +61,9 @@ Danach sind r60 und trailer ohne Verlust entfernbar (nur die gesicherten Dateien
   - `pdf/flyer-die-fahrt-zum-kunden.pdf` (0,1 MB);
   - `image/` leer.
   Die MP3, das Cover und mehrere statische Dateien gibt es mit gleichem Namen und gleicher Größe im Arbeitsklon. HTML, JS und CSS der v1.37-Pakete stimmen nicht mit dem heutigen Stand überein (ältere Fassung). Die beiden ZIP und der Flyer liegen sonst nirgends.
+
+## Nachtrag: `output/` gesichert, Rest im OneDrive-Klon (23.11.2026)
+
+- Gesichert (Freigabe im Chat): `output/ftp/relingit-upload-v1.37-2026-09-05-podcast.zip` (`07ef3f8d…`), `output/ftp/relingit-upload-v1.37-2026-09-05-viewer-upload-schutz.zip` (`e183cfb0…`), `output/pdf/flyer-die-fahrt-zum-kunden.pdf` (`43c9589d…`), SHA-256 je Kopie gleich, in `SHA256SUMS.txt`.
+- Die entpackten Ordner entsprechen den ZIP genau (29 bzw. 24 Einträge, 0 Abweichungen, keine zusätzlichen Dateien); sie wurden deshalb nicht kopiert.
+- Noch nicht gesichert und nur im OneDrive-Klon: `archive/ftp-packages/` (zwei Pakete vom 05.09.2026, 50 Dateien, 12,5 MB) und `archive/_aufgeraeumt-2026-11-06/tmp/` (10 Dateien, 1,2 MB). Die Aussage „danach ohne Verlust entfernbar“ gilt erst, wenn auch diese gesichert oder als entbehrlich entschieden sind.
