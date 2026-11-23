@@ -11,8 +11,9 @@ schritte:
 - Bericht reports/R89-BERICHT.md mit Befehl, Abrufzeit und Tabelle Soll, Ist, Ergebnis. Nichts korrigieren.
 nachweis: Bericht mit Tabelle je Datei und je Header
 grenzen: Nur lesende Abrufe. Keine Anmeldung, kein FTP, kein Schreiben in Supabase, keine Zugangsdaten, keine Aenderung im Repo ausser dem Bericht auf ops/reports. Keine Korrektur.
-status: bereit
-stand: 2026-11-23 18:00
+status: erledigt
+stand: 2026-11-23 17:35
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis: 'Anlass: Handschritte aus dem Tagesabschluss 23.11. Secret Scanning und Push Protection sind laut GitHub-API bereits aktiv (nur gelesen). Der Planer hat aus der Cloud keinen Zugriff auf berndmarnau.de und Supabase (Proxy 403); darum Auftrag an Claude Code.'
+ergebnis_stand: Lesende Live-Pruefung erledigt, Bericht R89-BERICHT.md (Claude Code, 23.11.).

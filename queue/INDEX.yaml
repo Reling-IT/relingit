@@ -414,7 +414,7 @@ auftraege:
   titel: 'Nach dem Release v1.40: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb, Worktrees r60 und r86)'
   art: lokal
   gate: ja
-  status: wartet_auf_voraussetzung
+  status: in_arbeit
   abhaengig_von:
   - R88
 - id: R54
@@ -634,19 +634,19 @@ auftraege:
   titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gepruefter Schritt (Checkliste, publish-release.ps1, R09)'
   art: code-pr
   gate: ja
-  status: bereit
+  status: in_arbeit
   abhaengig_von: []
 - id: R88
   titel: Tag v1.40 auf 84ae342 setzen (nach Upload und bestandener Live-Pruefung R09)
   art: lokal
   gate: ja
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R89
   titel: 'Live-Pruefung Dateien und Sicherheits-Header (nur lesend): ganzes Paket v1.40 gegen den Server, Header gegen .htaccess'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R90
   titel: 'Standards-PRs pruefen (nur lesend): resilience-recovery #6 und identity-rbac-standard #14, Erfahrungsblaetter Reling IT zu Supabase'

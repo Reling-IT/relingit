@@ -2,7 +2,7 @@ id: R53
 titel: 'Nach dem Release v1.40: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb, Worktrees r60 und r86)'
 art: lokal
 gate: ja
-status: wartet_auf_voraussetzung
+status: in_arbeit
 abhaengig_von:
 - R88
 voraussetzung: R09 bestanden (23.11.2026) und Tag v1.40 gesetzt (R88). Vorher nicht beginnen.
@@ -15,7 +15,7 @@ schritte:
 - 'OneDrive-Klon: nur lesend pruefen, ob er etwas Ungesichertes enthaelt, und Empfehlung zum Wegfall vorlegen.'
 nachweis: Bericht reports/R53-BERICHT.md
 grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Force-Push. Loeschen nur wie beschrieben.
-stand: 2026-11-23 17:30
+stand: 2026-11-23 17:35
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis_planung_2026_11_11: 'Bernd 11.11.: Upload erst, wenn v1.39 fertig ist; Entscheidung am Mo 16.11.2026: nur v1.39 oder v1.38 als Fallback. Dieser Auftrag bezieht sich dann auf die hochgeladene Version. Nicht beginnen, bevor Bernd die Version nennt.'
@@ -23,3 +23,4 @@ entscheidung_bernd_2026_11_12: Zweiter Klon C:\\dev\\reling-it\\relingit (R29 A1
 hinweis_2026_11_23: 'Die Merge-Kette fuer #25 bis #28 ist erledigt (14./15.11.); der Schritt zu den Drafts entfaellt. Worktrees wt\relingit\r60 und r86 nach Pruefung entfernen.'
 freigabe_branch_2026_11_23: Bernd gibt die Loeschung des gemergten Remote-Branches auftrag-R87-supabase-betrieb frei (in main f48da7b enthalten, vorher pruefen). Nur dieser Branch; ops/queue und ops/reports nie loeschen.
 hinweis_neu: 'Entscheidung Bernd 23.11. 17:08: (1) nur die beiden ZIP-Pakete v1.37 und das Flyer-PDF aus dem OneDrive-Klon nach C:\dev\relingit\archive\_gesichert-2026-11-23 sichern (ohne entpackte Ordner), SHA-256 je Datei vergleichen; (2) erst nach bestandenem Vergleich den OneDrive-Klon, den Worktree r60 und den Ordner trailer in den Papierkorb legen (nichts endgueltig loeschen, Liste vorher und nachher melden); (3) der Remote-Branch auftrag-R87-supabase-betrieb darf geloescht werden, wenn er in main enthalten ist. Alles andere nicht.'
+ergebnis_stand: 'Stand 23.11. 17:35 (Claude Code): ZIPs v1.37 und Flyer-PDF gesichert, OneDrive-Klon und r60 erledigt; offen: Worktree paket-v139 und Papierkorb leeren (Entscheidung Bernd offen).'
