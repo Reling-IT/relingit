@@ -51,3 +51,13 @@ Nur kopiert, nichts gelöscht. Ziel: `C:\dev\relingit\archive\_gesichert-2026-11
 Danach sind r60 und trailer ohne Verlust entfernbar (nur die gesicherten Dateien und reproduzierbare Paketentpackungen lagen dort).
 
 **Noch nicht gesichert und im OneDrive-Klon nur dort:** `ideen/` (21 Dateien, 7,4 MB), `output/` (56 Dateien, 151,1 MB), `archive/ftp-packages/` und `archive/_aufgeraeumt-2026-11-06/`. Diese waren nicht Teil der Freigabe. Der OneDrive-Klon bleibt bis zur Entscheidung stehen.
+
+## Nachtrag: `ideen/` gesichert, `output/` aufgelistet (23.11.2026)
+
+- `ideen/` aus dem OneDrive-Klon: 21 Dateien (Bilder, Prompt- und Ideentexte, Logo-Varianten) nach `C:\dev\relingit\archive\_gesichert-2026-11-23\onedrive-klon\ideen\` kopiert, SHA-256 je Datei gleich, Einträge in `SHA256SUMS.txt` ergänzt.
+- `output/` im OneDrive-Klon (nur gelesen, nicht kopiert), 151,1 MB:
+  - `ftp/relingit-upload-v1.37-2026-09-05-podcast.zip` (69,5 MB) mit entpacktem Ordner (vier MP3, Cover, Seiten);
+  - `ftp/relingit-upload-v1.37-2026-09-05-viewer-upload-schutz.zip` (2,8 MB) mit entpacktem Ordner;
+  - `pdf/flyer-die-fahrt-zum-kunden.pdf` (0,1 MB);
+  - `image/` leer.
+  Die MP3, das Cover und mehrere statische Dateien gibt es mit gleichem Namen und gleicher Größe im Arbeitsklon. HTML, JS und CSS der v1.37-Pakete stimmen nicht mit dem heutigen Stand überein (ältere Fassung). Die beiden ZIP und der Flyer liegen sonst nirgends.
