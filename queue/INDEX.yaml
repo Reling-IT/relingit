@@ -652,7 +652,7 @@ auftraege:
   titel: 'Standards-PRs pruefen (nur lesend): resilience-recovery #6 und identity-rbac-standard #14, Erfahrungsblaetter Reling IT zu Supabase'
   art: lesen
   gate: nein
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R91
   titel: 'Export reader_feedback vor einer Pause (Entwurf, wartet auf Pause-Entscheidung nach dem Workshop)'

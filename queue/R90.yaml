@@ -12,8 +12,9 @@ schritte:
 - Bericht reports/R90-BERICHT.md mit Head-SHAs und Befunden.
 nachweis: Bericht mit Tabelle je PR
 grenzen: Nur lesen. Kein Merge, keine Aenderung an den PRs, keine Zugangsdaten.
-status: bereit
-stand: 2026-11-23 16:50
+status: erledigt
+stand: 2026-11-23 17:15
 planer: Claude (Planer-Session)
 repo: bmarnau-standards/resilience-recovery, bmarnau-standards/identity-rbac-standard
 hinweis: 'Entscheidung Bernd 23.11.: Vier-Orte-Modell nur im Erfahrungsblatt; Pro-Tarif- und Backup-Angaben pruefen Bernd (Dashboard) und Planer (Herstellerdoku).'
+ergebnis: 'Bericht reports/R90-BERICHT.md (b3196be): kein Muss-Befund; zwei Soll-Befunde (RI-03 in #6 Quelle, RI-03 in #14 Schluesselzustand) und Hinweise (RI-06/RI-07 Zuordnung, Altlast Personenname im CHANGELOG von #6) vom Planer eingearbeitet: #6 Head 8b20536, #14 Head 4fc3de6. Merge von Bernd je Head freigegeben (23.11. 17:07); Drafts muessen vor dem Merge auf Ready gesetzt werden.'
