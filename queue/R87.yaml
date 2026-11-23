@@ -3,7 +3,7 @@ titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gep
 art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-23 17:35
+stand: 2026-11-23 18:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 ziel: 'Anlass 23.11.2026: Nach dem FTP-Upload von v1.40 zeigte die Startseite weiter Version 1.37, 64 Seiten und 5. September 2026. Ursache: Die Zeile Version/Seiten/aktualisiert am kommt aus Supabase (Tabelle story_release, id=current), die Links zu PDF, Handout und Lesefassung zeigen auf den Supabase-Speicher story/current. Beides aendert der FTP-Upload nicht. Der Ablauf behandelt diesen Schritt bisher nur als Handschritt im Admin-Bereich ohne Sollwerte und ohne Pruefung. Ziel: Der Upload-Ablauf nennt den Schritt ausdruecklich, kennt die Sollwerte und prueft vor und nach dem Schreiben nur lesend.'
@@ -29,4 +29,4 @@ freigabe_merge_2026_11_23: 'Bernd: "Merge ja" (23.11.2026, nach Nachfrage zu PR 
 entscheidung_schreibweg_2026_11_23: 'Bernd: Schreibweg ist der Admin-Bereich durch Bernd (Standardweg, docs/NEUE-GESCHICHTE.md Abschnitt 5). Skripte lesen nur (-NurPruefen, R09); kein Secret Key fuer Skripte im Regelfall. Teil 2: Pruefmodus, Sollwerte, Checklistenvorlage, Tests; Schreibmodus nur als dokumentierte Ausnahme (Notfall, Neuanlage) mit Freigabe je Lauf. Der Schluessel bleibt gueltig (Entscheidung Bernd 23.11.).'
 freigabe_merge_44_2026_11_23: 'Bernd: Merge ja fuer PR #44 (Doku Tarif Pro in docs/SUPABASE-BETRIEB.md), Head b9dea070d1171c21b9ba66f733f6e2687a9f5bf6, nur dieser Head. Ausfuehrung durch Claude Code: gh pr ready, Head und CI pruefen, Merge mit --match-head-commit. Hinweis: Projekt liegt seit 23.11.2026 in einer Pro-Organisation (Angabe Bernd, nicht von mir geprueft).'
 hinweis_backup_2026_11_23: 'Bernd 23.11.: Im Pro-Tarif gibt es taegliche Datenbank-Backups, Aufbewahrung ca. 7 Tage (Angabe Bernd laut Dashboard, nicht vom Planer geprueft). Sie ersetzen keinen Export von reader_feedback und keine Sicherung der Speicherdateien (story/current; Quelle ist das Repo). Nach dem Merge von PR #44 den Abschnitt Sicherung in docs/SUPABASE-BETRIEB.md mit dieser Angabe und dem Wiederherstellungsweg (Dashboard, Database, Backups) praezisieren (Teil 2, neuer Draft-PR, kein Eingriff in den freigegebenen Head von #44).'
-ergebnis_stand: 'Teil 1 Doku (#42, #44) gemergt. Teil 2 als Draft-PR #43 (Head 1b65d1b); naechste Sitzung: Zweitpruefung am Head, Befunde, Freigabefrage mit Head-SHA, danach docs/PILOT.md. Hinweis Storage nicht im Backup in #43 pruefen.'
+ergebnis_stand: 'Teil 1 Doku (#42, #44) gemergt. Teil 2 als Draft-PR #43 (Head 1b65d1b); naechste Sitzung: Zweitpruefung am Head, Befunde, Freigabefrage mit Head-SHA, danach docs/PILOT.md. Hinweis Storage nicht im Backup in #43 pruefen. Zusatz 23.11. 18:10: PR #45 (docs/PILOT.md, Head 34d53add) wartet auf Korrektur des Satzes zum Tag v1.39 (entfaellt, R52 erledigt), dann Freigabefrage am neuen Head.'
