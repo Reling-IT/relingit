@@ -2,7 +2,7 @@
 
 Vorlage nach `REPOSITORY_BASISHYGIENE.md` („Mindestausstattung je Art“) und `SITZUNGSROUTINE.md` (TA-09) aus `bmarnau-standards/ai-development-governance`, Datei `vorlagen/pilot-steckbrief.md`. Ablage im Repository als `docs/PILOT.md`, Pfad im Projektprofil (`steckbrief` in [CLAUDE.md](../CLAUDE.md)). Nur belegte Angaben; Unbekanntes als `unklar`.
 
-Stand: 16.11.2026 (Auftrag R77), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
+Stand: 23.11.2026 (Tagesabschluss), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
 
 ## Kurzprofil
 
@@ -11,7 +11,7 @@ Stand: 16.11.2026 (Auftrag R77), angelegt am 12.11.2026 mit Auftrag R73 (`queue/
 | Zweck (ein Satz) | Landingpage, Online-Lesefassung und Workshop-Handout zur fortlaufenden Kurzgeschichte „Die Fahrt zum Kunden“; laut Auftrag dienen die Kurzgeschichten der Workshop-Vorbereitung. | [README.md](../README.md), erster Absatz; Auftrag R73, Schritt 2 |
 | Zielgruppe | Kolleginnen und Kollegen sowie Workshop-Teilnehmende. Im Repository selbst steht dazu nur das Workshop-Handout; eine Beschreibung der Zielgruppe fehlt dort. | Auftrag R73, Schritt 2; [README.md](../README.md) |
 | Tatsächliche Nutzer | unklar (keine Anzahl und keine Nutzungsdaten im Repository) | – |
-| Status | Pilot (Entscheidung des Product Owners vom 12.11.2026). Belegter Stand: Auf `main` liegt Version 1.39 (80 Seiten; Sichtung 56/56, G1 bis G8 erteilt, gemergt am 15.11.2026), seit 16.11.2026 mit Trailer (#38) und Link zur Fahrt (#39); Upload-Paket 476622E7 gebaut, Upload steht aus. Version 1.40 (16. November 2026, 80 Seiten) liegt als PR #41 zur Sichtung vor. Welche Version öffentlich ausgeliefert wird, ist im Repository nicht belegt. | `queue/R73.yaml` (Feld `entscheidungen_bernd_2026_11_12`); PR #37 (Merge a1b11a8); PR #38, #39, #41; SICHTUNG-v1.39.md; UPLOAD-CHECKLISTE-v1.39.md; TAGESBERICHT-2026-11-16.md |
+| Status | Pilot (Entscheidung des Product Owners vom 12.11.2026). Belegter Stand: Version 1.40 (16. November 2026, 80 Seiten) ist live, auf dem Webspace und in Supabase, live geprüft am 23.11.2026 (R09, R89) und als `v1.40` auf 84ae342 getaggt (R88). Ob Version 1.39 vorher live war, ist nicht belegt (unklar); über den Tag v1.39 (R52) ist noch zu entscheiden. | `queue/R73.yaml` (Feld `entscheidungen_bernd_2026_11_12`); PR #41 (Merge 84ae342); R09-NACHPRUEFUNG-v1.40.md, R89-BERICHT.md, R88-BERICHT.md; TAGESBERICHT-2026-11-23.md |
 | Start | 2026-08-30 (erster Commit auf `main`) | Commit f426a21 |
 | Werkzeuge | Claude als Planer (Warteschlange) und Claude Code als ausführende KI-Sitzung; GitHub mit GitHub Actions, GitHub-CLI, PowerShell 7 mit Pester, Python und Poppler für die PDF. Ein früherer Codex-Prompt ist als veraltet gekennzeichnet. | [CLAUDE.md](../CLAUDE.md); [TAGESSTART.md](TAGESSTART.md); `queue/INDEX.yaml` (Feld `planer`); [PDF-ERZEUGEN.md](PDF-ERZEUGEN.md); [CODEX_PROMPT.md](CODEX_PROMPT.md) |
 | Technik | Frontend: statische Webseite (HTML, CSS, JavaScript ohne Framework). Backend und Datenbank: Supabase für Leserfeedback, Versionsmetadaten sowie die aktuelle HTML- und PDF-Fassung; geschützter Admin-Bereich für Version, Datum und Seitenzahl. PDF: lokal aus der HTML-Quelle erzeugt und geprüft. Hosting: manuell per FTP bei einem Webhoster; GitHub führt kein Deployment aus. Prüfung: `scripts/ci-check.ps1` lokal und in der CI, Pester-Tests unter `tests/`. | [README.md](../README.md); [SICHERHEIT.md](SICHERHEIT.md); `scripts/pdf/`; `.github/workflows/ci.yml` |
@@ -27,8 +27,9 @@ Stunden trägt nur der Product Owner ein oder nennt sie auf Nachfrage im Tagesab
 | 14.11.2026 | 3 | keine Angabe |
 | 15.11.2026 | 7 | keine Angabe |
 | 16.11.2026 | 2 | keine Angabe |
+| 23.11.2026 | 2 | keine Angabe |
 
-Summe bisher: 14 (12., 14., 15. und 16.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md, TAGESBERICHT-2026-11-15.md und TAGESBERICHT-2026-11-16.md (TA-09); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
+Summe bisher: 16 (12., 14., 15., 16. und 23.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md, TAGESBERICHT-2026-11-15.md, TAGESBERICHT-2026-11-16.md und TAGESBERICHT-2026-11-23.md (TA-09; 23.11. Angabe des Product Owners im Chat); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
 
 ## Nutzen
 
