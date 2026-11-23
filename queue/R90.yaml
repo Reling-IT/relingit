@@ -1,0 +1,19 @@
+id: R90
+titel: 'Standards-PRs pruefen (nur lesend): resilience-recovery #6 und identity-rbac-standard #14, Erfahrungsblaetter Reling IT zu Supabase'
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Lesende Pruefung der beiden Draft-PRs vor der Freigabe durch Bernd (Merge je Head-SHA).
+schritte:
+- Head-SHA, CI-Ergebnis und mergeable_state beider PRs lesen (REST).
+- Alle Verweise auf Anforderungs-IDs (REST-xx, IAM-REQ-xxx) gegen anforderungen.yaml bzw. requirements/ pruefen; unbekannte IDs melden.
+- Auf Personennamen, Zugangsdaten und Schluessel pruefen; Aussagen zu Tarif und Backups muessen als Owner-Angabe gekennzeichnet sein.
+- Pruefen, dass Standardtext, anforderungen.yaml und requirements/ unveraendert sind (nur neue Datei und CHANGELOG).
+- Bericht reports/R90-BERICHT.md mit Head-SHAs und Befunden.
+nachweis: Bericht mit Tabelle je PR
+grenzen: Nur lesen. Kein Merge, keine Aenderung an den PRs, keine Zugangsdaten.
+status: bereit
+stand: 2026-11-23 16:50
+planer: Claude (Planer-Session)
+repo: bmarnau-standards/resilience-recovery, bmarnau-standards/identity-rbac-standard
+hinweis: 'Entscheidung Bernd 23.11.: Vier-Orte-Modell nur im Erfahrungsblatt; Pro-Tarif- und Backup-Angaben pruefen Bernd (Dashboard) und Planer (Herstellerdoku).'
