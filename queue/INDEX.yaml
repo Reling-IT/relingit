@@ -654,4 +654,10 @@ auftraege:
   gate: nein
   status: bereit
   abhaengig_von: []
+- id: R91
+  titel: 'Export reader_feedback vor einer Pause (Entwurf, wartet auf Pause-Entscheidung nach dem Workshop)'
+  art: lesen
+  gate: ja
+  status: wartet_auf_entscheidung
+  abhaengig_von: []
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

@@ -3,7 +3,7 @@ titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gep
 art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-23 18:40
+stand: 2026-11-23 17:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 ziel: 'Anlass 23.11.2026: Nach dem FTP-Upload von v1.40 zeigte die Startseite weiter Version 1.37, 64 Seiten und 5. September 2026. Ursache: Die Zeile Version/Seiten/aktualisiert am kommt aus Supabase (Tabelle story_release, id=current), die Links zu PDF, Handout und Lesefassung zeigen auf den Supabase-Speicher story/current. Beides aendert der FTP-Upload nicht. Der Ablauf behandelt diesen Schritt bisher nur als Handschritt im Admin-Bereich ohne Sollwerte und ohne Pruefung. Ziel: Der Upload-Ablauf nennt den Schritt ausdruecklich, kennt die Sollwerte und prueft vor und nach dem Schreiben nur lesend.'
@@ -17,6 +17,7 @@ schritte:
 - 'R09 (Live-Pruefung) um denselben lesenden Abgleich ergaenzen: Zeile Version/Seiten/Datum, PDF- und Handout-Link, Deckblatt, Fallback in assets/js/app.js.'
 - Pester-Tests fuer Sollwert-Ableitung und Abgleich (mit Testdaten, ohne Netz), ci-check unveraendert gruen; docs/FREIGABE.md und die Upload-Checkliste verlinken.
 - 'Klaeren, wie das Skript schreibt: Der Admin-Bereich (admin.html) verlangt Administratorkonto plus Authenticator-Code (docs/NEUE-GESCHICHTE.md Abschnitt 5, setup.sql: nur is_story_admin() darf schreiben). Ein Skript mit Admin-Anmeldung ist daher kaum moeglich; der Secret Key umgeht die Zugriffsregeln. Vorschlag mit Begruendung und Risiken an Bernd; Standardweg bleibt der Admin-Bereich durch Bernd.'
+- 'docs/SUPABASE-BETRIEB.md (Abschnitt Tarif/Sicherung): Hinweis ergaenzen, dass Datenbank-Backups keine Storage-Objekte enthalten (Bucket story: Quelle ist das Repo) und Backup-Beleg vom 23.11.2026 (Dashboard: 8 taegliche physische Backups 16.-23.11.; Herstellerdoku: Pro = 7 Tage, PITR ersetzt taegliche Backups).'
 nachweis: Draft-PR mit Vorher/Nachher, Pester gruen, ci-check Exit 0, Probelauf -NurPruefen gegen den Live-Stand (Bericht mit Tabelle Soll, Ist, Ergebnis)
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload ohne Freigabe von Bernd. Kein Schreiben in Supabase im Probelauf (nur lesen). Keine Aenderung an .github/workflows, Deployment, Admin-Konten oder Schutzregeln. Keine Zugangsdaten in Dateien oder Berichten.
 status: bereit

@@ -1,0 +1,17 @@
+id: R91
+titel: Export reader_feedback vor einer Pause (Entwurf, wartet auf Pause-Entscheidung nach dem Workshop)
+art: lesen
+gate: ja
+abhaengig_von: []
+ziel: Rueckmeldungen (reader_feedback) vor einer Pause oder Stilllegung zusaetzlich zum Datenbank-Backup ausserhalb von Supabase sichern.
+schritte:
+- 'Weg mit Bernd klaeren: Export im Dashboard (Tabelle als CSV) oder Admin-Bereich durch Bernd; kein Schluessel in der KI-Sitzung.'
+- Datei verschluesselt an einem von Bernd freigegebenen Ort ablegen, nicht im Repository (personenbezogene Daten moeglich).
+- 'Nachweis: Datum, Zeilenzahl, Pruefsumme; nur diese Angaben im Bericht, keine Inhalte.'
+nachweis: Bericht mit Datum, Zeilenzahl, SHA-256
+grenzen: Kein Export ins Repository, keine Inhalte im Bericht, kein Schreiben in Supabase, keine Zugangsdaten.
+status: wartet_auf_entscheidung
+stand: 2026-11-23 17:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Bernd 23.11.: als geplanter Auftrag, haengt an der Pause-Entscheidung nach dem Workshop (Ende November). Datenbank-Backups (Pro, taeglich, 7 Tage) ersetzen den Export nicht.'
