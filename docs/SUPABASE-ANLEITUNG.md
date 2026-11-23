@@ -93,6 +93,8 @@ Die öffentliche Website setzt keine Cookies und nutzt kein Tracking. Der gesch�
 
 Der vollständige Ablauf (`publish-release.ps1`, Pull Request, dann Upload über `admin.html`, Handout nur bei Änderung) steht in [docs/NEUE-GESCHICHTE.md](NEUE-GESCHICHTE.md). Alte Fassungen müssen nicht manuell gelöscht werden: Die stabilen Dateien werden ersetzt.
 
+Betrieb, Prüfung nach dem Upload, Pausierung und Neuanlage: [SUPABASE-BETRIEB.md](SUPABASE-BETRIEB.md).
+
 ## H. Spam-Schutz
 
 Das unsichtbare Formularfeld wird durch die Edge Function und ein serverseitig
