@@ -1,4 +1,4 @@
-stand: 2026-11-23 15:30
+stand: 2026-11-23 16:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -91,12 +91,11 @@ auftraege:
   - R03
   - R04
 - id: R09
-  titel: Live-Pruefung v1.39 nach dem Upload (nur lesend)
+  titel: Live-Pruefung v1.40 nach dem Upload (nur lesend)
   art: lesen
   gate: nein
-  status: wartet_auf_voraussetzung
-  abhaengig_von:
-  - Upload v1.39 (Bernd)
+  status: erledigt
+  abhaengig_von: []
   offen: Bernd setzt den Status auf bereit, sobald die neue Version hochgeladen ist (erst mit der ersten neuen Geschichte).
 - id: R11
   titel: Avatare von Navis und Lumen auf der Webseite zeigen
@@ -409,16 +408,16 @@ auftraege:
   titel: Tag v1.39 setzen (nach Upload und Live-Pruefung)
   art: lokal
   gate: ja
-  status: wartet_auf_voraussetzung
-  abhaengig_von:
-  - R09
+  status: wartet_auf_owner
+  abhaengig_von: []
 - id: R53
-  titel: 'Nach dem Release v1.39: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb)'
+  titel: 'Nach dem Release v1.40: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb, Worktrees r60 und r86)'
   art: lokal
   gate: ja
   status: wartet_auf_voraussetzung
   abhaengig_von:
   - R52
+  - R88
 - id: R54
   titel: 'freigabe-pruefen.ps1: G6 bei Paketen ohne Audio als nicht zutreffend werten'
   art: code-pr
@@ -637,5 +636,11 @@ auftraege:
   art: code-pr
   gate: ja
   status: bereit
+  abhaengig_von: []
+- id: R88
+  titel: Tag v1.40 auf 84ae342 setzen (nach Upload und bestandener Live-Pruefung R09)
+  art: lokal
+  gate: ja
+  status: wartet_auf_owner
   abhaengig_von: []
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
