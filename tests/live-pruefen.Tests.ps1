@@ -37,6 +37,20 @@ Describe "live-pruefen.ps1" {
         if ((Get-InhaltsHash -Pfad $crlf).Hash -eq (Get-InhaltsHash -Pfad $lf).Hash) { throw "Ohne -Text darf nicht normalisiert werden." }
     }
 
+    It "vergleicht Webspace-Dateien ohne die Rückfallwerte (Release ohne FTP-Upload)" {
+        # Live liegt noch app.js/index.html des Vorgängers, lokal die neuen Rückfallwerte.
+        $alt = Join-Path $TestDrive "app-alt.js"; $neu = Join-Path $TestDrive "app-neu.js"; $anders = Join-Path $TestDrive "app-anders.js"
+        Write-Utf8Datei $alt "const fallbackRelease = {`r`n  version: `"1.37`",`r`n  date: `"5. September 2026`",`r`n  pageCount: 64,`r`n};`r`n<span data-page-count>64</span>`r`n"
+        Write-Utf8Datei $neu "const fallbackRelease = {`n  version: `"1.40`",`n  date: `"16. November 2026`",`n  pageCount: 80,`n};`n<span data-page-count>80</span>`n"
+        Write-Utf8Datei $anders "const fallbackRelease = {`n  version: `"1.40`",`n  date: `"16. November 2026`",`n  pageCount: 80,`n};`n<span data-page-count>80</span>`nneueFunktion();`n"
+        if ((Get-InhaltsHash -Pfad $alt -OhneRueckfallwerte).Hash -ne (Get-InhaltsHash -Pfad $neu -OhneRueckfallwerte).Hash) {
+            throw "Nur Rückfallwerte geändert, trotzdem Abweichung."
+        }
+        if ((Get-InhaltsHash -Pfad $anders -OhneRueckfallwerte).Hash -eq (Get-InhaltsHash -Pfad $neu -OhneRueckfallwerte).Hash) {
+            throw "Echte Codeänderung wird nicht erkannt."
+        }
+    }
+
     It "formatiert das Datum wie publish-release.ps1" {
         if ((ConvertTo-Anzeigedatum "16.11.2026") -ne "16. November 2026") { throw "16.11.2026 falsch formatiert." }
         if ((ConvertTo-Anzeigedatum "05.09.2026") -ne "5. September 2026") { throw "05.09.2026 falsch formatiert." }
@@ -86,7 +100,7 @@ Describe "live-pruefen.ps1" {
         if ($nach["story_release page_count"] -ne "OK") { throw "page_count: $($nach['story_release page_count'])" }
         if ($nach["Speicher story/current/geschichte.pdf"] -ne "OK") { throw "geschichte.pdf" }
         if ($nach["Speicher story/current/fahrt-zum-kunden.html"] -ne "NICHT ABRUFBAR") { throw "fahrt-zum-kunden.html" }
-        if ($nach["Webspace index.html"] -ne "OK") { throw "index.html" }
+        if ($nach["Webspace index.html (ohne Rückfallwerte)"] -ne "OK") { throw "index.html" }
 
         $ohneRelease = Compare-LiveStand -Soll $soll -Ist ([pscustomobject]@{ Release = $null; Dateien = @{}; Webspace = @{} })
         if (@($ohneRelease | Where-Object Ergebnis -ne "NICHT ABRUFBAR").Count -ne 0) { throw "Ohne Live-Daten muss alles NICHT ABRUFBAR sein." }
@@ -105,6 +119,14 @@ Describe "live-pruefen.ps1" {
         $ausgabe = & (Get-PwshPfad) -NoProfile -File $script:Skript -NurSollwerte -Projekt $projekt 2>&1
         if ($LASTEXITCODE -ne 0) { throw "Exit $LASTEXITCODE`n$($ausgabe -join "`n")" }
         if (($ausgabe -join "`n") -notmatch '\| version \| 1\.02 \|') { throw "Sollwerte fehlen in der Ausgabe." }
+    }
+
+    It "endet mit Exit 2 ohne Netzabruf, wenn supabase-config.js keine Konfiguration enthält" {
+        $projekt = New-SollProjekt (Join-Path $TestDrive "ohne-konfig")
+        Write-Utf8Datei (Join-Path $projekt "assets/js/supabase-config.js") "window.SUPABASE_CONFIG = Object.freeze({});`n"
+        $ausgabe = & (Get-PwshPfad) -NoProfile -File $script:Skript -Projekt $projekt 2>&1
+        if ($LASTEXITCODE -ne 2) { throw "Erwartet Exit 2, erhalten $LASTEXITCODE.`n$($ausgabe -join "`n")" }
+        if (($ausgabe -join "`n") -notmatch "keine öffentliche Konfiguration") { throw "Meldung fehlt." }
     }
 
     It "endet mit Exit 2, wenn die Sollwerte nicht ableitbar sind" {

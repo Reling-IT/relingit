@@ -42,11 +42,28 @@ function ConvertTo-LfBytes([byte[]]$Bytes) {
     return $latin1.GetBytes($latin1.GetString($Bytes).Replace("`r`n", "`n"))
 }
 
-# SHA-256 (klein geschrieben) und Größe einer Datei; Textdateien normalisiert.
+# Ersetzt die Rückfallwerte, die publish-release.ps1 bei jedem Release setzt,
+# durch X (gleiche Regeln wie ConvertTo-ReleaseNeutralLine dort). Ändert sich
+# nur die Buchfassung, ist ein FTP-Upload nicht nötig (q15); die Webspace-Dateien
+# dürfen dann in genau diesen Werten vom lokalen Stand abweichen.
+function ConvertTo-ReleaseNeutralBytes([byte[]]$Bytes) {
+    $latin1 = [System.Text.Encoding]::GetEncoding(28591)
+    $text = $latin1.GetString($Bytes)
+    $text = $text -replace '(version:\s*")[^"]*(")', '${1}X${2}'
+    $text = $text -replace '(date:\s*")[^"]*(")', '${1}X${2}'
+    $text = $text -replace '(pageCount:\s*)\d+', '${1}X'
+    $text = $text -replace '(data-page-count>)\d+(<)', '${1}X${2}'
+    $text = $text -replace '(id="story-release">)Version\s+[^<]+(<)', '${1}X${2}'
+    return $latin1.GetBytes($text)
+}
+
+# SHA-256 (klein geschrieben) und Größe einer Datei; Textdateien normalisiert,
+# mit -OhneRueckfallwerte zusätzlich ohne die Release-Rückfallwerte.
 function Get-InhaltsHash {
-    param([Parameter(Mandatory)][string]$Pfad, [switch]$Text)
+    param([Parameter(Mandatory)][string]$Pfad, [switch]$Text, [switch]$OhneRueckfallwerte)
     $bytes = [System.IO.File]::ReadAllBytes($Pfad)
-    if ($Text) { $bytes = ConvertTo-LfBytes $bytes }
+    if ($Text -or $OhneRueckfallwerte) { $bytes = ConvertTo-LfBytes $bytes }
+    if ($OhneRueckfallwerte) { $bytes = ConvertTo-ReleaseNeutralBytes $bytes }
     $sha = [System.Security.Cryptography.SHA256]::Create()
     try { $hash = ([System.BitConverter]::ToString($sha.ComputeHash($bytes)) -replace '-', '').ToLowerInvariant() }
     finally { $sha.Dispose() }
@@ -106,7 +123,7 @@ function Get-ReleaseSoll {
         [pscustomobject]@{ Name = $datei.Name; Text = $datei.Text; Hash = $h.Hash; Groesse = $h.Groesse }
     }
     $webspace = foreach ($pfad in $script:WebspaceDateien) {
-        $h = Get-InhaltsHash -Pfad (Join-Path $Projekt $pfad) -Text
+        $h = Get-InhaltsHash -Pfad (Join-Path $Projekt $pfad) -OhneRueckfallwerte
         [pscustomobject]@{ Pfad = $pfad; Hash = $h.Hash; Groesse = $h.Groesse }
     }
     return [pscustomobject]@{
@@ -167,7 +184,7 @@ function Compare-LiveStand {
     foreach ($datei in $Soll.Webspace) {
         $istHash = $null
         if ($Ist.Webspace -and $Ist.Webspace.ContainsKey($datei.Pfad)) { $istHash = $Ist.Webspace[$datei.Pfad] }
-        Add-Zeile "Webspace $($datei.Pfad)" $datei.Hash $istHash
+        Add-Zeile "Webspace $($datei.Pfad) (ohne Rückfallwerte)" $datei.Hash $istHash
     }
     return $zeilen.ToArray()
 }
@@ -217,7 +234,7 @@ function Get-LiveIst {
         $webspace = @{}
         foreach ($sollWeb in $Soll.Webspace) {
             $ziel = Get-OhneCache "$($SiteUrl.TrimEnd('/'))/$($sollWeb.Pfad)?nc=$nonce" (Join-Path $ordner ("web-" + ($sollWeb.Pfad -replace '[/\\]', '_')))
-            if ($ziel) { $webspace[$sollWeb.Pfad] = (Get-InhaltsHash -Pfad $ziel -Text).Hash }
+            if ($ziel) { $webspace[$sollWeb.Pfad] = (Get-InhaltsHash -Pfad $ziel -OhneRueckfallwerte).Hash }
         }
         return [pscustomobject]@{ Release = $release; Dateien = $dateien; Webspace = $webspace }
     } finally {
@@ -238,13 +255,26 @@ if ($MyInvocation.InvocationName -ne '.') {
     $stand = ""
     if (Get-Command git -ErrorAction SilentlyContinue) {
         $stand = (& git -C $Projekt log -1 --format="%h (%ad)" --date=short 2>$null | Select-Object -First 1)
+        $zweig = (& git -C $Projekt branch --show-current 2>$null | Select-Object -First 1)
+        if ($zweig) { $stand = "$stand, Branch $zweig" }
+        # Die Sollwerte gelten nur für den Stand von main ohne lokale Änderungen.
+        $kopf = (& git -C $Projekt rev-parse HEAD 2>$null | Select-Object -First 1)
+        $main = (& git -C $Projekt rev-parse --verify --quiet origin/main 2>$null | Select-Object -First 1)
+        $geaendert = @(& git -C $Projekt status --porcelain --untracked-files=no 2>$null)
+        if ($main -and $kopf -ne $main) { Write-Warning "Sollstand ist nicht origin/main ($stand). Für die Live-Prüfung main auschecken (nach git fetch)." }
+        if ($geaendert.Count -gt 0) { Write-Warning "Lokale Änderungen im Arbeitsverzeichnis ($($geaendert.Count) Dateien); die Sollwerte stammen nicht aus einem Commit." }
     }
     if ($NurSollwerte) {
         Write-Output (Format-SollwerteMarkdown -Soll $soll -Stand $(if ($stand) { "Stand $stand" } else { "" }))
         exit 0
     }
 
-    $supabase = Get-SupabaseOeffentlich $Projekt
+    try {
+        $supabase = Get-SupabaseOeffentlich $Projekt
+    } catch {
+        Write-Host "FEHLER: $($_.Exception.Message)"
+        exit 2
+    }
     Write-Host "Live-Prüfung (nur lesend), Abruf $([DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')), Sollstand $stand"
     $ist = Get-LiveIst -Soll $soll -Supabase $supabase -SiteUrl $SiteUrl
     $ergebnis = Compare-LiveStand -Soll $soll -Ist $ist

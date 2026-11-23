@@ -20,7 +20,7 @@ Im Arbeitsklon auf dem Stand von `main`:
 ./scripts/publish-release.ps1 -NurPruefen
 ```
 
-Das Skript (`scripts/live-pruefen.ps1`) liest mit dem öffentlichen Schlüssel aus `assets/js/supabase-config.js` und ohne Cache: `story_release` (Version, Datum, Seitenzahl), die vier Dateien im Speicher `story/current` (SHA-256) und `index.html` sowie `assets/js/app.js` auf dem Webspace. Es vergleicht mit dem lokalen Stand, HTML und JavaScript nach Normalisierung der Zeilenenden (CRLF zu LF). Ausgabe ist eine Tabelle Soll, Ist, Ergebnis. Exit 0 heißt alles gleich, 1 Abweichung, 2 nicht abrufbar oder Sollwerte widersprüchlich. Es schreibt nichts.
+Das Skript (`scripts/live-pruefen.ps1`) liest mit dem öffentlichen Schlüssel aus `assets/js/supabase-config.js` und ohne Cache: `story_release` (Version, Datum, Seitenzahl), die vier Dateien im Speicher `story/current` (SHA-256) und `index.html` sowie `assets/js/app.js` auf dem Webspace. Es vergleicht mit dem lokalen Stand, HTML und JavaScript nach Normalisierung der Zeilenenden (CRLF zu LF). `index.html` und `app.js` werden ohne die Rückfallwerte verglichen (Version, Datum, Seitenzahl), weil ein Release, das nur die Buchfassung ändert, keinen FTP-Upload braucht. Das Skript warnt, wenn der lokale Stand nicht `origin/main` ist oder lokale Änderungen hat. Ausgabe ist eine Tabelle Soll, Ist, Ergebnis. Exit 0 heißt alles gleich, 1 Abweichung, 2 nicht abrufbar oder Sollwerte widersprüchlich. Es schreibt nichts.
 
 Die Sollwerte für die Upload-Checkliste gibt `./scripts/live-pruefen.ps1 -NurSollwerte` ohne Netz als Markdown aus; `publish-release.ps1` hängt sie an seine Ausgabe an. Vorlage: [vorlagen/UPLOAD-CHECKLISTE.md](vorlagen/UPLOAD-CHECKLISTE.md).
 

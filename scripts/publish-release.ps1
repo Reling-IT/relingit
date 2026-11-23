@@ -368,3 +368,7 @@ Write-Host "                   Nach dem Admin-Bereich prüfen: ./scripts/publish
 Write-Host ""
 Write-Host "=== Sollwerte für die Upload-Checkliste ==="
 & "$PSScriptRoot/live-pruefen.ps1" -NurSollwerte
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Sollwerte für die Upload-Checkliste nicht ableitbar (live-pruefen.ps1 Exit $LASTEXITCODE). Vor dem Upload klären."
+    exit $LASTEXITCODE
+}
