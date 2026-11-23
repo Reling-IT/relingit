@@ -3,7 +3,7 @@ titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gep
 art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-23 17:15
+stand: 2026-11-23 17:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 ziel: 'Anlass 23.11.2026: Nach dem FTP-Upload von v1.40 zeigte die Startseite weiter Version 1.37, 64 Seiten und 5. September 2026. Ursache: Die Zeile Version/Seiten/aktualisiert am kommt aus Supabase (Tabelle story_release, id=current), die Links zu PDF, Handout und Lesefassung zeigen auf den Supabase-Speicher story/current. Beides aendert der FTP-Upload nicht. Der Ablauf behandelt diesen Schritt bisher nur als Handschritt im Admin-Bereich ohne Sollwerte und ohne Pruefung. Ziel: Der Upload-Ablauf nennt den Schritt ausdruecklich, kennt die Sollwerte und prueft vor und nach dem Schreiben nur lesend.'
@@ -25,3 +25,4 @@ teil_1_doku: 'Teil 1 (Doku) gemergt: PR #42 am 23.11.2026, main f48da7b (durch C
 hinweis_2026_11_23: 'Ausloeser (Supabase-Eintrag nicht nachgezogen) ist behoben, der Auftrag bleibt sinnvoll: feste Pruefung fuer Supabase im Upload-Ablauf, Betriebsdoku (PR #42). Schreibweg klaeren (Skript mit Secret Key hat am 23.11. funktioniert, Admin-Bereich ist Standardweg).'
 entscheidung_bernd_2026_11_23: Der Supabase-Schluessel bleibt gueltig (nicht gedreht). Er darf nur als Umgebungsvariable in der Sitzung des Owners liegen, nie in Dateien, Berichten, Commits, $PROFILE oder .env. Jede Nutzung braucht weiter die ausdrueckliche Freigabe im Auftrag (Umfang story_release id=current und story/current). Schreibweg und Rotation in R87 Teil 2 ansprechen.
 freigabe_merge_2026_11_23: 'Bernd: "Merge ja" (23.11.2026, nach Nachfrage zu PR #42). Gilt nur fuer PR #42, Head 53e0a48ff594280731f6fcda25ec5ce3d11ea729 (3 Dateien, +65 -0, CI Website pruefen gruen). Ausfuehrung durch Claude Code: gh pr ready, Head pruefen (bei geaendertem Head neu fragen), Merge mit --match-head-commit, danach main und CI pruefen. Teil 2 bleibt offen.'
+entscheidung_schreibweg_2026_11_23: 'Bernd: Schreibweg ist der Admin-Bereich durch Bernd (Standardweg, docs/NEUE-GESCHICHTE.md Abschnitt 5). Skripte lesen nur (-NurPruefen, R09); kein Secret Key fuer Skripte im Regelfall. Teil 2: Pruefmodus, Sollwerte, Checklistenvorlage, Tests; Schreibmodus nur als dokumentierte Ausnahme (Notfall, Neuanlage) mit Freigabe je Lauf. Der Schluessel bleibt gueltig (Entscheidung Bernd 23.11.).'

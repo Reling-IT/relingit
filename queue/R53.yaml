@@ -15,9 +15,10 @@ schritte:
 - 'OneDrive-Klon: nur lesend pruefen, ob er etwas Ungesichertes enthaelt, und Empfehlung zum Wegfall vorlegen.'
 nachweis: Bericht reports/R53-BERICHT.md
 grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Force-Push. Loeschen nur wie beschrieben.
-stand: 2026-11-23 16:45
+stand: 2026-11-23 17:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis_planung_2026_11_11: 'Bernd 11.11.: Upload erst, wenn v1.39 fertig ist; Entscheidung am Mo 16.11.2026: nur v1.39 oder v1.38 als Fallback. Dieser Auftrag bezieht sich dann auf die hochgeladene Version. Nicht beginnen, bevor Bernd die Version nennt.'
 entscheidung_bernd_2026_11_12: Zweiter Klon C:\\dev\\reling-it\\relingit (R29 A1, 77 Commits hinter origin/main, sauber) zusammen mit dem OneDrive-Klon entscheiden. Bis dahin nichts anfassen.
 hinweis_2026_11_23: 'Die Merge-Kette fuer #25 bis #28 ist erledigt (14./15.11.); der Schritt zu den Drafts entfaellt. Worktrees wt\relingit\r60 und r86 nach Pruefung entfernen.'
+freigabe_branch_2026_11_23: Bernd gibt die Loeschung des gemergten Remote-Branches auftrag-R87-supabase-betrieb frei (in main f48da7b enthalten, vorher pruefen). Nur dieser Branch; ops/queue und ops/reports nie loeschen.
