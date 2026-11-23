@@ -10,6 +10,8 @@ ergebnis: nicht bestanden
 
 # R09 Live-Prüfung v1.40
 
+> Nachtrag 23.11.2026, 14:52 UTC: Nach der Aktualisierung von Supabase ist R09 bestanden. Siehe [R09-NACHPRUEFUNG-v1.40.md](R09-NACHPRUEFUNG-v1.40.md).
+
 Auftrag des Product Owners im Chat am 23.11.2026: R09 für v1.40, nur lesen. Die Live-Seite berndmarnau.de/relingit wird mit `main` 84ae342 (`story/current`: Version 1.40, 16.11.2026, 80 Seiten) verglichen. Ausnahme zu den Grenzen in `queue/R09.yaml`: Der Product Owner hat das Lesen von `story_release` mit dem öffentlichen Schlüssel aus `assets/js/supabase-config.js` ausdrücklich verlangt. Es gab keine Anmeldung, kein FTP, keinen Tag und keine Änderung an der Seite oder in Supabase.
 
 ## Ergebnis in Kürze
