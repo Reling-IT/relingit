@@ -1,4 +1,4 @@
-stand: 2026-11-16T06:00+01:00
+stand: 2026-11-23T17:00+01:00
 repo: Reling-IT/relingit
 quelle_queue: 'origin/ops/queue 71cfb3d (Stand 16.11. 06:10, Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert), vorher e94d7c5, vorher 103c0f6, vorher 25506ea, vorher 75c5d53, vorher 750ce73, 02cbacf (Planer Claude, Co-Authored-By und Claude-Session-Link; Commit nicht signiert); vorher origin/ops/queue 59aac02; vorher origin/ops/queue ab9e873 (vorher 3a99d68, a071da7, f355790, 0f77f9f) (Planer Claude, Cloud-Sitzung, Co-Authored-By und Claude-Session-Link; Commit nicht signiert)'
 hinweis_queue: 'Commit 08ec617 ("x", Konto claude, Signatur verifiziert) traegt weder Co-Authored-By noch Claude-Session-Link. Inhalt unauffaellig und deckungsgleich mit dem Owner-Auftrag vom 06.11.2026; ausgefuehrt auf ausdrueckliche Anweisung des Owners, als Abweichung gemeldet.'
@@ -526,6 +526,36 @@ auftraege:
     pr: https://github.com/Reling-IT/relingit/pull/40 (Draft, Head 2c6a93f)
     bericht: reports/R77-BERICHT.md
     hinweis: 'TAGESSTART (Worktree-Ablage, Klonpruefung zwei Ebenen), PDF-ERZEUGEN (venv-pdf), PILOT (v1.39, Stunden 14.11. = 3, 15.11. = 7, Summe 12); ci-check Exit 0, Pester 54/54; Abweichung vom Auftragstext (3 statt 7) nach Entscheidung des Product Owners. Offen: Merge durch den Product Owner.'
+  - id: R09
+    status: erledigt
+    ende: 2026-11-23T15:52+01:00
+    hinweis: 'v1.40 bestanden nach Supabase-Aktualisierung (Freigabe PO im Chat); Wiederholung 15:56 unveraendert'
+    bericht: reports/R09-NACHPRUEFUNG-v1.40.md
+  - id: R88
+    status: erledigt
+    ende: 2026-11-23T16:02+01:00
+    hinweis: 'Tag v1.40 auf 84ae342, annotiert und signiert'
+    bericht: reports/R88-BERICHT.md
+  - id: R87
+    status: in_arbeit
+    hinweis: 'Teil 1 #42 gemergt (f48da7b), Nachtrag #44 gemergt (f7c59da), je Freigabe PO mit Head-SHA; Teil 2 Draft-PR #43 Head 1b65d1b, Zweitpruefung Runde 1 umgesetzt, neue Zweitpruefung am Head offen'
+    pr: https://github.com/Reling-IT/relingit/pull/43
+  - id: R29
+    status: erledigt
+    ende: 2026-11-23T16:10+01:00
+    bericht: reports/R29-20261123-BERICHT.md
+  - id: R89
+    status: erledigt
+    ende: 2026-11-23T16:23+01:00
+    bericht: reports/R89-BERICHT.md
+  - id: R90
+    status: erledigt
+    hinweis: 'resilience-recovery #6 und identity-rbac-standard #14: kein Muss, je ein Soll'
+    bericht: reports/R90-BERICHT.md
+  - id: R53
+    status: teilweise
+    hinweis: 'einzige Kopien nach C:\dev\relingit\archive\_gesichert-2026-11-23 gesichert (163 Dateien); entfernt: zweiter Klon, Worktrees r60 und trailer mit Branches, OneDrive-Klon; offen: paket-v139 (R52), Papierkorb'
+    bericht: reports/R53-VORBEREITUNG.md
 leerlauf:
   - zeit: 2026-11-10T07:16+01:00
     hinweis: 'Tagesabschluss 10.11.: R29-Pruefung (R29-20261110-BERICHT.md, ein Muss-Befund C1 zur Merge-Reihenfolge 26/27), Tagesbericht TA-01 bis TA-07; 0 Auftraege bereit; Ablage-Worktrees entfernt.'
@@ -585,6 +615,8 @@ planung_v140:
   lage_fuer_planer: 'reports/BERICHT-FUER-PLANER-2026-11-16.md (07:20, ersetzt LAGE-FUER-PLANER-2026-11-16.md)'
   pilot_nachtrag: 'Entscheidung Product Owner 16.11.: Zeile Entscheidung in docs/PILOT.md als Commit in #40, erst nach Sichtung von #40'
 leerlauf_ende:
+  - zeit: 2026-11-23T17:00+01:00
+    hinweis: 'Tagesabschluss 23.11.; v1.40 live geprueft (R09, R89), Tag v1.40, #42 und #44 gemergt, R53 bis auf paket-v139 und Papierkorb; offen: #43 (Draft), R52. Tagesbericht reports/TAGESBERICHT-2026-11-23.md'
   - zeit: 2026-11-15T18:35+01:00
     hinweis: 'Tagesabschluss 15.11.; Sichtung v1.39 56/56 Ja, G1 bis G8, #37 gemergt (a1b11a8), offene PRs 0; offen: Upload v1.39 durch den Product Owner, R09, Tag; neue Auftraege a und b fuer den Planer. Tagesbericht reports/TAGESBERICHT-2026-11-15.md'
   - zeit: 2026-11-12T06:38+01:00
