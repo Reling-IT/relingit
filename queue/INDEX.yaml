@@ -633,7 +633,7 @@ auftraege:
   status: erledigt
   abhaengig_von: []
 - id: R87
-  titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, geprueft Schritt (Checkliste, publish-release.ps1, R09)'
+  titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gepruefter Schritt (Checkliste, publish-release.ps1, R09)'
   art: code-pr
   gate: ja
   status: bereit
