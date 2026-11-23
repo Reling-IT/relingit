@@ -97,6 +97,8 @@ Erwartetes Ergebnis: Der Pull Request zeigt die Prüfung „Website prüfen“ g
 
 Erwartetes Ergebnis: Die öffentliche Landingpage zeigt in einem privaten Browserfenster die neue Version, das neue Datum und die neue Seitenzahl; `lesen.html` zeigt das neue Kapitel.
 
+Wird gleichzeitig per FTP hochgeladen (FTP-Fall unten), ist der Admin-Bereich ein eigener Schritt und keine Folge des FTP-Uploads: Die Zeile „Seiten · aktualisiert am“ und die Links zu PDF und Handout kommen aus Supabase (`story_release` und Speicher `story/current`). Nach dem Upload beides lesend prüfen, Ablauf und Wiederherstellung siehe [SUPABASE-BETRIEB.md](SUPABASE-BETRIEB.md).
+
 ### FTP-Fall
 
 Über den Admin-Bereich gehen nur die Buchfassung (HTML und PDF), das Handout und die Versionsangaben. Alle anderen geänderten öffentlichen Dateien kommen nur per FTP live: `index.html`, `assets/js`, `assets/css`, `assets/fonts` (sobald vorhanden), `impressum.html`, `datenschutz.html` und weitere Seiten und Dateien, die nicht über den Admin-Bereich gehen (`lesen.html`, `anhang.html`, `pdf.html`, `handout.html`, `handout-pdf.html`, `admin.html`, `.htaccess`, `assets/img`, `assets/video`, `assets/audio`).
