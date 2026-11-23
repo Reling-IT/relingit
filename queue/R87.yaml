@@ -3,7 +3,7 @@ titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gep
 art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-23 16:30
+stand: 2026-11-23 16:50
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 ziel: 'Anlass 23.11.2026: Nach dem FTP-Upload von v1.40 zeigte die Startseite weiter Version 1.37, 64 Seiten und 5. September 2026. Ursache: Die Zeile Version/Seiten/aktualisiert am kommt aus Supabase (Tabelle story_release, id=current), die Links zu PDF, Handout und Lesefassung zeigen auf den Supabase-Speicher story/current. Beides aendert der FTP-Upload nicht. Der Ablauf behandelt diesen Schritt bisher nur als Handschritt im Admin-Bereich ohne Sollwerte und ohne Pruefung. Ziel: Der Upload-Ablauf nennt den Schritt ausdruecklich, kennt die Sollwerte und prueft vor und nach dem Schreiben nur lesend.'
@@ -23,3 +23,4 @@ status: bereit
 hinweis: Beruehrt scripts/publish-release.ps1 und freigabe-pruefen.ps1 nicht gleichzeitig mit R78/R68 aendern; Reihenfolge mit R78 und R68 im selben PR klaeren, wenn beide Auftraege offen sind.
 teil_1_doku: 'Teil 1 (nur Doku) vom Planer als Draft-PR #42 angelegt (Branch auftrag-R87-supabase-betrieb): docs/SUPABASE-BETRIEB.md, Verweise in NEUE-GESCHICHTE.md und SUPABASE-ANLEITUNG.md. Pruefen, CI abwarten, nur Freigabe und Merge durch Bernd. Teil 2 (Skripte, Tests, Checklistenvorlage) folgt hier.'
 hinweis_2026_11_23: 'Ausloeser (Supabase-Eintrag nicht nachgezogen) ist behoben, der Auftrag bleibt sinnvoll: feste Pruefung fuer Supabase im Upload-Ablauf, Betriebsdoku (PR #42). Schreibweg klaeren (Skript mit Secret Key hat am 23.11. funktioniert, Admin-Bereich ist Standardweg).'
+entscheidung_bernd_2026_11_23: Der Supabase-Schluessel bleibt gueltig (nicht gedreht). Er darf nur als Umgebungsvariable in der Sitzung des Owners liegen, nie in Dateien, Berichten, Commits, $PROFILE oder .env. Jede Nutzung braucht weiter die ausdrueckliche Freigabe im Auftrag (Umfang story_release id=current und story/current). Schreibweg und Rotation in R87 Teil 2 ansprechen.
