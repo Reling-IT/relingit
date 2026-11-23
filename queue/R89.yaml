@@ -1,0 +1,18 @@
+id: R89
+titel: 'Live-Pruefung Dateien und Sicherheits-Header (nur lesend): ganzes Paket v1.40 gegen den Server, Header gegen .htaccess'
+art: lesen
+gate: nein
+abhaengig_von: []
+ziel: Belegen, dass alle Dateien des hochgeladenen Pakets auf dem Server mit main uebereinstimmen (damit auch die R40-Dateien) und dass die Sicherheits-Header der .htaccess live wirken. R09 hat bisher nur Supabase, Startseite, PDF, Handout, index.html und assets/js/app.js abgeglichen.
+schritte:
+- Dateiliste des Pakets C4107586...7537 aus UPLOAD-CHECKLISTE-v1.40.md bzw. dem Paket lesen (41 Eintraege, ohne Manifest).
+- Jede oeffentlich abrufbare Datei per HTTP GET (ohne Anmeldung, Cache-Control no-cache, Parameter ?nc=Zeit) holen und mit git show origin/main:<pfad> vergleichen; Zeilenenden CRLF zu LF normalisieren. Abweichungen mit Datei, Soll-Hash, Ist-Hash melden; die R40-Dateien (index.html, lesen.html, handout.html, assets/css, assets/js) ausdruecklich aufzaehlen.
+- 'Antwort-Header der Startseite, einer HTML-Seite und einer Datei unter assets/ mit curl -I lesen und gegen .htaccess auf main vergleichen: Strict-Transport-Security, X-Content-Type-Options, Referrer-Policy, X-Frame-Options, Permissions-Policy, Content-Security-Policy; HTTP-zu-HTTPS-Weiterleitung und Verzeichnislisten (soweit ohne Anmeldung pruefbar).'
+- Bericht reports/R89-BERICHT.md mit Befehl, Abrufzeit und Tabelle Soll, Ist, Ergebnis. Nichts korrigieren.
+nachweis: Bericht mit Tabelle je Datei und je Header
+grenzen: Nur lesende Abrufe. Keine Anmeldung, kein FTP, kein Schreiben in Supabase, keine Zugangsdaten, keine Aenderung im Repo ausser dem Bericht auf ops/reports. Keine Korrektur.
+status: bereit
+stand: 2026-11-23 18:00
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+hinweis: 'Anlass: Handschritte aus dem Tagesabschluss 23.11. Secret Scanning und Push Protection sind laut GitHub-API bereits aktiv (nur gelesen). Der Planer hat aus der Cloud keinen Zugriff auf berndmarnau.de und Supabase (Proxy 403); darum Auftrag an Claude Code.'

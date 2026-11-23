@@ -1,4 +1,4 @@
-stand: 2026-11-23 17:45
+stand: 2026-11-23 18:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -640,6 +640,12 @@ auftraege:
   titel: Tag v1.40 auf 84ae342 setzen (nach Upload und bestandener Live-Pruefung R09)
   art: lokal
   gate: ja
+  status: bereit
+  abhaengig_von: []
+- id: R89
+  titel: 'Live-Pruefung Dateien und Sicherheits-Header (nur lesend): ganzes Paket v1.40 gegen den Server, Header gegen .htaccess'
+  art: lesen
+  gate: nein
   status: bereit
   abhaengig_von: []
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
