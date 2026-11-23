@@ -1,4 +1,4 @@
-stand: 2026-11-23 16:40
+stand: 2026-11-23 16:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -405,10 +405,10 @@ auftraege:
   - R17
   - R50
 - id: R52
-  titel: Tag v1.39 setzen (nach Upload und Live-Pruefung)
+  titel: Tag v1.39 entfaellt (v1.39 ist in v1.40 aufgegangen, nie eigener Live-Stand)
   art: lokal
   gate: ja
-  status: wartet_auf_owner
+  status: erledigt
   abhaengig_von: []
 - id: R53
   titel: 'Nach dem Release v1.40: Aufraeumen (OneDrive-Klon, zweiter Klon, Papierkorb, Worktrees r60 und r86)'
@@ -416,7 +416,6 @@ auftraege:
   gate: ja
   status: wartet_auf_voraussetzung
   abhaengig_von:
-  - R52
   - R88
 - id: R54
   titel: 'freigabe-pruefen.ps1: G6 bei Paketen ohne Audio als nicht zutreffend werten'

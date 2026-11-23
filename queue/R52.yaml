@@ -1,8 +1,8 @@
 id: R52
-titel: Tag v1.39 setzen (nach Upload und Live-Pruefung)
+titel: Tag v1.39 entfaellt (v1.39 ist in v1.40 aufgegangen, nie eigener Live-Stand)
 art: lokal
 gate: ja
-status: wartet_auf_owner
+status: erledigt
 abhaengig_von: []
 voraussetzung: Bernd meldet Upload fertig UND R09 hat keine Abweichung gemeldet UND Bernd gibt Tor G8 mit Ja frei. Vorher nicht beginnen.
 ziel: Der Stand, aus dem das Paket gebaut wurde, ist als Version v1.38 im Repo markiert.
@@ -12,10 +12,11 @@ schritte:
 - Bericht reports/R52-BERICHT.md mit Commit, Tag und Pruefausgabe.
 nachweis: Tag v1.38 auf dem richtigen Commit, Bericht
 grenzen: Ausnahme von der Regel kein Tag, nur fuer diesen Auftrag und nach ausdruecklicher Freigabe von Bernd. Kein Merge, kein FTP, keine Zugangsdaten, kein Force-Push.
-stand: 2026-11-23 16:30
+stand: 2026-11-23 16:45
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis_planung_2026_11_11: 'Bernd 11.11.: Upload erst, wenn v1.39 fertig ist; Entscheidung am Mo 16.11.2026: nur v1.39 oder v1.38 als Fallback. Dieser Auftrag bezieht sich dann auf die hochgeladene Version. Nicht beginnen, bevor Bernd die Version nennt.'
 hinweis_planung_2026_11_16: 'Entscheidung Bernd 11.11. umgesetzt: v1.39 ist auf main (a1b11a8, 80 Seiten, G8 am 15.11. erteilt, Paket 6E48827B...1B98 bzw. Paket mit Trailer nach Bernds Wahl). Tag v1.39 auf den Commit, aus dem das hochgeladene Paket gebaut wurde; nicht beginnen vor Upload und R09. Tag v1.38 entfaellt (v1.38 ist in v1.39 aufgegangen).'
 hinweis_2026_11_16: 'Tag v1.39 auf 907ca58 setzen (Merge #38), nicht auf main: main enthaelt seit 84ae342 v1.40.'
 hinweis_2026_11_23: 'R09 ist bestanden (v1.40 live). v1.39 war nie ein eigener Live-Stand (aufgegangen in v1.40). Entscheidung Bernd: Tag v1.39 auf 907ca58 trotzdem setzen oder entfallen lassen (wie v1.38). Tag v1.40: R88.'
+entscheidung_bernd_2026_11_23: 'Kein Tag v1.39 (wie v1.38). Tag v1.40: R88.'
