@@ -660,4 +660,10 @@ auftraege:
   gate: ja
   status: wartet_auf_entscheidung
   abhaengig_von: []
+- id: R92
+  titel: 'Autonomes 2-Stunden-Paket 24.11.: PR #45 korrigieren, R87 Teil 2 (#43) zweitpruefen, R78/R68 planen, R29; Block B lesende Vorarbeit'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

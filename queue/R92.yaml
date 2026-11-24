@@ -1,0 +1,21 @@
+id: R92
+titel: 'Autonomes 2-Stunden-Paket 24.11.: PR #45 korrigieren, R87 Teil 2 (#43) zweitpruefen und Muss-Befunde umsetzen, R78/R68 planen, R29; Block B lesende Vorarbeit'
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: Ohne Rueckfragen abschliessen, was am 23.11. offen blieb, bis auf die Freigaben von Bernd (Merge je Head).
+schritte:
+- 'Tagesstart lesend: main, offene PRs (#43, #45), Branches, Worktrees, Queue; Abweichungen im Bericht nennen.'
+- 'PR #45 (docs/PILOT.md, Branch pilot-2026-11-23): Satz "ueber den Tag v1.39 (R52) ist noch zu entscheiden" ersetzen durch "Tag v1.39 entfaellt (Entscheidung Product Owner 23.11.2026, R52 erledigt)"; auch in der PR-Beschreibung "R52 offen" streichen; ci-check lokal, CI abwarten; neuen Head im Bericht nennen. Nicht mergen.'
+- 'R87 Teil 2 (PR #43, Branch auftrag-R87-teil2): Zweitpruefung am aktuellen Head (publish-release.ps1 -NurPruefen, Sollwerte in UPLOAD-CHECKLISTE, Pester-Tests, Abschnitt Supabase und Speicher). Muss-Befunde im selben PR beheben, Soll-Befunde nur melden. docs/SUPABASE-BETRIEB.md: Datenbank-Backups (Pro, taeglich, 7 Tage, belegt 23.11.2026: Dashboard acht Backups 16. bis 23.11., Herstellerdoku) enthalten keine Storage-Objekte; Bucket story hat sein Original im Repo. CI gruen abwarten. Nicht mergen, Draft lassen, Freigabefrage mit Head-SHA im Bericht vorbereiten.'
+- 'R78/R68: Reihenfolge gegenueber R87 und gemeinsame Aenderungen an publish-release.ps1 und freigabe-pruefen.ps1 als Vorschlag beschreiben (nur planen, nichts bauen).'
+- 'R29 lesend: Git-Hygiene und Pruefung von Reling IT (Branches, Tags, PRs, Buchquelle, Regeln, Webseite im Repo).'
+- 'Block B (nur lesend, nur wenn nach Schritt 5 noch Zeit ist, Zeitbox 30 Minuten): B1 Testlauf von -NurPruefen aus #43 gegen den Live-Stand (kein Schreiben, keine Zugangsdaten); B2 Workshop-Handout gegen Buch v1.40 abgleichen (Version, Datum, Seitenzahl, Kapitelnamen); B3 Entwurfsplan fuer den reader_feedback-Export (R91) als Text im Bericht, ohne Daten zu lesen.'
+- Bericht reports/R92-BERICHT.md auf ops/reports mit Tabelle je Schritt (Befehl, Ergebnis, Head-SHAs, Beleg), Befundliste und Freigabefragen; STATUS.yaml mit YAML-Parser pruefen. Kein Schluessel, keine Inhalte aus reader_feedback.
+nachweis: 'Bericht R92 mit Head-SHAs von #43 und #45, CI-Stand, Befunden'
+grenzen: Ohne Rueckfragen arbeiten; bei Blockade (CI zweimal rot, unerwartete Abweichung live, Bedarf an Zugangsdaten, unklare Anforderung) den Schritt abbrechen, im Bericht begruenden und mit dem naechsten fortfahren. Kein Merge, kein Tag, kein FTP, kein Schreiben in Supabase, keine Zugangsdaten, nichts am Papierkorb oder Worktree paket-v139, keine Aenderung an Schutzregeln. Hoechstens 3 offene Agenten-PRs. Zeitbox 2 Stunden.
+status: bereit
+stand: 2026-11-24 05:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Bernd 24.11.: autonomes Paket mit Block B. Vorab entschieden: #45 erst korrigieren (23.11.), Merge-Regel unveraendert, Papierkorb nach dem Workshop.'
