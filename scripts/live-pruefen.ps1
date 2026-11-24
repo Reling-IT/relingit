@@ -19,7 +19,7 @@
 #   ./scripts/publish-release.ps1 -NurPruefen # gleichwertig zum Abgleich
 #
 # Exit-Code: 0 alles gleich, 1 mindestens eine Abweichung, 2 Fehler (Sollwerte
-# nicht ableitbar oder Live-Stand nicht abrufbar).
+# nicht ableitbar, Live-Stand nicht abrufbar oder Antwort nicht auswertbar).
 param(
     [switch]$NurSollwerte,
     [string]$SiteUrl = "https://berndmarnau.de/relingit",
@@ -200,10 +200,11 @@ function Get-SupabaseOeffentlich([string]$Projekt) {
 
 # Lädt eine URL ohne Cache in eine Datei; $null bei Fehler.
 function Get-OhneCache([string]$Url, [string]$Ziel, [hashtable]$Kopf = @{}) {
-    $kopf = @{ "Cache-Control" = "no-cache"; Pragma = "no-cache" } + $Kopf
+    # Eigener Name: $kopf wäre wegen fehlender Groß-/Kleinschreibung der Parameter $Kopf.
+    $alleKoepfe = @{ "Cache-Control" = "no-cache"; Pragma = "no-cache" } + $Kopf
     try {
         # Eigener User-Agent: Supabase behandelt den Standard-User-Agent von PowerShell wie einen Browser.
-        Invoke-WebRequest -Uri $Url -Headers $kopf -UserAgent $script:UserAgent -OutFile $Ziel -ErrorAction Stop | Out-Null
+        Invoke-WebRequest -Uri $Url -Headers $alleKoepfe-UserAgent $script:UserAgent -OutFile $Ziel -ErrorAction Stop | Out-Null
         return $Ziel
     } catch {
         Write-Warning "Nicht abrufbar: $Url ($($_.Exception.Message))"
@@ -221,8 +222,13 @@ function Get-LiveIst {
         $release = $null
         $datei = Get-OhneCache "$($Supabase.Url)/rest/v1/story_release?id=eq.current&select=version,display_date,page_count" (Join-Path $ordner "release.json") @{ apikey = $Supabase.Schluessel }
         if ($datei) {
-            $zeilen = @([System.IO.File]::ReadAllText($datei) | ConvertFrom-Json)
-            if ($zeilen.Count -eq 1) { $release = $zeilen[0] } else { Write-Warning "story_release id=current: $($zeilen.Count) Zeilen statt 1." }
+            # Antwort ohne gültiges JSON gilt als nicht abrufbar (Exit 2), nicht als Abweichung.
+            $zeilen = $null
+            try { $zeilen = @([System.IO.File]::ReadAllText($datei) | ConvertFrom-Json -ErrorAction Stop) }
+            catch { Write-Warning "story_release id=current: Antwort ist kein gültiges JSON ($($_.Exception.Message))." }
+            if ($null -ne $zeilen) {
+                if ($zeilen.Count -eq 1) { $release = $zeilen[0] } else { Write-Warning "story_release id=current: $($zeilen.Count) Zeilen statt 1." }
+            }
         }
         $dateien = @{}
         # Schleifenvariablen bewusst nicht $soll: PowerShell unterscheidet keine
@@ -265,7 +271,9 @@ if ($MyInvocation.InvocationName -ne '.') {
         if ($geaendert.Count -gt 0) { Write-Warning "Lokale Änderungen im Arbeitsverzeichnis ($($geaendert.Count) Dateien); die Sollwerte stammen nicht aus einem Commit." }
     }
     if ($NurSollwerte) {
-        Write-Output (Format-SollwerteMarkdown -Soll $soll -Stand $(if ($stand) { "Stand $stand" } else { "" }))
+        # Mit lokalen Änderungen (z. B. am Ende von publish-release.ps1) stammen die Werte aus dem Arbeitsstand.
+        $herkunft = if (-not $stand) { "" } elseif ($geaendert.Count -gt 0) { "dem Arbeitsstand auf Basis $stand" } else { "Stand $stand" }
+        Write-Output (Format-SollwerteMarkdown -Soll $soll -Stand $herkunft)
         exit 0
     }
 
@@ -276,7 +284,12 @@ if ($MyInvocation.InvocationName -ne '.') {
         exit 2
     }
     Write-Host "Live-Prüfung (nur lesend), Abruf $([DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')), Sollstand $stand"
-    $ist = Get-LiveIst -Soll $soll -Supabase $supabase -SiteUrl $SiteUrl
+    try {
+        $ist = Get-LiveIst -Soll $soll -Supabase $supabase -SiteUrl $SiteUrl
+    } catch {
+        Write-Host "FEHLER: Live-Stand nicht auswertbar: $($_.Exception.Message)"
+        exit 2
+    }
     $ergebnis = Compare-LiveStand -Soll $soll -Ist $ist
     $ergebnis | Format-Table -AutoSize -Wrap Pruefpunkt, Soll, Ist, Ergebnis | Out-String -Width 220 | Write-Host
 

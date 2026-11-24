@@ -106,6 +106,23 @@ Describe "live-pruefen.ps1" {
         if (@($ohneRelease | Where-Object Ergebnis -ne "NICHT ABRUFBAR").Count -ne 0) { throw "Ohne Live-Daten muss alles NICHT ABRUFBAR sein." }
     }
 
+    It "wertet eine Supabase-Antwort ohne gültiges JSON als NICHT ABRUFBAR, nicht als Abbruch" {
+        $projekt = New-SollProjekt (Join-Path $TestDrive "kein-json")
+        $soll = Get-ReleaseSoll -Projekt $projekt
+        # Ersatz für den Netzabruf, nur in diesem Test: story_release liefert HTML statt JSON.
+        function Get-OhneCache([string]$Url, [string]$Ziel, [hashtable]$Kopf = @{}) {
+            if ($Url -match 'story_release') { [System.IO.File]::WriteAllText($Ziel, "<html>Wartung</html>"); return $Ziel }
+            return $null
+        }
+        $ist = $null
+        try { $ist = Get-LiveIst -Soll $soll -Supabase ([pscustomobject]@{ Url = "https://beispiel.invalid"; Schluessel = "x" }) -SiteUrl "https://beispiel.invalid" 3>$null }
+        catch { throw "Get-LiveIst darf bei ungültigem JSON nicht abbrechen: $($_.Exception.Message)" }
+        if ($null -ne $ist.Release) { throw "Release muss leer bleiben." }
+        $zeilen = Compare-LiveStand -Soll $soll -Ist $ist
+        $version = $zeilen | Where-Object Pruefpunkt -eq "story_release version"
+        if ($version.Ergebnis -ne "NICHT ABRUFBAR") { throw "version: $($version.Ergebnis)" }
+    }
+
     It "schreibt die Sollwerte als Markdown-Abschnitt für die Upload-Checkliste" {
         $projekt = New-SollProjekt (Join-Path $TestDrive "soll-md")
         $md = Format-SollwerteMarkdown -Soll (Get-ReleaseSoll -Projekt $projekt) -Stand "Stand test"

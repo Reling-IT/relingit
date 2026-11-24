@@ -87,4 +87,4 @@ Ist G8 im Freigabebericht **offen** (nicht gesperrt), erteilt Bernd die Freigabe
 
 ### 5. Nach dem Upload
 
-Die Upload-Checkliste folgt der Vorlage [vorlagen/UPLOAD-CHECKLISTE.md](vorlagen/UPLOAD-CHECKLISTE.md) mit den Sollwerten aus `./scripts/live-pruefen.ps1 -NurSollwerte`. Nach FTP und Admin-Bereich prüft `./scripts/publish-release.ps1 -NurPruefen` nur lesend, ob `story_release`, der Speicher `story/current` und der Webspace dem Stand von `main` entsprechen (Exit 0). Erst danach wird getaggt. Einzelheiten: [SUPABASE-BETRIEB.md](SUPABASE-BETRIEB.md).
+Die Upload-Checkliste folgt der Vorlage [vorlagen/UPLOAD-CHECKLISTE.md](vorlagen/UPLOAD-CHECKLISTE.md) mit den Sollwerten aus `./scripts/live-pruefen.ps1 -NurSollwerte`. Nach FTP und Admin-Bereich prüft `./scripts/publish-release.ps1 -NurPruefen` nur lesend, ob `story_release`, der Speicher `story/current` sowie `index.html` und `assets/js/app.js` auf dem Webspace (ohne Rückfallwerte) dem Stand von `main` entsprechen (Exit 0). Andere Webspace-Dateien vergleicht die Prüfung nicht. Erst danach wird getaggt. Einzelheiten: [SUPABASE-BETRIEB.md](SUPABASE-BETRIEB.md).
