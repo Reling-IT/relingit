@@ -106,6 +106,24 @@ Describe "live-pruefen.ps1" {
         if (@($ohneRelease | Where-Object Ergebnis -ne "NICHT ABRUFBAR").Count -ne 0) { throw "Ohne Live-Daten muss alles NICHT ABRUFBAR sein." }
     }
 
+    It "ruft Invoke-WebRequest mit Kopfzeilen, User-Agent und Zieldatei auf" {
+        # Ersatz für den Netzabruf, nur in diesem Test; Signatur wie das echte Cmdlet.
+        $script:Aufruf = $null
+        function Invoke-WebRequest {
+            param([string]$Uri, [System.Collections.IDictionary]$Headers, [string]$UserAgent, [string]$OutFile, $ErrorAction)
+            $script:Aufruf = [pscustomobject]@{ Uri = $Uri; Headers = $Headers; UserAgent = $UserAgent; OutFile = $OutFile }
+            [System.IO.File]::WriteAllText($OutFile, "[]")
+        }
+        $ziel = Join-Path $TestDrive "abruf.json"
+        $ergebnis = Get-OhneCache "https://beispiel.invalid/x" $ziel @{ apikey = "oeffentlich" } 3>$null
+        if ($ergebnis -ne $ziel) { throw "Get-OhneCache lieferte '$ergebnis' statt des Zielpfads." }
+        if ($null -eq $script:Aufruf) { throw "Invoke-WebRequest wurde nicht aufgerufen." }
+        if ($script:Aufruf.UserAgent -ne $script:UserAgent) { throw "User-Agent: '$($script:Aufruf.UserAgent)'" }
+        foreach ($schluessel in @("Cache-Control", "Pragma", "apikey")) {
+            if (-not $script:Aufruf.Headers.Contains($schluessel)) { throw "Kopfzeile fehlt: $schluessel" }
+        }
+    }
+
     It "wertet eine Supabase-Antwort ohne gültiges JSON als NICHT ABRUFBAR, nicht als Abbruch" {
         $projekt = New-SollProjekt (Join-Path $TestDrive "kein-json")
         $soll = Get-ReleaseSoll -Projekt $projekt

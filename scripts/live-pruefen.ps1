@@ -204,7 +204,7 @@ function Get-OhneCache([string]$Url, [string]$Ziel, [hashtable]$Kopf = @{}) {
     $alleKoepfe = @{ "Cache-Control" = "no-cache"; Pragma = "no-cache" } + $Kopf
     try {
         # Eigener User-Agent: Supabase behandelt den Standard-User-Agent von PowerShell wie einen Browser.
-        Invoke-WebRequest -Uri $Url -Headers $alleKoepfe-UserAgent $script:UserAgent -OutFile $Ziel -ErrorAction Stop | Out-Null
+        Invoke-WebRequest -Uri $Url -Headers $alleKoepfe -UserAgent $script:UserAgent -OutFile $Ziel -ErrorAction Stop | Out-Null
         return $Ziel
     } catch {
         Write-Warning "Nicht abrufbar: $Url ($($_.Exception.Message))"
