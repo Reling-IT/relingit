@@ -114,3 +114,15 @@ Roadmap:
   Sprints_bis_MVP: unklar
   Hinweis: keine Grundlage fuer eine Schaetzung
 ```
+
+## Nachtrag 06:09 Uhr: Entscheidungen des Product Owners (Chat, 24.11.2026)
+
+| Frage | Entscheidung |
+| --- | --- |
+| R78 und R68 in einem Entwurfs-PR nach dem Merge von #43 | ja, ein PR (R78 erster, R68 zweiter Commit) |
+| Baum-Vergleich aus R68 im selben PR | nein, eigener Folgeauftrag; im PR nur Hash und Eintragszahl |
+| W07 Download-Link auf Startseite und `handout-pdf.html` | ja; „Handout lädt“ bleibt auf `handout.html` |
+| Sicherung der Podcast-MP3 | zurück in die OneDrive-Ablage wie früher. Erledigt: vier MP3 kopiert, SHA-256 am Ziel gleich `assets/audio/SHA256SUMS.txt`. Ob die Synchronisation abgeschlossen ist, ist nicht geprüft. `docs/PODCAST.md` passt damit wieder; Prüfung per PR, sobald ein PR-Platz frei ist. |
+| Handout „Teamrunde“ zu „Montagsrunde“ | mit der nächsten Buchfassung, als eigener Auftrag |
+
+Für die Planer-Session: R78 und R68 zusammenlegen und nach dem Merge von #43 auf `bereit` setzen; Folgeaufträge Baum-Vergleich und Handout-Korrektur anlegen.
