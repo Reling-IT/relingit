@@ -46,7 +46,8 @@ Verloren gehen bei einer Neuanlage: der Eintrag `story_release` (neu setzen), di
 
 ## Sicherung
 
-- Im Pro-Tarif legt Supabase tägliche Backups der Datenbank an (Umfang und Aufbewahrung im Dashboard unter Database, Backups prüfen). Sie ersetzen keinen eigenen Export: Dateien im Speicher gehören nicht ohne Weiteres zum Datenbank-Backup.
+- Im Pro-Tarif legt Supabase tägliche Backups der Datenbank an. Laut Supabase-Dokumentation ([Database Backups](https://supabase.com/docs/guides/platform/backups), abgerufen am 24.11.2026) sind im Pro-Tarif die Backups der letzten 7 Tage abrufbar. Am 23.11.2026 zeigte das Dashboard (Database, Backups) acht tägliche Backups vom 16. bis 23.11. (Auftrag R92). Den aktuellen Stand im Dashboard prüfen.
+- Die Datenbank-Backups enthalten keine Dateien aus dem Speicher (Storage), nur deren Metadaten. Ein wiederhergestelltes Backup bringt gelöschte Speicher-Dateien nicht zurück (gleiche Quelle). Für den Bucket `story` liegt das Original im Repository (`story/current`, siehe nächster Punkt). Die Backups ersetzen keinen eigenen Export für Daten, die nur in Supabase liegen.
 - Buchfassungen liegen im Repository (`story/current`, `source/`) und sind dort wiederherstellbar.
 - Leser-Feedback (`reader_feedback`) liegt nur in Supabase. Bei Bedarf im Table Editor als CSV exportieren und außerhalb des Repositorys ablegen (enthält Texte von Lesenden).
 - Den Stand von `story_release` (Version, Datum, Seitenzahl) nennt jede Upload-Checkliste.
