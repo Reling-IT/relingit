@@ -2,7 +2,7 @@
 
 Vorlage nach `REPOSITORY_BASISHYGIENE.md` („Mindestausstattung je Art“) und `SITZUNGSROUTINE.md` (TA-09) aus `bmarnau-standards/ai-development-governance`, Datei `vorlagen/pilot-steckbrief.md`. Ablage im Repository als `docs/PILOT.md`, Pfad im Projektprofil (`steckbrief` in [CLAUDE.md](../CLAUDE.md)). Nur belegte Angaben; Unbekanntes als `unklar`.
 
-Stand: 23.11.2026 (Tagesabschluss), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
+Stand: 23.11.2026 (Tagesabschluss), korrigiert am 24.11.2026 (Auftrag R92), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
 
 ## Kurzprofil
 
@@ -11,7 +11,7 @@ Stand: 23.11.2026 (Tagesabschluss), angelegt am 12.11.2026 mit Auftrag R73 (`que
 | Zweck (ein Satz) | Landingpage, Online-Lesefassung und Workshop-Handout zur fortlaufenden Kurzgeschichte „Die Fahrt zum Kunden“; laut Auftrag dienen die Kurzgeschichten der Workshop-Vorbereitung. | [README.md](../README.md), erster Absatz; Auftrag R73, Schritt 2 |
 | Zielgruppe | Kolleginnen und Kollegen sowie Workshop-Teilnehmende. Im Repository selbst steht dazu nur das Workshop-Handout; eine Beschreibung der Zielgruppe fehlt dort. | Auftrag R73, Schritt 2; [README.md](../README.md) |
 | Tatsächliche Nutzer | unklar (keine Anzahl und keine Nutzungsdaten im Repository) | – |
-| Status | Pilot (Entscheidung des Product Owners vom 12.11.2026). Belegter Stand: Version 1.40 (16. November 2026, 80 Seiten) ist live, auf dem Webspace und in Supabase, live geprüft am 23.11.2026 (R09, R89) und als `v1.40` auf 84ae342 getaggt (R88). Ob Version 1.39 vorher live war, ist nicht belegt (unklar); Tag v1.39 entfällt (Entscheidung Product Owner 23.11.2026, R52 erledigt). | `queue/R73.yaml` (Feld `entscheidungen_bernd_2026_11_12`); PR #41 (Merge 84ae342); R09-NACHPRUEFUNG-v1.40.md, R89-BERICHT.md, R88-BERICHT.md; TAGESBERICHT-2026-11-23.md |
+| Status | Pilot (Entscheidung des Product Owners vom 12.11.2026). Belegter Stand: Version 1.40 (16. November 2026, 80 Seiten) ist live, auf dem Webspace und in Supabase, live geprüft am 23.11.2026 (R09, R89) und als `v1.40` auf 84ae342 getaggt (R88). Supabase stand vor der Aktualisierung auf 1.37 (R09); ob Version 1.39 vorher auf dem Webspace lag, ist unklar. Tag v1.39 entfällt (Entscheidung Product Owner 23.11.2026, R52 erledigt). | `queue/R73.yaml` (Feld `entscheidungen_bernd_2026_11_12`); `queue/R52.yaml` (Feld `entscheidung_bernd_2026_11_23`); PR #41 (Merge 84ae342); R09-NACHPRUEFUNG-v1.40.md, R89-BERICHT.md, R88-BERICHT.md; TAGESBERICHT-2026-11-23.md |
 | Start | 2026-08-30 (erster Commit auf `main`) | Commit f426a21 |
 | Werkzeuge | Claude als Planer (Warteschlange) und Claude Code als ausführende KI-Sitzung; GitHub mit GitHub Actions, GitHub-CLI, PowerShell 7 mit Pester, Python und Poppler für die PDF. Ein früherer Codex-Prompt ist als veraltet gekennzeichnet. | [CLAUDE.md](../CLAUDE.md); [TAGESSTART.md](TAGESSTART.md); `queue/INDEX.yaml` (Feld `planer`); [PDF-ERZEUGEN.md](PDF-ERZEUGEN.md); [CODEX_PROMPT.md](CODEX_PROMPT.md) |
 | Technik | Frontend: statische Webseite (HTML, CSS, JavaScript ohne Framework). Backend und Datenbank: Supabase für Leserfeedback, Versionsmetadaten sowie die aktuelle HTML- und PDF-Fassung; geschützter Admin-Bereich für Version, Datum und Seitenzahl. PDF: lokal aus der HTML-Quelle erzeugt und geprüft. Hosting: manuell per FTP bei einem Webhoster; GitHub führt kein Deployment aus. Prüfung: `scripts/ci-check.ps1` lokal und in der CI, Pester-Tests unter `tests/`. | [README.md](../README.md); [SICHERHEIT.md](SICHERHEIT.md); `scripts/pdf/`; `.github/workflows/ci.yml` |
@@ -51,6 +51,7 @@ Was dieser Pilot über den Aufwand zeigt. Je Eintrag Datum und Beleg (PR, Commit
 
 ## Nächster Meilenstein
 
-- Ziel: Upload und Tag v1.39, danach Sichtung, Freigabe und Upload v1.40 als kleine Korrekturfassung (Rahmen vom Product Owner, 16.11.2026; gerendert in PR #41). Beleg: Auftrag R73, Schritt 4; PR #37; Vormerkung VORMERKUNG-v1.40.md und `reports/STATUS.yaml` (Feld `planung_v140`).
+- Erreicht: Version 1.40 ist live, geprüft und getaggt (R09, R89, R88); ein Tag v1.39 entfällt (R52). Der vorherige Rahmen vom 16.11.2026 lautete „Upload und Tag v1.39, danach Upload v1.40 als kleine Korrekturfassung“. Beleg: R09-NACHPRUEFUNG-v1.40.md, R88-BERICHT.md, `queue/R52.yaml`; Auftrag R73, Schritt 4.
+- Nächstes Ziel: unklar (vom Product Owner noch nicht festgelegt).
 - Abnahmekriterium: unklar (für diesen Meilenstein nicht festgelegt). Allgemein gilt: Tore G1 bis G8 bestanden beziehungsweise erteilt, siehe [FREIGABE.md](FREIGABE.md).
 - Entscheidung „weiter / einfrieren / einstellen“: **weiter** (Product Owner, 16.11.2026). Die bisher geplante Pause bis zum Jahresende ist verschoben, ein neuer Termin ist offen. Beleg: `ops/queue` ea666f2 (`hinweis_owner`), `reports/STATUS.yaml` (Feld `entscheidung_weiter`).
