@@ -10,8 +10,17 @@ param(
     [switch]$OhnePdfVersionspruefung,
     # Wird an build-upload.ps1 weitergegeben: Paket ohne Podcast-MP3, z. B. für
     # Textkorrekturen. Die Live-MP3 bleiben beim Upload unverändert.
-    [switch]$OhneAudio
+    [switch]$OhneAudio,
+    # Nur lesende Live-Prüfung nach dem Upload (R87): story_release, Speicher
+    # story/current und Webspace gegen den lokalen Stand. Ändert nichts und
+    # startet keine Veröffentlichung. Siehe scripts/live-pruefen.ps1.
+    [switch]$NurPruefen
 )
+
+if ($NurPruefen) {
+    & "$PSScriptRoot/live-pruefen.ps1"
+    exit $LASTEXITCODE
+}
 
 # Einziger vorgesehener Ablauf für eine neue Story-Version:
 # source prüfen -> lokale Veröffentlichung aktualisieren -> FTP-Paket bauen
@@ -348,4 +357,18 @@ if (-not $gitCommand -or -not $baselineLabel) {
     if ($otherChanged.Count -gt 0) {
         Write-Host "Hinweis:           weitere öffentliche Dateien geändert: $($otherChanged -join ', '). Bitte prüfen, ob sie per FTP hochgeladen werden müssen."
     }
+}
+
+# R87: Der Admin-Bereich ist ein eigener Schritt, kein Teil des FTP-Uploads.
+# Die Sollwerte für die Upload-Checkliste (docs/vorlagen/UPLOAD-CHECKLISTE.md)
+# werden hier aus dem eben veröffentlichten Stand abgeleitet.
+Write-Host ""
+Write-Host "Supabase:          Ein FTP-Upload ändert story_release und den Speicher story/current NICHT."
+Write-Host "                   Nach dem Admin-Bereich prüfen: ./scripts/publish-release.ps1 -NurPruefen (Exit 0)."
+Write-Host ""
+Write-Host "=== Sollwerte für die Upload-Checkliste ==="
+& "$PSScriptRoot/live-pruefen.ps1" -NurSollwerte
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Sollwerte für die Upload-Checkliste nicht ableitbar (live-pruefen.ps1 Exit $LASTEXITCODE). Vor dem Upload klären."
+    exit $LASTEXITCODE
 }
