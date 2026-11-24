@@ -11,8 +11,9 @@ schritte:
 - Draft-PR, Bericht reports/R78-BERICHT.md.
 nachweis: Draft-PR mit gruener CI und Beispielauswertung der v1.39-Liste
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Dauer etwa 45 Minuten.
-status: wartet_auf_voraussetzung
-stand: 2026-11-16 06:40
+status: bereit
+stand: 2026-11-24 07:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis_lage_2026_11_16: 'PR-Grenze erreicht (#38, #39, #40 offen). Erst starten, wenn einer davon gemergt oder geschlossen ist. R68 (freigabe-pruefen.ps1) in demselben PR erledigen, das spart einen der drei Plaetze.'
+hinweis_2026_11_24: "Entscheidungen Bernd 24.11.2026: R78 und R68 in einem Entwurfs-PR (Branch auftrag-R78-R68 von main, R78 erster Commit, R68 zweiter); Baum-Vergleich als eigener Folgeauftrag; Pruefpunkt W07 auf Startseite und handout-pdf.html, Handout l\xE4dt bleibt auf handout.html. Voraussetzung (PR-Platz) erfuellt, #43 gemergt, keine offenen PRs."

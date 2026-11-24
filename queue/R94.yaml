@@ -1,0 +1,16 @@
+id: R94
+titel: Stunden 24.11. in PILOT.md, PODCAST.md gegen OneDrive-Ablage pruefen, STATUS.yaml nachziehen (Draft-PR)
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: Kleine Nachzuege aus dem Tagesabschluss 24.11. in einem Draft-PR (docs) und einem Bericht-Commit.
+schritte:
+- 'docs/PILOT.md: Stunden 24.11. = 2 (Angabe Bernd), Summe 18; Stand main 0a158a8 nennen.'
+- docs/PODCAST.md Abschnitt Ablageort gegen die wiederhergestellte OneDrive-Ablage pruefen (MP3 per SHA-256 gleich SHA256SUMS.txt am 24.11.); Synchronisation nicht geprueft, so schreiben.
+- reports/STATUS.yaml aus queue/INDEX.yaml nachziehen (25 Abweichungen laut R29, PO-TRAILER und PO-LINK-FAHRT, R70 Teil 2); Abweichungen vorher in einer Tabelle zeigen; YAML mit Parser pruefen.
+nachweis: Draft-PR mit gruener CI, STATUS.yaml-Abgleich als Tabelle im Bericht
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten. Hoechstens 3 offene Agenten-PRs; R78/R68 hat Vorrang.
+status: bereit
+stand: 2026-11-24 07:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit

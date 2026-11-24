@@ -14,8 +14,9 @@ schritte:
 - Bericht reports/R92-BERICHT.md auf ops/reports mit Tabelle je Schritt (Befehl, Ergebnis, Head-SHAs, Beleg), Befundliste und Freigabefragen; STATUS.yaml mit YAML-Parser pruefen. Kein Schluessel, keine Inhalte aus reader_feedback.
 nachweis: 'Bericht R92 mit Head-SHAs von #43 und #45, CI-Stand, Befunden'
 grenzen: Ohne Rueckfragen arbeiten; bei Blockade (CI zweimal rot, unerwartete Abweichung live, Bedarf an Zugangsdaten, unklare Anforderung) den Schritt abbrechen, im Bericht begruenden und mit dem naechsten fortfahren. Kein Merge, kein Tag, kein FTP, kein Schreiben in Supabase, keine Zugangsdaten, nichts am Papierkorb oder Worktree paket-v139, keine Aenderung an Schutzregeln. Hoechstens 3 offene Agenten-PRs. Zeitbox 2 Stunden.
-status: bereit
-stand: 2026-11-24 05:10
+status: erledigt
+stand: 2026-11-24 07:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis: 'Entscheidung Bernd 24.11.: autonomes Paket mit Block B. Vorab entschieden: #45 erst korrigieren (23.11.), Merge-Regel unveraendert, Papierkorb nach dem Workshop.'
+ergebnis_2026_11_24: 'Alle Schritte und Block B erledigt (reports/R92-BERICHT.md, Nachtrag 84accdf). Merges durch Claude Planer-Session nach Einzelfreigabe Bernd je Head: #45 cd6fb73 (main 9b61ab4), #43 da6f5c8 (main 806bba2), #46 1a2c117 (main 0a158a8); CI auf main gruen. Keine offenen PRs.'

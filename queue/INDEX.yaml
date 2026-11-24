@@ -1,4 +1,4 @@
-stand: 2026-11-23 18:40
+stand: 2026-11-24 07:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -513,7 +513,7 @@ auftraege:
   titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden (Draft-PR)'
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von:
   - R78
 - id: R69
@@ -578,7 +578,7 @@ auftraege:
   titel: Sichtungsliste und freigabe-pruefen.ps1 angleichen; Pruefpunkte W07 bis W09 richtigstellen (Draft-PR)
   art: code-pr
   gate: nein
-  status: wartet_auf_voraussetzung
+  status: bereit
   abhaengig_von: []
 - id: R79
   titel: Merge-Pruefung als Skript (Aenderungszeilen, CI, --match-head-commit)
@@ -634,7 +634,7 @@ auftraege:
   titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gepruefter Schritt (Checkliste, publish-release.ps1, R09)'
   art: code-pr
   gate: ja
-  status: in_arbeit
+  status: erledigt
   abhaengig_von: []
 - id: R88
   titel: Tag v1.40 auf 84ae342 setzen (nach Upload und bestandener Live-Pruefung R09)
@@ -662,6 +662,18 @@ auftraege:
   abhaengig_von: []
 - id: R92
   titel: 'Autonomes 2-Stunden-Paket 24.11.: PR #45 korrigieren, R87 Teil 2 (#43) zweitpruefen, R78/R68 planen, R29; Block B lesende Vorarbeit'
+  art: code-pr
+  gate: nein
+  status: erledigt
+  abhaengig_von: []
+- id: R93
+  titel: 'Lokal aufraeumen nach R92 (nur Papierkorb bzw. Verschieben, Freigabe Bernd 24.11.)'
+  art: lokal-loeschen
+  gate: ja
+  status: bereit
+  abhaengig_von: []
+- id: R94
+  titel: 'Stunden 24.11. in PILOT.md, PODCAST.md gegen OneDrive-Ablage pruefen, STATUS.yaml nachziehen (Draft-PR)'
   art: code-pr
   gate: nein
   status: bereit

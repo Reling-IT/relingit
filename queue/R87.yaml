@@ -3,7 +3,7 @@ titel: 'Upload-Ablauf verbessern: Supabase-Eintrag und Speicher als eigener, gep
 art: code-pr
 gate: ja
 abhaengig_von: []
-stand: 2026-11-23 18:10
+stand: 2026-11-24 07:30
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 ziel: 'Anlass 23.11.2026: Nach dem FTP-Upload von v1.40 zeigte die Startseite weiter Version 1.37, 64 Seiten und 5. September 2026. Ursache: Die Zeile Version/Seiten/aktualisiert am kommt aus Supabase (Tabelle story_release, id=current), die Links zu PDF, Handout und Lesefassung zeigen auf den Supabase-Speicher story/current. Beides aendert der FTP-Upload nicht. Der Ablauf behandelt diesen Schritt bisher nur als Handschritt im Admin-Bereich ohne Sollwerte und ohne Pruefung. Ziel: Der Upload-Ablauf nennt den Schritt ausdruecklich, kennt die Sollwerte und prueft vor und nach dem Schreiben nur lesend.'
@@ -20,7 +20,7 @@ schritte:
 - 'docs/SUPABASE-BETRIEB.md (Abschnitt Tarif/Sicherung): Hinweis ergaenzen, dass Datenbank-Backups keine Storage-Objekte enthalten (Bucket story: Quelle ist das Repo) und Backup-Beleg vom 23.11.2026 (Dashboard: 8 taegliche physische Backups 16.-23.11.; Herstellerdoku: Pro = 7 Tage, PITR ersetzt taegliche Backups).'
 nachweis: Draft-PR mit Vorher/Nachher, Pester gruen, ci-check Exit 0, Probelauf -NurPruefen gegen den Live-Stand (Bericht mit Tabelle Soll, Ist, Ergebnis)
 grenzen: Kein Merge, kein Tag, kein FTP, kein Upload ohne Freigabe von Bernd. Kein Schreiben in Supabase im Probelauf (nur lesen). Keine Aenderung an .github/workflows, Deployment, Admin-Konten oder Schutzregeln. Keine Zugangsdaten in Dateien oder Berichten.
-status: in_arbeit
+status: erledigt
 hinweis: Beruehrt scripts/publish-release.ps1 und freigabe-pruefen.ps1 nicht gleichzeitig mit R78/R68 aendern; Reihenfolge mit R78 und R68 im selben PR klaeren, wenn beide Auftraege offen sind.
 teil_1_doku: 'Teil 1 (Doku) gemergt: PR #42 am 23.11.2026, main f48da7b (durch Claude Code nach Freigabe Bernd, Head 53e0a48). docs/SUPABASE-BETRIEB.md liegt auf main. Teil 2 (Skripte, Tests, Checklistenvorlage, Schreibweg vorschlagen) offen.'
 hinweis_2026_11_23: 'Ausloeser (Supabase-Eintrag nicht nachgezogen) ist behoben, der Auftrag bleibt sinnvoll: feste Pruefung fuer Supabase im Upload-Ablauf, Betriebsdoku (PR #42). Schreibweg klaeren (Skript mit Secret Key hat am 23.11. funktioniert, Admin-Bereich ist Standardweg).'
@@ -30,3 +30,4 @@ entscheidung_schreibweg_2026_11_23: 'Bernd: Schreibweg ist der Admin-Bereich dur
 freigabe_merge_44_2026_11_23: 'Bernd: Merge ja fuer PR #44 (Doku Tarif Pro in docs/SUPABASE-BETRIEB.md), Head b9dea070d1171c21b9ba66f733f6e2687a9f5bf6, nur dieser Head. Ausfuehrung durch Claude Code: gh pr ready, Head und CI pruefen, Merge mit --match-head-commit. Hinweis: Projekt liegt seit 23.11.2026 in einer Pro-Organisation (Angabe Bernd, nicht von mir geprueft).'
 hinweis_backup_2026_11_23: 'Bernd 23.11.: Im Pro-Tarif gibt es taegliche Datenbank-Backups, Aufbewahrung ca. 7 Tage (Angabe Bernd laut Dashboard, nicht vom Planer geprueft). Sie ersetzen keinen Export von reader_feedback und keine Sicherung der Speicherdateien (story/current; Quelle ist das Repo). Nach dem Merge von PR #44 den Abschnitt Sicherung in docs/SUPABASE-BETRIEB.md mit dieser Angabe und dem Wiederherstellungsweg (Dashboard, Database, Backups) praezisieren (Teil 2, neuer Draft-PR, kein Eingriff in den freigegebenen Head von #44).'
 ergebnis_stand: 'Teil 1 Doku (#42, #44) gemergt. Teil 2 als Draft-PR #43 (Head 1b65d1b); naechste Sitzung: Zweitpruefung am Head, Befunde, Freigabefrage mit Head-SHA, danach docs/PILOT.md. Hinweis Storage nicht im Backup in #43 pruefen. Zusatz 23.11. 18:10: PR #45 (docs/PILOT.md, Head 34d53add) wartet auf Korrektur des Satzes zum Tag v1.39 (entfaellt, R52 erledigt), dann Freigabefrage am neuen Head.'
+ergebnis_2026_11_24: 'Teil 2 gemergt: PR #43 am 24.11.2026 (main 806bba2, Head da6f5c8, Freigabe Bernd, Zweitpruefung 0 Muss 0 Soll, Pester 69/69, Live-Lauf -NurPruefen 9 von 9 OK) und PR #46 (main 0a158a8, Head 1a2c117, Backup-Hinweis: Storage nicht im Backup, 7 Tage). PILOT.md (#45, main 9b61ab4). Schreibweg bleibt der Admin-Bereich durch Bernd. Beleg: reports/R92-BERICHT.md.'

@@ -1,0 +1,17 @@
+id: R93
+titel: Lokal aufraeumen nach R92 (nur Papierkorb bzw. Verschieben, Freigabe Bernd 24.11.)
+art: lokal-loeschen
+gate: ja
+abhaengig_von: []
+ziel: Wegwerf-Reste nach dem Release aufraeumen, nichts endgueltig loeschen.
+schritte:
+- 'Worktree pilot-2311 (GitHub-Branch geloescht, #45 gemergt) entfernen: vorher git status und Stash pruefen; ungesicherte Aenderungen melden statt entfernen.'
+- Zwoelf Ordner relingit-vorschau-* im Temp-Ordner und die verwaiste Trailer-Vorschau in der lokalen Startkonfiguration entfernen (nur Papierkorb bzw. nur dieser Eintrag).
+- FTP-Pakete 1.38 und 1.39 aus output/ftp in das lokale Archiv verschieben (Pruefsumme vorher und nachher); nur 1.40 bleibt in output/ftp.
+nachweis: Bericht mit Liste vorher/nachher und Pruefsummen
+grenzen: 'Nicht anfassen: Worktree paket-v139, Papierkorb-Inhalt, Upload-Paket 1.40, Podcast-MP3 in der OneDrive-Ablage, Archiv _gesichert-2026-11-23. Nichts endgueltig loeschen. Keine Zugangsdaten.'
+status: bereit
+stand: 2026-11-24 07:30
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+freigabe_bernd_2026_11_24: Bernd hat die drei Teile am 24.11.2026 einzeln freigegeben (Worktree, Vorschau-Kopien und Trailer-Vorschau, FTP-Pakete verschieben).
