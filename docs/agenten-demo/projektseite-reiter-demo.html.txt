@@ -1,0 +1,38 @@
+<!-- NAVIS & LUMEN DEMO -->
+<section class="panel" id="p-agenten" hidden>
+  <h2><svg class="ic" aria-hidden="true"><use href="#ic-navis"/></svg><svg class="ic" aria-hidden="true"><use href="#ic-lumen"/></svg>Navis und Lumen als Demo</h2>
+  <p>Zwei kleine Agenten beantworten Fragen zum Buch „Die Fahrt zum Kunden“, nur aus dem Buch, per Text oder Sprache. Die Demo zeigt, was ein Agent technisch ist und wo seine Grenzen liegen. Sie ist ein Wegwerf-Versuch vom 25.11.2026, kein Teil der Webseite.</p>
+  <div class="callout">
+    <p><b>Demo öffnen:</b> <a href="https://claude.ai/artifact/EaNcXHbUY1J5hRV7LK6xkZ" target="_blank" rel="noopener">Navis &amp; Lumen Demo (eigenes Artefakt, privat)</a></p>
+    <p class="muted">Die Demo läuft als eigene Seite und nicht in diesem Reiter. Grund: Sie braucht andere Rechte (Claude fragen, vorlesen, Spracheingabe) als diese Abstimmungsseite (Speicher für Entscheidungen). So bleiben die gespeicherten Entscheidungen unberührt.</p>
+  </div>
+
+  <h3 style="margin-top:1.6rem">Was die Demo enthält</h3>
+  <div class="grid">
+    <div class="card"><h3>Reiter Demo</h3><p class="muted" style="margin:0">Navis oder Lumen wählen, Frage stellen oder sprechen, Antwort lesen oder vorlesen lassen. Mit Beispielfragen und Fangfragen (Fragen außerhalb des Buchs). Rechts steht der Auftrag des Agenten als Zettel. Die bisherigen Dialoge lassen sich einblenden; sie liegen nur im Browser.</p></div>
+    <div class="card"><h3>Reiter Anhang</h3><p class="muted" style="margin:0">Entwurf für den Buchanhang: Bausteine eines Agenten, Weg einer Frage, Harness, zwei Bauweisen, Risiken, von der Demo zum Einsatz, geplante Anbindung, Begriffe. Mit drei Grafiken und dem Abgleich zum bisherigen Buchanhang. Noch nicht im Buch.</p></div>
+    <div class="card"><h3>Reiter Status</h3><p class="muted" style="margin:0">Verwendetes Modell, Tarif, Verbrauch je Frage und die Topologie als Grafik. Die Token sind eine Schätzung (Zeichen geteilt durch 3), echte Zahlen liefert die Demo-Umgebung nicht.</p></div>
+    <div class="card"><h3>Reiter Datenschutz</h3><p class="muted" style="margin:0">Datenflüsse, geprüfte Punkte mit Quelle, Weg zu einem Vertrag zur Auftragsverarbeitung, Regelungen und Verträge, Schritte und Risiken vor einer Veröffentlichung. Keine Rechtsberatung.</p></div>
+  </div>
+
+  <h3 style="margin-top:1.6rem">Stand und Belege</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Punkt</th><th>Stand</th><th>Beleg</th></tr></thead>
+    <tbody>
+      <tr><td>Quelle</td><td>Buch v1.40 als Reintext in 36 Abschnitten (Teil 1: 1 bis 20, Teil 2: 21 bis 36)</td><td class="mono">story/current/fahrt-zum-kunden.html</td></tr>
+      <tr><td>Modell</td><td>schlankes, günstiges Modell</td><td class="mono">claude-haiku-5-5</td></tr>
+      <tr><td>Werkzeuge</td><td>zwei, beide nur lesend: im Buch suchen, Abschnitt lesen</td><td class="mono">buch_suchen, abschnitt_lesen</td></tr>
+      <tr><td>Bauweisen</td><td>„Nachschlagen“ (Agent mit Werkzeugen) und „Ganzes Buch mitgeben“ (ein Aufruf)</td><td>Reiter Demo, Arbeitsweise</td></tr>
+      <tr><td>Kontrolle</td><td>Jede Antwort endet mit einer Zeile Fundstellen; Protokoll und Zähler im Reiter Status</td><td>Reiter Status</td></tr>
+      <tr><td>Test</td><td><span class="pill todo">offen</span> Die Demo ist nicht im Browser durchgetestet. Geprüft sind nur die Syntax und die Suche lokal.</td><td>Sitzung 25.11.2026</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:1.6rem">Bekannte Grenzen</h3>
+  <ul class="plain">
+    <li>Die Suche findet die Versionshistorie zu oft. Nicht behoben.</li>
+    <li>Zwei Stellen im Anhang-Entwurf sind „zu prüfen“: der Verarbeitungsort der Spracheingabe und die Kennzeichnung nach der EU-KI-Verordnung.</li>
+    <li>Die Demo läuft nur für angemeldete Betrachter in Claude. Für die Webseite bräuchte sie eine eigene Server-Funktion (siehe Reiter „Umsetzungsideen 2.0“).</li>
+  </ul>
+  <p style="margin-top:0.8rem"><button class="copybtn" data-go="umsetzung" style="margin:0">Zu den Umsetzungsideen 2.0</button></p>
+</section>

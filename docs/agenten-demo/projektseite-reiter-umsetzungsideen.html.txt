@@ -1,0 +1,119 @@
+<!-- UMSETZUNGSIDEEN 2.0 -->
+<section class="panel" id="p-umsetzung" hidden>
+  <h2>Umsetzungsideen: von der Demo zu Reling IT 2.0</h2>
+  <p>Wie aus der Demo Schritt für Schritt eine zweite Fassung von Reling IT werden könnte, in der Navis und Lumen nicht nur erzählt, sondern erlebbar sind. Dazu mögliche Lerneffekte und die Verbindung zum Sysingboard und zur Reportfamilie.</p>
+  <div class="callout">
+    <p><b>Einordnung:</b> Alles auf dieser Seite sind Vorschläge der KI, nichts ist entschieden. Belegte Fakten tragen eine Fundstelle. Reling IT ist frei erfunden; Buch und alle Apps arbeiten ausschließlich mit erfundenen Demodaten (Angabe von Bernd, 25.11.2026). Stand der Nachschau in den Repos: 25.11.2026, nur gelesen.</p>
+  </div>
+
+  <h3 style="margin-top:1.6rem">1 · Stufen</h3>
+  <p class="muted">Jede Stufe ist für sich nutzbar und kann die letzte bleiben. Keine Stufe schreibt Daten.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Stufe</th><th>Was entsteht</th><th>Was man dafür braucht</th><th>Stand</th></tr></thead>
+    <tbody>
+      <tr><td><b>0</b> Demo</td><td>Navis und Lumen beantworten Fragen zum Buch, in Claude</td><td>nichts weiter</td><td><span class="pill ok">gebaut</span> Test offen</td></tr>
+      <tr><td><b>1</b> Workshop-Fassung</td><td>Dieselbe Demo für eine geschlossene Gruppe</td><td>Server-Funktion mit geheimem Schlüssel, Zugangscode, Mengengrenze, fester Satz Testfragen</td><td><span class="pill">Idee</span></td></tr>
+      <tr><td><b>2</b> Buch-Agent auf der Webseite</td><td>„Frag das Buch“ neben der Lesefassung, mit Fundstellen als Link in den Text</td><td>wie Stufe 1, dazu Datenschutzhinweis, Kennzeichnung als KI, Freigabetore G1 bis G8</td><td><span class="pill">Idee</span></td></tr>
+      <tr><td><b>3</b> Navis liest das Sysingboard</td><td>Navis beantwortet Fragen zu Projekten und Arbeitspaketen aus den Demodaten</td><td>ein Lese-Werkzeug auf die Lesesichten, eine Rolle nur zum Lesen, Entscheidung im Sysingboard-Projekt</td><td><span class="pill plan">dort geplant, zurückgestellt</span></td></tr>
+      <tr><td><b>4</b> Lumen liest über den Hub</td><td>Lumen erklärt die Management-Inhalte der Reports, nennt Quellen, verdichtet nicht zu Scores</td><td>ein Lese-Werkzeug auf die GET-Schnittstellen, vorher eine Architekturentscheidung (ADR) in der Reportfamilie</td><td><span class="pill plan">dort Roadmap</span></td></tr>
+      <tr><td><b>5</b> Reling IT 2.0</td><td>Buch, Webseite und die beiden Agenten als ein Lernangebot: lesen, fragen, hinter die Technik schauen</td><td>Stufen 2 bis 4, Anhang „Technik des Agenten“ im Buch</td><td><span class="pill">Idee</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:1.6rem">2 · Zielbild</h3>
+  <p class="muted">Durchgezogen: gibt es heute. Gestrichelt: Idee. Der Schlüssel zum Sprachmodell liegt nur in der Server-Funktion, nie im Browser.</p>
+  <div class="diagram" role="img" aria-label="Zielbild: Eine Person fragt auf der Webseite. Eine Server-Funktion hält Auftrag, Schlüssel und Mengengrenze und spricht mit dem Sprachmodell. Drei Lese-Werkzeuge: das Buch, das Sysingboard für Navis und der Hub für Lumen. Der Hub liest Areport, Areport liest die Fachreports.">
+    <svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="m11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="arr"/></marker></defs>
+      <text class="lbl" x="10" y="22">MENSCH</text><text class="lbl" x="170" y="22">WEBSEITE</text><text class="lbl" x="350" y="22">SERVER-FUNKTION</text><text class="lbl" x="560" y="22">QUELLEN, NUR LESEND</text>
+      <rect class="box" x="10" y="40" width="130" height="50" rx="6"/><text x="75" y="62" text-anchor="middle" font-weight="600">Leserin, Leser</text><text class="sub" x="75" y="78" text-anchor="middle">fragt, entscheidet</text>
+      <line class="ln" x1="140" y1="65" x2="168" y2="65" marker-end="url(#m11)"/>
+      <rect class="plan" x="170" y="40" width="150" height="50" rx="6"/><text x="245" y="62" text-anchor="middle" font-weight="600">Frag das Buch</text><text class="sub" x="245" y="78" text-anchor="middle">Text oder Sprache</text>
+      <line class="ln dash" x1="320" y1="65" x2="348" y2="65" marker-end="url(#m11)"/>
+      <rect class="plan" x="350" y="40" width="170" height="50" rx="6"/><text x="435" y="62" text-anchor="middle" font-weight="600">Auftrag und Schleife</text><text class="sub" x="435" y="78" text-anchor="middle">Schlüssel · Mengengrenze</text>
+      <line class="ln dash" x1="520" y1="65" x2="558" y2="65" marker-end="url(#m11)"/>
+      <rect class="box" x="560" y="40" width="150" height="50" rx="6"/><text x="635" y="62" text-anchor="middle" font-weight="600">Sprachmodell</text><text class="sub" x="635" y="78" text-anchor="middle">beim Anbieter</text>
+
+      <path class="ln dash" d="M435 90 V285"/>
+      <line class="ln dash" x1="435" y1="145" x2="558" y2="145" marker-end="url(#m11)"/><text class="sub" x="497" y="138" text-anchor="middle">Werkzeug</text>
+      <rect class="box" x="560" y="122" width="150" height="46" rx="6"/><text x="635" y="142" text-anchor="middle" font-weight="600">Buch v1.40</text><text class="sub" x="635" y="158" text-anchor="middle">36 Abschnitte</text>
+
+      <line class="ln dash" x1="435" y1="215" x2="558" y2="215" marker-end="url(#m11)"/><use href="#ic-navis" x="446" y="192" width="17" height="17"/><text class="sub" x="507" y="208" text-anchor="middle">Navis</text>
+      <rect class="box" x="560" y="192" width="150" height="46" rx="6"/><text x="635" y="212" text-anchor="middle" font-weight="600">Sysingboard</text><text class="sub" x="635" y="228" text-anchor="middle">Lesesichten · Rollen</text>
+
+      <line class="ln dash" x1="435" y1="285" x2="558" y2="285" marker-end="url(#m11)"/><use href="#ic-lumen" x="446" y="262" width="17" height="17"/><text class="sub" x="507" y="278" text-anchor="middle">Lumen</text>
+      <rect class="box" x="560" y="262" width="110" height="46" rx="6"/><text x="615" y="282" text-anchor="middle" font-weight="600">Hub</text><text class="sub" x="615" y="298" text-anchor="middle">nur GET</text>
+      <line class="ln" x1="670" y1="285" x2="708" y2="285" marker-end="url(#m11)"/>
+      <rect class="box" x="710" y="262" width="140" height="46" rx="6"/><text x="780" y="282" text-anchor="middle" font-weight="600">Areport</text><text class="sub" x="780" y="298" text-anchor="middle">liest die Fachreports</text>
+
+      <rect class="band" x="10" y="120" width="310" height="190" rx="6"/>
+      <text x="165" y="150" text-anchor="middle" font-weight="600">Grundregeln aus dem Buch</text>
+      <text class="sub" x="165" y="176" text-anchor="middle">Agenten lesen und erklären</text>
+      <text class="sub" x="165" y="196" text-anchor="middle">anlegen darf nur der Mensch</text>
+      <text class="sub" x="165" y="216" text-anchor="middle">„Offen“ bleibt offen</text>
+      <text class="sub" x="165" y="236" text-anchor="middle">keine Verdichtung zu Scores</text>
+      <text class="sub" x="165" y="256" text-anchor="middle">jede Antwort mit Fundstelle</text>
+      <text class="sub" x="165" y="276" text-anchor="middle">ehrliches „weiß ich nicht“</text>
+    </svg>
+  </div>
+
+  <h3 style="margin-top:1.6rem">3 · Mögliche Lerneffekte</h3>
+  <div class="grid">
+    <div class="card"><h3>Für Leserinnen und Leser</h3><ul class="plain" style="margin:0"><li>Ein Agent ist kein Zauber: Auftrag, Quelle, Werkzeuge, Schleife, Kontrolle.</li><li>Fangfragen zeigen, wann ein Agent ehrlich ablehnt und wann er rät.</li><li>Fundstellen machen eine Antwort prüfbar.</li></ul></div>
+    <div class="card"><h3>Für den Workshop</h3><ul class="plain" style="margin:0"><li>Zwei Bauweisen im Vergleich: nachschlagen oder das ganze Buch mitgeben.</li><li>Kosten werden sichtbar: Token, Tarif, Verbrauch je Frage.</li><li>Datenschutz am Beispiel: was verlässt den Browser, was wird gespeichert.</li></ul></div>
+    <div class="card"><h3>Für das Projekt</h3><ul class="plain" style="margin:0"><li>Erster selbst gebauter Agent, mit Aufwand und Stolpersteinen als Erfahrungswert.</li><li>Die Standards (DSG, AI, SEC) bekommen einen ersten echten Anwendungsfall.</li><li>Das Buch erzählt Navis und Lumen; die Demo prüft, ob die erzählten Regeln technisch halten.</li></ul></div>
+  </div>
+
+  <h3 style="margin-top:1.6rem">4 · Schnittstellen zum Sysingboard (für Navis)</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Punkt</th><th>Befund</th><th>Fundstelle</th></tr></thead>
+    <tbody>
+      <tr><td>Stand</td><td>Version 1.70.0. React, TanStack Start, Cloudflare Worker, Supabase mit Anmeldung und Zeilenrechten (RLS).</td><td class="mono">sysingdashboard: CHANGELOG.md, docs/ARCHITECTURE.md</td></tr>
+      <tr><td>Lesen</td><td>Drei Lesesichten als Tabellen: Projekte, Arbeitspakete, Aktivitäten. Gelesen wird auf dem Server im Namen der angemeldeten Person.</td><td class="mono">docs/ARCHITECTURE.md (shared_*_projection)</td></tr>
+      <tr><td>HTTP</td><td>Nur drei Routen: Status, Azure-Sync, Anmelde-Konfiguration. Keine weitere Schnittstelle für Dritte.</td><td class="mono">docs/API.md</td></tr>
+      <tr><td>Rollen</td><td>Acht Rollen, darunter eine nur zum Lesen (<span class="mono">viewer</span>) und eine für die Kiosk-Ansicht.</td><td class="mono">docs/RBAC-MATRIX.md</td></tr>
+      <tr><td>Navis dort</td><td>Geplant als „KI-/Agenten-Labor“ (BSF-10), zurückgestellt. Kein Code. Vorgesehen: Demodaten oder kontrollierte Lesequellen, Mensch in der Schleife, anbieterneutraler Werkzeugvertrag.</td><td class="mono">docs/GESAMTPLAN-SYSING-DASHBOARD.md, docs/BSF-CURRENT-PRIORITIES.md</td></tr>
+      <tr><td>Datenschutz dort</td><td>Vor der Wahl eines KI-Anbieters ist eine eigene Architektur- und Datenschutzentscheidung verlangt: Auftragsverarbeitung, Aufbewahrung, Training, Mandantentrennung, Protokoll.</td><td class="mono">docs/POST-MVP-PLAN.md</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="margin-top:0.5rem"><b>Idee:</b> Ein Lese-Werkzeug <span class="mono">projekte_lesen</span> auf die drei Lesesichten, mit einem eigenen Konto in der Leserolle. So gelten die vorhandenen Rechte auch für Navis. Ob die Leserolle dafür passt, ist dort nicht festgelegt.</p>
+
+  <h3 style="margin-top:1.6rem">5 · Schnittstellen zur Reportfamilie (für Lumen)</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Punkt</th><th>Befund</th><th>Fundstelle</th></tr></thead>
+    <tbody>
+      <tr><td>Stand</td><td>Hub 1.10.0, Areport 0.22.0, ireport 1.15.0, qreport 0.16.0, nreport 1.13.0, sreport 1.14.0, Plattform 1.14.0. Jede App ist ein eigener kleiner Node-Server, nur auf dem lokalen Rechner erreichbar. Keine zentrale Datenbank.</td><td class="mono">package.json je Repo; areport: architecture/REPORT_INTEGRATION.md</td></tr>
+      <tr><td>Hub</td><td>Nur lesend: ausschließlich GET, alles andere wird abgewiesen. Liefert unter anderem Management-Inhalte und Management-Einschätzung je Kunde und den Status.</td><td class="mono">hub: server.js, API.md</td></tr>
+      <tr><td>Hub zu Areport</td><td>Der Hub liest nur Areport, keine Fachreports, keine Dateien, keine Datenbank.</td><td class="mono">hub: lib/areport-client.js, API.md</td></tr>
+      <tr><td>Areport zu Fachreports</td><td>Areport fragt jeden Fachreport erst nach dem Status und dann nach der Management-Zusammenfassung, geprüft gegen ein Schema.</td><td class="mono">areport: lib/management-aggregator.js</td></tr>
+      <tr><td>Datenvertrag</td><td>Managementvertrag 1.0.0 mit Schemas; Plattform-Schema „management-content-contract“ 1.1.0.</td><td class="mono">areport: architecture/management/; report-family-platform: schemas/</td></tr>
+      <tr><td>Zugriff</td><td>Die Report-Apps sind für den Betrieb auf einem Rechner gebaut; Fernzugriff ist nicht vorgesehen.</td><td class="mono">areport: architecture/API_STANDARD.md</td></tr>
+      <tr><td>Lumen dort</td><td>Nur Roadmap, „keine heute produktive Funktion“. Geplant: lesen, erklären, zusammenfassen, Quellen nennen, Pilot ohne Schreiben, keine zweite Datenwahrheit neben Areport.</td><td class="mono">report-family-platform: tdf/living/Die_Reportfamilie_TDF_LIVING_V2.0.0.md, Kap. 12</td></tr>
+      <tr><td>Vorbedingung</td><td>KI-Agenten und MCP brauchen vorher eine eigene Architekturentscheidung (ADR), auch zu Protokoll, Datenschutz, Aufbewahrung, Identität und Rechten.</td><td class="mono">report-family-platform: ADR-007, ADR-010, planning/REPORTFAMILIE_ROADMAP.md</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted" style="margin-top:0.5rem"><b>Idee:</b> Ein Lese-Werkzeug <span class="mono">management_lesen</span>, das nur die GET-Schnittstelle des Hubs für Management-Inhalte aufruft. Die Antwort trägt bereits Herkunftsangaben, daraus werden Lumens Fundstellen.</p>
+
+  <h3 style="margin-top:1.6rem">6 · Auffälligkeiten aus der Nachschau</h3>
+  <ul class="plain">
+    <li><b>Lumens Andockpunkt:</b> Im Buch liest Lumen nur über den Hub. Das Architekturbild der Reportfamilie bindet Lumen an Areport und gibt dem Hub nur den Managementkontext. Das ist ein Widerspruch oder noch nicht entschieden.</li>
+    <li><b>Erreichbarkeit:</b> Die Report-Apps laufen nur lokal. Ein Agent auf der Webseite käme dort nicht hin. Für Stufe 4 bräuchte es entweder einen lokalen Agenten oder einen Export der Demodaten.</li>
+    <li><b>Versionen auf dieser Seite:</b> Die Reiter „Figuren &amp; KI“ und „Zusammenhänge“ nennen Hub 1.6.6. Im Repo steht 1.10.0. Nicht geändert, nur gemeldet.</li>
+    <li><b>KI-Verordnung:</b> In keinem der Repos steht eine Aussage dazu. Das Buch nennt den Standard „AI“ als vorhanden, aber in den Apps noch nicht angewendet.</li>
+    <li><b>Nicht gefunden:</b> ein Werkzeug- oder Agentenvertrag, ein Konto für einen Agenten, Code zu Navis oder Lumen.</li>
+  </ul>
+
+  <h3 style="margin-top:1.6rem">7 · Zu entscheiden</h3>
+  <p class="muted">Jede Frage mit Empfehlung der KI. Die Reihenfolge bestimmt Bernd.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Nr.</th><th>Frage</th><th>Empfehlung der KI</th></tr></thead>
+    <tbody>
+      <tr><td>U1</td><td>Soll es nach der Demo eine geschlossene Workshop-Fassung geben (Stufe 1)?</td><td>Ja, aber erst nach dem Test der Demo und mit einem festen Satz Testfragen.</td></tr>
+      <tr><td>U2</td><td>Soll der Buch-Agent auf die öffentliche Webseite (Stufe 2)?</td><td>Vorerst nein. Erst Erfahrungen aus Stufe 1, dann Datenschutzhinweis und Kennzeichnung klären.</td></tr>
+      <tr><td>U3</td><td>Soll Lumen im Buch weiter „nur über den Hub“ lesen, oder gilt das Bild der Reportfamilie (Areport)?</td><td>Hub beibehalten: Er ist bereits rein lesend. Die Entscheidung gehört in die ADR der Reportfamilie.</td></tr>
+      <tr><td>U4</td><td>Stufe 3 und 4 mit lebenden Apps oder mit einem Export der Demodaten?</td><td>Mit Export beginnen. Das ist klein, umkehrbar und berührt die Apps nicht.</td></tr>
+      <tr><td>U5</td><td>Kommt der Anhang „Technik des Agenten“ in die nächste Buchfassung?</td><td>Ja, nach Durchsicht des Entwurfs im Reiter Anhang der Demo.</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:0.8rem"><button class="copybtn" data-go="agenten" style="margin:0">Zur Demo</button></p>
+</section>
