@@ -1,0 +1,17 @@
+id: R95
+titel: Workshop-Feedback-Vorlage (eine Seite, Draft-PR docs)
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: Rueckmeldungen aus dem Workshop (Ende November, weniger als 10 Tage, Angabe Bernd 25.11.) ohne Suchen in die Queue bringen. Nur Doku.
+schritte:
+- 'docs/WORKSHOP-FEEDBACK.md als eine Seite: Felder Datum, Wer (Rolle, kein Klarname noetig), Fundstelle (Kapitel, Seite, Reiter), Beobachtung, Art (Muss-Fehler sofort, Korrektur, Idee, geparkt), Vorschlag, Queue-Verweis.'
+- 'Regel aus R70/12.11. uebernehmen: Feedback sammeln und parken, nur Muss-Fehler sofort; Zuordnung zu Kapitel und Idee; keine Zugangsdaten, keine Inhalte aus reader_feedback.'
+- Verlinken in docs/PILOT.md oder README nur wenn dort ein passender Abschnitt besteht; ci-check gruen; Draft-PR.
+nachweis: Draft-PR mit gruener CI
+grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Zugriff auf reader_feedback. Hoechstens 3 offene Agenten-PRs.
+status: bereit
+stand: 2026-11-25 07:10
+planer: Claude (Planer-Session)
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Bernd 25.11.2026: vor R78/R68 ins naechste Paket (Schritt 2), weil der Workshop in weniger als 10 Tagen ist.'

@@ -1,0 +1,16 @@
+id: R96
+titel: 'identity-rbac-standard: Personenname im CHANGELOG durch Rolle ersetzen (Draft-PR)'
+art: code-pr
+gate: nein
+abhaengig_von: []
+ziel: 'Dasselbe wie resilience-recovery #7 (gemergt 25.11.2026, main a67b3ed): CHANGELOG.md Zeilen 6 und 7, Personenname durch "im Auftrag des Owners" ersetzen, sonst nichts aendern.'
+schritte:
+- 'Repo bmarnau-standards/identity-rbac-standard: Branch doku/changelog-personenname von main, nur CHANGELOG.md, Formulierung wie in resilience-recovery #7.'
+- Pruefen mit Suche nach dem Namen im ganzen Repo (nur melden, weitere Fundstellen nicht ohne Freigabe aendern); CI abwarten; Draft-PR; Head-SHA nennen.
+nachweis: Draft-PR, Diff nur CHANGELOG.md, CI gruen
+grenzen: 'Kein Merge. PR #13 (SD-10, SD-11) nicht anfassen, er wartet auf den Publish (Entscheidung Bernd 25.11.). Keine Aenderung am Standard-Wortlaut.'
+status: bereit
+stand: 2026-11-25 07:10
+planer: Claude (Planer-Session)
+repo: bmarnau-standards/identity-rbac-standard
+freigabe_bernd_2026_11_25: 'Bernd: Ja, Draft-PR (25.11.2026).'

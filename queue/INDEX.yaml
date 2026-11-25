@@ -1,4 +1,4 @@
-stand: 2026-11-24 07:30
+stand: 2026-11-25 07:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -674,6 +674,18 @@ auftraege:
   abhaengig_von: []
 - id: R94
   titel: 'Stunden 24.11. in PILOT.md, PODCAST.md gegen OneDrive-Ablage pruefen, STATUS.yaml nachziehen (Draft-PR)'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R95
+  titel: 'Workshop-Feedback-Vorlage (eine Seite, Draft-PR docs)'
+  art: code-pr
+  gate: nein
+  status: bereit
+  abhaengig_von: []
+- id: R96
+  titel: 'identity-rbac-standard: Personenname im CHANGELOG durch Rolle ersetzen (Draft-PR)'
   art: code-pr
   gate: nein
   status: bereit
