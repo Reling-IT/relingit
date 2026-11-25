@@ -10,7 +10,8 @@ schritte:
 nachweis: Draft-PR, Diff nur CHANGELOG.md, CI gruen
 grenzen: 'Kein Merge. PR #13 (SD-10, SD-11) nicht anfassen, er wartet auf den Publish (Entscheidung Bernd 25.11.). Keine Aenderung am Standard-Wortlaut.'
 status: bereit
-stand: 2026-11-25 07:10
+stand: 2026-11-25 07:15
 planer: Claude (Planer-Session)
 repo: bmarnau-standards/identity-rbac-standard
 freigabe_bernd_2026_11_25: 'Bernd: Ja, Draft-PR (25.11.2026).'
+hinweis_pr_grenze: 'PR-Grenze: hoechstens 3 offene Agenten-PRs. Im Paket nach 25.11. haben R95, R78/R68 und R94 Vorrang; R96 erst starten, wenn ein Platz frei ist (einer der drei gemergt oder geschlossen).'
