@@ -1,0 +1,17 @@
+id: R105
+titel: 'Datenschutzerklaerung: Abschnitt KI-Agenten Navis und Lumen ergaenzen (Draft-PR, nach Fachpruefung)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-27 06:05
+planer: Claude (Planer-Session)
+ziel: 'datenschutz.html um den Abschnitt zu Navis und Lumen ergaenzen, bevor die Agenten oeffentlich werden. Textgrundlage: Projektdokument datenschutz-abschnitt-ki-agenten-entwurf (Planer-Projekt).'
+schritte:
+- Erst starten, wenn Bernd den Text nach Fachpruefung freigibt und die Platzhalter P1 bis P9 belegt sind.
+- Ist-Stand der Seite lesend pruefen (Stand-Datum, Empfaengerliste, Hinweis zu Supabase und DomainFactory); Befund im Bericht.
+- Abschnitt einfuegen, Stand-Datum und CHANGELOG nachziehen; Draft-PR, kein Merge.
+nachweis: Draft-PR, Bericht mit Belegen
+grenzen: Kein Merge, kein Tag, kein Hochladen, keine Zugangsdaten, keine Personennamen ausser Rollen, keine Kosten, keine Hinweise auf Sicherheitsluecken. Hoechstens 3 offene Agenten-PRs; Start nur durch Bernd.
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Bernd 27.11.2026: ja, als geplant. Voraussetzung der Veroeffentlichung; Entwicklung laeuft unabhaengig.'

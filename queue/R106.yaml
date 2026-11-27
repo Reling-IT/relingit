@@ -1,0 +1,17 @@
+id: R106
+titel: 'Anhang der naechsten Buchfassung: die neun Standards in gleicher Darstellung (Draft-PR)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-27 06:05
+planer: Claude (Planer-Session)
+ziel: Im Buchanhang alle neun Standards gleich darstellen (Kurzname, Zweck, Bezug zu Navis und Lumen). Der Entwurf KI-Agenten in Apps gehoert erst dazu, wenn Bernd ihn als Standard annimmt.
+schritte:
+- Erst nach dem Workshop und nach Freigabe des Wortlauts starten.
+- Ist-Stand des Anhangs lesend pruefen (Standard 32 und Umgebung, Zaehlung, Darstellung); Befund mit Fundstelle.
+- Aenderung als Draft-PR gegen die Buchquelle, ci-check und Anker pruefen, kein Merge, kein Tag, kein Upload.
+nachweis: Draft-PR, Bericht mit Belegen
+grenzen: Kein Merge, kein Tag, kein Upload, keine Zugangsdaten, keine Personennamen ausser Rollen, keine Kosten. Hoechstens 3 offene Agenten-PRs; Start nur durch Bernd.
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Bernd 27.11.2026: Anhang Gleiche Darstellung fuer alle neun, Auftrag ja als geplant.'

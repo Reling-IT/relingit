@@ -739,4 +739,16 @@ auftraege:
   gate: ja
   status: geplant
   abhaengig_von: []
+- id: R105
+  titel: 'Datenschutzerklaerung: Abschnitt KI-Agenten Navis und Lumen ergaenzen (Draft-PR, nach Fachpruefung)'
+  art: code-pr
+  gate: ja
+  status: geplant
+  abhaengig_von: []
+- id: R106
+  titel: 'Anhang der naechsten Buchfassung: die neun Standards in gleicher Darstellung (Draft-PR)'
+  art: code-pr
+  gate: ja
+  status: geplant
+  abhaengig_von: []
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'
