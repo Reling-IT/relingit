@@ -10,8 +10,8 @@ schritte:
 - Verlinken in docs/PILOT.md oder README nur wenn dort ein passender Abschnitt besteht; ci-check gruen; Draft-PR.
 nachweis: Draft-PR mit gruener CI
 grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten, kein Zugriff auf reader_feedback. Hoechstens 3 offene Agenten-PRs.
-status: in_arbeit
-stand: 2026-11-27 06:30
+status: erledigt
+stand: 2026-11-27 07:35
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-hinweis: 'Entscheidung Bernd 25.11.2026: vor R78/R68 ins naechste Paket (Schritt 2), weil der Workshop in weniger als 10 Tagen ist. Stand 27.11.2026 06:30: Draft-PR #48 (Head c8d77a1, CI Website pruefen gruen, mergeable clean) von Claude Code angelegt; Bericht auf ops/reports fehlt noch; Merge nur nach Einzelfreigabe je Head durch Bernd.'
+hinweis: 'Entscheidung Bernd 25.11.2026: vor R78/R68 ins naechste Paket (Schritt 2), weil der Workshop in weniger als 10 Tagen ist. Stand 27.11.2026 06:30: Draft-PR #48 (Head c8d77a1, CI Website pruefen gruen, mergeable clean) von Claude Code angelegt; Bericht auf ops/reports fehlt noch; Merge nur nach Einzelfreigabe je Head durch Bernd. Stand 27.11.2026 07:35: PR #48 gemergt (main 653585d); Bericht auf ops/reports fehlt noch, Beleg ist der Merge-Commit.'

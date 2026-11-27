@@ -10,7 +10,8 @@ schritte:
 - reports/STATUS.yaml aus queue/INDEX.yaml nachziehen (25 Abweichungen laut R29, PO-TRAILER und PO-LINK-FAHRT, R70 Teil 2); Abweichungen vorher in einer Tabelle zeigen; YAML mit Parser pruefen.
 nachweis: Draft-PR mit gruener CI, STATUS.yaml-Abgleich als Tabelle im Bericht
 grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten. Hoechstens 3 offene Agenten-PRs; R78/R68 hat Vorrang.
-status: bereit
-stand: 2026-11-24 07:30
+status: in_arbeit
+stand: 2026-11-27 07:35
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
+hinweis: 'Stand 27.11.2026 07:35: PR #50 (PILOT.md Stunden 24.11. und 27.11., Head 0c11cee, CI gruen, nicht Draft); Bericht fehlt; Merge nur nach Einzelfreigabe je Head.'

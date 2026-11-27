@@ -4,7 +4,7 @@ art: code-pr
 gate: ja
 abhaengig_von: []
 status: bereit
-stand: 2026-11-27 06:10
+stand: 2026-11-27 07:35
 planer: Claude (Planer-Session)
 ziel: 'Beitraege aus dem Plan Navis/Lumen (B-1 bis B-12, claude/beitraege-zum-ki-agenten-standard.md, und B-13, claude/beitrag-b13-veroeffentlichung-fuer-dritte.md) als Erfahrungsblatt im Repository bmarnau-standards/ki-agenten-standard vorschlagen, ohne den Wortlaut des Entwurfs (PR #1) zu aendern.'
 schritte:
@@ -15,4 +15,4 @@ schritte:
 nachweis: Draft-PR mit Pruefskript gruen
 grenzen: Kein Merge, kein Tag, keine Aenderung am Wortlaut von STANDARD-KI-AGENTEN.md. Hoechstens 3 offene Agenten-PRs.
 repo: bmarnau-standards/ki-agenten-standard
-hinweis: 'Entscheidung Bernd 27.11.2026: R98 bereit, R99 spaeter. Hoechstens 3 offene Agenten-PRs: erst starten, wenn ein Platz frei ist (wie R96). Ergaenzung Bernd 27.11.2026: B-13 wird in R98 aufgenommen (kein eigener PR).'
+hinweis: 'Entscheidung Bernd 27.11.2026: R98 bereit, R99 spaeter. Hoechstens 3 offene Agenten-PRs: erst starten, wenn ein Platz frei ist (wie R96). Ergaenzung Bernd 27.11.2026: B-13 wird in R98 aufgenommen (kein eigener PR). Stand 27.11.2026 07:35: im Repository ki-agenten-standard sind #1 (Erstfassung) und #4 gemergt, keine offenen PRs dort; PR-Platz voraussichtlich frei. Start nur durch Bernd.'

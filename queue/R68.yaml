@@ -4,7 +4,7 @@ art: code-pr
 gate: nein
 abhaengig_von:
 - R78
-stand: 2026-11-24 07:30
+stand: 2026-11-27 07:35
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 voraussetzung: 'Draft #31 (R54) und #34 (R62) sind auf main gemergt, damit das Skript nicht doppelt veraendert wird (Konflikt mit #31).'
@@ -15,6 +15,7 @@ schritte:
 - Pester-Tests ergaenzen, docs/FREIGABE.md anpassen. Draft-PR, Bericht R68-BERICHT.md.
 nachweis: Draft-PR mit gruener CI.
 grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein Upload, keine Aenderung an .github/workflows, Deployment, Supabase oder Admin. Nur Draft. Dauer etwa 45 Minuten.
-status: bereit
+status: in_arbeit
 hinweis_lage_2026_11_16: Zusammen mit R78 in einem PR (beide betreffen scripts/freigabe-pruefen.ps1); wartet auf freien PR-Platz.
 hinweis_2026_11_24: 'Entscheidungen siehe R78 (24.11.2026): ein Entwurfs-PR, R78 vor R68; G8 bleibt gesperrt, G2/G7 nicht zutreffend darf G8 nicht oeffnen; pruefe-paket.ps1 nur Hash und Eintragszahl, kein Baum-Vergleich.'
+hinweis: 'Stand 27.11.2026 07:35: gemeinsam mit R78 im Draft-PR #49 (Head 7338b18); Merge nur nach Einzelfreigabe je Head.'
