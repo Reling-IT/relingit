@@ -13,7 +13,7 @@ Die öffentliche Landingpage wird manuell per FTP bei DomainFactory gehostet. Gi
 - `assets/js`: öffentliche Logik, PDF-Ansicht, Administration und Supabase-Konfiguration
 - `archive`: ausschließlich lokales Archiv für nicht mehr aktive Dateien
 - `story/current`: aktuell veröffentlichte lokale Rückfallfassung; entspricht dem Supabase-Pfad `story/current`
-- `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md); Tagesstart für KI-Sitzungen in [docs/TAGESSTART.md](docs/TAGESSTART.md)
+- `docs`: redaktionelle, Supabase- und FTP-Anleitungen; Repo-Struktur und Release-Ablauf als Diagramme in [docs/ABLAUF.md](docs/ABLAUF.md); Tagesstart für KI-Sitzungen in [docs/TAGESSTART.md](docs/TAGESSTART.md); Vorlage für Rückmeldungen aus dem Workshop in [docs/WORKSHOP-FEEDBACK.md](docs/WORKSHOP-FEEDBACK.md)
 - `docs/vorlagen`: Kapitel-Vorlage und Einbau-Checkliste für neue Geschichten
 - `scripts`: lokale und CI-Prüfungen, Freigabeprüfung (`freigabe-pruefen.ps1`) und lokale Vorschau (`vorschau.ps1`), siehe [docs/FREIGABE.md](docs/FREIGABE.md); Aufräumprüfung für Worktrees und Branches (`aufraeumen-pruefen.ps1`, nur lesend, siehe [docs/ABLAUF.md](docs/ABLAUF.md#aufräumen-prüfen-worktrees-und-branches-scriptsaufraeumen-pruefenps1))
 - `scripts/pdf`: freiwillige Werkzeuge zum Erzeugen und Prüfen der PDF (siehe [docs/PDF-ERZEUGEN.md](docs/PDF-ERZEUGEN.md))
