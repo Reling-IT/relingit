@@ -25,7 +25,7 @@ Claude Code (Opus) im Arbeitsklon `C:\dev\relingit`. Zweitprüfungen durch Unter
 
 ### TA-02 Offene Fragen
 
-1. Stunden heute für `docs/PILOT.md`? Gefragt im Chat; Antwort steht aus (auch 24.11. noch nicht eingetragen, R94).
+1. Stunden: beantwortet (siehe TA-09).
 2. Soll G6 ohne Upload-Paket „offen“ sein und damit G8 sperren (R68, Befund S2)? Empfehlung: ja, mit Klarstellung in der Doku; bei einem Ordner das daneben liegende ZIP prüfen.
 3. Abstimmungsseite nach R102 B1 bis B5 und B7 durch die Planer-Session korrigieren? Empfehlung: ja.
 
@@ -78,7 +78,7 @@ Nicht berechenbar: Die Warteschlange führt keine Termine für offene Aufträge;
 
 ### TA-09 Stunden
 
-Frage an den Product Owner gestellt; Antwort steht aus.
+27.11.: 2 Stunden; 24.11.: 2 Stunden (Angabe des Product Owners im Chat am 27.11.). Eintrag in `docs/PILOT.md` per PR #50 (Head 0c11cee), Summe 20; Merge durch den Product Owner offen.
 
 ### TA-10 Ziel-Stand
 
@@ -88,7 +88,7 @@ Kein Zielrahmen im Repository (Projektprofil `ziel: offen`).
 Reifegrad: v1.40 live und geprueft; Feedback-Vorlage auf main (PR 48)
 Projektstatus: R102, R95, R93 erledigt; R78/R68 als Entwurf PR 49 mit 2 Soll
 Offene_Fragen:
-  - Stunden 24.11. und 27.11. fuer PILOT.md
+  - Merge PR 50 (Stunden PILOT.md)
   - G6 ohne Upload-Paket offen (sperrt G8)?
   - Abstimmungsseite nach R102 korrigieren?
 Roadmap:
