@@ -3,14 +3,15 @@ titel: Navis und Lumen in Sysingboard und Hub integrieren (Planung, Sprint 1 ohn
 art: planen
 gate: ja
 abhaengig_von: []
-ziel: Plan S0 bis S7 liegt im Claude-Projekt (plan-navis-lumen-integration.md). Sprint 1 und 2 ohne Anbindung an Sysingboard und Reports, nur Fixtures mit erfundenen Demodaten. Compliance-Gates G-K0 bis G-K6 (KI-Verordnung Art. 50, DSGVO).
+ziel: Plan S0 bis S7 liegt im Claude-Projekt (plan-navis-lumen-integration.md, Fortschreibung plan-navis-lumen-fortschreibung-2026-11-27.md, Entscheidungen entscheidungen-ki-agenten-standard-2026-11-27.md). Agent nur lesend (READ); schreibende Agenten sind vorgesehen, aber nicht jetzt. Standard KI-Agenten in Apps (Entwurf) ist Messlatte und wird vom Projekt mitgestaltet. Sprint 1 und 2 ohne Anbindung, nur Fixtures mit erfundenen Demodaten. Gates G-K0 bis G-K6 und G-E vor Echtdaten.
 schritte:
-- Entscheidung Bernd, ob die Planung als Auftrag in die Warteschlange von bmarnau/sysingdashboard uebernommen wird (dort eigene Queue, Golden-Gate-Regeln).
-- S0 Entscheidungspaket (ADR Anbieter, Datenklassen, Rollen, Schwellwertanalyse DSFA) erst nach Freigabe.
+- 'Entscheidung 25.11./27.11. (Bernd): Planung bleibt im Projekt Reling IT, kein Eintrag in der Sysingboard-Queue; Code in Sysingboard oder Hub erst als eigener Auftrag im dortigen Projekt (AGT-43).'
+- S0-Entscheidungen G-K0 getroffen am 27.11. (Weg A fuer S1 bis S3, nur Datenklasse A, Rollen, KI-Hinweis, Pruefauftrag Zielweg); formale Abnahme G-K0 offen.
+- Aufgaben R98 (Erfahrungsblatt im Standard), R99 (Plan und Lernjournal in Git), R100 (Pruefauftrag Zielweg, nur lesen) warten auf Freigabe durch Bernd.
 nachweis: Entscheidung Bernd je Punkt; kein Code in diesem Auftrag
 grenzen: Nur Planung. Kein Code, keine Anbindung, kein Schreiben, keine Zugangsdaten, keine Kosten- oder Vertragsangaben in der Queue (oeffentliches Repo). Keine Aenderung in bmarnau/sysingdashboard oder bmarnau/hub ohne Freigabe.
 status: geplant
-stand: 2026-11-25 10:30
+stand: 2026-11-27 06:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-hinweis: 'Auftrag Bernd 25.11.2026: erster Sprint ohne Anbindung vom Sysingboard und den Reports.'
+hinweis: '27.11.2026: Bernd lernt alles zum Thema Agenten; die Dokumentation haelt den Lernprozess fest und schreibt die Erfahrungen im Standard fest. Pro Sprint ein Lernjournal-Eintrag.'

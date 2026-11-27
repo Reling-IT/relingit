@@ -1,4 +1,4 @@
-stand: 2026-11-25 10:30
+stand: 2026-11-27 06:55
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -696,4 +696,25 @@ auftraege:
   gate: ja
   status: geplant
   abhaengig_von: []
+- id: R98
+  titel: Erfahrungsblatt Navis/Lumen im Standard KI-Agenten in Apps (Draft-PR, nur Doku)
+  art: code-pr
+  gate: ja
+  status: geplant
+  abhaengig_von:
+  - R97
+- id: R99
+  titel: Plan Navis/Lumen und Lernjournal in Git ablegen (privates Repository, Draft-PR)
+  art: code-pr
+  gate: ja
+  status: geplant
+  abhaengig_von:
+  - R97
+- id: R100
+  titel: 'Pruefauftrag Zielweg Sprachmodell: Bedrock EU, Vertex Europa, lokales Modell (nur lesen)'
+  art: lesen
+  gate: ja
+  status: geplant
+  abhaengig_von:
+  - R97
 hinweis_owner: 'Entscheidung 16.11.2026 (Product Owner): weiter, die Pause bis Jahresende ist verschoben (neuer Termin offen); damit gelten R86 (v1.40) und die Straenge A (Veroeffentlichung v1.39) und B (v1.40), R71/R72 bleiben geplant. Entscheidungen 06.11.2026: q15 Admin-Bereich mit Supabase ist Standardweg fuer neue Buchfassungen (FTP nur fuer Startseite, JavaScript, Impressum, Datenschutz); Reling-IT/relingit ist die endgueltige Adresse; PR #4 vor PR #5 mergen.'

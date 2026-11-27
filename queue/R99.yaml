@@ -1,0 +1,18 @@
+id: R99
+titel: Plan Navis/Lumen und Lernjournal in Git ablegen (privates Repository, Draft-PR)
+art: code-pr
+gate: ja
+abhaengig_von:
+- R97
+status: geplant
+stand: 2026-11-27 06:55
+planer: Claude (Planer-Session)
+ziel: Plan, S0-Paket, Fortschreibung, Entscheidungsprotokoll und Abgleich aus dem Claude-Projekt in ein privates Repository uebernehmen (Git als Single Source of Truth) und die Struktur fuer das Lernjournal je Sprint anlegen.
+schritte:
+- Ziel-Repository und Ordner mit Bernd klaeren (privat; nicht das oeffentliche sysingdashboard).
+- Dateien aus dem Projekt uebernehmen, Entscheidungen und Stand unveraendert; Vorlage fuer Lernjournal-Eintrag mit YAML-Kopf.
+- 'Pruefvermerk vor dem ersten Push (AGT-44): keine Personennamen ausser Rollen, keine Kosten, Vertragsinterna oder Zugangsdaten.'
+nachweis: Draft-PR, Pruefvermerk
+grenzen: Kein Merge. Kein Eintrag im oeffentlichen Repository ohne Pruefvermerk. Hoechstens 3 offene Agenten-PRs.
+repo: noch zu klaeren
+hinweis: Entwurf des Planers 27.11.2026; Ablageort offen.
