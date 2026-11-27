@@ -682,7 +682,7 @@ auftraege:
   titel: 'Workshop-Feedback-Vorlage (eine Seite, Draft-PR docs)'
   art: code-pr
   gate: nein
-  status: bereit
+  status: in_arbeit
   abhaengig_von: []
 - id: R96
   titel: 'identity-rbac-standard: Personenname im CHANGELOG durch Rolle ersetzen (Draft-PR)'
