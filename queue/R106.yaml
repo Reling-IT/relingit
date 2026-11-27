@@ -4,7 +4,7 @@ art: code-pr
 gate: ja
 abhaengig_von: []
 status: geplant
-stand: 2026-11-27 06:05
+stand: 2026-11-27 08:25
 planer: Claude (Planer-Session)
 ziel: Im Buchanhang alle neun Standards gleich darstellen (Kurzname, Zweck, Bezug zu Navis und Lumen). Der Entwurf KI-Agenten in Apps gehoert erst dazu, wenn Bernd ihn als Standard annimmt.
 schritte:
@@ -14,4 +14,4 @@ schritte:
 nachweis: Draft-PR, Bericht mit Belegen
 grenzen: Kein Merge, kein Tag, kein Upload, keine Zugangsdaten, keine Personennamen ausser Rollen, keine Kosten. Hoechstens 3 offene Agenten-PRs; Start nur durch Bernd.
 repo: Reling-IT/relingit
-hinweis: 'Entscheidung Bernd 27.11.2026: Anhang Gleiche Darstellung fuer alle neun, Auftrag ja als geplant.'
+hinweis: 'Entscheidung Bernd 27.11.2026: Anhang Gleiche Darstellung fuer alle neun, Auftrag ja als geplant. Entscheidung Bernd 27.11.2026: Standard KI-Agenten in Apps bleibt Entwurf, Neuentscheidung nach S3; R106 erst danach.'
