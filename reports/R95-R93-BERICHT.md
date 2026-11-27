@@ -50,3 +50,15 @@ relingit: 1 (#48, Entwurf).
 - Freigabe zum Löschen der drei lokalen Branches (`git branch -D`, SHAs oben); Empfehlung: ja, alle drei sind squash-gleich in `main`.
 - R93 in der Warteschlange auf erledigt setzen, mit dem Vermerk, dass die FTP-Pakete 1.38 und 1.39 im Papierkorb liegen; ob sie ins Archiv sollen, entscheidet der Product Owner.
 - Zweitprüfung von #48 vor einem Merge durch einen Unteragenten mit eigenem Kontext.
+
+## Nachtrag 27.11.2026: Branches gelöscht
+
+Freigabe des Product Owners im Chat am 27.11.2026. Ausgeführt mit `git branch -D`:
+
+| Branch | SHA vorher |
+|---|---|
+| `auftrag-R87-teil2` | 12397da |
+| `auftrag-R92-backup` | 705a482 |
+| `pilot-2026-11-23` | cd6fb73 |
+
+Danach lokal nur noch `main`, `ops/queue`, `ops/reports`, `paket-v139` und `auftrag-R95-feedback` (#48). Beleg: `git branch -vv`.
