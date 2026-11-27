@@ -1,0 +1,17 @@
+id: R104
+titel: 'Landingpage bmarnau-standards/uebersicht: sieben auf neun Standards angleichen (Draft-PR)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-27 05:50
+planer: Claude (Planer-Session)
+ziel: Die Landingpage nennt sieben Standards, der Buchanhang seit v1.39 neun (zusaetzlich IAM und REST). Angleichen, ohne den Entwurf ki-agenten-standard als Standard zu fuehren (Aufnahme entscheidet Bernd).
+schritte:
+- Ist-Stand der Landingpage und der Standardfamilie lesend pruefen (Liste, Zaehlung, Verweise); Befund mit Quelle und Abrufdatum.
+- Aenderung als Draft-PR (nur Text), kein Merge.
+- Hinweis im Bericht, falls weitere Stellen die Zahl sieben nennen.
+nachweis: Draft-PR, Bericht mit Belegen
+grenzen: Kein Merge, kein Tag, keine Zugangsdaten, keine Personennamen ausser Rollen, keine Kosten. Hoechstens 3 offene Agenten-PRs; Start nur durch Bernd.
+repo: bmarnau-standards/uebersicht
+hinweis: 'Entscheidung Bernd 27.11.2026: ja, als geplant. Bezug: Hinweis R83 (Landingpage nennt sieben).'

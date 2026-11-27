@@ -1,4 +1,4 @@
-stand: 2026-11-27 06:10
+stand: 2026-11-27 05:50
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -729,6 +729,12 @@ auftraege:
   abhaengig_von: []
 - id: R103
   titel: 'V3 schliessen: PDF-Erzeugung im Veroeffentlichungsskript aufrufen (Draft-PR)'
+  art: code-pr
+  gate: ja
+  status: geplant
+  abhaengig_von: []
+- id: R104
+  titel: 'Landingpage bmarnau-standards/uebersicht: sieben auf neun Standards angleichen (Draft-PR)'
   art: code-pr
   gate: ja
   status: geplant
