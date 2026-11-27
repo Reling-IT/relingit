@@ -513,7 +513,7 @@ auftraege:
   titel: 'freigabe-pruefen.ps1: G2/G7 auf main nicht zutreffend, -Paket einbinden (Draft-PR)'
   art: code-pr
   gate: nein
-  status: in_arbeit
+  status: erledigt
   abhaengig_von:
   - R78
 - id: R69
@@ -578,7 +578,7 @@ auftraege:
   titel: Sichtungsliste und freigabe-pruefen.ps1 angleichen; Pruefpunkte W07 bis W09 richtigstellen (Draft-PR)
   art: code-pr
   gate: nein
-  status: in_arbeit
+  status: erledigt
   abhaengig_von: []
 - id: R79
   titel: Merge-Pruefung als Skript (Aenderungszeilen, CI, --match-head-commit)
