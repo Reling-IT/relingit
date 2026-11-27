@@ -4,14 +4,15 @@ art: code-pr
 gate: ja
 abhaengig_von: []
 status: bereit
-stand: 2026-11-27 07:20
+stand: 2026-11-27 06:10
 planer: Claude (Planer-Session)
-ziel: 'Beitraege aus dem Plan Navis/Lumen (B-1 bis B-12, claude/beitraege-zum-ki-agenten-standard.md) als Erfahrungsblatt im Repository bmarnau-standards/ki-agenten-standard vorschlagen, ohne den Wortlaut des Entwurfs (PR #1) zu aendern.'
+ziel: 'Beitraege aus dem Plan Navis/Lumen (B-1 bis B-12, claude/beitraege-zum-ki-agenten-standard.md, und B-13, claude/beitrag-b13-veroeffentlichung-fuer-dritte.md) als Erfahrungsblatt im Repository bmarnau-standards/ki-agenten-standard vorschlagen, ohne den Wortlaut des Entwurfs (PR #1) zu aendern.'
 schritte:
 - Zweig und Draft-PR im Repository ki-agenten-standard, Datei nach dem Muster der bestehenden Erfahrungsbloecke; B-1 als Platzhalter fuer schreibende Agenten (jetzt nicht in Kraft).
+- 'B-13 (Veroeffentlichung fuer Dritte: Betriebsmodell, Rolle nach KI-Verordnung, Rechtsgrundlage, Zugang ohne Anmeldung, Datenschutzerklaerung, Fachpruefung) im selben Erfahrungsblatt als Vorschlag aufnehmen, ohne Rechtsberatung und ohne personenbezogene Angaben.'
 - 'Abgleich mit PR #1: keine Konflikte; Kennungen lueckenlos; scripts/pruefe_anforderungen.py ausfuehren.'
 - Keine Personennamen ausser Rollen, keine Kosten- oder Vertragsangaben, keine Zugangsdaten.
 nachweis: Draft-PR mit Pruefskript gruen
 grenzen: Kein Merge, kein Tag, keine Aenderung am Wortlaut von STANDARD-KI-AGENTEN.md. Hoechstens 3 offene Agenten-PRs.
 repo: bmarnau-standards/ki-agenten-standard
-hinweis: 'Entscheidung Bernd 27.11.2026: R98 bereit, R99 spaeter. Hoechstens 3 offene Agenten-PRs: erst starten, wenn ein Platz frei ist (wie R96).'
+hinweis: 'Entscheidung Bernd 27.11.2026: R98 bereit, R99 spaeter. Hoechstens 3 offene Agenten-PRs: erst starten, wenn ein Platz frei ist (wie R96). Ergaenzung Bernd 27.11.2026: B-13 wird in R98 aufgenommen (kein eigener PR).'
