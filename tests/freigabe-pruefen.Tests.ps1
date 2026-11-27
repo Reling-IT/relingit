@@ -14,7 +14,7 @@ Describe "freigabe-pruefen.ps1" {
         # Fixture-Commits ohne Signaturschlüssel entstehen.
         function New-FreigabeProjekt([string]$Ziel, [string]$Geschichte = "basis.html.fixture") {
             $projekt = New-MiniProjekt -Ziel $Ziel -Geschichte $Geschichte
-            foreach ($skript in @("freigabe-pruefen.ps1", "vorschau.ps1")) {
+            foreach ($skript in @("freigabe-pruefen.ps1", "vorschau.ps1", "pruefe-paket.ps1")) {
                 Copy-Item -LiteralPath (Join-Path $script:RepoRoot "scripts/$skript") -Destination (Join-Path $projekt "scripts/$skript")
             }
             # Platzhalter-JS aus dem Helfer sind kein gültiges JavaScript; für node --check ersetzen.
@@ -60,16 +60,24 @@ Describe "freigabe-pruefen.ps1" {
         }
 
         # Legt unter output/ftp ein kleines Upload-Paket wie aus build-upload.ps1 an
-        # (UPLOAD-MANIFEST.txt, index.html, optional die vier Ersatz-MP3).
-        function New-TestPaket([string]$Projekt, [string]$Name, [switch]$MitMp3, [switch]$OhneAudioZeile) {
+        # (UPLOAD-MANIFEST.txt mit SHA-256 je Datei, index.html, optional die vier
+        # Ersatz-MP3). -FalscherHash verfälscht die Prüfsumme von index.html.
+        function New-TestPaket([string]$Projekt, [string]$Name, [switch]$MitMp3, [switch]$OhneAudioZeile, [switch]$FalscherHash) {
             $ordner = Join-Path $TestDrive "paket-$Name"
-            $manifest = @("RelingIT FTP-Upload-Paket", "Version: 1.02")
-            if ($OhneAudioZeile) { $manifest += "Ohne Audio: Die Podcast-MP3 sind nicht enthalten, die Live-Dateien unter assets/audio bleiben unverändert." }
-            Write-Utf8Datei (Join-Path $ordner "UPLOAD-MANIFEST.txt") (($manifest -join "`n") + "`n")
             Write-Utf8Datei (Join-Path $ordner "index.html") "Platzhalter für Tests`n"
             if ($MitMp3) {
                 foreach ($mp3 in $script:PodcastMp3) { Write-Utf8Datei (Join-Path $ordner "assets/audio/$mp3") "ID3 Ersatz-MP3 für Tests: $mp3`n" }
             }
+            $manifest = @("RelingIT FTP-Upload-Paket", "Version: 1.02")
+            if ($OhneAudioZeile) { $manifest += "Ohne Audio: Die Podcast-MP3 sind nicht enthalten, die Live-Dateien unter assets/audio bleiben unverändert." }
+            $manifest += ""
+            foreach ($datei in (Get-ChildItem -LiteralPath $ordner -Recurse -File | Sort-Object FullName)) {
+                $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $datei.FullName).Hash
+                $relativ = $datei.FullName.Substring($ordner.Length + 1).Replace('\', '/')
+                if ($FalscherHash -and $relativ -eq "index.html") { $hash = "0" * 64 }
+                $manifest += "$hash  $relativ"
+            }
+            Write-Utf8Datei (Join-Path $ordner "UPLOAD-MANIFEST.txt") (($manifest -join "`n") + "`n")
             $ziel = Join-Path $Projekt "output/ftp"
             New-Item -ItemType Directory -Path $ziel -Force | Out-Null
             $zip = Join-Path $ziel "$Name.zip"
@@ -162,6 +170,157 @@ Describe "freigabe-pruefen.ps1" {
         if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 17 Ja, 1 Nein, 0 leer von 18 \(Nein: W01\)') { throw "Nein-Punkt nicht ausgewertet:`n$bericht" }
         if ($bericht -notmatch '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G4 Sichtung unvollständig \(1 Nein, 0 leer\)') { throw "G8 nicht wegen Nein gesperrt:`n$bericht" }
         Assert-NieBestanden $bericht
+    }
+
+    It "liest Tor und Ergebnis aus der Kopfzeile, auch bei 8 Spalten (R78)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-achtspalten"
+        # Von Hand vorbereitete Liste mit zusätzlicher Spalte Adresse: Ergebnis steht in Spalte 7, nicht 6.
+        $liste = @(
+            "# Sichtungsliste v1.02", "",
+            "| Nr | Tor | Bereich | Adresse | Prüfpunkt | Breite | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|---|",
+            "| W01 | G4 | Startseite | /index.html | Kopf | 390 px | Ja | |",
+            "| W02 | G4 | Startseite | /index.html | Kopf | 768 px | Nein | Bildlauf |",
+            "", "| Nr | Tor | Bereich | Stelle | Prüfpunkt | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|",
+            "| P01 | G3 | PDF: Deckblatt | Seite 1 | Version stimmt | Ja | |",
+            "| I01 | G5 | Neue Szene | Kapitel 1 | gelesen | Ja | |"
+        )
+        Write-Utf8Datei (Join-Path $projekt "reports/SICHTUNG-v1.02.md") (($liste -join "`n") + "`n")
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 1 Ja, 1 Nein, 0 leer von 2 \(Nein: W02\)') { throw "8-Spalten-Liste falsch ausgewertet:`n$bericht" }
+        if ($bericht -notmatch '\| G3 \| Sichtung PDF \| offen \| SICHTUNG-v1\.02\.md: 1 Ja, 0 Nein, 0 leer von 1; vollständig') { throw "G3 falsch ausgewertet:`n$bericht" }
+        if ($bericht -notmatch '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G4 Sichtung unvollständig \(1 Nein, 0 leer\)') { throw "G8 nicht wegen W02 gesperrt:`n$bericht" }
+        Assert-NieBestanden $bericht
+    }
+
+    It "übergeht Hilfstabellen und sperrt G8 bei Prüfpunkten ohne Ergebnis-Spalte (R78)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-hilfstabelle"
+        $liste = @(
+            "# Sichtungsliste v1.02", "",
+            "| Punkt | Stelle | Seite |", "| --- | --- | --- |",
+            "| P09 | Personenliste | 4 |",
+            "", "| Nr | Tor | Bereich | Prüfpunkt | Breite | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|",
+            "| W01 | G4 | Startseite | Kopf | 390 px | Ja | |",
+            "", "| Nr | Tor | Bereich | Prüfpunkt |", "|---|---|---|---|",
+            "| W02 | G4 | Startseite | Kopf |",
+            "", "| Nr | Tor | Bereich | Stelle | Prüfpunkt | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|",
+            "| P01 | G3 | PDF: Deckblatt | Seite 1 | Version stimmt | Ja | |",
+            "| I01 | G5 | Neue Szene | Kapitel 1 | gelesen | Ja | |"
+        )
+        Write-Utf8Datei (Join-Path $projekt "reports/SICHTUNG-v1.02.md") (($liste -join "`n") + "`n")
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        # P09 aus der Hilfstabelle zählt nicht; W02 ohne Ergebnis-Spalte ist unlesbar und sperrt G8.
+        if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 1 Ja, 0 Nein, 0 leer von 1; vollständig') { throw "Hilfstabelle mitgezählt:`n$bericht" }
+        if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 1 Ja, 0 Nein, 0 leer, 1 unlesbar von 2 \(unlesbar, Ergebnis-Spalte nicht gefunden: W02\)') { throw "Unlesbarer Punkt nicht gemeldet:`n$bericht" }
+        if ($bericht -notmatch '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G4 Sichtung unvollständig \(0 Nein, 0 leer, 1 unlesbar\)') { throw "G8 nicht wegen unlesbarem Punkt gesperrt:`n$bericht" }
+        Assert-NieBestanden $bericht
+    }
+
+    It "legt den Download-Link für das Handout auf Startseite und handout-pdf.html (W07 bis W09, R78)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-handout"
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $sichtung = Get-Bericht $projekt "SICHTUNG-v1.02.md"
+        foreach ($nr in @("W07", "W08", "W09")) {
+            if ($sichtung -notmatch "(?m)^\| $nr \| G4 \| Handout \| handout\.html: Handout lädt; Download-Link auf index\.html \(Abschnitt Handout\) und handout-pdf\.html vorhanden \|") { throw "$nr nennt die Fundstelle des Download-Links nicht richtig:`n$sichtung" }
+        }
+    }
+
+    It "prüft das Upload-Paket mit pruefe-paket.ps1 und nennt Hash und Einträge (R68)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-paket"
+        $zip = New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-ohne-audio" -OhneAudioZeile
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $zip).Hash
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch "\| G6 \| Upload-Paket gegen Manifest \| bestanden \| relingit-upload-v1\.02-2026-11-07-ohne-audio\.zip, SHA-256 $hash, 2 Einträge; jede Datei gleich UPLOAD-MANIFEST\.txt") { throw "Paketprüfung fehlt oder falsch:`n$bericht" }
+        if ($bericht -notmatch "Upload-Paket: relingit-upload-v1\.02-2026-11-07-ohne-audio\.zip, SHA-256 $hash, 2 Einträge\.") { throw "Paketzeile im Gesamtergebnis fehlt:`n$bericht" }
+    }
+
+    It "meldet ein Paket mit abweichender Prüfsumme unter G6 als nicht bestanden (R68)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-paketfalsch"
+        [void](New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-ohne-audio" -OhneAudioZeile -FalscherHash)
+        $ergebnis = Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh")
+        Assert-Fehlschlag $ergebnis "automatische Prüfung\(en\) nicht bestanden"
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Upload-Paket gegen Manifest \| nicht bestanden \|[^\n]*pruefe-paket\.ps1 Exit 1') { throw "Abweichung nicht gemeldet:`n$bericht" }
+    }
+
+    It "lässt die Paketprüfung ohne Paket offen und sperrt damit G8 (R68)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-ohnepaket"
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch '\| G6 \| Upload-Paket gegen Manifest \| offen \| kein Upload-Paket gefunden') { throw "Fehlendes Paket nicht als offen gemeldet:`n$bericht" }
+        if ($bericht -notmatch '(?m)^\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G6 offen') { throw "G8 trotz fehlendem Paket nicht gesperrt:`n$bericht" }
+    }
+
+    Context "Lauf auf main (R68)" {
+        BeforeAll {
+            # Ersatz für gh: liefert zu jedem Commit einen gemergten PR #7 und den
+            # Review-Status aus FREIGABE_TEST_REVIEW. Nur im Wegwerf-Ordner des Tests.
+            $script:FakeGh = Join-Path $TestDrive "fake-gh"
+            New-Item -ItemType Directory -Path $script:FakeGh -Force | Out-Null
+            $fake = @'
+if ($args[0] -eq "api") { Write-Output '[{"number":7,"merged_at":"2026-11-27T05:00:00Z","html_url":"https://example.invalid/pull/7","base":{"ref":"main"}}]'; exit 0 }
+if ($args[0] -eq "pr" -and $args[1] -eq "view") { Write-Output ('{"reviewDecision":"' + $env:FREIGABE_TEST_REVIEW + '"}'); exit 0 }
+Write-Output "unerwarteter Aufruf: $($args -join ' ')"; exit 1
+'@
+            Write-Utf8Datei (Join-Path $script:FakeGh "gh.ps1") $fake
+
+            function New-MainProjekt([string]$Ziel) {
+                $projekt = New-FreigabeProjekt $Ziel
+                [void](New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-ohne-audio" -OhneAudioZeile)
+                $vorher = $ErrorActionPreference; $ErrorActionPreference = "Continue"
+                try { git -C $projekt checkout -q -b main origin/main 2>&1 | Out-Null } finally { $ErrorActionPreference = $vorher }
+                return $projekt
+            }
+            function Invoke-MitFakeGh([string]$Projekt, [string]$Review) {
+                $pfadVorher = $env:PATH
+                $env:PATH = "$script:FakeGh$([IO.Path]::PathSeparator)$env:PATH"
+                $env:FREIGABE_TEST_REVIEW = $Review
+                try { return Invoke-MiniSkript -Projekt $Projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester") }
+                finally { $env:PATH = $pfadVorher; Remove-Item Env:FREIGABE_TEST_REVIEW -ErrorAction SilentlyContinue }
+            }
+        }
+
+        It "wertet G2 und G7 mit Verweis auf den gemergten PR als nicht zutreffend und lässt G8 gesperrt" {
+            $projekt = New-MainProjekt "$script:Basis-main"
+            [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+            Set-SichtungErgebnis $projekt "Ja"
+            $ergebnis = Invoke-MitFakeGh $projekt "APPROVED"
+            Assert-Erfolg $ergebnis "Ergebnis: keine automatische Prüfung nicht bestanden"
+            $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+            foreach ($muster in @(
+                '\| G7 \| Feature-Branch, gleich Upstream \| nicht zutreffend \| Branch main, HEAD [0-9a-f]+ = origin/main, gemergt mit PR #7, gemergt 2026-11-27T05:00:00Z',
+                '\| G7 \| Pull Request offen, kein Draft, Checks grün \| nicht zutreffend \| Lauf auf main; PR #7',
+                '\| G2 \| Review ohne Änderungswunsch \| nicht zutreffend \| Lauf auf main; gemergter PR #7: APPROVED',
+                '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*Lauf auf main: G8 wird auf dem Feature-Branch vor dem Merge erteilt'
+            )) {
+                if ($bericht -notmatch $muster) { throw "Muster '$muster' fehlt:`n$bericht" }
+            }
+            # Die alten Sperrgründe aus Befund F2 dürfen nicht mehr erscheinen.
+            if ($bericht -match '(?m)^\| G8 \|[^\n]*G(2|7) (offen|nicht bestanden)') { throw "G2 oder G7 sperren G8 auf main weiterhin:`n$bericht" }
+            Assert-NieBestanden $bericht
+        }
+
+        It "meldet einen gemergten PR mit Änderungswunsch unter G2 als nicht bestanden" {
+            $projekt = New-MainProjekt "$script:Basis-mainreview"
+            $ergebnis = Invoke-MitFakeGh $projekt "CHANGES_REQUESTED"
+            Assert-Fehlschlag $ergebnis "automatische Prüfung\(en\) nicht bestanden"
+            $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+            if ($bericht -notmatch '\| G2 \| Review ohne Änderungswunsch \| nicht bestanden \| gemergter PR #7: CHANGES_REQUESTED') { throw "Änderungswunsch nicht gemeldet:`n$bericht" }
+        }
+
+        It "lässt G2 und G7 ohne gh offen statt nicht zutreffend" {
+            $projekt = New-MainProjekt "$script:Basis-mainohnegh"
+            [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+            $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+            if ($bericht -notmatch '\| G7 \| Feature-Branch, gleich Upstream \| offen \| Branch main, HEAD [0-9a-f]+ = origin/main; Verweis auf den gemergten Pull Request fehlt \(mit -OhneGh übersprungen\)') { throw "G7 auf main ohne gh nicht offen:`n$bericht" }
+            if ($bericht -match 'nicht zutreffend \| Lauf auf main') { throw "Ohne gh als nicht zutreffend gewertet:`n$bericht" }
+        }
     }
 
     It "wertet die MP3-Prüfung bei einem Paket ohne Audio als nicht zutreffend, ohne G8 zu sperren" {
