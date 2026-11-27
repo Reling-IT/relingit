@@ -1,0 +1,17 @@
+id: R101
+titel: 'Agenten-Demo: Pilot-Maengel AGT-13 und AGT-33 beheben (vor S1)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-27 07:30
+planer: Claude (Planer-Session)
+ziel: 'Die Demo Navis und Lumen im privaten Repository (agenten-demo/) erfuellt zwei Anforderungen des Entwurfs-Standards KI-Agenten in Apps noch nicht: AGT-13 (stiller Rueckfall in die Bauweise ganze Quelle muss sichtbar gemeldet werden) und AGT-33 (Lauf im Browser vor Weitergabe, nicht nur Syntaxpruefung). Entscheidung Bernd 27.11.2026: vor Start von S1 beheben.'
+schritte:
+- Rueckfall der Bauweise sichtbar melden (EA-04), ohne den Auftrag oder die Quelle zu aendern.
+- Browserlauf der Seite durchfuehren und im Bericht als solchen ausweisen; ohne Lauf steht dort Nur Syntax geprueft.
+- Ergebnisse als Eintrag fuer das Erfahrungsblatt (R98) festhalten.
+nachweis: Browserlauf-Vermerk, Draft-PR im privaten Repository
+grenzen: Nur privates Repository, keine Zugangsdaten, keine Personennamen ausser Rollen. Kein Merge. Hoechstens 3 offene Agenten-PRs.
+repo: privates Demo-Repository (Ablageort mit Bernd klaeren)
+hinweis: 'Entscheidung Bernd 27.11.2026: vor S1; nach dem Workshop planbar. Status bereit setzt nur der Product Owner.'
