@@ -3,8 +3,8 @@ titel: 'Lesender Abgleich: Abstimmungsseite, Projektdoku und Git-Stand auf Stimm
 art: lesen
 gate: ja
 abhaengig_von: []
-status: bereit
-stand: 2026-11-27 05:30
+status: erledigt
+stand: 2026-11-27 06:10
 planer: Claude (Planer-Session)
 ziel: 'Stimmigkeit belegen: (1) Aussagen der Abstimmungsseite (Seitenzahl, Version, Release-Kette, Luecken V1 bis V6, Auftraege A und B) gegen relingit main; (2) App-Versionen Sysingboard und Hub gegen deren Repos (nur lesen); (3) Git-Ordnung in relingit und im Standards-Repository ki-agenten-standard: Branches, offene und gemergte PRs, Drafts, Tags, Waisen, Abstand lokaler Klon zu origin/main; (4) Doku-Stand (CURRENT-STATUS, Tracker, Tagebuch, BACKLOG) gegen den Git-Stand.'
 schritte:
@@ -16,4 +16,4 @@ schritte:
 nachweis: Bericht auf ops/reports mit Beleg je Aussage und Abrufdatum; Zeile mit Zahl gemergter Remote-Branches, offener PRs und Drafts
 grenzen: Nur lesen. Kein PR, kein Merge, kein Tag, keine Loeschung (auch keine lokale), kein git:hygiene --fix, nichts an Workflows, Deployment oder Supabase. Keine Zugangsdaten, keine Personennamen ausser Rollen, keine Kosten- oder Vertragsangaben, keine Hinweise auf Sicherheitsluecken (oeffentliches Repo).
 repo: Reling-IT/relingit
-hinweis: 'Auftrag Bernd 27.11.2026. Seitenaussagen zu pruefen: Seitenzahl live 80 (v1.40), Tag v1.40 auf 84ae342, Startseite nennt aktuelle Seitenzahl (Luecke V1 geschlossen?), Release-Kette publish-release.ps1 und ci-check.ps1, Admin-Bereich Supabase als Standardweg, Auftrag A (Repo-Links Reling-IT/relingit) umgesetzt, Standards-Erfahrungsblaetter gemergt, keine offenen PRs in relingit, PR #1 im ki-agenten-standard Entwurf. Start nur durch Bernd.'
+hinweis: 'Auftrag Bernd 27.11.2026. Seitenaussagen zu pruefen: Seitenzahl live 80 (v1.40), Tag v1.40 auf 84ae342, Startseite nennt aktuelle Seitenzahl (Luecke V1 geschlossen?), Release-Kette publish-release.ps1 und ci-check.ps1, Admin-Bereich Supabase als Standardweg, Auftrag A (Repo-Links Reling-IT/relingit) umgesetzt, Standards-Erfahrungsblaetter gemergt, keine offenen PRs in relingit, PR #1 im ki-agenten-standard Entwurf. Start nur durch Bernd. Erledigt: Bericht reports/R102-BERICHT.md auf ops/reports (72d6fa6), 0 Muss, 6 Soll, 4 Kann; Seite nach B1 bis B5 und B7 korrigiert (Version 50).'

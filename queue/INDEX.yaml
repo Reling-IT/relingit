@@ -1,4 +1,4 @@
-stand: 2026-11-27 05:45
+stand: 2026-11-27 06:10
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -725,7 +725,7 @@ auftraege:
   titel: 'Lesender Abgleich: Abstimmungsseite, Projektdoku und Git-Stand auf Stimmigkeit und Ordnung pruefen (nur lesen)'
   art: lesen
   gate: ja
-  status: bereit
+  status: erledigt
   abhaengig_von: []
 - id: R103
   titel: 'V3 schliessen: PDF-Erzeugung im Veroeffentlichungsskript aufrufen (Draft-PR)'
