@@ -1,0 +1,19 @@
+id: R102
+titel: 'Lesender Abgleich: Abstimmungsseite, Projektdoku und Git-Stand auf Stimmigkeit und Ordnung pruefen (nur lesen)'
+art: lesen
+gate: ja
+abhaengig_von: []
+status: bereit
+stand: 2026-11-27 05:30
+planer: Claude (Planer-Session)
+ziel: 'Stimmigkeit belegen: (1) Aussagen der Abstimmungsseite (Seitenzahl, Version, Release-Kette, Luecken V1 bis V6, Auftraege A und B) gegen relingit main; (2) App-Versionen Sysingboard und Hub gegen deren Repos (nur lesen); (3) Git-Ordnung in relingit und im Standards-Repository ki-agenten-standard: Branches, offene und gemergte PRs, Drafts, Tags, Waisen, Abstand lokaler Klon zu origin/main; (4) Doku-Stand (CURRENT-STATUS, Tracker, Tagebuch, BACKLOG) gegen den Git-Stand.'
+schritte:
+- Wiederanlauf lesen (CURRENT-STATUS, Tracker, Merge-Checkliste); npm run git:hygiene OHNE --fix ausfuehren, nur melden.
+- 'Je Seitenaussage (Liste in hinweis) Beleg im Repo suchen: Datei, Commit oder PR; Abweichung als Befund mit Schweregrad (Muss, Soll, Kann).'
+- App-Versionen Sysingboard (package.json oder CHANGELOG) und Hub nur lesend ermitteln, Abrufdatum nennen.
+- 'Git-Ordnung: gemergte Remote-Branches zaehlen, offene PRs und Drafts, Tags v1.40 und Vorgaenger, lokale Klone mit ungesicherten Aenderungen; geschuetzte Branches (lovable*, backup/*, audit/*, ops/*) nur nennen.'
+- Befundtabelle (Fundstelle, Befund, Beleg, Vorschlag, Schweregrad) als Bericht auf ops/reports; Muss-Befunde als Vorschlag fuer neue Queue-Auftraege nennen, nicht selbst anlegen.
+nachweis: Bericht auf ops/reports mit Beleg je Aussage und Abrufdatum; Zeile mit Zahl gemergter Remote-Branches, offener PRs und Drafts
+grenzen: Nur lesen. Kein PR, kein Merge, kein Tag, keine Loeschung (auch keine lokale), kein git:hygiene --fix, nichts an Workflows, Deployment oder Supabase. Keine Zugangsdaten, keine Personennamen ausser Rollen, keine Kosten- oder Vertragsangaben, keine Hinweise auf Sicherheitsluecken (oeffentliches Repo).
+repo: Reling-IT/relingit
+hinweis: 'Auftrag Bernd 27.11.2026. Seitenaussagen zu pruefen: Seitenzahl live 80 (v1.40), Tag v1.40 auf 84ae342, Startseite nennt aktuelle Seitenzahl (Luecke V1 geschlossen?), Release-Kette publish-release.ps1 und ci-check.ps1, Admin-Bereich Supabase als Standardweg, Auftrag A (Repo-Links Reling-IT/relingit) umgesetzt, Standards-Erfahrungsblaetter gemergt, keine offenen PRs in relingit, PR #1 im ki-agenten-standard Entwurf. Start nur durch Bernd.'
