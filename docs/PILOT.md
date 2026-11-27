@@ -2,7 +2,7 @@
 
 Vorlage nach `REPOSITORY_BASISHYGIENE.md` („Mindestausstattung je Art“) und `SITZUNGSROUTINE.md` (TA-09) aus `bmarnau-standards/ai-development-governance`, Datei `vorlagen/pilot-steckbrief.md`. Ablage im Repository als `docs/PILOT.md`, Pfad im Projektprofil (`steckbrief` in [CLAUDE.md](../CLAUDE.md)). Nur belegte Angaben; Unbekanntes als `unklar`.
 
-Stand: 23.11.2026 (Tagesabschluss), korrigiert am 24.11.2026 (Auftrag R92), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
+Stand: 27.11.2026 (Tagesabschluss, Stunden 24. und 27.11.), korrigiert am 24.11.2026 (Auftrag R92), angelegt am 12.11.2026 mit Auftrag R73 (`queue/R73.yaml` auf dem Branch `ops/queue`). Berichte, auf die verwiesen wird, liegen unter `reports/` auf dem Branch `ops/reports`.
 
 ## Kurzprofil
 
@@ -28,8 +28,10 @@ Stunden trägt nur der Product Owner ein oder nennt sie auf Nachfrage im Tagesab
 | 15.11.2026 | 7 | keine Angabe |
 | 16.11.2026 | 2 | keine Angabe |
 | 23.11.2026 | 2 | keine Angabe |
+| 24.11.2026 | 2 | keine Angabe |
+| 27.11.2026 | 2 | keine Angabe |
 
-Summe bisher: 16 (12., 14., 15., 16. und 23.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md, TAGESBERICHT-2026-11-15.md, TAGESBERICHT-2026-11-16.md und TAGESBERICHT-2026-11-23.md (TA-09; 23.11. Angabe des Product Owners im Chat); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
+Summe bisher: 20 (12., 14., 15., 16., 23., 24. und 27.11.2026; für andere Tage keine Angabe). Belege: TAGESBERICHT-2026-11-14.md, TAGESBERICHT-2026-11-15.md, TAGESBERICHT-2026-11-16.md, TAGESBERICHT-2026-11-23.md, TAGESBERICHT-2026-11-24.md und TAGESBERICHT-2026-11-27.md (TA-09; 23., 24. und 27.11. Angabe des Product Owners im Chat, 24. und 27.11. am 27.11.2026 genannt); 15.11. vom Product Owner am 16.11.2026 bestätigt (3 am Tag und 4 am Abend).
 
 ## Nutzen
 
