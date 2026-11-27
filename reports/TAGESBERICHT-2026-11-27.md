@@ -26,7 +26,7 @@ Claude Code (Opus) im Arbeitsklon `C:\dev\relingit`. Zweitprüfungen durch Unter
 ### TA-02 Offene Fragen
 
 1. Stunden: beantwortet (siehe TA-09).
-2. Soll G6 ohne Upload-Paket „offen“ sein und damit G8 sperren (R68, Befund S2)? Empfehlung: ja, mit Klarstellung in der Doku; bei einem Ordner das daneben liegende ZIP prüfen.
+2. G6 ohne Upload-Paket „offen“, G8 gesperrt (R68, Befund S2): entschieden vom Product Owner im Chat am 27.11.2026, wie empfohlen. Bei einem Ordner wird das gleichnamige ZIP daneben geprüft; die Doku sagt das ausdrücklich. Umsetzung in #49 in der nächsten Sitzung.
 3. Abstimmungsseite nach R102 B1 bis B5 und B7 durch die Planer-Session korrigieren? Empfehlung: ja.
 
 Ideen (keine Aufträge): App-Versionen auf der Abstimmungsseite nur an einer Stelle führen; lesenden Abgleich vor jedem Workshop oder Release wiederholen; Abgrenzung „Korrektur“ und „geparkt“ in der Feedback-Vorlage in einem Halbsatz.
@@ -69,7 +69,7 @@ Ideen (keine Aufträge): App-Versionen auf der Abstimmungsseite nur an einer Ste
 - **Zielbezug:** kein Zielrahmen (`ziel: offen`); Begründung: Die Freigabeprüfung soll nur dann G8 öffnen, wenn alle Prüfpunkte lesbar Ja sind.
 - **Schritte:** S1 umsetzen (Tor-Zelle ohne `*`, Zeile mit Nummer und unbekanntem Tor sperrt G8, Nummern ab zwei Stellen, Test); S2 nach Antwort auf Frage 2 (Ordner: daneben liegendes ZIP, Doku); H2 bis H4 (Testkopf, Tests für gh-Fehler und leere Liste, Angabe Nutzdateien); Pester, ci-check, Push; Zweitprüfung am neuen Head; Merge-Vorschlag mit Head-SHA.
 - **Abnahme:** Zweitprüfung 0 Muss, 0 Soll; CI grün; Merge-Freigabe oder Ablehnung durch den Product Owner.
-- **Vorbedingungen:** Antwort auf Frage 2.
+- **Vorbedingungen:** keine (Frage 2 am 27.11. entschieden).
 - **Risiken:** S1 darf echte Listen v1.38 bis v1.40 nicht anders zählen; mit denselben Listen gegenprüfen.
 
 ### TA-08 Termine
@@ -89,7 +89,6 @@ Reifegrad: v1.40 live und geprueft; Feedback-Vorlage auf main (PR 48)
 Projektstatus: R102, R95, R93 erledigt; R78/R68 als Entwurf PR 49 mit 2 Soll
 Offene_Fragen:
   - Merge PR 50 (Stunden PILOT.md)
-  - G6 ohne Upload-Paket offen (sperrt G8)?
   - Abstimmungsseite nach R102 korrigieren?
 Roadmap:
   Sprints_bis_BSF: unklar
