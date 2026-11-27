@@ -17,4 +17,4 @@ planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 hinweis_lage_2026_11_16: 'PR-Grenze erreicht (#38, #39, #40 offen). Erst starten, wenn einer davon gemergt oder geschlossen ist. R68 (freigabe-pruefen.ps1) in demselben PR erledigen, das spart einen der drei Plaetze.'
 hinweis_2026_11_24: "Entscheidungen Bernd 24.11.2026: R78 und R68 in einem Entwurfs-PR (Branch auftrag-R78-R68 von main, R78 erster Commit, R68 zweiter); Baum-Vergleich als eigener Folgeauftrag; Pruefpunkt W07 auf Startseite und handout-pdf.html, Handout l\xE4dt bleibt auf handout.html. Voraussetzung (PR-Platz) erfuellt, #43 gemergt, keine offenen PRs."
-hinweis: 'Erledigt: PR #49 gemergt 27.11.2026, main 438134d (Freigabe Bernd je Head 85b0c8b). Bericht fehlt noch.'
+hinweis: 'Erledigt: PR #49 gemergt 27.11.2026, main 438134d (Freigabe Bernd je Head 85b0c8b), Website CI auf main gruen. Bericht fehlt noch.'

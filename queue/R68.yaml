@@ -18,4 +18,4 @@ grenzen: Kein Merge, kein Push auf fremde PR-Branches, kein Tag, kein FTP, kein 
 status: erledigt
 hinweis_lage_2026_11_16: Zusammen mit R78 in einem PR (beide betreffen scripts/freigabe-pruefen.ps1); wartet auf freien PR-Platz.
 hinweis_2026_11_24: 'Entscheidungen siehe R78 (24.11.2026): ein Entwurfs-PR, R78 vor R68; G8 bleibt gesperrt, G2/G7 nicht zutreffend darf G8 nicht oeffnen; pruefe-paket.ps1 nur Hash und Eintragszahl, kein Baum-Vergleich.'
-hinweis: 'Erledigt: PR #49 gemergt 27.11.2026, main 438134d (Freigabe Bernd je Head 85b0c8b). Bericht fehlt noch.'
+hinweis: 'Erledigt: PR #49 gemergt 27.11.2026, main 438134d (Freigabe Bernd je Head 85b0c8b), Website CI auf main gruen. Bericht fehlt noch.'
