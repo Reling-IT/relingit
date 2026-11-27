@@ -27,7 +27,7 @@ Claude Code (Opus) im Arbeitsklon `C:\dev\relingit`. Zweitprüfungen durch Unter
 
 1. Stunden: beantwortet (siehe TA-09).
 2. G6 ohne Upload-Paket „offen“, G8 gesperrt (R68, Befund S2): entschieden vom Product Owner im Chat am 27.11.2026, wie empfohlen. Bei einem Ordner wird das gleichnamige ZIP daneben geprüft; die Doku sagt das ausdrücklich. Umsetzung in #49 in der nächsten Sitzung.
-3. Abstimmungsseite nach R102 B1 bis B5 und B7 durch die Planer-Session korrigieren? Empfehlung: ja.
+3. Abstimmungsseite nach R102 B1 bis B5 und B7: entschieden vom Product Owner im Chat am 27.11.2026, ja, in einem Durchgang durch die Planer-Session (Belege in `R102-BERICHT.md`).
 
 Ideen (keine Aufträge): App-Versionen auf der Abstimmungsseite nur an einer Stelle führen; lesenden Abgleich vor jedem Workshop oder Release wiederholen; Abgrenzung „Korrektur“ und „geparkt“ in der Feedback-Vorlage in einem Halbsatz.
 
@@ -89,7 +89,7 @@ Reifegrad: v1.40 live und geprueft; Feedback-Vorlage auf main (PR 48)
 Projektstatus: R102, R95, R93 erledigt; R78/R68 als Entwurf PR 49 mit 2 Soll
 Offene_Fragen:
   - Merge PR 50 (Stunden PILOT.md)
-  - Abstimmungsseite nach R102 korrigieren?
+  - Abstimmungsseite nach R102 korrigieren (entschieden, Planer-Session)
 Roadmap:
   Sprints_bis_BSF: unklar
   Sprints_bis_MVP: unklar
