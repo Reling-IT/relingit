@@ -164,6 +164,64 @@ Describe "freigabe-pruefen.ps1" {
         Assert-NieBestanden $bericht
     }
 
+    It "liest Tor und Ergebnis aus der Kopfzeile, auch bei 8 Spalten (R78)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-achtspalten"
+        # Von Hand vorbereitete Liste mit zusätzlicher Spalte Adresse: Ergebnis steht in Spalte 7, nicht 6.
+        $liste = @(
+            "# Sichtungsliste v1.02", "",
+            "| Nr | Tor | Bereich | Adresse | Prüfpunkt | Breite | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|---|",
+            "| W01 | G4 | Startseite | /index.html | Kopf | 390 px | Ja | |",
+            "| W02 | G4 | Startseite | /index.html | Kopf | 768 px | Nein | Bildlauf |",
+            "", "| Nr | Tor | Bereich | Stelle | Prüfpunkt | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|",
+            "| P01 | G3 | PDF: Deckblatt | Seite 1 | Version stimmt | Ja | |",
+            "| I01 | G5 | Neue Szene | Kapitel 1 | gelesen | Ja | |"
+        )
+        Write-Utf8Datei (Join-Path $projekt "reports/SICHTUNG-v1.02.md") (($liste -join "`n") + "`n")
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 1 Ja, 1 Nein, 0 leer von 2 \(Nein: W02\)') { throw "8-Spalten-Liste falsch ausgewertet:`n$bericht" }
+        if ($bericht -notmatch '\| G3 \| Sichtung PDF \| offen \| SICHTUNG-v1\.02\.md: 1 Ja, 0 Nein, 0 leer von 1; vollständig') { throw "G3 falsch ausgewertet:`n$bericht" }
+        if ($bericht -notmatch '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G4 Sichtung unvollständig \(1 Nein, 0 leer\)') { throw "G8 nicht wegen W02 gesperrt:`n$bericht" }
+        Assert-NieBestanden $bericht
+    }
+
+    It "übergeht Hilfstabellen und sperrt G8 bei Prüfpunkten ohne Ergebnis-Spalte (R78)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-hilfstabelle"
+        $liste = @(
+            "# Sichtungsliste v1.02", "",
+            "| Punkt | Stelle | Seite |", "| --- | --- | --- |",
+            "| P09 | Personenliste | 4 |",
+            "", "| Nr | Tor | Bereich | Prüfpunkt | Breite | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|",
+            "| W01 | G4 | Startseite | Kopf | 390 px | Ja | |",
+            "", "| Nr | Tor | Bereich | Prüfpunkt |", "|---|---|---|---|",
+            "| W02 | G4 | Startseite | Kopf |",
+            "", "| Nr | Tor | Bereich | Stelle | Prüfpunkt | Ergebnis (Ja/Nein) | Bemerkung |",
+            "|---|---|---|---|---|---|---|",
+            "| P01 | G3 | PDF: Deckblatt | Seite 1 | Version stimmt | Ja | |",
+            "| I01 | G5 | Neue Szene | Kapitel 1 | gelesen | Ja | |"
+        )
+        Write-Utf8Datei (Join-Path $projekt "reports/SICHTUNG-v1.02.md") (($liste -join "`n") + "`n")
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $bericht = Get-Bericht $projekt "FREIGABE-v1.02.md"
+        # P09 aus der Hilfstabelle zählt nicht; W02 ohne Ergebnis-Spalte ist unlesbar und sperrt G8.
+        if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 1 Ja, 0 Nein, 0 leer von 1; vollständig') { throw "Hilfstabelle mitgezählt:`n$bericht" }
+        if ($bericht -notmatch 'SICHTUNG-v1\.02\.md: 1 Ja, 0 Nein, 0 leer, 1 unlesbar von 2 \(unlesbar, Ergebnis-Spalte nicht gefunden: W02\)') { throw "Unlesbarer Punkt nicht gemeldet:`n$bericht" }
+        if ($bericht -notmatch '\| G8 \| Freigabe durch Bernd \| gesperrt \|[^\n]*G4 Sichtung unvollständig \(0 Nein, 0 leer, 1 unlesbar\)') { throw "G8 nicht wegen unlesbarem Punkt gesperrt:`n$bericht" }
+        Assert-NieBestanden $bericht
+    }
+
+    It "legt den Download-Link für das Handout auf Startseite und handout-pdf.html (W07 bis W09, R78)" {
+        $projekt = New-FreigabeProjekt "$script:Basis-handout"
+        [void](Invoke-MiniSkript -Projekt $projekt -Skript "freigabe-pruefen.ps1" -Argumente @("-OhnePester", "-OhneGh"))
+        $sichtung = Get-Bericht $projekt "SICHTUNG-v1.02.md"
+        foreach ($nr in @("W07", "W08", "W09")) {
+            if ($sichtung -notmatch "(?m)^\| $nr \| G4 \| Handout \| handout\.html: Handout lädt; Download-Link auf index\.html \(Abschnitt Handout\) und handout-pdf\.html vorhanden \|") { throw "$nr nennt die Fundstelle des Download-Links nicht richtig:`n$sichtung" }
+        }
+    }
+
     It "wertet die MP3-Prüfung bei einem Paket ohne Audio als nicht zutreffend, ohne G8 zu sperren" {
         $projekt = New-FreigabeProjekt "$script:Basis-ohneaudio"
         [void](New-TestPaket $projekt "relingit-upload-v1.02-2026-11-07-ohne-audio" -OhneAudioZeile)

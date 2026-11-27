@@ -340,7 +340,8 @@ if (-not (Test-Path -LiteralPath $sichtungPfad)) {
     $seiten = @(
         @("Startseite", "index.html: Kopf, Version, Datum und Seitenzahl, Navigation, kein waagrechter Bildlauf"),
         @("Lesefassung", "lesen.html: Geschichte lädt, Inhaltsverzeichnis springt zu den Kapiteln"),
-        @("Handout", "handout.html: Handout lädt, Download-Link vorhanden"),
+        # Download-Link liegt seit v1.38 auf der Startseite und auf handout-pdf.html, nicht auf handout.html (R78, Entscheidung Product Owner 24.11.2026).
+        @("Handout", "handout.html: Handout lädt; Download-Link auf index.html (Abschnitt Handout) und handout-pdf.html vorhanden"),
         @("Datenschutz", "datenschutz.html: vollständig lesbar, nichts abgeschnitten"),
         @("Impressum", "impressum.html: vollständig lesbar, nichts abgeschnitten"),
         @("Podcast-Player", "index.html, Abschnitt Podcast: Player und Cover sichtbar, Quellenangabe Google NotebookLM (ohne lokale MP3 nur Darstellung)")
@@ -403,27 +404,58 @@ if (-not (Test-Path -LiteralPath $sichtungPfad)) {
     $sichtungNeu = $false
 }
 
-# Auswertung der Sichtungsliste: Zeilen | Nr | Tor | Bereich | Prüfpunkt | Breite | Ergebnis | Bemerkung |
+# Auswertung der Sichtungsliste (R78). Die Spalten Tor und Ergebnis werden je
+# Tabelle aus der Kopfzeile gelesen (erste Zelle "Nr"), nicht aus einer festen
+# Position: Von Hand vorbereitete Listen haben andere Spalten (v1.39: "Stelle"
+# statt "Breite", zusätzliche Spalten) und Hilfstabellen, deren Zeilen ebenfalls
+# mit W01, P09 oder I03 beginnen. Regeln:
+# - Tabelle mit Kopf "Nr ... Tor ... Ergebnis": Zeilen mit Nummer werden gezählt.
+# - Tabelle ohne Ergebnis-Spalte (z. B. Seitenverweise): Zeilen werden übergangen,
+#   es sei denn, die zweite Zelle nennt ein Tor G3 bis G5. Dann zählt die Zeile als
+#   unlesbar und sperrt G8 wie ein leerer Punkt (fail-closed).
+# - Zeile mit weniger Zellen als die Ergebnis-Spalte: unlesbar.
+function Split-Tabellenzeile([string]$Zeile) {
+    $inhalt = $Zeile.Trim()
+    if ($inhalt.StartsWith('|')) { $inhalt = $inhalt.Substring(1) }
+    if ($inhalt.EndsWith('|') -and -not $inhalt.EndsWith('\|')) { $inhalt = $inhalt.Substring(0, $inhalt.Length - 1) }
+    return @([regex]::Split($inhalt, '(?<!\\)\|') | ForEach-Object { $_.Trim() })
+}
 $sichtung = @{}
-foreach ($tor in @("G3", "G4", "G5")) { $sichtung[$tor] = [ordered]@{ Ja = 0; Nein = 0; Leer = 0; NeinNr = @() } }
+foreach ($tor in @("G3", "G4", "G5")) { $sichtung[$tor] = [ordered]@{ Ja = 0; Nein = 0; Leer = 0; Unlesbar = 0; NeinNr = @(); UnlesbarNr = @() } }
+$spalten = $null
 foreach ($zeile in (Get-Content -LiteralPath $sichtungPfad -Encoding utf8)) {
-    if ($zeile -notmatch '^\|\s*[WPI]\d{2}\s*\|') { continue }
-    $zellen = $zeile -split '\|'
-    if ($zellen.Count -lt 8) { continue }
-    $tor = $zellen[2].Trim()
+    if ($zeile -notmatch '^\s*\|') { $spalten = $null; continue }
+    if ($zeile -match '^\s*\|[\s:|-]+$') { continue }
+    $zellen = Split-Tabellenzeile $zeile
+    if ($zellen[0] -match '^Nr\.?$') {
+        $torIndex = [array]::FindIndex([string[]]$zellen, [Predicate[string]] { param($z) $z -match '^Tor$' })
+        $ergebnisIndex = [array]::FindIndex([string[]]$zellen, [Predicate[string]] { param($z) $z -match '^Ergebnis' })
+        $spalten = if ($torIndex -ge 0 -and $ergebnisIndex -ge 0) { @{ Tor = $torIndex; Ergebnis = $ergebnisIndex } } else { $null }
+        continue
+    }
+    if ($zellen[0] -notmatch '^[WPI]\d{2}$') { continue }
+    $nr = $zellen[0]
+    if ($null -eq $spalten) {
+        if ($zellen.Count -gt 1 -and $sichtung.ContainsKey($zellen[1])) { $sichtung[$zellen[1]].Unlesbar++; $sichtung[$zellen[1]].UnlesbarNr += $nr }
+        continue
+    }
+    $tor = if ($zellen.Count -gt $spalten.Tor) { $zellen[$spalten.Tor] } else { "" }
     if (-not $sichtung.ContainsKey($tor)) { continue }
-    $wert = ($zellen[6].Trim() -replace '\*', '')
+    if ($zellen.Count -le $spalten.Ergebnis) { $sichtung[$tor].Unlesbar++; $sichtung[$tor].UnlesbarNr += $nr; continue }
+    $wert = ($zellen[$spalten.Ergebnis] -replace '\*', '').Trim()
     if ($wert -match '^(?i)ja$') { $sichtung[$tor].Ja++ }
-    elseif ($wert -match '^(?i)nein$') { $sichtung[$tor].Nein++; $sichtung[$tor].NeinNr += $zellen[1].Trim() }
+    elseif ($wert -match '^(?i)nein$') { $sichtung[$tor].Nein++; $sichtung[$tor].NeinNr += $nr }
     else { $sichtung[$tor].Leer++ }
 }
 $sichtungName = Split-Path -Leaf $sichtungPfad
 $torNamen = @{ G3 = "Sichtung PDF"; G4 = "Sichtung Webseiten in 390, 768 und 1280 px"; G5 = "Inhalt gelesen" }
 foreach ($tor in @("G3", "G4", "G5")) {
     $s = $sichtung[$tor]
-    $summe = $s.Ja + $s.Nein + $s.Leer
+    $summe = $s.Ja + $s.Nein + $s.Leer + $s.Unlesbar
     $text = "${sichtungName}: $($s.Ja) Ja, $($s.Nein) Nein, $($s.Leer) leer von $summe"
+    if ($s.Unlesbar -gt 0) { $text = "${sichtungName}: $($s.Ja) Ja, $($s.Nein) Nein, $($s.Leer) leer, $($s.Unlesbar) unlesbar von $summe" }
     if ($s.Nein -gt 0) { $text += " (Nein: $($s.NeinNr -join ', '))" }
+    if ($s.Unlesbar -gt 0) { $text += " (unlesbar, Ergebnis-Spalte nicht gefunden: $($s.UnlesbarNr -join ', '))" }
     if ($summe -eq 0) { $text = "${sichtungName}: keine Prüfpunkte für $tor gefunden" }
     elseif ($s.Ja -eq $summe) { $text += "; vollständig, Bestätigung durch Bernd mit G8" }
     # Nie bestanden: Die Sichtung ist ein menschlicher Nachweis, keine Automatik.
@@ -438,7 +470,10 @@ foreach ($tor in @("G1", "G2", "G6", "G7")) {
 }
 foreach ($tor in @("G3", "G4", "G5")) {
     $s = $sichtung[$tor]
-    if ($s.Nein -gt 0 -or $s.Leer -gt 0 -or ($s.Ja + $s.Nein + $s.Leer) -eq 0) { $sperrgruende += "$tor Sichtung unvollständig ($($s.Nein) Nein, $($s.Leer) leer)" }
+    if ($s.Nein -gt 0 -or $s.Leer -gt 0 -or $s.Unlesbar -gt 0 -or ($s.Ja + $s.Nein + $s.Leer + $s.Unlesbar) -eq 0) {
+        $unlesbarText = if ($s.Unlesbar -gt 0) { ", $($s.Unlesbar) unlesbar" } else { "" }
+        $sperrgruende += "$tor Sichtung unvollständig ($($s.Nein) Nein, $($s.Leer) leer$unlesbarText)"
+    }
 }
 if ($sperrgruende.Count -gt 0) {
     Add-Pruefung "G8" "Freigabe durch Bernd" "gesperrt" "Voraussetzungen fehlen: $($sperrgruende -join '; ')"

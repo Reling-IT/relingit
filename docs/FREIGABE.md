@@ -81,6 +81,10 @@ Das Skript kopiert die öffentlichen Dateien (Liste aus `scripts/build-upload.ps
 
 Bernd trägt in `reports/SICHTUNG-vX.YY.md` je Prüfpunkt **Ja** oder **Nein** ein, bei Nein mit Bemerkung. Breiten stellt man im Browser über die Entwicklerwerkzeuge ein (Strg+Umschalt+I, dann Strg+Umschalt+M). Das Skript überschreibt eine vorhandene Sichtungsliste nie; ein erneuter Lauf wertet sie aus. Die Liste ist der Nachweis für G3, G4 und G5.
 
+Auswertung (R78): Das Skript liest die Spalten **Tor** und **Ergebnis** je Tabelle aus deren Kopfzeile (erste Zelle „Nr“). Eine von Hand vorbereitete Liste darf deshalb andere oder zusätzliche Spalten haben (zum Beispiel „Stelle“ statt „Breite“ wie in v1.39). Hilfstabellen ohne Spalte Ergebnis, etwa Seitenverweise, zählen nicht. Steht ein Prüfpunkt mit Tor G3 bis G5 in einer Tabelle ohne Spalte Ergebnis oder fehlt ihm die Ergebniszelle, gilt er als **unlesbar** und sperrt G8 wie ein leerer Punkt.
+
+Der Download-Link des Handouts liegt auf der Startseite (Abschnitt Handout) und auf `handout-pdf.html`, nicht auf `handout.html`; die Punkte W07 bis W09 prüfen das so (Entscheidung des Product Owners, 24.11.2026).
+
 ### 4. Freigabe G8
 
 Ist G8 im Freigabebericht **offen** (nicht gesperrt), erteilt Bernd die Freigabe als Kommentar im Pull Request, z. B. „Freigabe G8 v1.38: ja“, und hängt Freigabebericht und Sichtungsliste an oder fasst sie zusammen. Danach folgen Merge und Veröffentlichung nach [NEUE-GESCHICHTE.md](NEUE-GESCHICHTE.md).
