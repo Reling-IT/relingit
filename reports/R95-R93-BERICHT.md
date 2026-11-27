@@ -62,3 +62,16 @@ Freigabe des Product Owners im Chat am 27.11.2026. Ausgeführt mit `git branch -
 | `pilot-2026-11-23` | cd6fb73 |
 
 Danach lokal nur noch `main`, `ops/queue`, `ops/reports`, `paket-v139` und `auftrag-R95-feedback` (#48). Beleg: `git branch -vv`.
+
+## Nachtrag 27.11.2026: R95 gemergt und aufgeräumt
+
+| Punkt | Ergebnis | Beleg |
+|---|---|---|
+| Zweitprüfung Runde 1 | Head c8d77a1: 0 Muss, 0 Soll, 5 Hinweise; Hinweise 3 und 4 nach Entscheidung des Product Owners eingearbeitet, Definition „Muss-Fehler“ bestätigt | PR-Kommentar 7210536595 |
+| Zweitprüfung Runde 2 | Head 8fa30854d53641136e4437b3ada8b55caa41a1d0: 0 Muss, 0 Soll, 2 Hinweise | PR-Kommentar 7210658690 |
+| Merge | durch den Product Owner, Squash mit `--match-head-commit` 8fa3085, 27.11.2026 05:31 UTC | `main` 653585d |
+| CI auf `main` | „Website CI“ success an 653585d | `gh run view` |
+| Worktree `r95` | sauber, keine ignorierten Dateien; in den Papierkorb, danach `git worktree prune` (Freigabe Product Owner im Chat) | 121 Dateien, SHA-256 der Dateiliste CB42CB95…B4B7 |
+| Branch `auftrag-R95-feedback` | gelöscht (war 8fa3085), Remote-Branch auf GitHub bereits gelöscht | `git branch -vv` |
+
+Offen für die Planer-Session: R95 und R93 auf erledigt setzen; in R95 Schritt 2 „R70“ durch „R72“ ersetzen; Hinweis 2 der Runde 2 (Abgrenzung „Korrektur“ und „geparkt“) als möglicher kleiner Folgeauftrag.
