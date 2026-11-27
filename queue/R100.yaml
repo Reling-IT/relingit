@@ -2,10 +2,9 @@ id: R100
 titel: 'Pruefauftrag Zielweg Sprachmodell: Bedrock EU, Vertex Europa, lokales Modell (nur lesen)'
 art: lesen
 gate: ja
-abhaengig_von:
-- R97
-status: geplant
-stand: 2026-11-27 06:55
+abhaengig_von: []
+status: bereit
+stand: 2026-11-27 07:10
 planer: Claude (Planer-Session)
 ziel: 'Fuer die Zielstufe mit Echtdaten (ab Gate G-E) je Weg belegen: Verfuegbarkeit in einer EU-Region, Modellversion, Vertragsrahmen, Abrufdatum. Befund 27.11.: direkte Claude API ohne EU-Option; Bedrock nur Geo-Profil EU, nicht In-Region; Vertex und lokales Modell nicht geprueft.'
 schritte:
@@ -14,4 +13,4 @@ schritte:
 nachweis: Bericht mit Quellen und Abrufdatum
 grenzen: Nur lesen. Keine Konten, keine Zugangsdaten, keine Kosten- oder Vertragsangaben in der Queue (oeffentliches Repo).
 repo: Reling-IT/relingit
-hinweis: 'Entwurf des Planers 27.11.2026; Entscheidung Bernd: Pruefauftrag ja.'
+hinweis: 'Entscheidung Bernd 27.11.2026: Pruefauftrag ja, heute lauffaehig (nur lesen).'
