@@ -5,14 +5,14 @@ gate: ja
 abhaengig_von:
 - R97
 status: geplant
-stand: 2026-11-27 06:55
+stand: 2026-11-27 05:45
 planer: Claude (Planer-Session)
 ziel: Plan, S0-Paket, Fortschreibung, Entscheidungsprotokoll und Abgleich aus dem Claude-Projekt in ein privates Repository uebernehmen (Git als Single Source of Truth) und die Struktur fuer das Lernjournal je Sprint anlegen.
 schritte:
-- Ziel-Repository und Ordner mit Bernd klaeren (privat; nicht das oeffentliche sysingdashboard).
+- 'Ablageort entschieden (Bernd 27.11.2026): privates Repository Reling-IT/relingit-intern, Ordner agenten-integration/ (neben agenten-demo/).'
 - Dateien aus dem Projekt uebernehmen, Entscheidungen und Stand unveraendert; Vorlage fuer Lernjournal-Eintrag mit YAML-Kopf.
 - 'Pruefvermerk vor dem ersten Push (AGT-44): keine Personennamen ausser Rollen, keine Kosten, Vertragsinterna oder Zugangsdaten.'
 nachweis: Draft-PR, Pruefvermerk
 grenzen: Kein Merge. Kein Eintrag im oeffentlichen Repository ohne Pruefvermerk. Hoechstens 3 offene Agenten-PRs.
-repo: noch zu klaeren
-hinweis: Entwurf des Planers 27.11.2026; Ablageort offen.
+repo: Reling-IT/relingit-intern
+hinweis: 'Entscheidung Bernd 27.11.2026: Ablageort relingit-intern/agenten-integration. Status bleibt geplant (wartet auf freien PR-Platz und Start durch Bernd). Datei-Liste aus dem Claude-Projekt: plan-navis-lumen-integration, plan-navis-lumen-fortschreibung-2026-11-27, s0-entscheidungspaket-navis-lumen, g-k0-abnahmeprotokoll-navis-lumen, entscheidungen-ki-agenten-standard-2026-11-27, abgleich-plan-ki-agenten-standard, beitraege-zum-ki-agenten-standard.'

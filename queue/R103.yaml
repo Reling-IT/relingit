@@ -1,0 +1,17 @@
+id: R103
+titel: 'V3 schliessen: PDF-Erzeugung im Veroeffentlichungsskript aufrufen (Draft-PR)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-27 05:45
+planer: Claude (Planer-Session)
+ziel: 'Luecke V3 aus R102: publish-release.ps1 liest source/Die-Fahrt-zum-Kunden.pdf und ruft scripts/pdf/render_story_pdf.py nicht auf. PDF soll im Ablauf erzeugt und geprueft werden (Seitenzahl, verify_layout).'
+schritte:
+- Ist-Ablauf lesen (publish-release.ps1 Z. 33 und 155-159, render_story_pdf.py).
+- Aufruf des Renderns als eigenen, abschaltbaren Schritt ergaenzen; ci-check.ps1 prueft Seitenzahl gegen PDF.
+- docs/NEUE-GESCHICHTE.md anpassen; Pester-Test; Draft-PR, kein Merge.
+nachweis: Draft-PR mit Testlauf (Pester, ci-check.ps1)
+grenzen: Kein Merge, kein Tag, kein Upload, nichts an Deployment oder Supabase. Hoechstens 3 offene Agenten-PRs; Start erst nach dem Workshop und nur durch Bernd.
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Bernd 27.11.2026: ja, als geplant (Befund V3, Bericht R102).'
