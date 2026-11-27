@@ -16,11 +16,11 @@ Eine Seite, um Rückmeldungen aus dem Workshop zu „Die Fahrt zum Kunden“ ohn
 | --- | --- | --- |
 | Datum | Tag der Rückmeldung (JJJJ-MM-TT) | 2026-11-30 |
 | Wer | Rolle, kein Klarname | Teilnehmende |
-| Fundstelle | Kapitel und Seite der PDF, oder Seite und Reiter der Webseite | Kapitel 3, S. 24; Startseite, Abschnitt Podcast |
+| Fundstelle | Kapitel und Seite der PDF, oder Seite und Abschnitt der Webseite | Kapitel 3, S. 24; Startseite, Abschnitt Podcast |
 | Beobachtung | Was aufgefallen ist, in einem Satz | Begriff „AVKK“ wird vor seiner Erklärung benutzt. |
 | Art | eine von: Muss-Fehler sofort · Korrektur · Idee · geparkt | Korrektur |
 | Vorschlag | Was geändert werden könnte, in einem Satz | Kurze Erklärung beim ersten Vorkommen ergänzen. |
-| Queue-Verweis | Auftrag in `ops/queue` (zum Beispiel `R95`) oder „neu“ | neu |
+| Queue-Verweis | Auftrag in `ops/queue` (zum Beispiel `Rnn`) oder „neu“ | neu |
 
 ## Sammeltabelle
 
