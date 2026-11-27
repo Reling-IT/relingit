@@ -72,6 +72,7 @@ tore:
     pruefungen:
       - "Podcast-MP3 entsprechen assets/audio/SHA256SUMS.txt (ohne lokale MP3: offen; bei einem Upload-Paket ohne Audio: nicht zutreffend)"
       - "Lokale Vorschau möglich: scripts/vorschau.ps1 vorhanden, Python gefunden"
+      - "Upload-Paket (ZIP) mit scripts/pruefe-paket.ps1 gleich UPLOAD-MANIFEST.txt; SHA-256 und Einträge im Bericht; ohne Paket offen (R68)"
     nachweis: "Prüfsummenvergleich je Datei bzw. Paketname mit Begründung nicht zutreffend, gefundener Python-Pfad"
     paket: "-Paket <ZIP oder Ordner>, sonst das jüngste output/ftp/relingit-upload-v{version}-*.zip. Ohne Audio: Name endet auf -ohne-audio oder UPLOAD-MANIFEST.txt enthält die Zeile 'Ohne Audio:'. Ein so gekennzeichnetes Paket mit MP3 ist nicht bestanden."
     entscheidung: "Bernd, 10.11.2026 (Auftrag R54): Bei einem Paket ohne Audio gilt die MP3-Prüfung als nicht zutreffend."
@@ -83,6 +84,7 @@ tore:
       - "git status ohne Änderungen und ohne unversionierte Dateien"
       - "Branch ist nicht main und stimmt mit dem Upstream überein"
       - "Offener Pull Request gegen main, kein Draft, alle Checks erfolgreich (per gh, falls vorhanden)"
+    auf_main: "HEAD gleich origin/main: G7 und das Review aus G2 nicht zutreffend mit Verweis auf den gemergten Pull Request (per gh, sonst offen); G8 bleibt gesperrt (R68)"
     nachweis: "Branch, Commit, PR-Nummer und Check-Ergebnis"
   - id: G8
     name: Freigabe Bernd
@@ -90,5 +92,5 @@ tore:
     verantwortlich: Bernd
     pruefungen:
       - "Bernd erteilt die Freigabe ausdrücklich, z. B. als PR-Kommentar 'Freigabe G8 vX.YY: ja'"
-    voraussetzung: "G1, G2, G6, G7 bestanden (Einzelprüfungen bestanden oder nicht zutreffend); G3, G4, G5 durch Sichtungsliste ohne Nein- und ohne leere Punkte belegt"
+    voraussetzung: "G1, G2, G6, G7 bestanden (Einzelprüfungen bestanden oder nicht zutreffend); G3, G4, G5 durch Sichtungsliste ohne Nein-, leere und unlesbare Punkte belegt; nie auf main (R68)"
     nachweis: "PR-Kommentar oder Eintrag von Bernd"

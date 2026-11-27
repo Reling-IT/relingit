@@ -4,7 +4,9 @@ Zweck:
     docs/freigabe.yaml (G1 Code, G2 Kommentare, G6 Lokal, G7 Git) und
     schreibt den Freigabebericht. Tore ohne Automatik (G3 Layout, G4 UI,
     G5 Inhalt, G8 Freigabe Bernd) werden nie als bestanden ausgegeben: G3 bis
-    G5 bleiben offen, G8 ist offen oder gesperrt. Der Prozess steht in
+    G5 bleiben offen, G8 ist offen oder gesperrt. Auf main (HEAD gleich
+    origin/main) sind G2 und G7 mit Verweis auf den gemergten Pull Request
+    nicht zutreffend; G8 bleibt dort immer gesperrt. Der Prozess steht in
     docs/FREIGABE.md.
 
 Eingabe:
@@ -22,7 +24,9 @@ Eingabe:
                     <Projekt>/output/ftp/relingit-upload-v<Version>-*.zip.
                     Ein Paket ohne Audio (Name endet auf -ohne-audio oder
                     Manifest mit Zeile "Ohne Audio:") macht die MP3-Prüfung
-                    in G6 nicht zutreffend.
+                    in G6 nicht zutreffend. Ein ZIP wird mit
+                    scripts/pruefe-paket.ps1 gegen UPLOAD-MANIFEST.txt geprüft
+                    (G6); SHA-256 und Zahl der Einträge stehen im Bericht.
     -OhnePester     Pester-Tests nicht ausführen (G1 dann offen).
     -OhneGh         Pull-Request-Stand nicht mit gh abfragen (Teile von G2
                     und G7 dann offen).
@@ -99,6 +103,7 @@ if ($Version -notmatch '^\d+\.\d+$') { throw "Version muss die Form X.YY haben: 
 $gitVorhanden = [bool](Get-Command git -ErrorAction SilentlyContinue)
 $branch = ""
 $commit = ""
+$aufMain = $false
 if (-not $gitVorhanden) {
     Add-Pruefung "G7" "git status sauber" "offen" "git nicht gefunden"
 } else {
@@ -128,7 +133,18 @@ if (-not $gitVorhanden) {
         if (-not $branch) {
             Add-Pruefung "G7" "Feature-Branch, gleich Upstream" "nicht bestanden" "losgelöster Stand $commit ohne passenden Remote-Zweig"
         } elseif ($branch -eq "main") {
-            Add-Pruefung "G7" "Feature-Branch, gleich Upstream" "nicht bestanden" "Branch ist main; Freigabe wird auf dem Feature-Branch vor dem Merge geprüft"
+            # R68 (Befund F2 aus R61): Auf main sind G2 und G7 vom Aufbau her nicht
+            # bestehbar. Ist HEAD gleich origin/main, wird das Ergebnis im gh-Abschnitt
+            # mit Verweis auf den gemergten Pull Request als "nicht zutreffend" gewertet.
+            $mainHead = (Invoke-Befehl "git" @("rev-parse", "HEAD")).Ausgabe | Select-Object -First 1
+            $mainOrigin = Invoke-Befehl "git" @("rev-parse", "--verify", "--quiet", "refs/remotes/origin/main")
+            if ($mainOrigin.ExitCode -ne 0) {
+                Add-Pruefung "G7" "Feature-Branch, gleich Upstream" "nicht bestanden" "Branch main, origin/main nicht vorhanden"
+            } elseif (($mainOrigin.Ausgabe | Select-Object -First 1) -ne $mainHead) {
+                Add-Pruefung "G7" "Feature-Branch, gleich Upstream" "nicht bestanden" "Branch main, HEAD $commit weicht von origin/main ab"
+            } else {
+                $aufMain = $true
+            }
         } else {
             $upstream = Invoke-Befehl "git" @("rev-parse", "--verify", "--quiet", "refs/remotes/origin/$branch")
             $head = (Invoke-Befehl "git" @("rev-parse", "HEAD")).Ausgabe | Select-Object -First 1
@@ -148,7 +164,44 @@ if (-not $gitVorhanden) {
 
 # Pull-Request-Stand per gh (G7) und Review-Status (G2).
 $ghVorhanden = [bool](Get-Command gh -ErrorAction SilentlyContinue)
-if ($OhneGh -or -not $ghVorhanden -or -not $branch -or $branch -eq "main") {
+if ($aufMain) {
+    # Lauf auf main mit HEAD = origin/main: Verweis auf den gemergten Pull Request (R68).
+    $mergedPr = $null
+    $grund = if ($OhneGh) { "mit -OhneGh übersprungen" } elseif (-not $ghVorhanden) { "gh nicht gefunden" } else { "" }
+    if (-not $grund) {
+        $sha = (Invoke-Befehl "git" @("rev-parse", "HEAD")).Ausgabe | Select-Object -First 1
+        $api = Invoke-Befehl "gh" @("api", "repos/{owner}/{repo}/commits/$sha/pulls")
+        $liste = $null
+        if ($api.ExitCode -eq 0) { try { $liste = @(($api.Ausgabe -join "`n") | ConvertFrom-Json) } catch { $liste = $null } }
+        if ($null -eq $liste) {
+            $grund = "gh-Abfrage fehlgeschlagen: $(($api.Ausgabe | Select-Object -First 1))"
+        } else {
+            $mergedPr = $liste | Where-Object { $_.merged_at -and $_.base.ref -eq "main" } | Select-Object -First 1
+            if (-not $mergedPr) { $grund = "kein gemergter Pull Request gegen main zu HEAD $commit gefunden" }
+        }
+    }
+    if (-not $mergedPr) {
+        Add-Pruefung "G7" "Feature-Branch, gleich Upstream" "offen" "Branch main, HEAD $commit = origin/main; Verweis auf den gemergten Pull Request fehlt ($grund)"
+        Add-Pruefung "G7" "Pull Request offen, kein Draft, Checks grün" "offen" "Branch main; $grund"
+        Add-Pruefung "G2" "Review ohne Änderungswunsch" "offen" "Branch main; $grund"
+    } else {
+        $mergedAm = if ($mergedPr.merged_at -is [datetime]) { $mergedPr.merged_at.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ") } else { "$($mergedPr.merged_at)" }
+        $prText = "PR #$($mergedPr.number), gemergt $mergedAm ($($mergedPr.html_url))"
+        Add-Pruefung "G7" "Feature-Branch, gleich Upstream" "nicht zutreffend" "Branch main, HEAD $commit = origin/main, gemergt mit $prText; die Prüfung gilt auf dem Feature-Branch vor dem Merge"
+        Add-Pruefung "G7" "Pull Request offen, kein Draft, Checks grün" "nicht zutreffend" "Lauf auf main; $prText"
+        $rv = Invoke-Befehl "gh" @("pr", "view", "$($mergedPr.number)", "--json", "reviewDecision")
+        $entscheidung = ""
+        if ($rv.ExitCode -eq 0) { try { $entscheidung = (($rv.Ausgabe -join "`n") | ConvertFrom-Json).reviewDecision } catch { $entscheidung = $null } } else { $entscheidung = $null }
+        if ($null -eq $entscheidung) {
+            Add-Pruefung "G2" "Review ohne Änderungswunsch" "offen" "Review-Status von PR #$($mergedPr.number) nicht abfragbar"
+        } elseif ($entscheidung -eq "CHANGES_REQUESTED") {
+            Add-Pruefung "G2" "Review ohne Änderungswunsch" "nicht bestanden" "gemergter PR #$($mergedPr.number): CHANGES_REQUESTED"
+        } else {
+            $review = if ($entscheidung) { $entscheidung } else { "kein Review-Status" }
+            Add-Pruefung "G2" "Review ohne Änderungswunsch" "nicht zutreffend" "Lauf auf main; gemergter PR #$($mergedPr.number): $review"
+        }
+    }
+} elseif ($OhneGh -or -not $ghVorhanden -or -not $branch -or $branch -eq "main") {
     $grund = if ($OhneGh) { "mit -OhneGh übersprungen" } elseif (-not $ghVorhanden) { "gh nicht gefunden" } else { "kein Feature-Branch" }
     Add-Pruefung "G7" "Pull Request offen, kein Draft, Checks grün" "offen" $grund
     Add-Pruefung "G2" "Review ohne Änderungswunsch" "offen" $grund
@@ -282,6 +335,32 @@ if ($paketPfad) {
     }
     $paketMp3 = @($paketDateien | Where-Object { $_ -like "assets/audio/*.mp3" })
     $paketOhneAudio = ($paketName -match '-ohne-audio(\.zip)?$') -or ($manifest -match '(?m)^Ohne Audio:')
+}
+
+# Upload-Paket gegen UPLOAD-MANIFEST.txt (R68): scripts/pruefe-paket.ps1 liest das ZIP
+# nur lesend; in den Bericht gehen SHA-256 des ZIP und die Zahl der Einträge.
+# Ein Baum-Vergleich mit einem Commit ist nicht Teil dieser Prüfung (eigener Folgeauftrag).
+$paketPruefer = Join-Path $PSScriptRoot "pruefe-paket.ps1"
+$paketKennung = ""
+if (-not $paketPfad) {
+    Add-Pruefung "G6" "Upload-Paket gegen Manifest" "offen" "kein Upload-Paket gefunden (output/ftp/relingit-upload-v$Version-*.zip oder -Paket)"
+} elseif (Test-Path -LiteralPath $paketPfad -PathType Container) {
+    Add-Pruefung "G6" "Upload-Paket gegen Manifest" "offen" "Paket $paketName ist ein Ordner; scripts/pruefe-paket.ps1 prüft nur das ZIP"
+} elseif (-not (Test-Path -LiteralPath $paketPruefer)) {
+    Add-Pruefung "G6" "Upload-Paket gegen Manifest" "nicht bestanden" "scripts/pruefe-paket.ps1 fehlt"
+} else {
+    $pp = Invoke-Befehl $pwshPfad @("-NoProfile", "-NonInteractive", "-File", $paketPruefer, "-Zip", $paketPfad)
+    $hashZeile = $pp.Ausgabe | Where-Object { $_ -match '^\| SHA-256 \| `(?<h>[0-9A-Fa-f]{64})` \|' } | Select-Object -First 1
+    $zipHash = if ($hashZeile -match '`(?<h>[0-9A-Fa-f]{64})`') { $Matches.h } else { "unbekannt" }
+    $eintragZeile = $pp.Ausgabe | Where-Object { $_ -match '^\| Einträge \| \d+' } | Select-Object -First 1
+    $eintraegeZahl = if ($eintragZeile -match '^\| Einträge \| (?<n>\d+)') { $Matches.n } else { "unbekannt" }
+    $paketKennung = "$paketName, SHA-256 $zipHash, $eintraegeZahl Einträge"
+    if ($pp.ExitCode -eq 0) {
+        Add-Pruefung "G6" "Upload-Paket gegen Manifest" "bestanden" "${paketKennung}; jede Datei gleich UPLOAD-MANIFEST.txt (pruefe-paket.ps1 Exit 0)"
+    } else {
+        $meldungen = ($pp.Ausgabe | Where-Object { $_ -match '^\s+- |^Abbruch' } | Select-Object -First 3) -join "; "
+        Add-Pruefung "G6" "Upload-Paket gegen Manifest" "nicht bestanden" "${paketKennung}; pruefe-paket.ps1 Exit $($pp.ExitCode): $meldungen"
+    }
 }
 
 $summenDatei = Join-Path $Projekt "assets/audio/SHA256SUMS.txt"
@@ -475,6 +554,11 @@ foreach ($tor in @("G3", "G4", "G5")) {
         $sperrgruende += "$tor Sichtung unvollständig ($($s.Nein) Nein, $($s.Leer) leer$unlesbarText)"
     }
 }
+# R68: "nicht zutreffend" für G2 und G7 auf main öffnet G8 nie. Freigegeben wird
+# auf dem Feature-Branch vor dem Merge; ein Lauf auf main ist nur ein Nachweis.
+if ($aufMain -or $branch -eq "main") {
+    $sperrgruende += "Lauf auf main: G8 wird auf dem Feature-Branch vor dem Merge erteilt, nicht auf main"
+}
 if ($sperrgruende.Count -gt 0) {
     Add-Pruefung "G8" "Freigabe durch Bernd" "gesperrt" "Voraussetzungen fehlen: $($sperrgruende -join '; ')"
 } else {
@@ -526,6 +610,8 @@ if ($nichtBestanden.Count -gt 0) {
 }
 $bericht.Add("")
 $bericht.Add("Sichtungsliste: ``$sichtungName`` ($sichtungHinweis).")
+$bericht.Add("")
+$bericht.Add("Upload-Paket: $(if ($paketKennung) { $paketKennung } elseif ($paketName) { "$paketName (nicht mit pruefe-paket.ps1 geprüft)" } else { 'keines gefunden' }).")
 [System.IO.File]::WriteAllText($freigabePfad, (($bericht -join "`n") + "`n"), $utf8)
 
 foreach ($z in $zusammenfassung) { Write-Host ("{0} {1,-15} {2}" -f $z.Tor, $z.Name, $z.Ergebnis) }
