@@ -11,7 +11,7 @@ schritte:
 nachweis: Draft-PR mit gruener CI, STATUS.yaml-Abgleich als Tabelle im Bericht
 grenzen: Kein Merge, kein Tag, kein FTP, keine Zugangsdaten. Hoechstens 3 offene Agenten-PRs; R78/R68 hat Vorrang.
 status: in_arbeit
-stand: 2026-11-27 07:35
+stand: 2026-11-27 08:00
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
-hinweis: 'Stand 27.11.2026 07:35: PR #50 (PILOT.md Stunden 24.11. und 27.11., Head 0c11cee, CI gruen, nicht Draft); Bericht fehlt; Merge nur nach Einzelfreigabe je Head.'
+hinweis: 'Stand 27.11.2026: Teil PILOT.md erledigt (PR #50 gemergt, main 8c4ca14, Freigabe Bernd je Head 0c11cee). Offen: PODCAST.md Ablageort pruefen und STATUS.yaml nachziehen; Bericht fehlt.'
