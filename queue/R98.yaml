@@ -2,10 +2,9 @@ id: R98
 titel: Erfahrungsblatt Navis/Lumen im Standard KI-Agenten in Apps (Draft-PR, nur Doku)
 art: code-pr
 gate: ja
-abhaengig_von:
-- R97
-status: geplant
-stand: 2026-11-27 06:55
+abhaengig_von: []
+status: bereit
+stand: 2026-11-27 07:20
 planer: Claude (Planer-Session)
 ziel: 'Beitraege aus dem Plan Navis/Lumen (B-1 bis B-12, claude/beitraege-zum-ki-agenten-standard.md) als Erfahrungsblatt im Repository bmarnau-standards/ki-agenten-standard vorschlagen, ohne den Wortlaut des Entwurfs (PR #1) zu aendern.'
 schritte:
@@ -15,4 +14,4 @@ schritte:
 nachweis: Draft-PR mit Pruefskript gruen
 grenzen: Kein Merge, kein Tag, keine Aenderung am Wortlaut von STANDARD-KI-AGENTEN.md. Hoechstens 3 offene Agenten-PRs.
 repo: bmarnau-standards/ki-agenten-standard
-hinweis: Entwurf des Planers 27.11.2026; wartet auf Freigabe durch Bernd (Status bereit setzt nur der Product Owner).
+hinweis: 'Entscheidung Bernd 27.11.2026: R98 bereit, R99 spaeter. Hoechstens 3 offene Agenten-PRs: erst starten, wenn ein Platz frei ist (wie R96).'

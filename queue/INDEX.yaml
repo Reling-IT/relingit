@@ -1,4 +1,4 @@
-stand: 2026-11-27 07:10
+stand: 2026-11-27 07:20
 planer: Claude (Planer-Session)
 repo: Reling-IT/relingit
 mindestbestand_bereit: 1
@@ -700,9 +700,8 @@ auftraege:
   titel: Erfahrungsblatt Navis/Lumen im Standard KI-Agenten in Apps (Draft-PR, nur Doku)
   art: code-pr
   gate: ja
-  status: geplant
-  abhaengig_von:
-  - R97
+  status: bereit
+  abhaengig_von: []
 - id: R99
   titel: Plan Navis/Lumen und Lernjournal in Git ablegen (privates Repository, Draft-PR)
   art: code-pr
