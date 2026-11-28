@@ -752,7 +752,7 @@ auftraege:
   status: geplant
   abhaengig_von: []
 - id: R107
-  titel: 'Naechste Buchfassung nach v1.40: Idee 20, Minimalfassung aus drei Episoden (Draft-PR, erst nach Freigabe der Entwuerfe)'
+  titel: 'Naechste Buchfassung nach v1.40: Idee 20, Arbeitsfassungen v1.41 bis v1.43 auf einem Release-Zweig (Entwurfs-PR, Veroeffentlichung P1 erst mit G8)'
   art: code-pr
   gate: ja
   status: geplant
