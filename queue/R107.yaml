@@ -4,7 +4,7 @@ art: code-pr
 gate: ja
 abhaengig_von: []
 status: geplant
-stand: 2026-11-28 09:45
+stand: 2026-11-28 10:55
 planer: Claude (Planer-Session)
 ziel: 'Neuer Abschnitt in Teil 1 der Buchquelle mit drei Episoden um die Auszubildende (Arbeitstitel: Der Antrag, Zurueckspielen, Die Uebung) und zugehoerige Boxen im Anhang. Die Texte liefert der Product Owner als freigegebene Entwuerfe; Claude Code baut nur ein.'
 schritte:
@@ -16,4 +16,4 @@ schritte:
 nachweis: Draft-PR, Bericht mit Belegen, Sichtungsliste
 grenzen: Kein Merge, kein Tag, kein Upload, keine Zugangsdaten, keine Personennamen ausser Rollen und Figuren des Buches, keine Kosten. Keine eigenen Texte erfinden. Hoechstens 3 offene Agenten-PRs; Start nur durch den Product Owner.
 repo: Reling-IT/relingit
-hinweis: 'Entscheidungen Product Owner 28.11.2026: Idee 20 zuerst; Arbeitsfassung je Episode auf einem Release-Zweig, nicht jede Fassung wird veroeffentlicht; Veroeffentlichungen P1 bis P4. Konzept und Entwuerfe liegen nicht in diesem oeffentlichen Repository. Podcast nur je Veroeffentlichung, nicht je Arbeitsfassung.'
+hinweis: 'Entscheidungen Product Owner 28.11.2026: Idee 20 zuerst; Arbeitsfassung je Episode auf einem Release-Zweig, nicht jede Fassung wird veroeffentlicht; Veroeffentlichungen P1 bis P4. Konzept und Entwuerfe liegen nicht in diesem oeffentlichen Repository. Podcast nur je Veroeffentlichung, nicht je Arbeitsfassung. Stand 28.11.2026: Der Product Owner hat den Wortlaut der drei Episoden als Arbeitsstand freigegeben; Start weiterhin erst nach dem Workshop und nur durch den Product Owner.'
