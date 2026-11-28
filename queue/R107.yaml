@@ -11,9 +11,9 @@ schritte:
 - Erst nach dem Workshop und erst starten, wenn der Product Owner den Wortlaut der jeweiligen Episode freigegeben und uebergeben hat.
 - 'Ein Release-Zweig von main mit einem Entwurfs-PR. Je Episode eine Arbeitsfassung (v1.41, v1.42, v1.43): einbauen nach docs/NEUE-GESCHICHTE.md und docs/vorlagen/EINBAU-CHECKLISTE.md, Rendering, Links, Version, Personenliste, Inhaltsverzeichnis, Deckblatt-Boxen, Versionshistorie, PDF zur Durchsicht.'
 - main, story/current und die Webseite bleiben unveraendert, bis der Product Owner die Veroeffentlichung P1 freigibt (Tore G1 bis G8 nach docs/FREIGABE.md).
-- 'Personenliste: Lehrjahr und Rolle Ausbilder nach freigegebenem Wortlaut nachziehen; Berufsbezeichnung nur aendern, wenn der Product Owner es entscheidet.'
+- 'Personenliste und Text: Zeitsprung (drittes Lehrjahr), Berufsbezeichnung Kauffrau fuer IT-System-Management statt der frueheren Bezeichnung, Rolle Ausbilder; jeweils nach freigegebenem Wortlaut (Entscheidungen Product Owner 28.11.2026).'
 - 'Nach der dritten Episode: Sichtungsliste vorbereiten, ci-check gruen, Freigabepruefung.'
 nachweis: Draft-PR, Bericht mit Belegen, Sichtungsliste
 grenzen: Kein Merge, kein Tag, kein Upload, keine Zugangsdaten, keine Personennamen ausser Rollen und Figuren des Buches, keine Kosten. Keine eigenen Texte erfinden. Hoechstens 3 offene Agenten-PRs; Start nur durch den Product Owner.
 repo: Reling-IT/relingit
-hinweis: 'Entscheidungen Product Owner 28.11.2026: Idee 20 zuerst; Arbeitsfassung je Episode auf einem Release-Zweig, nicht jede Fassung wird veroeffentlicht; Veroeffentlichungen P1 bis P4. Konzept und Entwuerfe liegen nicht in diesem oeffentlichen Repository.'
+hinweis: 'Entscheidungen Product Owner 28.11.2026: Idee 20 zuerst; Arbeitsfassung je Episode auf einem Release-Zweig, nicht jede Fassung wird veroeffentlicht; Veroeffentlichungen P1 bis P4. Konzept und Entwuerfe liegen nicht in diesem oeffentlichen Repository. Podcast nur je Veroeffentlichung, nicht je Arbeitsfassung.'

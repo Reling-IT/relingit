@@ -1,0 +1,19 @@
+id: R108
+titel: 'Buchindex aus der Buchquelle: Buchtext fuer die Agenten per Skript erzeugen, Abschnitte mit Ankern, Index mit Stichwoertern (Draft-PR, vor Veroeffentlichung P1)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-28 09:55
+planer: Claude (Planer-Session)
+ziel: Die Agenten-Demo soll alle Informationen im Buch schnell und mit genauer Fundstelle finden. Der Buchtext fuer die Agenten wird nicht mehr von Hand erzeugt, sondern aus der veroeffentlichten Buchfassung gebaut und nennt Version und Datum.
+schritte:
+- 'Ist-Stand lesend pruefen: Struktur der Buchquelle (Kapitel, Szenen, Boxen, Anker-IDs); Befund als Tabelle.'
+- 'Skript in scripts/ (PowerShell oder Python wie die bestehenden): erzeugt aus story/current eine JSON-Datei mit Version, Datum und Abschnitten (Kennung, Titel, Teil, Anker, Text); Szenen und Boxen als eigene Eintraege; deterministisch, mit Pester- oder Python-Test.'
+- 'Index-Datei daneben: je Abschnitt Kurzfassung (zwei Saetze), Figuren, Stichwoerter und Synonyme; Personen- und Begriffsregister. Die Inhalte des Index sind ein Entwurf und brauchen die Freigabe des Product Owners; ohne Freigabe bleiben die Felder leer.'
+- Einbindung in scripts/publish-release.ps1 als eigener Schritt; ci-check prueft, dass Version und Datum der JSON-Datei zur Buchquelle passen.
+- Mindestens zwoelf Testfragen mit erwarteter Fundstelle als Datei, darunter drei, deren Antwort nicht im Buch steht.
+nachweis: Draft-PR mit gruener CI, Testprotokoll, Bericht mit Abschnittszahl und Groesse
+grenzen: Kein Merge, kein Tag, kein Upload, keine Zugangsdaten, keine Personennamen ausser Rollen und Figuren des Buches, keine Kosten. Kein Vektorindex, kein externer Dienst, kein Aufruf eines Sprachmodells im Skript. Hoechstens 3 offene Agenten-PRs; Start nur durch den Product Owner.
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Product Owner 28.11.2026: Buchindex ja, als geplant, faellig vor Veroeffentlichung P1; kleines Agentenverzeichnis statt Suchindex. Befund: Der bisherige Buchtext der Demo wurde von Hand erzeugt (36 Abschnitte), die Suche findet Woerter, keine Bedeutungen.'
