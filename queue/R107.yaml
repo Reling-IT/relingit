@@ -1,0 +1,18 @@
+id: R107
+titel: 'Naechste Buchfassung nach v1.40: Idee 20, Minimalfassung aus drei Episoden (Draft-PR, erst nach Freigabe der Entwuerfe)'
+art: code-pr
+gate: ja
+abhaengig_von: []
+status: geplant
+stand: 2026-11-28 09:30
+planer: Claude (Planer-Session)
+ziel: 'Neuer Abschnitt in Teil 1 der Buchquelle mit drei Episoden um die Auszubildende (Arbeitstitel: Der Antrag, Zurueckspielen, Die Uebung) und zugehoerige Boxen im Anhang. Die Texte liefert der Product Owner als freigegebene Entwuerfe; Claude Code baut nur ein.'
+schritte:
+- Erst nach dem Workshop und erst starten, wenn der Product Owner die Entwuerfe freigegeben und uebergeben hat.
+- 'Eine Episode nach der anderen einbauen nach docs/NEUE-GESCHICHTE.md und docs/vorlagen/EINBAU-CHECKLISTE.md: Rendering, Links, Version, Personenliste, Inhaltsverzeichnis, Deckblatt-Boxen, Versionshistorie.'
+- 'Personenliste: Rolle Ausbilder nachziehen, sobald der Wortlaut freigegeben ist.'
+- Draft-PR, ci-check gruen, Sichtungsliste vorbereiten; Freigabe ueber die Tore G1 bis G8.
+nachweis: Draft-PR, Bericht mit Belegen, Sichtungsliste
+grenzen: Kein Merge, kein Tag, kein Upload, keine Zugangsdaten, keine Personennamen ausser Rollen und Figuren des Buches, keine Kosten. Keine eigenen Texte erfinden. Hoechstens 3 offene Agenten-PRs; Start nur durch den Product Owner.
+repo: Reling-IT/relingit
+hinweis: 'Entscheidung Product Owner 28.11.2026: Idee 20 zuerst, Minimalfassung aus drei Episoden, eigener Abschnitt im bestehenden Buch. Konzept und Entwuerfe liegen nicht in diesem oeffentlichen Repository.'
